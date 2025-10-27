@@ -1,11 +1,11 @@
-import { 
+import {
   ChatWidget,
-  PaymentMethod,
-  ThemeMembers,
   ExerciseMinutes,
-  TotalRevenue,
   LatestPayments,
-  Subscriptions
+  PaymentMethod,
+  Subscriptions,
+  ThemeMembers,
+  TotalRevenue
 } from "./components";
 
 export default function Page() {

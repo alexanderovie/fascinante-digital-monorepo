@@ -162,7 +162,7 @@ const DesktopHeader = () => {
               <ul className="flex flex-col">
                 {MenuData.map((value, index) => {
                   return (
-                    <Link key={index} href={value.path}>
+                    <Link key={index} href={value.path} onClick={() => setSidebarOpen(false)}>
                       <li className="py-1.5">
                         <p className="font-semibold dark:text-white">{value.title}</p>
                       </li>
@@ -170,7 +170,7 @@ const DesktopHeader = () => {
                   )
                 })}
               </ul>
-              <Link href={"/sign-in"} className="bg-primary hover:bg-darkPrimary mt-4 flex items-center py-2.5 xl:py-3 px-3 xl:px-4 rounded-sm">
+              <Link href={"https://app.fascinantedigital.com/"} className="bg-primary hover:bg-darkPrimary mt-4 flex items-center py-2.5 xl:py-3 px-3 xl:px-4 rounded-sm">
                 <span className="text-sm text-white font-bold">Sign In / Sign Up</span>
               </Link>
               <div className="flex flex-col mt-5">
