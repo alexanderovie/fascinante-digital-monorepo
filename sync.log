@@ -1,0 +1,21 @@
+Scope: all 7 workspace projects
+Progress: resolved 0, reused 1, downloaded 0, added 0
+apps/app                                 |  WARN  deprecated eslint-plugin-readable-tailwind@3.0.0
+Progress: resolved 596, reused 583, downloaded 0, added 0
+ WARN  1 deprecated subdependencies found: node-domexception@1.0.0
+Packages: -4
+----
+Progress: resolved 923, reused 858, downloaded 0, added 0, done
+
+ WARN  Issues with peer dependencies found
+apps/app
+└─┬ eslint-config-next 15.5.6
+  └─┬ @typescript-eslint/eslint-plugin 6.21.0
+    ├── ✕ unmet peer eslint@"^7.0.0 || ^8.0.0": found 9.38.0
+    ├── ✕ unmet peer @typescript-eslint/parser@"^6.0.0 || ^6.0.0-alpha": found 8.46.2 in eslint-config-next
+    └─┬ @typescript-eslint/type-utils 6.21.0
+      ├── ✕ unmet peer eslint@"^7.0.0 || ^8.0.0": found 9.38.0
+      └─┬ @typescript-eslint/utils 6.21.0
+        └── ✕ unmet peer eslint@"^7.0.0 || ^8.0.0": found 9.38.0
+
+Done in 2.2s
