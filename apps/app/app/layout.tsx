@@ -17,6 +17,15 @@ export const metadata: Metadata = {
   title: "Fascinante Digital | Dashboard",
   description: "Panel de control avanzado para gestión de marketing digital y automatización de procesos empresariales.",
   keywords: ["dashboard", "panel control", "marketing digital", "automatización", "gestión empresarial"],
+  icons: {
+    icon: [
+      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/favicon.svg', type: 'image/svg+xml' }
+    ],
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
+  manifest: '/site.webmanifest',
   other: {
     "apple-mobile-web-app-title": "Fascinante",
   },
