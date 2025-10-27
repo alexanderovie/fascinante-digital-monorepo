@@ -18,10 +18,10 @@ export const metadata: Metadata = {
   description: "Panel de control avanzado para gestión de marketing digital y automatización de procesos empresariales.",
   keywords: ["dashboard", "panel control", "marketing digital", "automatización", "gestión empresarial"],
   icons: {
-    icon: "/app/favicon.ico",
-    apple: "/app/apple-icon.png",
+    icon: "/favicon.ico",
+    apple: "/apple-icon.png",
   },
-  manifest: "/app/manifest.json",
+  manifest: "/manifest.json",
   other: {
     "apple-mobile-web-app-title": "Fascinante",
   },
@@ -47,29 +47,15 @@ export default async function RootLayout({
       .map(([key, value]) => [`data-theme-${key.replace(/([A-Z])/g, "-$1").toLowerCase()}`, value])
   );
 
-  const organizationSchema = generateOrganizationSchema('app');
-  const websiteSchema = generateWebsiteSchema('app');
-
   return (
     <html lang="es" suppressHydrationWarning>
       <head>
         {/* Favicon y iconos */}
-        <link rel="icon" href={FAVICON_CONFIG.favicon} sizes="any" />
-        <link rel="icon" href={FAVICON_CONFIG.icon16} type="image/png" sizes="16x16" />
-        <link rel="icon" href={FAVICON_CONFIG.icon32} type="image/png" sizes="32x32" />
-        <link rel="apple-touch-icon" href={FAVICON_CONFIG.appleTouchIcon} />
-        <link rel="manifest" href="/manifest.webmanifest" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/icon1.png" type="image/png" sizes="32x32" />
+        <link rel="apple-touch-icon" href="/apple-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#6366f1" />
-
-        {/* JSON-LD Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-        />
       </head>
       <body
         suppressHydrationWarning
