@@ -17,14 +17,6 @@ export const metadata: Metadata = {
   title: "Fascinante Digital | Dashboard",
   description: "Panel de control avanzado para gestión de marketing digital y automatización de procesos empresariales.",
   keywords: ["dashboard", "panel control", "marketing digital", "automatización", "gestión empresarial"],
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/favicon.svg", type: "image/svg+xml" },
-    ],
-    apple: "/apple-icon.png",
-  },
-  manifest: "/manifest.json",
   other: {
     "apple-mobile-web-app-title": "Fascinante",
   },
@@ -53,11 +45,6 @@ export default async function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <head>
-        {/* Favicon y iconos */}
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/icon1.png" type="image/png" sizes="32x32" />
-        <link rel="apple-touch-icon" href="/apple-icon.png" />
-        <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#6366f1" />
       </head>
       <body
