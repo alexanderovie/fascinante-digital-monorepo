@@ -11,7 +11,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Fascinante Digital | Agencia de Marketing Digital", 
+  title: "Fascinante Digital | Agencia de Marketing Digital",
   description: "Agencia de marketing digital especializada en estrategias personalizadas que generan resultados reales. SEO, SEM, Social Media y más.",
   keywords: ["marketing digital", "SEO", "SEM", "social media", "agencia digital", "Tampa", "Florida"],
   other: {
