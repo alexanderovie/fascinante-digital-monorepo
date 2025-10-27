@@ -93,8 +93,8 @@ const ContactForm = () => {
                         <div className='flex items-center gap-3 sm:gap-6'>
                             <Image src={"/images/contactus/contact-call-icon.svg"} alt='contact-icon' width={40} height={40} />
                             <div>
-                                <p>+1 0239 0310 1122</p>
-                                <p>+1 0239 0310 2211</p>
+                                <p>(800) 886-4981</p>
+                                <p>(800) 886-4981</p>
                             </div>
                         </div>
                         <div className='flex items-center gap-3 sm:gap-6'>
