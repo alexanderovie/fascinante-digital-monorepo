@@ -130,7 +130,7 @@ async function handleCompanyInfo(request: Request) {
     contact: {
       website: 'https://fascinantedigital.com',
       email: 'info@fascinantedigital.com',
-      phone: '+1 0239 0310'
+      phone: '(800) 886-4981'
     },
     social: {
       twitter: '@fascinantedig',
