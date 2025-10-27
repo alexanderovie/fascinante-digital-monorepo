@@ -77,10 +77,10 @@ const DesktopHeader = () => {
 
           {/* ZONA 3: CTAs se mantienen igual */}
           <div className="hidden lg:flex items-center gap-2 xl:gap-3">
-            <Link href={"tel:+1 0239 0310"} className="flex items-center gap-0.5 xl:gap-2 px-2 xl:px-4 py-2 hover:bg-gray-100 dark:hover:bg-white/25 rounded-md transition duration-300">
+            <Link href={"tel:(800) 886-4981"} className="flex items-center gap-0.5 xl:gap-2 px-2 xl:px-4 py-2 hover:bg-gray-100 dark:hover:bg-white/25 rounded-md transition duration-300">
               <Image src={"/images/header/phone-icon.svg"} alt="phone-icon" width={24} height={24} className="dark:hidden" />
               <Image src={"/images/header/phone-white-icon.svg"} alt="phone-icon" width={24} height={24} className="hidden dark:block" />
-              <p className="hidden xl:block text-[15px] xl:text-base font-semibold dark:text-white">+1 0239 0310</p>
+              <p className="hidden xl:block text-[15px] xl:text-base font-semibold dark:text-white">(800) 886-4981</p>
             </Link>
             <div onClick={() => setModalOpen(true)} className="group flex items-center py-2.5 xl:py-3 px-3 xl:px-4 bg-secondary hover:bg-primary dark:bg-white/25 dark:hover:bg-primary rounded-sm cursor-pointer transition-all duration-300">
               <span className="text-sm text-white group-hover:text-white font-bold">Book a service</span>
