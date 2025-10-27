@@ -1,27 +1,17 @@
-name = "fascinante-api"
+name = "fascinante-api-gateway-prod"
 main = "src/index.ts"
 compatibility_date = "2025-10-27"
 compatibility_flags = ["nodejs_compat"]
 
-# Custom domain configuration  
-[[routes]]
-pattern = "api.fascinantedigital.com/*"
-zone_name = "fascinantedigital.com"
-
 # Environment variables
 [env.production]
-name = "fascinante-api"
+name = "fascinante-api-gateway-prod"
 [env.production.vars]
 ENVIRONMENT = "production"
 API_VERSION = "1.0.0"
 
-[env.staging]  
+[env.staging]
 name = "fascinante-api-staging"
 [env.staging.vars]
 ENVIRONMENT = "staging"
 API_VERSION = "1.0.0-staging"
-
-# Analytics and observability
-[analytics_engine_datasets]
-[[analytics_engine_datasets.bindings]]
-name = "API_ANALYTICS"

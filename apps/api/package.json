@@ -14,11 +14,18 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@cloudflare/workers-types": "^4.20241022.0"
+    "@cloudflare/workers-types": "^4.20241022.0",
+    "@react-email/components": "^0.5.7",
+    "@react-email/render": "^1.4.0",
+    "react-email": "^4.3.2",
+    "resend": "^6.3.0"
   },
   "devDependencies": {
+    "@types/node": "^24.9.1",
+    "@types/react": "^19.2.2",
+    "react": "^19.2.0",
     "typescript": "^5.3.3",
-    "wrangler": "^3.78.12"
+    "wrangler": "^4.45.0"
   },
   "engines": {
     "node": ">=18"

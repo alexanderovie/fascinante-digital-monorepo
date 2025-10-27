@@ -3,6 +3,14 @@
  * REST API backend deployed on Cloudflare Workers
  */
 
+import { render } from '@react-email/render';
+import { Resend } from 'resend';
+import { emailAnalytics } from './services/EmailAnalytics';
+import { ConfirmationEmail } from './templates/ConfirmationEmail';
+import { ContactEmail } from './templates/ContactEmail';
+
+// Initialize Resend (will be done in handler with env)
+
 // CORS headers for all responses
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -24,6 +32,8 @@ const jsonResponse = (data: any, status = 200) => {
 // Main worker handler
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+    // Initialize Resend with environment variable
+    const resend = new Resend(env.RESEND_API_KEY);
     const url = new URL(request.url);
     const { pathname, searchParams } = url;
 
@@ -42,7 +52,10 @@ export default {
           return handleHealth(request);
 
         case pathname === '/api/contact':
-          return handleContact(request);
+          return handleContact(request, resend);
+
+        case pathname === '/api/analytics/emails':
+          return handleEmailAnalytics(request);
 
         case pathname === '/api/company':
           return handleCompanyInfo(request);
@@ -89,30 +102,155 @@ async function handleHealth(request: Request) {
   });
 }
 
-async function handleContact(request: Request) {
+async function handleContact(request: Request, resend: Resend) {
   if (request.method !== 'POST') {
     return jsonResponse({ error: 'Method not allowed' }, 405);
   }
 
   try {
     const body = await request.json();
-    const { name, email, message, service } = body;
+    const { name, email, message, service, phone } = body as {
+      name: string;
+      email: string;
+      phone?: string;
+      service?: string;
+      message: string;
+    };
 
     // Basic validation
     if (!name || !email || !message) {
       return jsonResponse({ error: 'Missing required fields: name, email, message' }, 400);
     }
 
-    // TODO: Add email sending logic (Resend, SendGrid, etc.)
-    console.log('Contact form submission:', { name, email, service });
+    // Send emails using React Email templates (ELITE)
+    try {
+      // Track email analytics
+      await emailAnalytics.trackEmailSent({
+        type: 'contact',
+        recipient: 'info@fascinantedigital.com',
+        status: 'sent',
+        metadata: {
+          service: service || 'general',
+          source: 'contact_form'
+        }
+      });
+
+      // Render React Email templates
+      const contactEmailHtml = await render(ContactEmail({
+        name,
+        email,
+        phone,
+        service,
+        message
+      }));
+
+      const confirmationEmailHtml = await render(ConfirmationEmail({ name }));
+
+      // Send contact email to company
+      const contactResult = await resend.emails.send({
+        from: 'Fascinante Digital <noreply@fascinantedigital.com>',
+        to: ['info@fascinantedigital.com'],
+        subject: `Nuevo mensaje de contacto - ${name}`,
+        html: contactEmailHtml,
+      });
+
+      // Send confirmation email to client
+      const confirmationResult = await resend.emails.send({
+        from: 'Fascinante Digital <noreply@fascinantedigital.com>',
+        to: [email],
+        subject: 'Gracias por contactarnos - Fascinante Digital',
+        html: confirmationEmailHtml,
+      });
+
+      // Track successful delivery
+      await emailAnalytics.trackEmailSent({
+        type: 'contact',
+        recipient: 'info@fascinantedigital.com',
+        status: 'delivered',
+        metadata: {
+          service: service || 'general',
+          source: 'contact_form',
+          campaign: 'contact_notification'
+        }
+      });
+
+      await emailAnalytics.trackEmailSent({
+        type: 'confirmation',
+        recipient: email,
+        status: 'delivered',
+        metadata: {
+          service: service || 'general',
+          source: 'contact_form',
+          campaign: 'confirmation_email'
+        }
+      });
+
+      console.log('📧 Elite emails sent successfully:', {
+        contactId: contactResult.data?.id,
+        confirmationId: confirmationResult.data?.id,
+        name,
+        email,
+        service
+      });
+
+      return jsonResponse({
+        success: true,
+        message: 'Mensaje enviado exitosamente. Te contactaremos pronto.',
+        timestamp: new Date().toISOString(),
+        emailIds: {
+          contact: contactResult.data?.id,
+          confirmation: confirmationResult.data?.id
+        }
+      });
+
+    } catch (emailError) {
+      console.error('❌ Elite email sending failed:', emailError);
+
+      // Track failed email
+      await emailAnalytics.trackEmailSent({
+        type: 'contact',
+        recipient: 'info@fascinantedigital.com',
+        status: 'failed',
+        metadata: {
+          service: service || 'general',
+          source: 'contact_form'
+        }
+      });
+
+      return jsonResponse({
+        error: 'Error enviando el email. Intenta de nuevo.'
+      }, 500);
+    }
+
+  } catch (error) {
+    return jsonResponse({ error: 'Invalid JSON body' }, 400);
+  }
+}
+
+// Email Analytics Handler (ELITE)
+async function handleEmailAnalytics(request: Request): Promise<Response> {
+  if (request.method !== 'GET') {
+    return jsonResponse({ error: 'Method not allowed' }, 405);
+  }
+
+  try {
+    const url = new URL(request.url);
+    const timeframe = url.searchParams.get('timeframe') as 'day' | 'week' | 'month' || 'day';
+
+    const metrics = await emailAnalytics.getMetrics(timeframe);
+    const topServices = await emailAnalytics.getTopServices();
 
     return jsonResponse({
       success: true,
-      message: 'Mensaje enviado exitosamente',
+      timeframe,
+      metrics,
+      topServices,
       timestamp: new Date().toISOString()
     });
+
   } catch (error) {
-    return jsonResponse({ error: 'Invalid JSON body' }, 400);
+    console.error('Analytics error:', error);
+    return jsonResponse({ error: 'Failed to fetch analytics' }, 500);
   }
 }
 
