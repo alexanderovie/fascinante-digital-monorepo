@@ -1,13 +1,13 @@
 "use client";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Bar, BarChart, LabelList } from "recharts";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent
 } from "@/components/ui/chart";
+import { Bar, BarChart, LabelList } from "recharts";
 
 const chartData = [
   {
@@ -51,7 +51,7 @@ const chartConfig = {
   }
 } satisfies ChartConfig;
 
-export function SubscriptionsCard() {
+export function Subscriptions() {
   return (
     <Card>
       <CardHeader>

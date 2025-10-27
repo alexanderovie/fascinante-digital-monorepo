@@ -64,7 +64,7 @@ const members = [
   }
 ];
 
-export function TeamMembersCard() {
+export function ThemeMembers() {
   const [data, setData] = React.useState(members);
   const [openIndex, setOpenIndex] = React.useState<number | null>(null);
 

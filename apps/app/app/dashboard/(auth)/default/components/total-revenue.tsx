@@ -25,7 +25,7 @@ const chartConfig = {
   }
 } satisfies ChartConfig;
 
-export function TotalRevenueCard() {
+export function TotalRevenue() {
   return (
     <Card>
       <CardHeader>

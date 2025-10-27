@@ -18,7 +18,7 @@ import {
   SelectValue
 } from "@/components/ui/select";
 
-export function PaymentMethodCard() {
+export function PaymentMethod() {
   return (
     <Card>
       <CardHeader>
