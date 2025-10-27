@@ -5,12 +5,21 @@ import { ThemeProvider } from "next-themes";
 import GoogleAnalyticsInit from "@/lib/ga";
 import { fontVariables } from "@/lib/fonts";
 import NextTopLoader from "nextjs-toploader";
+import { generateMeta, generateOrganizationSchema, generateWebsiteSchema, FAVICON_CONFIG } from "@repo/seo-config";
 
 import "./globals.css";
 
 import { ActiveThemeProvider } from "@/components/active-theme";
 import { DEFAULT_THEME } from "@/lib/themes";
 import { Toaster } from "@/components/ui/sonner";
+
+export const metadata = generateMeta({
+  title: "Dashboard",
+  description: "Panel de control avanzado para gestión de marketing digital y automatización de procesos empresariales.",
+  canonical: "/dashboard",
+  keywords: ["dashboard", "panel control", "marketing digital", "automatización", "gestión empresarial"],
+  type: "website"
+}, 'app');
 
 export default async function RootLayout({
   children
@@ -32,8 +41,30 @@ export default async function RootLayout({
       .map(([key, value]) => [`data-theme-${key.replace(/([A-Z])/g, "-$1").toLowerCase()}`, value])
   );
 
+  const organizationSchema = generateOrganizationSchema('app');
+  const websiteSchema = generateWebsiteSchema('app');
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning>
+      <head>
+        {/* Favicon y iconos */}
+        <link rel="icon" href={FAVICON_CONFIG.favicon} sizes="any" />
+        <link rel="icon" href={FAVICON_CONFIG.icon16} type="image/png" sizes="16x16" />
+        <link rel="icon" href={FAVICON_CONFIG.icon32} type="image/png" sizes="32x32" />
+        <link rel="apple-touch-icon" href={FAVICON_CONFIG.appleTouchIcon} />
+        <link rel="manifest" href="/manifest.webmanifest" />
+        <meta name="theme-color" content="#6366f1" />
+        
+        {/* JSON-LD Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+      </head>
       <body
         suppressHydrationWarning
         className={cn("bg-background group/layout font-sans", fontVariables)}

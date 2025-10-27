@@ -13,7 +13,7 @@
   "dependencies": {
     "@iconify/icons-ion": "^1.2.10",
     "@iconify/tools": "^4.1.2",
-    "@repo/ui": "workspace:*",
+    "@repo/seo-config": "workspace:*",
     "@supabase/supabase-js": "^2.49.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -32,8 +32,6 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@iconify/react": "^5.2.1",
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^22.15.3",
     "@types/react": "19.1.0",

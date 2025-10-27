@@ -1,0 +1,20 @@
+name = "fascinante-api"
+main = "src/index.ts"
+compatibility_date = "2024-10-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Custom domain configuration
+[[routes]]
+pattern = "api.fascinantedigital.com/*"
+zone_name = "fascinantedigital.com"
+
+# Environment variables
+[env.production.vars]
+ENVIRONMENT = "production"
+
+[env.staging.vars]
+ENVIRONMENT = "staging"
+
+# CORS settings
+[triggers]
+crons = []

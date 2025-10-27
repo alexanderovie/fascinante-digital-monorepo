@@ -7,7 +7,6 @@ config();
 const nextConfig: NextConfig = {
   // Configuración para monorepo Turborepo (Vercel 2025)
   outputFileTracingRoot: path.join(__dirname, "../../"),
-  transpilePackages: ["@repo/shared", "@repo/database", "@repo/auth"],
 
   // Permitir build en producción (template con strict typing issues)
   typescript: {
