@@ -1,17 +1,17 @@
-import React from "react";
-import { cookies } from "next/headers";
-import { cn } from "@/lib/utils";
-import { ThemeProvider } from "next-themes";
-import GoogleAnalyticsInit from "@/lib/ga";
 import { fontVariables } from "@/lib/fonts";
+import GoogleAnalyticsInit from "@/lib/ga";
+import { cn } from "@/lib/utils";
+import { FAVICON_CONFIG, generateMeta, generateOrganizationSchema, generateWebsiteSchema } from "@repo/seo-config";
+import { ThemeProvider } from "next-themes";
+import { cookies } from "next/headers";
 import NextTopLoader from "nextjs-toploader";
-import { generateMeta, generateOrganizationSchema, generateWebsiteSchema, FAVICON_CONFIG } from "@repo/seo-config";
+import React from "react";
 
 import "./globals.css";
 
 import { ActiveThemeProvider } from "@/components/active-theme";
-import { DEFAULT_THEME } from "@/lib/themes";
 import { Toaster } from "@/components/ui/sonner";
+import { DEFAULT_THEME } from "@/lib/themes";
 
 export const metadata = generateMeta({
   title: "Dashboard",
@@ -54,7 +54,7 @@ export default async function RootLayout({
         <link rel="apple-touch-icon" href={FAVICON_CONFIG.appleTouchIcon} />
         <link rel="manifest" href="/manifest.webmanifest" />
         <meta name="theme-color" content="#6366f1" />
-        
+
         {/* JSON-LD Structured Data */}
         <script
           type="application/ld+json"

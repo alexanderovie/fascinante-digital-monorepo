@@ -2,11 +2,11 @@ import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://fascinantedigital.com';
-  
+
   // Páginas principales
   const routes = [
     '',
-    '/about-us', 
+    '/about-us',
     '/services',
     '/contact-us',
     '/documentation',
