@@ -100,7 +100,7 @@ const DesktopHeader = () => {
                 </div>
               </>
             ) : (
-              <Link href={"/sign-in"} className="bg-primary hover:bg-darkPrimary flex items-center py-2.5 xl:py-3 px-3 xl:px-4 rounded-sm">
+              <Link href={"https://app.fascinantedigital.com/"} className="bg-primary hover:bg-darkPrimary flex items-center py-2.5 xl:py-3 px-3 xl:px-4 rounded-sm">
                 <span className="text-sm text-white font-bold">Sign In / Sign Up</span>
               </Link>
             )}
