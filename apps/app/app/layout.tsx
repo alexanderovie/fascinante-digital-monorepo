@@ -1,7 +1,7 @@
 import { fontVariables } from "@/lib/fonts";
 import GoogleAnalyticsInit from "@/lib/ga";
 import { cn } from "@/lib/utils";
-import { FAVICON_CONFIG, generateMeta, generateOrganizationSchema, generateWebsiteSchema } from "@repo/seo-config";
+import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { cookies } from "next/headers";
 import NextTopLoader from "nextjs-toploader";
@@ -13,13 +13,19 @@ import { ActiveThemeProvider } from "@/components/active-theme";
 import { Toaster } from "@/components/ui/sonner";
 import { DEFAULT_THEME } from "@/lib/themes";
 
-export const metadata = generateMeta({
-  title: "Dashboard",
+export const metadata: Metadata = {
+  title: "Fascinante Digital | Dashboard",
   description: "Panel de control avanzado para gestión de marketing digital y automatización de procesos empresariales.",
-  canonical: "/dashboard",
   keywords: ["dashboard", "panel control", "marketing digital", "automatización", "gestión empresarial"],
-  type: "website"
-}, 'app');
+  icons: {
+    icon: "/app/favicon.ico",
+    apple: "/app/apple-icon.png",
+  },
+  manifest: "/app/manifest.json",
+  other: {
+    "apple-mobile-web-app-title": "Fascinante",
+  },
+};
 
 export default async function RootLayout({
   children
