@@ -15,10 +15,13 @@ export const metadata: Metadata = {
   description: "Agencia de marketing digital especializada en estrategias personalizadas que generan resultados reales. SEO, SEM, Social Media y más.",
   keywords: ["marketing digital", "SEO", "SEM", "social media", "agencia digital", "Tampa", "Florida"],
   icons: {
-    icon: "/app/favicon.ico",
-    apple: "/app/apple-icon.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: "/apple-icon.png",
   },
-  manifest: "/app/manifest.json",
+  manifest: "/manifest.json",
   other: {
     "apple-mobile-web-app-title": "Fascinante",
   },
