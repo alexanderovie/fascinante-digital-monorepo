@@ -151,10 +151,10 @@ function AuditHero({ dict, locale }: AuditHeroProps) {
 
   return (
     <section>
-      <div className="relative pt-24 lg:pt-32 bg-[#F5F6F6] dark:bg-secondary">
-        <div className="container">
-          <div className="py-20 sm:py-28">
-            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10 lg:gap-16">
+      <div className="relative pt-24 lg:pt-32">
+        <div className="bg-white h-full flex justify-center items-center">
+          <div className="container">
+            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10 lg:gap-16 py-20">
               <div className="flex-1 flex flex-col gap-8 max-w-2xl">
                 <div className="flex flex-col gap-4">
                   <div className="badge">
