@@ -10,7 +10,6 @@ import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import BookServicesModal from "./BookServicesModal";
 import Logo from "./Logo";
 import { useMenuData } from "./Menudata";
 import MobileThemeToggler from "./MobileThemeToggler";
@@ -38,7 +37,6 @@ const DesktopHeader = ({ locale: propLocale, dict: propDict }: DesktopHeaderProp
   const header = dict.header as Record<string, string>;
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("");
   const [user, setUser] = useState<{ user: unknown } | null>(null);
   const pathname = usePathname();
@@ -109,12 +107,9 @@ const DesktopHeader = ({ locale: propLocale, dict: propDict }: DesktopHeaderProp
               <Image src={"/images/header/phone-white-icon.svg"} alt="phone-icon" width={24} height={24} className="hidden dark:block" />
               <p className="hidden xl:block text-[15px] xl:text-base font-semibold dark:text-white">(800) 886-4981</p>
             </Link>
-            <div onClick={() => setModalOpen(true)} className="group flex items-center py-2.5 xl:py-3 px-3 xl:px-4 bg-secondary hover:bg-primary dark:bg-white/25 dark:hover:bg-primary rounded-sm cursor-pointer transition-all duration-300">
+            <Link href={`/${locale}/audit`} className="group flex items-center py-2.5 xl:py-3 px-3 xl:px-4 bg-secondary hover:bg-primary dark:bg-white/25 dark:hover:bg-primary rounded-sm cursor-pointer transition-all duration-300">
               <span className="text-sm text-white group-hover:text-white font-bold">{header.bookService}</span>
-            </div>
-            {modalOpen && (
-              <BookServicesModal isOpen={modalOpen} closeModal={() => setModalOpen(false)} dict={dict} />
-            )}
+            </Link>
             {user?.user?.email ? (
               <>
                 <div className="relative group flex items-center justify-center">
@@ -196,7 +191,10 @@ const DesktopHeader = ({ locale: propLocale, dict: propDict }: DesktopHeaderProp
                       )
                     })}
                   </ul>
-                  <Link href={"https://app.fascinantedigital.com/"} className="bg-secondary hover:bg-primary dark:bg-white/25 dark:hover:bg-primary mt-4 flex items-center py-2.5 xl:py-3 px-3 xl:px-4 rounded-sm transition-all duration-300">
+                  <Link href={`/${locale}/audit`} onClick={() => setSidebarOpen(false)} className="bg-secondary hover:bg-primary dark:bg-white/25 dark:hover:bg-primary mt-4 flex items-center py-2.5 xl:py-3 px-3 xl:px-4 rounded-sm transition-all duration-300">
+                    <span className="text-sm text-white font-bold">{header.bookService}</span>
+                  </Link>
+                  <Link href={"https://app.fascinantedigital.com/"} className="bg-secondary hover:bg-primary dark:bg-white/25 dark:hover:bg-primary mt-3 flex items-center py-2.5 xl:py-3 px-3 xl:px-4 rounded-sm transition-all duration-300">
                     <span className="text-sm text-white font-bold">{header.signInUp}</span>
                   </Link>
                   <div className="flex flex-col mt-5">
