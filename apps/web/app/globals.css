@@ -51,7 +51,7 @@ input[type="checkbox"]:checked {
 
 @layer utilities {
   .container {
-    @apply w-full max-w-[90.9rem] mx-auto mt-0 mb-0 py-0 sm:px-7 px-5;
+    @apply w-full max-w-[90.9rem] mx-auto mt-0 mb-0 py-0 px-5 md:px-16 lg:px-16;
   }
 
   .input-field {
