@@ -1,8 +1,8 @@
 'use client'
 
-import { createContext, useContext, type ReactNode } from 'react'
-import type { Dictionary } from './dictionaries'
+import type { Dictionary } from '@/lib/dictionaries'
 import type { Locale } from '@/lib/i18n'
+import { createContext, useContext, type ReactNode } from 'react'
 
 interface I18nContextType {
   locale: Locale
@@ -34,4 +34,3 @@ export function useI18n() {
   }
   return context
 }
-

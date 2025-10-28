@@ -8,7 +8,7 @@
   },
   "header": {
     "topBanner": "Potencia tu Negocio con Marketing Digital - Estrategias personalizadas que generan resultados reales.",
-    "bookService": "Reservar servicio",
+    "bookService": "Auditoría Gratis",
     "signInUp": "Iniciar Sesión / Registrarse",
     "viewProfile": "Ver Perfil",
     "menu": "Menú",
@@ -49,7 +49,9 @@
     "formServices5": "Identidad de Marca",
     "formServices6": "Automatización de Email",
     "formSubmit": "Comienza hoy",
-    "formThanks": "¡Gracias por contactarnos!"
+    "formThanks": "¡Gracias por contactarnos!",
+    "mobileAuditButton": "Solicitar Auditoría Gratuita",
+    "mobileAuditCta": "Descubre oportunidades de crecimiento para tu negocio"
   },
   "common": {
     "loading": "Cargando...",
@@ -60,5 +62,68 @@
     "title": "Fascinante Digital | Crecimiento Digital para Marcas Ambiciosas",
     "description": "Sistemas de marketing bilingües para visibilidad, credibilidad y crecimiento sostenible en Estados Unidos y América Latina.",
     "keywords": "marketing digital, SEO, SEM, Google Ads, Meta, Next.js, Fascinante Digital, Tampa, Florida"
+  },
+  "audit": {
+    "badge": "Auditoría Gratuita",
+    "title": "Descubre Oportunidades de Crecimiento",
+    "subtitle": "Analiza tu presencia digital en minutos. Obtén insights accionables sobre SEO, keywords y competencia.",
+    "formTitle": "Solicita Tu Auditoría Gratuita",
+    "formName": "Nombre del negocio",
+    "formWebsite": "Website (opcional)",
+    "formEmail": "Correo electrónico",
+    "formSubmit": "Iniciar Auditoría",
+    "formProcessing": "Analizando tu negocio...",
+    "formThanks": "¡Auditoría iniciada! Revisa tu correo.",
+    "results": {
+      "title": "Resultados de Tu Auditoría",
+      "subtitle": "Análisis completo de tu presencia digital",
+      "generating": "Generando reporte...",
+      "keywordsTitle": "Keywords Posicionadas",
+      "keywordsSubtitle": "Palabras clave donde tu negocio aparece en Google",
+      "domainAuthorityTitle": "Autoridad del Dominio",
+      "domainAuthoritySubtitle": "Métrica de confianza y relevancia de tu sitio",
+      "opportunitiesTitle": "Oportunidades SEO",
+      "opportunitiesSubtitle": "Keywords con potencial de crecimiento",
+      "technicalTitle": "Auditoría Técnica",
+      "technicalSubtitle": "Análisis on-page de tu sitio web",
+      "downloadReport": "Descargar Reporte PDF",
+      "shareReport": "Compartir Reporte",
+      "refreshData": "Actualizar Datos"
+    },
+    "sections": {
+      "whatWeAudit": {
+        "badge": "Qué Analizamos",
+        "title": "Análisis Completo de Tu Presencia Digital",
+        "items": {
+          "keywords": "Keywords Posicionadas",
+          "seo": "Performance SEO",
+          "competitors": "Análisis de Competencia",
+          "technical": "Auditoría Técnica Web",
+          "opportunities": "Oportunidades de Crecimiento"
+        }
+      },
+      "process": {
+        "badge": "Proceso Simple",
+        "title": "Cómo Funciona",
+        "steps": {
+          "step1": "Ingresa tu negocio",
+          "step2": "Analizamos tu presencia",
+          "step3": "Recibe tu reporte",
+          "step1Desc": "Completa el formulario con el nombre de tu negocio",
+          "step2Desc": "Analizamos keywords, SEO y competencia en segundos",
+          "step3Desc": "Obtén insights accionables y recomendaciones"
+        }
+      },
+      "benefits": {
+        "badge": "Beneficios",
+        "title": "Qué Obtienes",
+        "items": {
+          "free": "100% Gratuito",
+          "fast": "Resultados en Minutos",
+          "actionable": "Insights Accionables",
+          "complete": "Análisis Completo"
+        }
+      }
+    }
   }
 }

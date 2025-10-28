@@ -8,7 +8,7 @@
   },
   "header": {
     "topBanner": "Boost Your Business with Digital Marketing - Custom strategies that deliver real results.",
-    "bookService": "Book a service",
+    "bookService": "Free Audit",
     "signInUp": "Sign In / Sign Up",
     "viewProfile": "View Profile",
     "menu": "Menu",
@@ -49,7 +49,9 @@
     "formServices5": "Brand Identity",
     "formServices6": "Email Automation",
     "formSubmit": "Get started today",
-    "formThanks": "Thank you for reaching out!"
+    "formThanks": "Thank you for reaching out!",
+    "mobileAuditButton": "Request Free Audit",
+    "mobileAuditCta": "Discover growth opportunities for your business"
   },
   "common": {
     "loading": "Loading...",
@@ -60,5 +62,68 @@
     "title": "Fascinante Digital | Digital Growth for Ambitious Brands",
     "description": "Bilingual marketing systems for visibility, credibility, and sustainable growth across the U.S. and Latin America.",
     "keywords": "digital marketing, SEO, SEM, Google Ads, Meta, Next.js, Fascinante Digital, Tampa, Florida"
+  },
+  "audit": {
+    "badge": "Free Audit",
+    "title": "Discover Growth Opportunities",
+    "subtitle": "Analyze your digital presence in minutes. Get actionable insights about SEO, keywords, and competition.",
+    "formTitle": "Request Your Free Audit",
+    "formName": "Business name",
+    "formWebsite": "Website (optional)",
+    "formEmail": "Email address",
+    "formSubmit": "Start Audit",
+    "formProcessing": "Analyzing your business...",
+    "formThanks": "Audit started! Check your email.",
+    "results": {
+      "title": "Your Audit Results",
+      "subtitle": "Complete analysis of your digital presence",
+      "generating": "Generating report...",
+      "keywordsTitle": "Ranked Keywords",
+      "keywordsSubtitle": "Keywords where your business appears on Google",
+      "domainAuthorityTitle": "Domain Authority",
+      "domainAuthoritySubtitle": "Trust and relevance metric of your site",
+      "opportunitiesTitle": "SEO Opportunities",
+      "opportunitiesSubtitle": "Keywords with growth potential",
+      "technicalTitle": "Technical Audit",
+      "technicalSubtitle": "On-page analysis of your website",
+      "downloadReport": "Download PDF Report",
+      "shareReport": "Share Report",
+      "refreshData": "Refresh Data"
+    },
+    "sections": {
+      "whatWeAudit": {
+        "badge": "What We Audit",
+        "title": "Complete Analysis of Your Digital Presence",
+        "items": {
+          "keywords": "Ranked Keywords",
+          "seo": "SEO Performance",
+          "competitors": "Competitor Analysis",
+          "technical": "Technical Web Audit",
+          "opportunities": "Growth Opportunities"
+        }
+      },
+      "process": {
+        "badge": "Simple Process",
+        "title": "How It Works",
+        "steps": {
+          "step1": "Enter your business",
+          "step2": "We analyze your presence",
+          "step3": "Receive your report",
+          "step1Desc": "Complete the form with your business name",
+          "step2Desc": "We analyze keywords, SEO and competition in seconds",
+          "step3Desc": "Get actionable insights and recommendations"
+        }
+      },
+      "benefits": {
+        "badge": "Benefits",
+        "title": "What You Get",
+        "items": {
+          "free": "100% Free",
+          "fast": "Results in Minutes",
+          "actionable": "Actionable Insights",
+          "complete": "Complete Analysis"
+        }
+      }
+    }
   }
 }

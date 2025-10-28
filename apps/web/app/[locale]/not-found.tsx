@@ -1,7 +1,7 @@
 import NotFound from "@/components/NotFound";
+import { getDictionary } from "@/lib/dictionaries";
 import type { Locale } from "@/lib/i18n";
 import type { Metadata } from "next";
-import { getDictionary } from "./dictionaries";
 
 export async function generateMetadata({
   params,

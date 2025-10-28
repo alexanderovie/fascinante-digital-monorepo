@@ -1,6 +1,7 @@
 "use client";
 import { API_ENDPOINTS } from '@/lib/api-config';
 import type { Locale } from "@/lib/i18n";
+import type { PlaceDetails } from "@/types/places";
 import { ChevronRight, Clock, Star, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,12 +18,18 @@ function HeroSection({ dict, locale }: HeroSectionProps) {
   const [submitted, setSubmitted] = useState(false);
   const [showThanks, setShowThanks] = useState(false);
   const ref = useRef(null);
-  const [formData, setFormData] = useState({
-    name: "",
+  const [formData, setFormData] = useState<{
+    name: string;
+    number: string;
+    email: string;
+    services: string[];
+  }>({
+    name: "", // Campo completamente vacío
     number: "",
     email: "",
-    services: [] as string[],
+    services: [],
   });
+
 
   useEffect(() => {
     if (submitted) {
@@ -88,6 +95,32 @@ function HeroSection({ dict, locale }: HeroSectionProps) {
     }));
   };
 
+  const handleNameChange = (value: string) => {
+    // Asegurar que siempre sea un string limpio
+    const cleanValue = value ? value.trim() : '';
+    setFormData((prevData) => ({
+      ...prevData,
+      name: cleanValue
+    }));
+  };
+
+  const handlePlaceSelect = (place: PlaceDetails) => {
+    // Auto-completar datos del negocio si están disponibles
+    setFormData((prevData) => ({
+      ...prevData,
+      name: place.name,
+      // Puedes agregar más campos si los necesitas en el futuro
+      // number: place.formatted_phone_number || prevData.number,
+    }));
+
+    // Opcional: mostrar información adicional
+    if (place.formatted_address) {
+      toast.success('Negocio encontrado', {
+        description: place.formatted_address,
+      });
+    }
+  };
+
   const handleServiceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = e.target;
     setFormData((prevData) => {
@@ -120,6 +153,18 @@ function HeroSection({ dict, locale }: HeroSectionProps) {
                 </div>
                 <p className="text-secondary dark:text-white text-lg sm:text-xl">{dict.subtitle}</p>
 
+                {/* Mobile: Botón de auditoría debajo de la descripción */}
+                <div className="block md:hidden mt-6">
+                  <Link
+                    href={`/${locale}/audit`}
+                    className="w-fit flex items-center py-3 px-6 bg-secondary hover:bg-primary dark:bg-white/25 dark:hover:bg-primary rounded-sm transition-all duration-300"
+                  >
+                    <span className="text-base text-white font-bold">
+                      {dict.mobileAuditButton || "Solicitar Auditoría Gratuita"}
+                    </span>
+                  </Link>
+                </div>
+
                 {/* Trust Metrics */}
                 <div className="hidden md:flex flex-wrap items-center gap-6 md:gap-8 lg:gap-12 mt-8">
                   <div className="flex items-center gap-3 text-secondary dark:text-white">
@@ -137,13 +182,16 @@ function HeroSection({ dict, locale }: HeroSectionProps) {
                 </div>
               </div>
 
-              <div className="relative bg-white dark:bg-dark-gray rounded-none md:rounded-md max-w-530px lg:max-w-md xl:max-w-530px w-full py-10 sm:px-10 sm:p-10 flex flex-col gap-8 sm:shadow-2xl sm:shadow-black/10 sm:border sm:border-gray-100 dark:sm:border-gray-700">
+              {/* Desktop: Formulario completo */}
+              <div className="hidden md:block relative bg-white dark:bg-dark-gray rounded-none md:rounded-md max-w-530px lg:max-w-md xl:max-w-530px w-full py-10 sm:px-10 sm:p-10 flex flex-col gap-8 sm:shadow-2xl sm:shadow-black/10 sm:border sm:border-gray-100 dark:sm:border-gray-700">
                 <h4 className="font-semibold dark:text-white">{dict.formTitle}</h4>
                 <FormComponent
                   formData={formData}
                   onChange={handleChange}
+                  onNameChange={handleNameChange}
                   onServiceChange={handleServiceChange}
                   onSubmit={handleSubmit}
+                  onPlaceSelect={handlePlaceSelect}
                   dict={dict}
                 />
 

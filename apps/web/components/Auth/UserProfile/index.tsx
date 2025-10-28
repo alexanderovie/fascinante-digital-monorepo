@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 
 const UserProfile = () => {
-    const [session, setSession] = useState<any>(null);
+    const [session, setSession] = useState<unknown>(null);
     const [username, setUsername] = useState("");
     const [displayName, setDisplayName] = useState("");
     const pathname = usePathname();
@@ -29,7 +29,7 @@ const UserProfile = () => {
     const handleUpdate = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        const user = session?.user;
+        const user = (session as { user?: { id?: string } } | null)?.user;
         if (!user) return alert("No active session");
 
         try {
@@ -40,9 +40,10 @@ const UserProfile = () => {
 
             setDisplayName(username);
             alert("Profile updated successfully!");
-        } catch (err: any) {
+        } catch (err: unknown) {
+            const error = err as { message?: string };
             console.error("Update error:", err);
-            alert(`Update failed: ${err.message}`);
+            alert(`Update failed: ${error?.message ?? 'Unknown error'}`);
         }
     };
 

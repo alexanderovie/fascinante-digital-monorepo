@@ -7,9 +7,9 @@ import Pricing from "@/components/Home/Pricing";
 import Promobar from "@/components/Home/Promobar";
 import ServiceOfferings from "@/components/Home/ServiceOfferings";
 import UserImpact from "@/components/UserImpact";
+import { getDictionary } from "@/lib/dictionaries";
 import type { Locale } from "@/lib/i18n";
 import type { Metadata } from "next";
-import { getDictionary } from "./dictionaries";
 
 export async function generateMetadata({
   params,

@@ -1,13 +1,14 @@
 import Footer from "@/components/Layout/Footer";
 import Header from "@/components/Layout/Header";
 import ScrollToTop from "@/components/ScrollToTop";
+import { QueryProvider } from "@/components/providers/QueryProvider";
+import { getDictionary } from "@/lib/dictionaries";
 import { locales, type Locale } from "@/lib/i18n";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 import { Toaster } from "sonner";
 import "../globals.css";
-import { getDictionary } from "./dictionaries";
 import { I18nProvider } from "./i18n-context";
 
 const inter = Inter({
@@ -83,20 +84,22 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" enableSystem={false} defaultTheme="light">
-          <I18nProvider locale={locale} dict={dict}>
-            <Header locale={locale} dict={dict} />
-            {children}
-            <Footer locale={locale} dict={dict} />
-          </I18nProvider>
-          <ScrollToTop />
-          <Toaster
-            position="top-center"
-            richColors
-            closeButton
-            duration={5000}
-          />
-        </ThemeProvider>
+        <QueryProvider>
+          <ThemeProvider attribute="class" enableSystem={false} defaultTheme="light">
+            <I18nProvider locale={locale} dict={dict}>
+              <Header locale={locale} dict={dict} />
+              {children}
+              <Footer locale={locale} dict={dict} />
+            </I18nProvider>
+            <ScrollToTop />
+            <Toaster
+              position="top-center"
+              richColors
+              closeButton
+              duration={5000}
+            />
+          </ThemeProvider>
+        </QueryProvider>
       </body>
     </html>
   );

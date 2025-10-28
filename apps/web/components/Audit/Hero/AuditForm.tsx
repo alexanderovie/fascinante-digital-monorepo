@@ -1,53 +1,44 @@
 "use client";
+
+import { BusinessAutocomplete } from "@/components/Home/Hero/BusinessAutocomplete";
 import type { PlaceDetails } from "@/types/places";
 import { useState } from "react";
-import { BusinessAutocomplete } from "./BusinessAutocomplete";
 
-interface FormComponentProps {
+interface AuditFormProps {
   formData: {
     name: string;
-    number: string;
     email: string;
-    services: string[];
+    website: string;
   };
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onServiceChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   onNameChange?: (value: string) => void;
   onPlaceSelect?: (place: PlaceDetails) => void;
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   dict: Record<string, string>;
+  isProcessing?: boolean;
 }
 
-export default function FormComponent({
+export default function AuditForm({
   formData,
   onChange,
-  onServiceChange,
-  onSubmit,
   onNameChange,
   onPlaceSelect,
+  onSubmit,
   dict,
-}: FormComponentProps) {
+  isProcessing = false,
+}: AuditFormProps) {
   const [errors, setErrors] = useState<{
     name?: string;
-    number?: string;
     email?: string;
-    services?: string;
+    website?: string;
   }>({});
-
-  // Hero form service options - Solo 2 opciones grandes
-  const heroServiceOptions: string[] = [
-    dict.formServices1,      // Optimización SEO
-    dict.formServices2,      // Google y Meta Ads
-  ];
 
   const validateForm = () => {
     const newErrors: typeof errors = {};
-    const nameRegex = /^[a-zA-Z\s]+$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^\d{10,15}$/; // basic digit-only validation
+    const urlRegex = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
 
-    // Validación del nombre del negocio (siempre requerido)
-    // Permitir caracteres especiales comunes en nombres de negocios
+    // Business name validation (required)
     const businessNameRegex = /^[a-zA-Z0-9\s&'.,-]+$/;
     if (!formData.name.trim()) {
       newErrors.name = "Business name is required.";
@@ -57,11 +48,15 @@ export default function FormComponent({
       newErrors.name = "Please enter a valid business name.";
     }
 
-    // Validación de email (opcional, pero si se ingresa debe ser válido)
+    // Email validation (optional, but must be valid if provided)
     if (formData.email.trim() && !emailRegex.test(formData.email)) {
       newErrors.email = "Enter a valid email address.";
     }
 
+    // Website validation (optional, but must be valid if provided)
+    if (formData.website.trim() && !urlRegex.test(formData.website) && !formData.website.includes('.')) {
+      newErrors.website = "Enter a valid website URL.";
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -102,9 +97,22 @@ export default function FormComponent({
 
         <div>
           <input
+            type="url"
+            name="website"
+            placeholder={dict.formWebsite || "Website (opcional)"}
+            onChange={onChange}
+            value={formData.website || ''}
+            className="input-field"
+            autoComplete="off"
+          />
+          {errors.website && <p className="text-red-500 text-sm mt-1">{errors.website}</p>}
+        </div>
+
+        <div>
+          <input
             type="email"
             name="email"
-            placeholder={dict.formEmail}
+            placeholder={dict.formEmail || "Correo electrónico"}
             onChange={onChange}
             value={formData.email || ''}
             className="input-field"
@@ -114,35 +122,18 @@ export default function FormComponent({
         </div>
       </div>
 
-      <div className="flex flex-col gap-4">
-        <p className="font-semibold text-dusty-gray dark:text-white/90">{dict.formServices}</p>
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-5 gap-y-2.5">
-          {heroServiceOptions.map((title) => (
-            <div
-              key={title}
-              className="flex items-center"
-            >
-              <input
-                type="checkbox"
-                name={title}
-                onChange={onServiceChange}
-                checked={formData.services.includes(title)}
-                className="w-5 h-5"
-                id={title}
-              />
-              <label htmlFor={title} className="text-dusty-gray dark:text-white/70 ml-2 cursor-pointer">
-                {title}
-              </label>
-            </div>
-          ))}
-        </div>
-        {errors.services && <p className="text-red-500 text-sm mt-1">{errors.services}</p>}
-      </div>
-
-      <div>
-        <button type="submit" className="group w-fit flex items-center py-3 px-6 bg-secondary hover:bg-primary dark:bg-white/25 dark:hover:bg-primary rounded-sm cursor-pointer transition-all duration-300">
-          <span className="text-base text-white group-hover:text-white font-bold">{dict.formSubmit}</span>
+      <div className="flex flex-col gap-3">
+        {/* Botón principal - igual al hero desktop */}
+        <button
+          type="submit"
+          disabled={isProcessing}
+          className="group w-fit flex items-center py-3 px-6 bg-secondary hover:bg-primary dark:bg-white/25 dark:hover:bg-primary rounded-sm cursor-pointer transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          <span className="text-base text-white group-hover:text-white font-bold">
+            {isProcessing ? (dict.formProcessing || 'Processing...') : (dict.formSubmit || 'Start Audit')}
+          </span>
         </button>
+
       </div>
     </form>
   );

@@ -9,7 +9,7 @@ const getApiUrl = (): string => {
     // Client-side: check for environment variable
     return process.env.NEXT_PUBLIC_API_URL || 'https://api.fascinantedigital.com';
   }
-  
+
   // Server-side: use environment variable or default
   return process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || 'https://api.fascinantedigital.com';
 };
@@ -40,5 +40,21 @@ export const API_ENDPOINTS = {
   company: apiUrl('/api/company'),
   services: apiUrl('/api/services'),
   health: apiUrl('/api/health'),
+  places: {
+    autocomplete: '/api/places/autocomplete',
+    details: '/api/places/details',
+  },
+  dataforseo: {
+    baseUrl: 'https://data.fascinantedigital.com/v3',
+    rankedKeywords: '/dataforseo_labs/google/ranked_keywords/live.ai',
+    domainRank: '/dataforseo_labs/google/domain_rank_overview/live.ai',
+    keywordIdeas: '/dataforseo_labs/google/keyword_ideas/live.ai',
+    onPageTask: '/on_page/task_post',
+    onPageGet: '/on_page/task_get',
+    keywordOverview: '/dataforseo_labs/google/keyword_overview/live.ai',
+  },
+  audit: {
+    generate: '/api/audit/generate',
+    results: (auditId: string) => `/api/audit/results/${auditId}`,
+  },
 } as const;
-

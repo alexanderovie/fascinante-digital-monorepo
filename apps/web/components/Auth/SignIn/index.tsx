@@ -1,11 +1,11 @@
 "use client";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import Link from "next/link";
 import { supabase } from "@/app/supabase/supabaseClient";
-import SocialSignIn from "../SocialSignIn";
 import Loader from "@/components/CommonComponents/Loader";
 import Logo from "@/components/Layout/Header/Logo";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import SocialSignIn from "../SocialSignIn";
 
 const Signin = () => {
   const router = useRouter();
@@ -31,10 +31,10 @@ const Signin = () => {
       }
     };
     checkSession();
-  }, []);
+  }, [router]);
 
   const validateForm = () => {
-    let errors = { email: "", password: "" };
+    const errors = { email: "", password: "" };
     let isValid = true;
 
     if (!loginData.email) {
@@ -65,7 +65,7 @@ const Signin = () => {
     setValidationErrors({ email: "", password: "" });
 
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
+      const { error } = await supabase.auth.signInWithPassword({
         email: loginData.email,
         password: loginData.password,
       });
