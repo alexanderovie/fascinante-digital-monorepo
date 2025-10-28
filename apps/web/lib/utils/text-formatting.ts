@@ -11,7 +11,8 @@ const SPANISH_STOP_WORDS = new Set([
   'y', 'o', 'ni', 'pero', 'aunque', 'si', 'que', 'como', 'cuando', 'donde', 'mientras', 'sin embargo',
   'al', 'del', 'a', 'lo',
   'tu', 'tus', 'su', 'sus', 'mi', 'mis', 'nuestro', 'nuestra', 'nuestros', 'nuestras',
-  'brille', 'es', 'son', 'está', 'están', 'ha', 'han', 'es', 'fue', 'ser', 'tiene', 'tienen'
+  'brille', 'es', 'son', 'está', 'están', 'ha', 'han', 'fue', 'ser', 'tiene', 'tienen',
+  'atraen', 'atrae', 'atraiga', 'enamoran', 'enamora', 'enamore', 'fidelizan', 'fideliza', 'fidelice'
 ]);
 
 // English stop words (articles, prepositions, conjunctions)
