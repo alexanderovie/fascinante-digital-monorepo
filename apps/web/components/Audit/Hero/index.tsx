@@ -1,8 +1,8 @@
 "use client";
 
 import { API_ENDPOINTS } from '@/lib/api-config';
-import type { Locale } from "@/lib/i18n";
 import { mapGooglePlacesTypeToCategory } from '@/lib/business-categories';
+import type { Locale } from "@/lib/i18n";
 import type { PlaceDetails } from "@/types/places";
 import { Clock, Search, Star, TrendingUp } from "lucide-react";
 import Image from "next/image";
@@ -106,22 +106,38 @@ function AuditHero({ dict, locale }: AuditHeroProps) {
   const handlePlaceSelect = (place: PlaceDetails) => {
     // Map Google Places type to our category
     const mappedCategory = mapGooglePlacesTypeToCategory(place.primary_type, place.types);
-    
+
+    // Always load website and category from Google Places if available
+    // This ensures automatic population of fields
     setFormData((prevData) => ({
       ...prevData,
       name: place.name,
-      website: place.website || prevData.website,
+      // Auto-load website if available from Google Places
+      website: place.website || prevData.website || '',
       placeId: place.place_id,
-      // Only auto-set category if detected, don't override if user already selected one
-      category: mappedCategory || prevData.category,
+      // Auto-load category if detected from Google Places
+      // Priority: detected category > existing category
+      category: mappedCategory || prevData.category || '',
     }));
-    
+
     // Store detected category for display in form
     setDetectedCategory(mappedCategory);
-    
+
+    // Show success message with detected info
+    const detectedInfo: string[] = [];
     if (place.formatted_address) {
+      detectedInfo.push(place.formatted_address);
+    }
+    if (place.website) {
+      detectedInfo.push('Website detectado');
+    }
+    if (mappedCategory) {
+      detectedInfo.push('Categoría detectada');
+    }
+
+    if (detectedInfo.length > 0) {
       toast.success('Negocio encontrado', {
-        description: place.formatted_address,
+        description: detectedInfo.join(' • '),
       });
     }
   };

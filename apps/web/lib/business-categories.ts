@@ -61,21 +61,21 @@ const googlePlacesTypeMap: Record<string, string> = {
   'meal_takeaway': 'food_service',
   'meal_delivery': 'food_service',
   'food': 'food_service',
-  
+
   // Retail
   'store': 'retail',
   'shopping_mall': 'retail',
   'clothing_store': 'retail',
   'supermarket': 'retail',
   'department_store': 'retail',
-  
+
   // Professional Services
   'lawyer': 'professional_services',
   'accounting': 'professional_services',
   'real_estate_agency': 'professional_services',
   'insurance_agency': 'professional_services',
   'financial_service': 'professional_services',
-  
+
   // Health & Beauty
   'beauty_salon': 'health_beauty',
   'hair_care': 'health_beauty',
@@ -84,12 +84,12 @@ const googlePlacesTypeMap: Record<string, string> = {
   'hospital': 'health_beauty',
   'doctor': 'health_beauty',
   'dentist': 'health_beauty',
-  
+
   // Automotive
   'car_dealer': 'automotive',
   'car_repair': 'automotive',
   'gas_station': 'automotive',
-  
+
   // Home & Garden
   'home_goods_store': 'home_garden',
   'hardware_store': 'home_garden',
@@ -97,28 +97,28 @@ const googlePlacesTypeMap: Record<string, string> = {
   'locksmith': 'home_garden',
   'plumber': 'home_garden',
   'electrician': 'home_garden',
-  
+
   // Education
   'school': 'education',
   'university': 'education',
   'library': 'education',
-  
+
   // Entertainment
   'movie_theater': 'entertainment',
   'night_club': 'entertainment',
   'amusement_park': 'entertainment',
   'tourist_attraction': 'entertainment',
-  
+
   // Travel & Hospitality
   'lodging': 'travel_hospitality',
   'travel_agency': 'travel_hospitality',
   'airport': 'travel_hospitality',
-  
+
   // Technology & Communication
   'electronics_store': 'technology',
   'mobile_phone_shop': 'technology',
   'computer_store': 'technology',
-  
+
   // Other Services
   'bank': 'financial_services',
   'atm': 'financial_services',
@@ -151,4 +151,3 @@ export const BUSINESS_CATEGORIES: BusinessCategory[] = [
   { value: 'veterinary', label: 'Veterinaria', labelEn: 'Veterinary' },
   { value: 'other_services', label: 'Otros Servicios', labelEn: 'Other Services' },
 ];
-

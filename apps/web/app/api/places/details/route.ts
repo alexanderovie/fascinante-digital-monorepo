@@ -88,10 +88,16 @@ export async function GET(request: NextRequest) {
       console.error('Google Places API error:', {
         status: response.status,
         error: errorData,
+        details: errorData.error?.details,
+        fieldMask,
       });
 
       // Handle specific Google API errors per documentation
       if (response.status === 400 && errorData.error?.message) {
+        // Log details array to see which field is invalid
+        if (errorData.error?.details) {
+          console.error('Invalid field details:', JSON.stringify(errorData.error.details, null, 2));
+        }
         return NextResponse.json(
           { error: errorData.error.message },
           { status: 400 }

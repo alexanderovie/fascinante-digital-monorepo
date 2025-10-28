@@ -1,10 +1,10 @@
 "use client";
 
 import { BusinessAutocomplete } from "@/components/Home/Hero/BusinessAutocomplete";
-import { BUSINESS_CATEGORIES, getCategoryLabel, mapGooglePlacesTypeToCategory } from "@/lib/business-categories";
+import { BUSINESS_CATEGORIES, getCategoryLabel } from "@/lib/business-categories";
 import type { PlaceDetails } from "@/types/places";
 import { ChevronLeft } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 interface AuditFormProps {
   formData: {
@@ -43,13 +43,24 @@ export default function AuditForm({
   }>({});
 
   // Auto-select category if detected from Google Places
+  // Also ensure it's selected if formData.category already has it
   useEffect(() => {
-    if (detectedCategory && step === 2 && !formData.category) {
-      onChange({
-        target: { name: 'category', value: detectedCategory }
-      } as React.ChangeEvent<HTMLSelectElement>);
+    if (detectedCategory && step === 2) {
+      // If we have a detected category and formData doesn't have one, set it
+      if (!formData.category) {
+        onChange({
+          target: { name: 'category', value: detectedCategory }
+        } as React.ChangeEvent<HTMLSelectElement>);
+      }
+      // If formData already has the detected category, ensure it matches
+      else if (formData.category !== detectedCategory) {
+        // Update to detected category if different (detected is more accurate)
+        onChange({
+          target: { name: 'category', value: detectedCategory }
+        } as React.ChangeEvent<HTMLSelectElement>);
+      }
     }
-  }, [detectedCategory, step]);
+  }, [detectedCategory, step, formData.category]);
 
   const validateStep1 = () => {
     const newErrors: typeof errors = {};
@@ -82,7 +93,7 @@ export default function AuditForm({
 
   const validateStep2 = () => {
     const newErrors: typeof errors = {};
-    
+
     // Category is REQUIRED
     if (!formData.category || !formData.category.trim()) {
       newErrors.category = dict.formCategoryRequired || "Category is required.";
@@ -128,9 +139,8 @@ export default function AuditForm({
       {/* Progress Indicator */}
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2">
-          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${
-            step >= 1 ? 'bg-primary text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-500'
-          }`}>
+          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${step >= 1 ? 'bg-primary text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-500'
+            }`}>
             1
           </div>
           <span className={`text-sm ${step >= 1 ? 'font-medium text-secondary dark:text-white' : 'text-gray-400'}`}>
@@ -138,14 +148,12 @@ export default function AuditForm({
           </span>
         </div>
         <div className="flex-1 h-0.5 mx-3 bg-gray-200 dark:bg-gray-700">
-          <div className={`h-full transition-all duration-300 ${
-            step >= 2 ? 'bg-primary w-full' : 'w-0'
-          }`} />
+          <div className={`h-full transition-all duration-300 ${step >= 2 ? 'bg-primary w-full' : 'w-0'
+            }`} />
         </div>
         <div className="flex items-center gap-2">
-          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${
-            step >= 2 ? 'bg-primary text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-500'
-          }`}>
+          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${step >= 2 ? 'bg-primary text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-500'
+            }`}>
             2
           </div>
           <span className={`text-sm ${step >= 2 ? 'font-medium text-secondary dark:text-white' : 'text-gray-400'}`}>
