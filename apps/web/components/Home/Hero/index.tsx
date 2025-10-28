@@ -2,7 +2,7 @@
 import { ChevronRight, Clock, Star, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from 'sonner';
 import FormComponent from "./FormComponent";
 
@@ -99,36 +99,34 @@ function HeroSection() {
     transition: { duration: 1, delay: 0.8 },
   };
 
-  function useTypingEffect(text = '', speed = 50) {
-    const [displayedText, setDisplayedText] = useState('');
-
-    useEffect(() => {
-      if (!text) return;
-
-      let index = 0;
-      const interval = setInterval(() => {
-        setDisplayedText(prev => prev + text.charAt(index));
-        index++;
-        if (index >= text.length) clearInterval(interval);
-      }, speed);
-
-      return () => clearInterval(interval);
-    }, [text, speed]);
-
-    return displayedText;
-  }
-
   const baseHeading = "Digital Growth for Ambitious Brands";
-  const changingWords = [""];
+  // Palabras a mecanografiar (memoizadas para no cambiar en cada render)
+  const changingWords = useMemo(
+    () => [
+      "SEO",
+      "Ads",
+      "Web",
+      "Branding",
+      "Automation",
+    ],
+    []
+  );
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [displayedWord, setDisplayedWord] = useState('Services'); // Inicializa con la primera palabra
+  const [displayedWord, setDisplayedWord] = useState("SEO");
   const [isTyping, setIsTyping] = useState(false);
 
   const paragraphText = "We build bilingual marketing systems that make your business visible, credible, and unstoppable — everywhere your customers search.";
 
   // Efecto de mecanografía para la palabra cambiante
   useEffect(() => {
-    const currentWord = changingWords[currentWordIndex];
+    const currentWord = changingWords[currentWordIndex] ?? changingWords[0];
+    // Respeta reduce motion: sin animación, muestra palabra completa
+    const prefersReduced = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) {
+      setDisplayedWord(currentWord);
+      setIsTyping(false);
+      return;
+    }
     setIsTyping(true);
     setDisplayedWord('');
 
@@ -147,9 +145,12 @@ function HeroSection() {
 
   // Cambio de palabra cada 3 segundos
   useEffect(() => {
+    const prefersReduced = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return; // sin rotación automática si reduce motion
+
     const interval = setInterval(() => {
       setCurrentWordIndex(prev => (prev + 1) % changingWords.length);
-    }, 3000); // Aumenté a 3 segundos para dar tiempo a la escritura
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [changingWords.length]);
@@ -165,14 +166,14 @@ function HeroSection() {
                 <div className="flex flex-col gap-3">
                   <Link
                     href="/contact-us"
-                    className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] border border-purple-700 bg-purple-50 hover:bg-purple-100 hover:border-purple-800 shadow-xs h-8 gap-1.5 px-3 rounded-full w-fit text-purple-800"
+                    className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] border border-gray-200 bg-white hover:bg-gray-50 hover:border-gray-300 shadow-xs h-8 gap-1.5 px-3 rounded-full w-fit text-gray-800"
                   >
                     ✨
-                    <div className="bg-purple-700/20 shrink-0 w-[1px] mx-2 h-4"></div>
+                    <div className="bg-gray-300/60 shrink-0 w-[1px] mx-2 h-4"></div>
                     Watch How We Build Authority →
-                    <ChevronRight className="text-purple-700 ml-1 size-4" aria-hidden="true" />
+                    <ChevronRight className="text-gray-700 ml-1 size-4" aria-hidden="true" />
                   </Link>
-                  <h1 className="text-secondary dark:text-white font-semibold">
+                  <h1 className="text-secondary dark:text-white font-semibold min-w-[12ch]">
                     {baseHeading}{" "}
                     <span className="inline-block">
                       {displayedWord}
