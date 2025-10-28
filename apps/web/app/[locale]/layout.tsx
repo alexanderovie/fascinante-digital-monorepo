@@ -7,6 +7,7 @@ import { locales, type Locale } from "@/lib/i18n";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
+import { GoogleTagManager } from "@next/third-parties/google";
 import { Toaster } from "sonner";
 import "../globals.css";
 import { I18nProvider } from "./i18n-context";
@@ -125,8 +126,11 @@ export default async function RootLayout({
     },
   };
 
+  const gtmId = process.env.NEXT_PUBLIC_GTM_ID || 'GTM-T7SZM386';
+
   return (
     <html lang={locale} suppressHydrationWarning>
+      <GoogleTagManager gtmId={gtmId} />
       <body className={inter.className}>
         {/* JSON-LD Organization Schema según recomendación oficial Next.js 15 */}
         <script
