@@ -4,9 +4,8 @@ import { API_ENDPOINTS } from '@/lib/api-config';
 import { mapGooglePlacesTypeToCategory } from '@/lib/business-categories';
 import type { Locale } from "@/lib/i18n";
 import type { PlaceDetails } from "@/types/places";
-import { ChevronRight, Clock, Search, Star, TrendingUp } from "lucide-react";
+import { ChevronRight, Clock, Search, Star } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from "react";
 import { toast } from 'sonner';
@@ -206,7 +205,7 @@ function AuditHero({ dict, locale }: AuditHeroProps) {
                 </div>
 
                 {/* Trust Metrics - Desktop/Tablet: Formato idéntico a homepage (horizontal flex) */}
-                <div className="hidden lg:flex flex-wrap items-center gap-6 md:gap-8 lg:gap-12 mt-8">
+                <div className="hidden md:flex flex-wrap items-center gap-6 md:gap-8 lg:gap-12 mt-8">
                   {desktopMetrics.map((metric, index) => (
                     <div key={index} className="flex items-center gap-3 text-secondary dark:text-white">
                       <metric.icon size={28} className={
@@ -214,8 +213,7 @@ function AuditHero({ dict, locale }: AuditHeroProps) {
                         index === 1 ? "text-amber-400" : 
                         "text-emerald-400"
                       } />
-                      <span className="text-lg md:text-xl font-semibold">{metric.value}</span>
-                      <span className="text-lg md:text-xl font-semibold hidden xl:inline">— {metric.label}</span>
+                      <span className="text-lg md:text-xl font-semibold">{metric.value} {metric.label}</span>
                     </div>
                   ))}
                 </div>
