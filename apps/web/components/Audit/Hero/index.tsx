@@ -128,26 +128,7 @@ function AuditHero({ dict, locale }: AuditHeroProps) {
     // Store detected category for display in form
     setDetectedCategory(mappedCategory);
 
-    // Show success message with detected info
-    const detectedInfo: string[] = [];
-    if (place.formatted_address) {
-      detectedInfo.push(place.formatted_address);
-    }
-    if (place.website) {
-      detectedInfo.push('Website detectado');
-    }
-    if (place.international_phone_number || place.formatted_phone_number) {
-      detectedInfo.push('Teléfono detectado');
-    }
-    if (mappedCategory) {
-      detectedInfo.push('Categoría detectada');
-    }
-
-    if (detectedInfo.length > 0) {
-      toast.success('Negocio encontrado', {
-        description: detectedInfo.join(' • '),
-      });
-    }
+    // No mostrar toast - los datos se cargan silenciosamente en el formulario
   };
 
   // Desktop/Tablet: Trust metrics con mismo formato que homepage
@@ -209,9 +190,9 @@ function AuditHero({ dict, locale }: AuditHeroProps) {
                   {desktopMetrics.map((metric, index) => (
                     <div key={index} className="flex items-center gap-3 text-secondary dark:text-white">
                       <metric.icon size={28} className={
-                        index === 0 ? "text-blue-400" : 
-                        index === 1 ? "text-amber-400" : 
-                        "text-emerald-400"
+                        index === 0 ? "text-blue-400" :
+                          index === 1 ? "text-amber-400" :
+                            "text-emerald-400"
                       } />
                       <span className="text-lg md:text-xl font-semibold">{metric.value} {metric.label}</span>
                     </div>
