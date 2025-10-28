@@ -1,7 +1,7 @@
 export const promobarData = [
-    "Special discounts available for recurring cleaning services!",
-     "Free estimates! Contact us today to schedule your cleaning!", 
-     "Eco-friendly products for a healthier home environment!",
-     "Book now and get 10% off your first cleaning service!",
-     "Explore our efficient cleaning services designed!"
+  "Digital Growth for Ambitious Brands",
+  "Bilingual marketing systems for real visibility and credibility",
+  "SEO, Paid Ads, Web, and Content — aligned for growth",
+  "Get Your Free Growth Plan",
+  "Watch How We Build Authority →"
 ]

@@ -19,9 +19,9 @@ const ExcepServices = () => {
           <div className='flex flex-col gap-10 sm:gap-16 border-t border-natural-gray dark:border-natural-gray/20 py-20 sm:py-28'>
             <div className="flex flex-col gap-3 items-center justify-center">
               <div className="bg-primary w-fit  rounded-full py-1 px-4">
-                <p className="font-semibold text-white">Why choose us?</p>
+                <p className="font-semibold text-white">Numbers Don’t Lie — Strategy Does.</p>
               </div>
-              <h2 className='font-semibold'>Exceptional service every time</h2>
+              <h2 className='font-semibold'>Real results. Real stories. No fluff.</h2>
             </div>
             <div className='grid grid-cols-1 xsm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 xl:gap-10'>
               {ExcepServicesData.map((item, index) => {

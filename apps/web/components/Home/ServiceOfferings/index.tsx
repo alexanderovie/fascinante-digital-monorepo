@@ -13,12 +13,12 @@ function ServiceOfferings() {
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-5">
               <div className="flex flex-col gap-4 max-w-xl">
                 <div className="bg-gray w-fit flex-1 rounded-full py-1 px-4">
-                  <p className="font-semibold text-white">Your home, our priority</p>
+                  <p className="font-semibold text-white">What We Do Best</p>
                 </div>
-                <h2 className="font-semibold text-secondary">Our Professional Cleaning Services</h2>
+                <h2 className="font-semibold text-secondary">We create digital ecosystems that attract, convert, and retain</h2>
               </div>
               <div className="flex flex-col gap-8 max-w-sm">
-                <p className="text-secondary">Explore our efficient <span className="font-bold">cleaning services</span> designed to maintain a neat and tidy home environment.</p>
+                <p className="text-secondary">From SEO and local positioning to paid ads, web, and content — everything aligned for measurable growth.</p>
                 <Link href="/services" className="w-fit text-secondary border-b-2 border-primary hover:text-primary">View all services</Link>
               </div>
             </div>

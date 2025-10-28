@@ -1,5 +1,4 @@
 module.exports = {
   root: true,
-  extends: ['@repo/eslint-config/next.js'],
+  extends: ['next/core-web-vitals'],
 };
-

@@ -3,6 +3,7 @@ import { ChevronRight, Clock, Star, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { toast } from 'sonner';
 import FormComponent from "./FormComponent";
 
 function HeroSection() {
@@ -39,22 +40,37 @@ function HeroSection() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    fetch("https://formsubmit.co/ajax/niravjoshi87@gmail.com", {
+    const loadingToast = toast.loading('Sending request...');
+
+    fetch("http://localhost:32947/api/contact", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({
         name: formData.name,
-        number: formData.number,
         email: formData.email,
-        services: formData.services.join(", "),
+        phone: formData.number,
+        message: `Services requested: ${formData.services.join(", ")}`,
+        service: "Hero Form"
       }),
     })
       .then((response) => response.json())
       .then((data) => {
-        setSubmitted(data.success);
-        reset();
+        if (data.success) {
+          toast.dismiss(loadingToast);
+          toast.success('Request sent successfully!', {
+            description: "We'll contact you soon."
+          });
+          setSubmitted(data.success);
+          reset();
+        } else {
+          throw new Error(data.error || 'Error al enviar solicitud');
+        }
       })
       .catch((error) => {
+        toast.dismiss(loadingToast);
+        toast.error('Error sending request', {
+          description: 'Please try again.'
+        });
         console.log(error.message);
       });
   };
@@ -102,13 +118,13 @@ function HeroSection() {
     return displayedText;
   }
 
-  const baseHeading = "Trusted Digital Marketing Solutions";
-  const changingWords = ["Services", "Experts", "Strategies", "Specialists", "Professionals"];
+  const baseHeading = "Digital Growth for Ambitious Brands";
+  const changingWords = [""];
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [displayedWord, setDisplayedWord] = useState('Services'); // Inicializa con la primera palabra
   const [isTyping, setIsTyping] = useState(false);
 
-  const paragraphText = "Boost your business growth with our expert marketing services. Get started today for better results and online visibility.";
+  const paragraphText = "We build bilingual marketing systems that make your business visible, credible, and unstoppable — everywhere your customers search.";
 
   // Efecto de mecanografía para la palabra cambiante
   useEffect(() => {
@@ -153,7 +169,7 @@ function HeroSection() {
                   >
                     ✨
                     <div className="bg-purple-700/20 shrink-0 w-[1px] mx-2 h-4"></div>
-                    Potencia tu Marketing Digital
+                    Watch How We Build Authority →
                     <ChevronRight className="text-purple-700 ml-1 size-4" aria-hidden="true" />
                   </Link>
                   <h1 className="text-secondary dark:text-white font-semibold">
@@ -184,7 +200,7 @@ function HeroSection() {
               </div>
 
               <div className="relative bg-white dark:bg-dark-gray rounded-md max-w-530px lg:max-w-md xl:max-w-530px w-full p-10 flex flex-col gap-8 shadow-2xl shadow-black/10 border border-gray-100 dark:border-gray-700">
-                <h4 className="font-semibold dark:text-white">Get a free quote</h4>
+                <h4 className="font-semibold dark:text-white">Get Your Free Growth Plan</h4>
                 <FormComponent
                   formData={formData}
                   submitted={submitted}

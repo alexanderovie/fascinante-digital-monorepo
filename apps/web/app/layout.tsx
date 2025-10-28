@@ -4,6 +4,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
+import { Toaster } from "sonner";
 import "./globals.css";
 
 const inter = Inter({
@@ -11,9 +12,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Fascinante Digital | Agencia de Marketing Digital",
-  description: "Agencia de marketing digital especializada en estrategias personalizadas que generan resultados reales. SEO, SEM, Social Media y más.",
-  keywords: ["marketing digital", "SEO", "SEM", "social media", "agencia digital", "Tampa", "Florida"],
+  title: "Fascinante Digital | Digital Growth for Ambitious Brands",
+  description: "Bilingual marketing systems for visibility, credibility, and sustainable growth across the U.S. and Latin America.",
+  keywords: ["digital marketing", "SEO", "SEM", "Google Ads", "Meta", "Next.js", "Fascinante Digital", "Tampa", "Florida"],
   icons: {
     icon: [
       { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
@@ -34,13 +35,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" enableSystem={false} defaultTheme="light">
           <Header />
           {children}
           <Footer />
           <ScrollToTop />
+          <Toaster
+            position="top-center"
+            richColors
+            closeButton
+            duration={5000}
+          />
         </ThemeProvider>
       </body>
     </html>
