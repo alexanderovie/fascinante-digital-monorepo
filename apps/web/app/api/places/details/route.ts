@@ -33,23 +33,26 @@ export async function GET(request: NextRequest) {
     }
 
     // Build field mask - only request what we need (best practice per docs)
-    // Essentials: addressComponents, formattedAddress, location, types
-    // Pro: displayName, businessStatus, primaryType, types
-    // Enterprise: nationalPhoneNumber, internationalPhoneNumber, rating, userRatingCount, websiteUri, regularOpeningHours
+    // According to official Google Places API (New) documentation (Oct 2025)
+    // Essentials IDs Only: id, name, photos, attributions, moved_place, moved_place_id
+    // Essentials: addressComponents, formattedAddress, location, types, viewport, plusCode, postalAddress, shortFormattedAddress, adrFormatAddress
+    // Pro: displayName, businessStatus, primaryType, primaryTypeDisplayName, googleMapsUri, iconBackgroundColor, iconMaskBaseUri, utcOffsetMinutes
+    // Enterprise: nationalPhoneNumber, internationalPhoneNumber, rating, userRatingCount, websiteUri, priceLevel, priceRange, regularOpeningHours, currentOpeningHours
     const fieldMask = [
       'id', // Essentials IDs Only
-      'displayName', // Pro
-      'formattedAddress', // Essentials
-      'addressComponents', // Essentials
-      'businessStatus', // Pro
-      'primaryType', // Pro - Primary business category
-      'types', // Essentials - All categories/types
-      'nationalPhoneNumber', // Enterprise
-      'internationalPhoneNumber', // Enterprise
-      'rating', // Enterprise
-      'userRatingCount', // Enterprise
-      'websiteUri', // Enterprise
-      'geometry', // Essentials (location)
+      'displayName', // Pro - Business name (text format)
+      'formattedAddress', // Essentials - Full address
+      'addressComponents', // Essentials - Address parts
+      'location', // Essentials - lat/lng coordinates (NOT geometry!)
+      'businessStatus', // Pro - OPERATIONAL, CLOSED_PERMANENTLY, etc.
+      'primaryType', // Pro - Primary business category (e.g., "restaurant", "store")
+      'primaryTypeDisplayName', // Pro - Human-readable category name
+      'types', // Essentials - All categories/types array
+      'nationalPhoneNumber', // Enterprise - Phone number
+      'internationalPhoneNumber', // Enterprise - International phone format
+      'rating', // Enterprise - Rating (1-5)
+      'userRatingCount', // Enterprise - Number of reviews
+      'websiteUri', // Enterprise - Business website URL
     ].join(',');
 
     // Build resource name according to official API format
@@ -120,6 +123,7 @@ export async function GET(request: NextRequest) {
     const data = await response.json();
 
     // Transform Google Places API (New) format to our PlaceDetails format
+    // Note: The API returns "location" (lat/lng) not "geometry" structure
     const placeDetails = {
       place_id: data.id || placeId,
       name: data.displayName?.text || '',
@@ -132,10 +136,10 @@ export async function GET(request: NextRequest) {
       business_status: data.businessStatus || 'OPERATIONAL',
       primary_type: data.primaryType || undefined, // Primary category (e.g., "restaurant", "store")
       types: data.types || undefined, // All types/categories
-      geometry: data.geometry ? {
+      geometry: data.location ? {
         location: {
-          lat: data.geometry.location?.latitude || 0,
-          lng: data.geometry.location?.longitude || 0,
+          lat: data.location.latitude || data.location.lat || 0,
+          lng: data.location.longitude || data.location.lng || 0,
         },
       } : undefined,
       address_components: data.addressComponents?.map((component: {
