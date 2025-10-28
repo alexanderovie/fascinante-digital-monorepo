@@ -2,7 +2,7 @@
 import { ChevronRight, Clock, Star, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toast } from 'sonner';
 import FormComponent from "./FormComponent";
 
@@ -37,7 +37,7 @@ function HeroSection() {
     });
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const loadingToast = toast.loading('Sending request...');
@@ -93,67 +93,13 @@ function HeroSection() {
     });
   };
 
-  const bottomAnimation = {
-    initial: { y: "20%", opacity: 0 },
-    animate: { y: 0, opacity: 1 },
-    transition: { duration: 1, delay: 0.8 },
-  };
+  // removed unused bottomAnimation to satisfy lint
 
-  const baseHeading = "Digital Growth for Ambitious Brands";
-  // Palabras a mecanografiar (memoizadas para no cambiar en cada render)
-  const changingWords = useMemo(
-    () => [
-      "SEO",
-      "Ads",
-      "Web",
-      "Branding",
-      "Automation",
-    ],
-    []
-  );
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [displayedWord, setDisplayedWord] = useState("SEO");
-  const [isTyping, setIsTyping] = useState(false);
+  const baseHeading = "Ambitious Digital Growth and Branding";
 
   const paragraphText = "We build bilingual marketing systems that make your business visible, credible, and unstoppable — everywhere your customers search.";
 
-  // Efecto de mecanografía para la palabra cambiante
-  useEffect(() => {
-    const currentWord = changingWords[currentWordIndex] ?? changingWords[0];
-    // Respeta reduce motion: sin animación, muestra palabra completa
-    const prefersReduced = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) {
-      setDisplayedWord(currentWord);
-      setIsTyping(false);
-      return;
-    }
-    setIsTyping(true);
-    setDisplayedWord('');
-
-    let index = 0;
-    const typingInterval = setInterval(() => {
-      setDisplayedWord(prev => prev + currentWord.charAt(index));
-      index++;
-      if (index >= currentWord.length) {
-        setIsTyping(false);
-        clearInterval(typingInterval);
-      }
-    }, 100); // Velocidad de escritura: 100ms por letra
-
-    return () => clearInterval(typingInterval);
-  }, [currentWordIndex, changingWords]);
-
-  // Cambio de palabra cada 3 segundos
-  useEffect(() => {
-    const prefersReduced = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) return; // sin rotación automática si reduce motion
-
-    const interval = setInterval(() => {
-      setCurrentWordIndex(prev => (prev + 1) % changingWords.length);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [changingWords.length]);
+  // Efecto removido: no hay rotación ni mecanografía
 
 
   return (
@@ -162,29 +108,23 @@ function HeroSection() {
         <div className="bg-white h-full flex justify-center items-center">
           <div className="container">
             <div ref={ref} className="flex flex-col lg:flex-row gap-10 xl:gap-20 2xl:gap-32 py-20 items-center lg:items-center justify-between">
-              <div className="flex flex-col gap-6 w-full">
+              <div className="flex flex-col gap-6 w-full px-5 sm:px-0">
                 <div className="flex flex-col gap-3">
                   <Link
                     href="/contact-us"
-                    className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] border border-gray-200 bg-white hover:bg-gray-50 hover:border-gray-300 shadow-xs h-8 gap-1.5 px-3 rounded-full w-fit text-gray-800"
+                    className="inline-flex items-center justify-start whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/30 hover:bg-blue-100 dark:hover:bg-blue-900/40 hover:border-blue-300 dark:hover:border-blue-700 shadow-xs h-8 gap-1.5 px-3 rounded-full w-fit text-blue-800 dark:text-blue-200"
                   >
-                    ✨
-                    <div className="bg-gray-300/60 shrink-0 w-[1px] mx-2 h-4"></div>
                     Watch How We Build Authority →
-                    <ChevronRight className="text-gray-700 ml-1 size-4" aria-hidden="true" />
+                    <ChevronRight className="ml-1 size-4 text-current" aria-hidden="true" />
                   </Link>
                   <h1 className="text-secondary dark:text-white font-semibold min-w-[12ch]">
-                    {baseHeading}{" "}
-                    <span className="inline-block">
-                      {displayedWord}
-                      {isTyping && <span className="animate-pulse text-primary">|</span>}
-                    </span>
+                    {baseHeading}
                   </h1>
                 </div>
                 <p className="text-secondary dark:text-white text-lg sm:text-xl">{paragraphText}</p>
 
                 {/* Trust Metrics */}
-                <div className="flex flex-wrap items-center gap-6 md:gap-8 lg:gap-12 mt-8">
+                <div className="hidden md:flex flex-wrap items-center gap-6 md:gap-8 lg:gap-12 mt-8">
                   <div className="flex items-center gap-3 text-secondary dark:text-white">
                     <Users size={28} className="text-blue-400" />
                     <span className="text-lg md:text-xl font-semibold">500+ Clients</span>
@@ -193,19 +133,17 @@ function HeroSection() {
                     <Star size={28} className="text-amber-400" />
                     <span className="text-lg md:text-xl font-semibold">99% Satisfaction</span>
                   </div>
-                  <div className="flex items-center gap-3 text-secondary dark:text-white">
+                  <div className="hidden xl:flex items-center gap-3 text-secondary dark:text-white">
                     <Clock size={28} className="text-emerald-400" />
                     <span className="text-lg md:text-xl font-semibold">24/7 Support</span>
                   </div>
                 </div>
               </div>
 
-              <div className="relative bg-white dark:bg-dark-gray rounded-md max-w-530px lg:max-w-md xl:max-w-530px w-full p-10 flex flex-col gap-8 shadow-2xl shadow-black/10 border border-gray-100 dark:border-gray-700">
+              <div className="relative bg-white dark:bg-dark-gray rounded-none md:rounded-md max-w-530px lg:max-w-md xl:max-w-530px w-full md:w-auto -mx-5 sm:mx-0 py-10 px-5 md:px-10 md:p-10 flex flex-col gap-8 md:shadow-2xl md:shadow-black/10 md:border md:border-gray-100 dark:md:border-gray-700">
                 <h4 className="font-semibold dark:text-white">Get Your Free Growth Plan</h4>
                 <FormComponent
                   formData={formData}
-                  submitted={submitted}
-                  showThanks={showThanks}
                   onChange={handleChange}
                   onServiceChange={handleServiceChange}
                   onSubmit={handleSubmit}

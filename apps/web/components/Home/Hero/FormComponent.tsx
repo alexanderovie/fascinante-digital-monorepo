@@ -8,8 +8,6 @@ interface FormComponentProps {
     email: string;
     services: string[];
   };
-  submitted: boolean;
-  showThanks?: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onServiceChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -17,8 +15,6 @@ interface FormComponentProps {
 
 export default function FormComponent({
   formData,
-  submitted,
-  showThanks,
   onChange,
   onServiceChange,
   onSubmit,
@@ -31,15 +27,15 @@ export default function FormComponent({
   }>({});
 
   // Hero form service options (marketing services)
+  // Reordenadas: las primeras 2 se muestran en todas las pantallas (xl y menores)
+  // Las últimas 4 solo en pantallas grandes (2xl y mayores)
   const heroServiceOptions: string[] = [
-    "Digital Branding",
-    "SEO Optimization",
-    "Google & Meta Ads",
-    "Web Design",
-    "Brand Identity",
-    "Email Automation",
-    "Content Strategy",
-    "Analytics & Reporting",
+    "SEO Optimization",      // Mostrar siempre (≤1280px)
+    "Google & Meta Ads",     // Mostrar siempre (≤1280px)
+    "Digital Branding",      // Solo en >1280px
+    "Web Design",            // Solo en >1280px
+    "Brand Identity",        // Solo en >1280px
+    "Email Automation",      // Solo en >1280px
   ];
 
   const validateForm = () => {
@@ -48,26 +44,39 @@ export default function FormComponent({
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\d{10,15}$/; // basic digit-only validation
 
+    // Validación del nombre del negocio (siempre requerido)
     if (!formData.name.trim()) {
-      newErrors.name = "Name is required.";
+      newErrors.name = "Business name is required.";
     } else if (!nameRegex.test(formData.name)) {
-      newErrors.name = "Name should only contain letters.";
+      newErrors.name = "Business name should only contain letters.";
     }
 
-    if (!formData.number.trim()) {
-      newErrors.number = "Phone number is required.";
-    } else if (!phoneRegex.test(formData.number)) {
-      newErrors.number = "Enter a valid phone number (10-15 digits).";
-    }
+    // Validación de campos adicionales solo si están visibles (md y mayores)
+    // Usamos matchMedia para verificar el breakpoint de forma segura
+    if (typeof window !== 'undefined') {
+      const isMobile = window.matchMedia('(max-width: 767px)').matches;
 
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required.";
-    } else if (!emailRegex.test(formData.email)) {
-      newErrors.email = "Enter a valid email address.";
-    }
+      if (!isMobile) {
+        // Solo validar en pantallas md y mayores (donde los campos son visibles)
+        if (!formData.number.trim()) {
+          newErrors.number = "Phone number is required.";
+        } else if (!phoneRegex.test(formData.number)) {
+          newErrors.number = "Enter a valid phone number (10-15 digits).";
+        }
 
-    if (!formData.services.length) {
-      newErrors.services = "Please select at least one service.";
+        if (!formData.email.trim()) {
+          newErrors.email = "Email is required.";
+        } else if (!emailRegex.test(formData.email)) {
+          newErrors.email = "Enter a valid email address.";
+        }
+
+        if (!formData.services.length) {
+          newErrors.services = "Please select at least one service.";
+        }
+      }
+    } else {
+      // En SSR, asumimos que es móvil y solo validamos el nombre
+      // La validación completa se hará en el cliente si es necesario
     }
 
     setErrors(newErrors);
@@ -88,7 +97,7 @@ export default function FormComponent({
           <input
             type="text"
             name="name"
-            placeholder="Full name *"
+            placeholder="Business name *"
             onChange={onChange}
             value={formData.name}
             className="input-field"
@@ -96,7 +105,7 @@ export default function FormComponent({
           {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
         </div>
 
-        <div>
+        <div className="hidden md:block">
           <input
             type="tel"
             name="number"
@@ -108,7 +117,7 @@ export default function FormComponent({
           {errors.number && <p className="text-red-500 text-sm mt-1">{errors.number}</p>}
         </div>
 
-        <div>
+        <div className="hidden md:block">
           <input
             type="email"
             name="email"
@@ -121,11 +130,14 @@ export default function FormComponent({
         </div>
       </div>
 
-      <div className="flex flex-col gap-4">
+      <div className="hidden md:flex flex-col gap-4">
         <p className="font-semibold text-dusty-gray dark:text-white/90">Service options *</p>
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-5 gap-y-2.5">
-          {heroServiceOptions.map((title) => (
-            <div key={title} className="flex items-center">
+          {heroServiceOptions.map((title, index) => (
+            <div
+              key={title}
+              className={`flex items-center ${index >= 2 ? 'hidden xl:flex' : ''}`}
+            >
               <input
                 type="checkbox"
                 name={title}
