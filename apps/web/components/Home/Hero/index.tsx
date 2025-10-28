@@ -134,10 +134,10 @@ function HeroSection({ dict, locale }: HeroSectionProps) {
 
   return (
     <section>
-      <div className="relative pt-32 lg:pt-40">
+      <div className="relative pt-24 lg:pt-32">
         <div className="bg-white h-full flex justify-center items-center">
           <div className="container">
-            <div ref={ref} className="flex flex-col lg:flex-row gap-10 xl:gap-20 2xl:gap-32 pt-20 pb-28 items-center lg:items-center justify-between">
+            <div ref={ref} className="flex flex-col lg:flex-row gap-10 xl:gap-20 2xl:gap-32 py-20 items-center lg:items-center justify-between">
               <div className="flex flex-col gap-6 w-full">
                 <div className="flex flex-col gap-3">
                   <Link
