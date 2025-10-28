@@ -72,13 +72,13 @@ export interface AuditResult {
   website?: string;
   generatedAt: string;
   status: 'processing' | 'completed' | 'failed';
-  
+
   // DataForSEO Results
   rankedKeywords?: RankedKeywordsResponse;
   domainRank?: DomainRankResponse;
   keywordOpportunities?: KeywordIdeasResponse;
   technicalAudit?: TechnicalAuditResponse;
-  
+
   // Google Places Data (if available)
   googlePlaces?: {
     rating?: number;
@@ -87,7 +87,7 @@ export interface AuditResult {
     phone?: string;
     website?: string;
   };
-  
+
   // Error handling
   error?: string;
 }
@@ -98,4 +98,3 @@ export interface AuditGenerationResponse {
   message?: string;
   error?: string;
 }
-

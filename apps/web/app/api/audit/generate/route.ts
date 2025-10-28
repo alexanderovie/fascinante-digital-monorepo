@@ -1,5 +1,5 @@
+import type { AuditGenerationResponse, AuditRequest, AuditResult } from '@/types/audit';
 import { NextRequest, NextResponse } from 'next/server';
-import type { AuditRequest, AuditGenerationResponse, AuditResult } from '@/types/audit';
 
 const DATAFORSEO_BASE_URL = 'https://data.fascinantedigital.com/v3';
 
@@ -8,7 +8,7 @@ const DATAFORSEO_BASE_URL = 'https://data.fascinantedigital.com/v3';
  */
 function extractDomain(website?: string): string | null {
   if (!website) return null;
-  
+
   try {
     const url = website.startsWith('http') ? new URL(website) : new URL(`https://${website}`);
     return url.hostname.replace('www.', '');
@@ -56,7 +56,7 @@ function generateAuditId(): string {
 export async function POST(request: NextRequest) {
   try {
     const body: AuditRequest = await request.json();
-    
+
     // Validation
     if (!body.businessName || body.businessName.trim().length < 2) {
       return NextResponse.json<AuditGenerationResponse>(
@@ -67,10 +67,10 @@ export async function POST(request: NextRequest) {
 
     // Extract domain if website provided
     const domain = extractDomain(body.website);
-    
+
     // Generate audit ID
     const auditId = generateAuditId();
-    
+
     // Prepare audit result object
     const auditResult: Partial<AuditResult> = {
       auditId,
@@ -86,7 +86,7 @@ export async function POST(request: NextRequest) {
     // 3. Keyword Overview/Ideas (para volumen de búsqueda)
     // 4. Domain Rank (sin backlinks - no tenemos suscripción link building)
     // 5. On-page SEO (si tenemos dominio)
-    
+
     const promises: Promise<unknown>[] = [
       // Google Business Info - siempre intentamos si tenemos nombre
       callDataForSEO('/business_data/google/my_business_info/live.ai', {
@@ -106,12 +106,12 @@ export async function POST(request: NextRequest) {
           language_code: 'en',
           limit: 100,
         }).catch(() => null),
-        
+
         // Domain Rank (sin backlinks - solo autoridad)
         callDataForSEO('/dataforseo_labs/google/domain_rank_overview/live.ai', {
           target: domain,
         }).catch(() => null),
-        
+
         // Keyword Ideas - Oportunidades SEO basadas en el negocio
         callDataForSEO('/dataforseo_labs/google/keyword_ideas/live.ai', {
           keyword: body.businessName,
@@ -120,7 +120,7 @@ export async function POST(request: NextRequest) {
           include_serp_info: true,
           limit: 20,
         }).catch(() => null),
-        
+
         // Keyword Overview - Volumen de búsqueda de keywords relevantes
         callDataForSEO('/dataforseo_labs/google/keyword_overview/live.ai', {
           keyword: body.businessName,
@@ -131,7 +131,7 @@ export async function POST(request: NextRequest) {
     }
 
     const results = await Promise.allSettled(promises);
-    
+
     // Process Google Business Info
     const [googleBusinessRes, ...otherResults] = results;
     if (googleBusinessRes.status === 'fulfilled' && googleBusinessRes.value) {
@@ -210,7 +210,7 @@ export async function POST(request: NextRequest) {
 
     // Store audit result (in production, use database/Redis)
     // For now, we'll return it directly - client should store in localStorage or call results endpoint
-    
+
     return NextResponse.json<AuditGenerationResponse>({
       success: true,
       auditId,
@@ -220,12 +220,11 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Error generating audit:', error);
     return NextResponse.json<AuditGenerationResponse>(
-      { 
-        success: false, 
-        error: error instanceof Error ? error.message : 'Failed to generate audit' 
+      {
+        success: false,
+        error: error instanceof Error ? error.message : 'Failed to generate audit'
       },
       { status: 500 }
     );
   }
 }
-

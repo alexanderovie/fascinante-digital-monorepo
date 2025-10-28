@@ -61,7 +61,7 @@ export function BusinessAutocomplete({
       abortControllerRef.current?.abort();
       const controller = new AbortController();
       abortControllerRef.current = controller;
-      
+
       // Combine with query signal if available
       const finalSignal = signal || controller.signal;
 
@@ -174,7 +174,7 @@ export function BusinessAutocomplete({
       switch (e.key) {
         case 'ArrowDown':
           e.preventDefault();
-          setSelectedIndex((prev) => 
+          setSelectedIndex((prev) =>
             prev < predictions.length - 1 ? prev + 1 : prev
           );
           break;
@@ -340,11 +340,10 @@ export function BusinessAutocomplete({
                   type="button"
                   onClick={() => handleSelect(prediction)}
                   onMouseEnter={() => setSelectedIndex(index)}
-                  className={`w-full px-4 py-3 text-left hover:bg-offwhite-warm dark:hover:bg-gray-800 transition-colors flex items-start gap-3 border-b border-sand-light dark:border-sand-light/20 last:border-b-0 ${
-                    selectedIndex === index
+                  className={`w-full px-4 py-3 text-left hover:bg-offwhite-warm dark:hover:bg-gray-800 transition-colors flex items-start gap-3 border-b border-sand-light dark:border-sand-light/20 last:border-b-0 ${selectedIndex === index
                       ? 'bg-offwhite-warm dark:bg-gray-800'
                       : ''
-                  }`}
+                    }`}
                   role="option"
                   aria-selected={selectedIndex === index}
                 >

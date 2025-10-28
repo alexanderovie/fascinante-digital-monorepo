@@ -1,4 +1,6 @@
 "use client";
+import type { Dictionary } from "@/app/[locale]/dictionaries";
+import { useI18n } from "@/app/[locale]/i18n-context";
 import type { PlaceDetails } from "@/types/places";
 import { useState } from "react";
 import { BusinessAutocomplete } from "./BusinessAutocomplete";
@@ -15,7 +17,7 @@ interface FormComponentProps {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   onNameChange?: (value: string) => void;
   onPlaceSelect?: (place: PlaceDetails) => void;
-  dict?: Record<string, any>;
+  dict?: Dictionary;
 }
 
 export default function FormComponent({
@@ -25,8 +27,20 @@ export default function FormComponent({
   onSubmit,
   onNameChange,
   onPlaceSelect,
-  dict = {},
+  dict: propDict,
 }: FormComponentProps) {
+  // 🎯 ELITE: Usar contexto i18n con fallback a props (mismo patrón que DesktopHeader)
+  let dict: Dictionary;
+  try {
+    const context = useI18n();
+    dict = context.dict;
+  } catch {
+    // Fallback a props si no hay contexto (SSR/SSG-safe)
+    dict = propDict || ({} as Dictionary);
+  }
+
+  // Valores por defecto seguros para propiedades anidadas
+  const heroDict = (dict?.hero as Record<string, string>) || {};
   const [errors, setErrors] = useState<{
     name?: string;
     number?: string;
@@ -36,8 +50,8 @@ export default function FormComponent({
 
   // Hero form service options - Solo 2 opciones grandes
   const heroServiceOptions: string[] = [
-    dict.formServices1 || 'Optimización SEO',      // Optimización SEO
-    dict.formServices2 || 'Google y Meta Ads',      // Google y Meta Ads
+    heroDict.formServices1 || 'Optimización SEO',      // Optimización SEO
+    heroDict.formServices2 || 'Google y Meta Ads',      // Google y Meta Ads
   ];
 
   const validateForm = () => {
@@ -83,14 +97,14 @@ export default function FormComponent({
               value={formData.name === undefined || formData.name === null ? '' : String(formData.name)}
               onChange={onNameChange}
               onSelect={onPlaceSelect}
-              placeholder={`${dict?.formName || 'Nombre del negocio'} *`}
+              placeholder={`${heroDict.formName || 'Nombre del negocio'} *`}
               error={errors.name}
             />
           ) : (
             <input
               type="text"
               name="name"
-              placeholder={`${dict?.formName || 'Nombre del negocio'} *`}
+              placeholder={`${heroDict.formName || 'Nombre del negocio'} *`}
               onChange={onChange}
               value={formData.name || ''}
               className="input-field"
@@ -104,7 +118,7 @@ export default function FormComponent({
           <input
             type="email"
             name="email"
-            placeholder={dict?.formEmail || 'Correo electrónico'}
+            placeholder={heroDict.formEmail || 'Correo electrónico'}
             onChange={onChange}
             value={formData.email || ''}
             className="input-field"
@@ -115,7 +129,7 @@ export default function FormComponent({
       </div>
 
       <div className="flex flex-col gap-4">
-        <p className="font-semibold text-dusty-gray dark:text-white/90">{dict?.formServices || 'Opciones de servicio'}</p>
+        <p className="font-semibold text-dusty-gray dark:text-white/90">{heroDict.formServices || 'Opciones de servicio'}</p>
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-5 gap-y-2.5">
           {heroServiceOptions.map((title) => (
             <div
@@ -141,7 +155,7 @@ export default function FormComponent({
 
       <div>
         <button type="submit" className="group w-fit flex items-center py-3 px-6 bg-secondary hover:bg-primary dark:bg-white/25 dark:hover:bg-primary rounded-sm cursor-pointer transition-all duration-300">
-          <span className="text-base text-white group-hover:text-white font-bold">{dict?.formSubmit || 'Enviar'}</span>
+          <span className="text-base text-white group-hover:text-white font-bold">{heroDict.formSubmit || 'Enviar'}</span>
         </button>
       </div>
     </form>
