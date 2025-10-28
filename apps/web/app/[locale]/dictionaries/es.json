@@ -17,11 +17,11 @@
     "closeMenuOverlay": "Cerrar overlay del menú"
   },
   "footer": {
-    "newsletterTitle": "Mantente actualizado con las últimas ideas, consejos y estrategias de crecimiento.",
+    "newsletterTitle": "Recibe estrategias y tips gratuitos cada semana. Marketing real, sin humo — directo a tu bandeja.",
     "newsletterPlaceholder": "Ingresa tu correo",
     "newsletterSubscribe": "Suscribirse",
     "newsletterDisclaimer": "Al suscribirte, aceptas recibir nuestros correos promocionales. Puedes cancelar la suscripción en cualquier momento.",
-    "ctaTitle": "Tu crecimiento está a un clic de distancia — comienza tu viaje hoy.",
+    "ctaTitle": "¿Listo para brillar online? Agenda tu auditoría gratuita y descubre cómo podemos llevar tu marca al siguiente nivel.",
     "ctaButton": "Reservar Ahora",
     "usefulLinks": "Enlaces Útiles",
     "getQuote": "Obtener cotización",
@@ -32,12 +32,12 @@
   },
   "hero": {
     "badge": "What We Do Best",
-    "title": "Crecimiento Digital Ambicioso y Branding",
-    "subtitle": "Construimos sistemas de marketing bilingües que hacen visible, creíble e imparable tu negocio — donde sea que tus clientes busquen.",
-    "clients": "500+ Clientes",
-    "satisfaction": "99% Satisfacción",
-    "support": "Soporte 24/7",
-    "formTitle": "Solicita Tu Auditoría Gratuita",
+    "title": "Haz que tu negocio brille donde importa.",
+    "subtitle": "Diseñamos estrategias bilingües que posicionan tu marca, atraen clientes reales y convierten clics en ventas.",
+    "clients": "+500 negocios impulsados",
+    "satisfaction": "99% satisfacción",
+    "support": "Atención humana 24/7",
+    "formTitle": "Solicita tu Auditoría Gratuita y despega hoy.",
     "formName": "Nombre del negocio",
     "formPhone": "Número de teléfono",
     "formEmail": "Correo electrónico",
@@ -193,6 +193,62 @@
           "description": "Una auditoría completa te permite entender tu posición actual y descubrir oportunidades reales de crecimiento. Conoce qué funciona y qué necesita mejorar."
         }
       }
+    }
+  },
+  "homepage": {
+    "promobar": {
+      "item1": "Crecimiento Digital para Marcas Ambiciosas",
+      "item2": "Estrategias bilingües diseñadas para que tu marca destaque y venda en ambos idiomas.",
+      "item3": "SEO, Publicidad Pagada, Web y Contenido — alineados para el crecimiento",
+      "item4": "Obtén Tu Plan de Crecimiento Gratis",
+      "item5": "Ve Cómo Construimos Autoridad →"
+    },
+    "serviceOfferings": {
+      "badge": "What We Do Best",
+      "title": "Creamos ecosistemas digitales que atraen, enamoran y fidelizan a tus clientes.",
+      "description": "Desde SEO y posicionamiento local hasta publicidad pagada, web y contenido — todo alineado para un crecimiento medible.",
+      "viewAllServices": "Ver todos los servicios",
+      "services": {
+        "digitalBranding": "Branding Digital que deja huella.",
+        "seoOptimization": "Posiciónate en Google y deja de ser invisible.",
+        "googleMetaAds": "Publicidad que convierte, no solo impresiona.",
+        "webDesign": "Diseño Web",
+        "brandIdentity": "Identidad de Marca",
+        "emailAutomation": "Automatización de Email"
+      }
+    },
+    "transformation": {
+      "badge": "Más de 400 marcas confían en nosotros",
+      "title": "Transformamos negocios locales en marcas memorables.",
+      "subtitle": "Unimos datos, diseño y cultura para generar resultados reales en EE.UU. y Latinoamérica.",
+      "ctaButton": "Obtén Tu Llamada Estratégica Gratis"
+    },
+    "testimonials": {
+      "badge": "Los Números No Mienten — La Estrategia Sí.",
+      "title": "Resultados reales. Historias que inspiran.",
+      "subtitle": "Antes nadie nos encontraba en Google. Tres meses después, éramos el #1. Hoy no paramos de recibir clientes.",
+      "clientName": "— Ana Rivera, Miami FL",
+      "sectionTitle": "Qué Dicen Nuestros Clientes",
+      "sectionSubtitle": "Descubre cómo nuestros servicios han transformado negocios y superado expectativas."
+    },
+    "pricing": {
+      "badge": "Precios transparentes",
+      "title": "Planes accesibles para un crecimiento real.",
+      "starterGrowth": "Starter Growth",
+      "starterGrowthDesc": "Impulso inicial de visibilidad",
+      "smartCampaigns": "Smart Campaigns",
+      "smartCampaignsDesc": "Estrategia completa de crecimiento digital",
+      "bookService": "Reservar servicio"
+    },
+    "portfolio": {
+      "title": "Descubre la diferencia de trabajar con una agencia que impulsa resultados, no promesas.",
+      "viewAllWork": "Ver todo el trabajo"
+    },
+    "finalCta": {
+      "title": "Ready to Grow?",
+      "subtitle": "Grow beyond ads and followers",
+      "description": "Let's build a brand that clients remember, algorithms reward, and competitors can't ignore.",
+      "button": "Obtén Tu Llamada Estratégica Gratis"
     }
   }
 }

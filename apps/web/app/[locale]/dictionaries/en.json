@@ -17,11 +17,11 @@
     "closeMenuOverlay": "Close menu overlay"
   },
   "footer": {
-    "newsletterTitle": "Stay updated with the latest insights, tips, and growth strategies.",
+    "newsletterTitle": "Get free strategies and tips every week. Real marketing, no fluff — straight to your inbox.",
     "newsletterPlaceholder": "Enter your email",
     "newsletterSubscribe": "Subscribe",
     "newsletterDisclaimer": "By subscribing, you agree to receive our promotional emails. You can unsubscribe at any time.",
-    "ctaTitle": "Your growth is just one click away — start your journey today.",
+    "ctaTitle": "Ready to shine online? Book your free audit and discover how we can take your brand to the next level.",
     "ctaButton": "Book Now",
     "usefulLinks": "Useful Links",
     "getQuote": "Get a quote",
@@ -32,12 +32,12 @@
   },
   "hero": {
     "badge": "What We Do Best",
-    "title": "Ambitious Digital Growth and Branding",
-    "subtitle": "We build bilingual marketing systems that make your business visible, credible, and unstoppable — everywhere your customers search.",
-    "clients": "500+ Clients",
-    "satisfaction": "99% Satisfaction",
-    "support": "24/7 Support",
-    "formTitle": "Request Your Free Audit",
+    "title": "Make your business shine where it matters.",
+    "subtitle": "We design bilingual strategies that position your brand, attract real customers, and turn clicks into sales.",
+    "clients": "+500 businesses boosted",
+    "satisfaction": "99% satisfaction",
+    "support": "Human support 24/7",
+    "formTitle": "Request Your Free Audit and take off today.",
     "formName": "Business name",
     "formPhone": "Phone number",
     "formEmail": "Email address",
@@ -193,6 +193,62 @@
           "description": "A complete audit allows you to understand your current position and discover real growth opportunities. Learn what works and what needs improvement."
         }
       }
+    }
+  },
+  "homepage": {
+    "promobar": {
+      "item1": "Digital Growth for Ambitious Brands",
+      "item2": "Bilingual strategies designed to make your brand stand out and sell in both languages.",
+      "item3": "SEO, Paid Ads, Web, and Content — aligned for growth",
+      "item4": "Get Your Free Growth Plan",
+      "item5": "Watch How We Build Authority →"
+    },
+    "serviceOfferings": {
+      "badge": "What We Do Best",
+      "title": "We create digital ecosystems that attract, enchant, and retain your customers.",
+      "description": "From SEO and local positioning to paid advertising, web, and content — everything aligned for measurable growth.",
+      "viewAllServices": "View all services",
+      "services": {
+        "digitalBranding": "Digital Branding that leaves a mark.",
+        "seoOptimization": "Get on Google and stop being invisible.",
+        "googleMetaAds": "Advertising that converts, not just impresses.",
+        "webDesign": "Web Design",
+        "brandIdentity": "Brand Identity",
+        "emailAutomation": "Email Automation"
+      }
+    },
+    "transformation": {
+      "badge": "Over 400 brands trust us",
+      "title": "We turn local businesses into memorable brands.",
+      "subtitle": "We combine data, design, and culture to drive real results in the U.S. and Latin America.",
+      "ctaButton": "Get Your Free Strategy Call"
+    },
+    "testimonials": {
+      "badge": "Numbers Don't Lie — Strategy Does.",
+      "title": "Real results. Inspiring stories.",
+      "subtitle": "We used to be invisible on Google. Three months later, we were #1. Today we can't stop getting clients.",
+      "clientName": "— Ana Rivera, Miami FL",
+      "sectionTitle": "What Our Clients Say",
+      "sectionSubtitle": "Discover how our services have transformed businesses and exceeded expectations."
+    },
+    "pricing": {
+      "badge": "Transparent pricing",
+      "title": "Affordable plans for real growth.",
+      "starterGrowth": "Starter Growth",
+      "starterGrowthDesc": "Initial visibility boost",
+      "smartCampaigns": "Smart Campaigns",
+      "smartCampaignsDesc": "Complete digital growth strategy",
+      "bookService": "Book a service"
+    },
+    "portfolio": {
+      "title": "Discover the difference of working with an agency that drives results, not promises.",
+      "viewAllWork": "View all work"
+    },
+    "finalCta": {
+      "title": "Ready to Grow?",
+      "subtitle": "Grow beyond ads and followers",
+      "description": "Let's build a brand that clients remember, algorithms reward, and competitors can't ignore.",
+      "button": "Get Your Free Strategy Call"
     }
   }
 }
