@@ -1,11 +1,60 @@
-import { Suspense } from "react";
+"use client";
+import { Suspense, useEffect, useRef, useState } from "react";
 import DesktopHeader from "./DesktopHeader";
 import TopHeader from "./TopHeader";
 
 const Header = () => {
+  const headerRef = useRef<HTMLDivElement | null>(null);
+  const [hidden, setHidden] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    let lastY = window.scrollY;
+    let acc = 0;
+    let ticking = false;
+    const THRESH_HIDE = 96;
+    const HYSTERESIS = 18;
+    const EDGE_REVEAL = 24;
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        const dy = y - lastY;
+        acc = Math.sign(dy) === Math.sign(acc) ? acc + dy : dy;
+        const nearTop = y < THRESH_HIDE;
+        const nearEdge = y <= EDGE_REVEAL;
+
+        if (!nearTop && dy > 0 && !hidden) setHidden(true);
+        if ((dy < 0 && Math.abs(acc) > HYSTERESIS) || nearTop || nearEdge) {
+          setHidden(false);
+          acc = 0;
+        }
+
+        setScrolled(y > 0);
+        lastY = y;
+        ticking = false;
+      });
+    };
+
+    const onMouseMove = (e: MouseEvent) => {
+      if (e.clientY <= EDGE_REVEAL) setHidden(false);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("mousemove", onMouseMove);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("mousemove", onMouseMove);
+    };
+  }, [hidden]);
 
   return (
-    <header className="fixed top-0 z-50 w-full">
+    <header
+      ref={headerRef}
+      className={`site-header fixed top-0 z-50 w-full transform-gpu will-change-transform transition-transform duration-200 ${hidden ? "-translate-y-full" : "translate-y-0"} ${scrolled ? "shadow-xl" : ""}`}
+    >
       <div>
         <TopHeader />
       </div>

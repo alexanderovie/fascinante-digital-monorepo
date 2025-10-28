@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import BookServicesModal from "./BookServicesModal";
 import Logo from "./Logo";
 import MenuData from "./Menudata";
@@ -100,7 +101,7 @@ const DesktopHeader = () => {
                 </div>
               </>
             ) : (
-              <Link href={"https://app.fascinantedigital.com/"} className="bg-primary hover:bg-darkPrimary flex items-center py-2.5 xl:py-3 px-3 xl:px-4 rounded-sm">
+              <Link href={"https://app.fascinantedigital.com/"} className="bg-secondary hover:bg-primary dark:bg-white/25 dark:hover:bg-primary flex items-center py-2.5 xl:py-3 px-3 xl:px-4 rounded-sm transition-all duration-300">
                 <span className="text-sm text-white font-bold">Sign In / Sign Up</span>
               </Link>
             )}
@@ -134,73 +135,74 @@ const DesktopHeader = () => {
           </div>
 
           {/* ------------------------- Mobile sidebar starts ------------------------- */}
-          {
-            sidebarOpen && (
+          {typeof document !== "undefined" && sidebarOpen && createPortal(
+            <>
               <div
                 className="fixed top-0 left-0 w-full h-full bg-black/50 z-40 cursor-pointer"
                 onClick={() => setSidebarOpen(false)}
                 aria-label="Close menu overlay"
               />
-            )
-          }
-
-          <div
-            className={`lg:hidden fixed top-0 right-0 h-full w-full bg-white dark:bg-secondary shadow-lg transform transition-transform duration-500 max-w-xs ${sidebarOpen ? "translate-x-0" : "translate-x-full"} z-50`}
-          >
-            <div className='flex items-center justify-between p-4'>
-              <h2 className="text-lg font-bold dark:text-white">Menu</h2>
-              <button
-                onClick={() => setSidebarOpen(false)}
-                className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-200"
-                aria-label="Close mobile menu"
+              <div
+                className={`fixed top-0 right-0 h-full w-full bg-white dark:bg-secondary shadow-lg transform transition-transform duration-500 max-w-xs ${sidebarOpen ? "translate-x-0" : "translate-x-full"} z-50`}
+                role="dialog"
+                aria-modal="true"
               >
-                <X size={20} className="text-secondary dark:text-white" />
-              </button>
-            </div>
+                <div className='flex items-center justify-between p-4'>
+                  <h2 className="text-lg font-bold dark:text-white">Menu</h2>
+                  <button
+                    onClick={() => setSidebarOpen(false)}
+                    className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-200"
+                    aria-label="Close mobile menu"
+                  >
+                    <X size={20} className="text-secondary dark:text-white" />
+                  </button>
+                </div>
 
-            <div className='p-6'>
-              <ul className="flex flex-col">
-                {MenuData.map((value, index) => {
-                  return (
-                    <Link key={index} href={value.path} onClick={() => setSidebarOpen(false)}>
-                      <li className="py-1.5">
-                        <p className="font-semibold dark:text-white">{value.title}</p>
-                      </li>
+                <div className='p-6'>
+                  <ul className="flex flex-col">
+                    {MenuData.map((value, index) => {
+                      return (
+                        <Link key={index} href={value.path} onClick={() => setSidebarOpen(false)}>
+                          <li className="py-1.5">
+                            <p className="font-semibold dark:text-white">{value.title}</p>
+                          </li>
+                        </Link>
+                      )
+                    })}
+                  </ul>
+                  <Link href={"https://app.fascinantedigital.com/"} className="bg-secondary hover:bg-primary dark:bg-white/25 dark:hover:bg-primary mt-4 flex items-center py-2.5 xl:py-3 px-3 xl:px-4 rounded-sm transition-all duration-300">
+                    <span className="text-sm text-white font-bold">Sign In / Sign Up</span>
+                  </Link>
+                  <div className="flex flex-col mt-5">
+                    <Link href="mailto:info@fascinantedigital.com" className="flex gap-2 items-center py-1.5">
+                      <Image src={"/images/topheader/mail-icon.svg"} alt="mail-icon" width={24} height={24} className="dark:hidden" />
+                      <Image src={"/images/topheader/white-mail-icon.svg"} alt="mail-icon" width={24} height={24} className="hidden dark:block" />
+                      <span className="text-secondary dark:text-white text-base font-semibold">info@fascinantedigital.com</span>
                     </Link>
-                  )
-                })}
-              </ul>
-              <Link href={"https://app.fascinantedigital.com/"} className="bg-primary hover:bg-darkPrimary mt-4 flex items-center py-2.5 xl:py-3 px-3 xl:px-4 rounded-sm">
-                <span className="text-sm text-white font-bold">Sign In / Sign Up</span>
-              </Link>
-              <div className="flex flex-col mt-5">
-                <Link href="mailto:info@fascinantedigital.com" className="flex gap-2 items-center py-1.5">
-                  <Image src={"/images/topheader/mail-icon.svg"} alt="mail-icon" width={24} height={24} className="dark:hidden" />
-                  <Image src={"/images/topheader/white-mail-icon.svg"} alt="mail-icon" width={24} height={24} className="hidden dark:block" />
-                  <span className="text-secondary dark:text-white text-base font-semibold">info@fascinantedigital.com</span>
-                </Link>
-                <Link href="https://maps.app.goo.gl/C5PX3Cvfy1nvT8zq9" className="flex gap-2 items-center py-1.5">
-                  <Image src={"/images/topheader/map-icon.svg"} alt="map-icon" width={24} height={24} className="dark:hidden" />
-                  <Image src={"/images/topheader/white-map-icon.svg"} alt="map-icon" width={24} height={24} className="hidden dark:block" />
-                  <span className="text-secondary dark:text-white text-base font-semibold">Blane Street, Manchester</span>
-                </Link>
+                    <Link href="https://maps.app.goo.gl/C5PX3Cvfy1nvT8zq9" className="flex gap-2 items-center py-1.5">
+                      <Image src={"/images/topheader/map-icon.svg"} alt="map-icon" width={24} height={24} className="dark:hidden" />
+                      <Image src={"/images/topheader/white-map-icon.svg"} alt="map-icon" width={24} height={24} className="hidden dark:block" />
+                      <span className="text-secondary dark:text-white text-base font-semibold">Blane Street, Manchester</span>
+                    </Link>
+                  </div>
+                  <div className="flex items-center gap-10 mt-5">
+                    <Link href="https://x.com/wrappixel">
+                      <Image src={"/images/topheader/twitter-icon.svg"} alt="twitter-icon" width={25} height={25} className="dark:hidden" />
+                      <Image src={"/images/topheader/white-twitter-icon.svg"} alt="twitter-icon" width={25} height={25} className="hidden dark:block" />
+                    </Link>
+                    <Link href="https://www.facebook.com/wrappixel/">
+                      <Image src={"/images/topheader/facebook-icon.svg"} alt="facebook-icon" width={16} height={16} className="dark:hidden" />
+                      <Image src={"/images/topheader/white-facebook-icon.svg"} alt="facebook-icon" width={13} height={13} className="hidden dark:block" />
+                    </Link>
+                    <Link href="https://www.instagram.com/wrappixel/">
+                      <Image src={"/images/topheader/instagram-icon.svg"} alt="instagram-icon" width={25} height={25} className="dark:hidden" />
+                      <Image src={"/images/topheader/white-insta-icon.svg"} alt="instagram-icon" width={25} height={25} className="hidden dark:block" />
+                    </Link>
+                  </div>
+                </div>
               </div>
-              <div className="flex items-center gap-10 mt-5">
-                <Link href="https://x.com/wrappixel">
-                  <Image src={"/images/topheader/twitter-icon.svg"} alt="twitter-icon" width={25} height={25} className="dark:hidden" />
-                  <Image src={"/images/topheader/white-twitter-icon.svg"} alt="twitter-icon" width={25} height={25} className="hidden dark:block" />
-                </Link>
-                <Link href="https://www.facebook.com/wrappixel/">
-                  <Image src={"/images/topheader/facebook-icon.svg"} alt="facebook-icon" width={16} height={16} className="dark:hidden" />
-                  <Image src={"/images/topheader/white-facebook-icon.svg"} alt="facebook-icon" width={13} height={13} className="hidden dark:block" />
-                </Link>
-                <Link href="https://www.instagram.com/wrappixel/">
-                  <Image src={"/images/topheader/instagram-icon.svg"} alt="instagram-icon" width={25} height={25} className="dark:hidden" />
-                  <Image src={"/images/topheader/white-insta-icon.svg"} alt="instagram-icon" width={25} height={25} className="hidden dark:block" />
-                </Link>
-              </div>
-            </div>
-          </div>
+            </>, document.body)
+          }
         </div>
       </div>
     </div>
