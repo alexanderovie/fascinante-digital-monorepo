@@ -5,6 +5,15 @@ import Image from "next/image";
 import Link from "next/link";
 
 function ServiceOfferings() {
+  // Override only the displayed titles, keep images/links intact
+  const marketingTitles = [
+    "Digital Branding",
+    "SEO Optimization",
+    "Google & Meta Ads",
+    "Web Design",
+    "Brand Identity",
+    "Email Automation",
+  ];
   return (
     <section>
       <div className="py-24 bg-[#F5F6F6]">
@@ -12,8 +21,8 @@ function ServiceOfferings() {
           <div className="container">
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-5">
               <div className="flex flex-col gap-4 max-w-xl">
-                <div className="bg-gray w-fit flex-1 rounded-full py-1 px-4">
-                  <p className="font-semibold text-white">What We Do Best</p>
+                <div className="inline-flex items-center justify-start whitespace-nowrap text-sm font-medium border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/30 hover:bg-blue-100 dark:hover:bg-blue-900/40 hover:border-blue-300 dark:hover:border-blue-700 shadow-xs h-8 gap-1.5 px-3 rounded-full w-fit text-blue-800 dark:text-blue-200">
+                  <p className="font-semibold text-current">What We Do Best</p>
                 </div>
                 <h2 className="font-semibold text-secondary">We create digital ecosystems that attract, convert, and retain</h2>
               </div>
@@ -41,7 +50,7 @@ function ServiceOfferings() {
                     <div className="absolute -bottom-8 right-0 flex items-center">
                       <div className="bg-white dark:bg-secondary pl-6 flex items-center rounded-sm">
                         <span className="text-secondary/40 mr-2">0{value.id}.</span>
-                        <Link href={`/services/${value.slug}`}><h6 className="pr-10 font-semibold">{value.service_title}</h6></Link>
+                        <Link href={`/services/${value.slug}`}><h6 className="pr-10 font-semibold">{marketingTitles[index] ?? value.service_title}</h6></Link>
                         <Link
                           href={`/services/${value.slug}`}
                           className="w-fit bg-primary p-5 rounded-r-sm"

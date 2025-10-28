@@ -1,4 +1,5 @@
 "use client";
+import { API_ENDPOINTS } from '@/lib/api-config';
 import type { Locale } from "@/lib/i18n";
 import { ChevronRight, Clock, Star, Users } from "lucide-react";
 import Image from "next/image";
@@ -48,14 +49,13 @@ function HeroSection({ dict, locale }: HeroSectionProps) {
 
     const loadingToast = toast.loading('Sending request...');
 
-    fetch("http://localhost:32947/api/contact", {
+    fetch(API_ENDPOINTS.contact, {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({
         name: formData.name,
-        email: formData.email,
-        phone: formData.number,
-        message: `Services requested: ${formData.services.join(", ")}`,
+        email: formData.email || undefined,
+        message: formData.services.length > 0 ? `Services requested: ${formData.services.join(", ")}` : "No services selected",
         service: "Hero Form"
       }),
     })
@@ -137,7 +137,7 @@ function HeroSection({ dict, locale }: HeroSectionProps) {
                 </div>
               </div>
 
-              <div className="relative bg-white dark:bg-dark-gray rounded-none md:rounded-md max-w-530px lg:max-w-md xl:max-w-530px w-full -mx-5 sm:mx-0 py-10 px-5 sm:px-10 sm:p-10 flex flex-col gap-8 sm:shadow-2xl sm:shadow-black/10 sm:border sm:border-gray-100 dark:sm:border-gray-700">
+              <div className="relative bg-white dark:bg-dark-gray rounded-none md:rounded-md max-w-530px lg:max-w-md xl:max-w-530px w-full py-10 sm:px-10 sm:p-10 flex flex-col gap-8 sm:shadow-2xl sm:shadow-black/10 sm:border sm:border-gray-100 dark:sm:border-gray-700">
                 <h4 className="font-semibold dark:text-white">{dict.formTitle}</h4>
                 <FormComponent
                   formData={formData}

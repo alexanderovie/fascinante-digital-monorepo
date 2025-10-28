@@ -9,7 +9,7 @@ const Pricing = () => {
   const ref = useRef(null);
   const inView = useInView(ref);
   const [modalOpen, setModalOpen] = useState(false);
-  const bottomAnimation = (index: any) => ({
+  const bottomAnimation = (index: number) => ({
     initial: { y: "5%", opacity: 0 },
     animate: inView ? { y: 0, opacity: 1 } : { y: "10%", opacity: 0 },
     transition: { duration: 0.4, delay: 0.4 + index * 0.3 },
@@ -20,8 +20,8 @@ const Pricing = () => {
         <div className="container">
           <div className='py-20 sm:py-28 flex flex-col gap-9 sm:gap-16'>
             <div className="flex flex-col gap-3 items-center justify-center">
-              <div className="bg-primary w-fit  rounded-full py-1 px-4">
-                <p className="font-semibold text-white">Transparent pricing</p>
+              <div className="inline-flex items-center justify-start whitespace-nowrap text-sm font-medium border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/30 hover:bg-blue-100 dark:hover:bg-blue-900/40 hover:border-blue-300 dark:hover:border-blue-700 shadow-xs h-8 gap-1.5 px-3 rounded-full w-fit text-blue-800 dark:text-blue-200">
+                <p className="font-semibold text-current">Transparent pricing</p>
               </div>
               <h2 className='font-semibold max-w-2xl text-center'>Budget-friendly options for a cleaner home</h2>
             </div>

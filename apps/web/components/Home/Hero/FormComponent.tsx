@@ -28,16 +28,10 @@ export default function FormComponent({
     services?: string;
   }>({});
 
-  // Hero form service options (marketing services)
-  // Reordenadas: las primeras 2 se muestran en todas las pantallas (xl y menores)
-  // Las últimas 4 solo en pantallas grandes (2xl y mayores)
+  // Hero form service options - Solo 2 opciones grandes
   const heroServiceOptions: string[] = [
-    dict.formServices1,      // Mostrar siempre (≤1280px)
-    dict.formServices2,      // Mostrar siempre (≤1280px)
-    dict.formServices3,      // Solo en >1280px
-    dict.formServices4,      // Solo en >1280px
-    dict.formServices5,      // Solo en >1280px
-    dict.formServices6,      // Solo en >1280px
+    dict.formServices1,      // Optimización SEO
+    dict.formServices2,      // Google y Meta Ads
   ];
 
   const validateForm = () => {
@@ -53,33 +47,11 @@ export default function FormComponent({
       newErrors.name = "Business name should only contain letters.";
     }
 
-    // Validación de campos adicionales solo si están visibles (md y mayores)
-    // Usamos matchMedia para verificar el breakpoint de forma segura
-    if (typeof window !== 'undefined') {
-      const isMobile = window.matchMedia('(max-width: 767px)').matches;
-
-      if (!isMobile) {
-        // Solo validar en pantallas md y mayores (donde los campos son visibles)
-        if (!formData.number.trim()) {
-          newErrors.number = "Phone number is required.";
-        } else if (!phoneRegex.test(formData.number)) {
-          newErrors.number = "Enter a valid phone number (10-15 digits).";
-        }
-
-        if (!formData.email.trim()) {
-          newErrors.email = "Email is required.";
-        } else if (!emailRegex.test(formData.email)) {
-          newErrors.email = "Enter a valid email address.";
-        }
-
-        if (!formData.services.length) {
-          newErrors.services = "Please select at least one service.";
-        }
-      }
-    } else {
-      // En SSR, asumimos que es móvil y solo validamos el nombre
-      // La validación completa se hará en el cliente si es necesario
+    // Validación de email (opcional, pero si se ingresa debe ser válido)
+    if (formData.email.trim() && !emailRegex.test(formData.email)) {
+      newErrors.email = "Enter a valid email address.";
     }
+
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -107,23 +79,11 @@ export default function FormComponent({
           {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
         </div>
 
-        <div className="hidden md:block">
-          <input
-            type="tel"
-            name="number"
-            placeholder={`${dict.formPhone} *`}
-            onChange={onChange}
-            value={formData.number}
-            className="input-field"
-          />
-          {errors.number && <p className="text-red-500 text-sm mt-1">{errors.number}</p>}
-        </div>
-
-        <div className="hidden md:block">
+        <div>
           <input
             type="email"
             name="email"
-            placeholder={`${dict.formEmail} *`}
+            placeholder={dict.formEmail}
             onChange={onChange}
             value={formData.email}
             className="input-field"
@@ -132,13 +92,13 @@ export default function FormComponent({
         </div>
       </div>
 
-      <div className="hidden md:flex flex-col gap-4">
-        <p className="font-semibold text-dusty-gray dark:text-white/90">{dict.formServices} *</p>
+      <div className="flex flex-col gap-4">
+        <p className="font-semibold text-dusty-gray dark:text-white/90">{dict.formServices}</p>
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-5 gap-y-2.5">
-          {heroServiceOptions.map((title, index) => (
+          {heroServiceOptions.map((title) => (
             <div
               key={title}
-              className={`flex items-center ${index >= 2 ? 'hidden xl:flex' : ''}`}
+              className="flex items-center"
             >
               <input
                 type="checkbox"
