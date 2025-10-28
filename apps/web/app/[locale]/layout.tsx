@@ -45,6 +45,7 @@ export async function generateMetadata({
   const baseUrl = 'https://fascinantedigital.com';
 
   return {
+    metadataBase: new URL(baseUrl),
     title: metadata.title,
     description: metadata.description,
     keywords: metadata.keywords.split(',').map(k => k.trim()),
@@ -57,6 +58,28 @@ export async function generateMetadata({
       apple: '/apple-touch-icon.png',
     },
     manifest: '/site.webmanifest',
+    openGraph: {
+      title: metadata.title,
+      description: metadata.description,
+      url: `${baseUrl}/${locale}`,
+      siteName: 'Fascinante Digital',
+      locale: locale === 'es' ? 'es_ES' : 'en_US',
+      type: 'website',
+      images: [
+        {
+          url: '/opengraph-image.jpg',
+          width: 1200,
+          height: 630,
+          alt: 'Fascinante Digital - Marketing Digital',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: metadata.title,
+      description: metadata.description,
+      images: ['/opengraph-image.jpg'],
+    },
     alternates: {
       canonical: `${baseUrl}/${locale}`,
       languages: {
@@ -81,9 +104,37 @@ export default async function RootLayout({
   const { locale } = await params;
   const dict = await getDictionary(locale);
 
+  // JSON-LD Organization Schema (Next.js 15 Official Method)
+  const organizationJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Fascinante Digital',
+    url: 'https://fascinantedigital.com',
+    logo: 'https://fascinantedigital.com/logo.png',
+    sameAs: [
+      'https://www.facebook.com/fascinantedigital',
+      'https://twitter.com/fascinantedig',
+      'https://www.linkedin.com/company/fascinante-digital',
+    ],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+1-800-886-4981',
+      contactType: 'customer service',
+      areaServed: ['US', 'MX', 'AR', 'CO'],
+      availableLanguage: ['Spanish', 'English'],
+    },
+  };
+
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={inter.className}>
+        {/* JSON-LD Organization Schema según recomendación oficial Next.js 15 */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd).replace(/</g, '\\u003c'),
+          }}
+        />
         <QueryProvider>
           <ThemeProvider attribute="class" enableSystem={false} defaultTheme="light">
             <I18nProvider locale={locale} dict={dict}>

@@ -1,0 +1,139 @@
+{
+  "instructions": {
+    "title": "BRIEF DE COPY - Fascinante Digital",
+    "version": "1.0",
+    "date": "2025-01-27",
+    "instructions": "Completa todos los campos con copy en español. Respetar EXACTAMENTE los límites de caracteres indicados (incluir espacios y signos en el conteo). El copy debe ser profesional, directo y orientado a resultados, alineado con la marca Fascinante Digital (agencia de marketing digital bilingüe)."
+  },
+  "badges": {
+    "heroHomepage": {
+      "current_en": "What We Do Best",
+      "current_length": 16,
+      "min_characters": 12,
+      "max_characters": 18,
+      "text": "",
+      "note": "Badge principal del hero en homepage. Estilo similar a 'What We Do Best' - debe destacar especialización/expertise. Ejemplo: 'Lo Que Mejor Hacemos' (18) o 'Nuestra Especialidad' (18)"
+    },
+    "serviceOfferings": {
+      "current_en": "What We Do Best",
+      "current_length": 16,
+      "min_characters": 12,
+      "max_characters": 18,
+      "text": "",
+      "note": "Badge de la sección 'Service Offerings' en homepage. Puede ser igual al hero o variación breve que mantenga consistencia."
+    },
+    "portfolio": {
+      "current_en": "Our work in action",
+      "current_length": 18,
+      "min_characters": 14,
+      "max_characters": 20,
+      "text": "",
+      "note": "Badge de la sección Portfolio/Our Work en homepage. Debe transmitir que es una galería de trabajos/casos de éxito. Ejemplo: 'Nuestro Trabajo' (15) o 'Casos de Éxito' (14)"
+    },
+    "contact": {
+      "current_en": "Contact us",
+      "current_length": 10,
+      "min_characters": 8,
+      "max_characters": 14,
+      "text": "",
+      "note": "Badge de la página Contact. Debe invitar al contacto. Ejemplo: 'Contáctanos' (10) o 'Hablemos' (7)"
+    }
+  },
+  "titles": {
+    "contact": {
+      "current_en": "Have questions? Ready to help!",
+      "current_length": 29,
+      "min_characters": 25,
+      "max_characters": 35,
+      "text": "",
+      "note": "Título principal (H2) de la página Contact. Puede incluir signos de interrogación. Debe ser acogedor e invitar al contacto. Formato: pregunta o afirmación directa."
+    },
+    "about": {
+      "current_en": "Making automation accessible to everyone",
+      "current_length": 39,
+      "min_characters": 35,
+      "max_characters": 45,
+      "text": "",
+      "note": "⚠️ IMPORTANTE: El copy actual habla de 'automation' pero debe ser sobre la agencia de marketing digital. Título principal (H2) página About. Debe comunicar quiénes somos/nuestra propuesta de valor como agencia bilingüe de marketing."
+    },
+    "services": {
+      "current_en": "Services – Sparkling Clean Every Time",
+      "current_length": 36,
+      "min_characters": 32,
+      "max_characters": 40,
+      "text": "",
+      "note": "⚠️ CRÍTICO: El copy actual es de servicios de LIMPIEZA ('Sparkling Clean'). DEBE ser reemplazado completamente por copy de MARKETING DIGITAL. Título principal (H2) página Services. Debe comunicar servicios de marketing/SEO/publicidad."
+    },
+    "finalCta": {
+      "current_en": "Ready to shine online?",
+      "current_length": 23,
+      "min_characters": 20,
+      "max_characters": 28,
+      "text": "",
+      "note": "Título de la sección Final CTA en homepage (última sección antes del footer). Debe ser un cierre poderoso que invite a la acción. Puede incluir signos de interrogación."
+    }
+  },
+  "subtitles": {
+    "finalCta": {
+      "current_en": "Grow beyond ads and followers",
+      "current_length": 30,
+      "min_characters": 26,
+      "max_characters": 34,
+      "text": "",
+      "note": "Subtítulo de la sección Final CTA en homepage. Texto secundario que complementa el título. Debe ser conciso y directo."
+    }
+  },
+  "descriptions": {
+    "contact": {
+      "current_en": "We'll create high-quality linkable content and build at least 40 high-authority links to each asset, paving the way for you to grow your ranking, improve brand.",
+      "current_length": 149,
+      "min_characters": 130,
+      "max_characters": 160,
+      "text": "",
+      "note": "⚠️ El copy actual es placeholder genérico de SEO/link building. DEBE ser reemplazado por copy sobre contacto/atención al cliente. Descripción (párrafo) de la página Contact. Debe explicar cómo contactar o qué esperar al contactar."
+    },
+    "about": {
+      "current_en": "We'll create high-quality linkable content and build at least 40 high-authority links to each asset, paving the way for you to grow your ranking, improve brand.",
+      "current_length": 149,
+      "min_characters": 130,
+      "max_characters": 160,
+      "note": "⚠️ El copy actual es placeholder genérico. DEBE ser reemplazado por copy sobre la agencia. Descripción (párrafo) de la página About. Debe explicar quiénes somos, qué hacemos, nuestra propuesta de valor como agencia bilingüe."
+    },
+    "services": {
+      "current_en": "Discover our full range of residential and commercial cleaning services. From deep cleaning to routine maintenance, our trusted team ensures your space is spotless and sanitized.",
+      "current_length": 158,
+      "min_characters": 140,
+      "max_characters": 170,
+      "text": "",
+      "note": "⚠️ CRÍTICO: El copy actual es de servicios de LIMPIEZA. DEBE ser completamente reemplazado por copy de MARKETING DIGITAL. Descripción (párrafo) de la página Services. Debe explicar los servicios de marketing/SEO/publicidad que ofrecemos."
+    },
+    "finalCta": {
+      "current_en": "Book your free audit and discover how we can take your brand to the next level.",
+      "current_length": 76,
+      "min_characters": 65,
+      "max_characters": 85,
+      "text": "",
+      "note": "Descripción de la sección Final CTA en homepage. Debe ser un cierre convincente que invite a solicitar auditoría o contacto. Conciso pero persuasivo."
+    }
+  },
+  "validation_checklist": {
+    "char_count": "✅ Verificar que TODOS los textos estén dentro de los rangos min-max",
+    "no_automation": "✅ Eliminar cualquier referencia a 'automation' en About",
+    "no_cleaning": "✅ Eliminar completamente referencias a 'cleaning/limpieza' en Services",
+    "tone": "✅ Mantener tono profesional, directo, orientado a resultados",
+    "brand_alignment": "✅ Alinear con marca Fascinante Digital (marketing digital bilingüe)",
+    "spaces_punctuation": "✅ Incluir espacios y signos de puntuación en el conteo de caracteres"
+  },
+  "examples": {
+    "badge": {
+      "example1": "Lo Que Mejor Hacemos",
+      "count": "18 caracteres (dentro del rango 12-18)",
+      "note": "Cuenta: L-o- -Q-u-e- -M-e-j-o-r- -H-a-c-e-m-o-s = 18"
+    },
+    "title": {
+      "example1": "¿Tienes Preguntas? Estamos Aquí para Ayudar",
+      "count": "44 caracteres (dentro del rango 25-35 para Contact sería demasiado, ajustar)",
+      "note": "Este ejemplo es para mostrar formato, ajustar al rango específico de cada campo"
+    }
+  }
+}

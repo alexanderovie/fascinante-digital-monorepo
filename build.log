@@ -1,0 +1,217 @@
+
+> fascinante-digital-monorepo@ build /home/alexander/proyectos/fascinante-digital-monorepo
+> turbo run build
+
+turbo 2.5.8
+
+• Packages in scope: @repo/seo-config, app, fascinante-api, web
+• Running build in 4 packages
+• Remote caching disabled
+@repo/seo-config:build: cache hit, replaying logs 047dae805bb6c893
+@repo/seo-config:build: 
+@repo/seo-config:build: > @repo/seo-config@1.0.0 build /home/alexander/proyectos/fascinante-digital-monorepo/packages/seo-config
+@repo/seo-config:build: > tsc
+@repo/seo-config:build: 
+web:build: cache miss, executing c0f3992736edacb2
+app:build: cache hit, replaying logs 4ee1d7e62c8d8ed8
+app:build: 
+app:build: > app@1.2.0 build /home/alexander/proyectos/fascinante-digital-monorepo/apps/app
+app:build: > next build
+app:build: 
+app:build:    ▲ Next.js 15.5.6
+app:build:    - Environments: .env.local
+app:build: 
+app:build:    Creating an optimized production build ...
+app:build:  ✓ Compiled successfully in 10.2s
+app:build:    Skipping validation of types
+app:build:    Skipping linting
+app:build:    Collecting page data ...
+app:build:    Generating static pages (0/78) ...
+app:build:    Generating static pages (19/78) 
+app:build:    Generating static pages (38/78) 
+app:build:    Generating static pages (58/78) 
+app:build:  ✓ Generating static pages (78/78)
+app:build:    Finalizing page optimization ...
+app:build:    Collecting build traces ...
+app:build: 
+app:build: Route (app)                                     Size  First Load JS
+app:build: ┌ ƒ /                                          187 B         106 kB
+app:build: ├ ƒ /_not-found                                187 B         106 kB
+app:build: ├ ƒ /api/auth/callback                         187 B         106 kB
+app:build: ├ ƒ /api/auth/google                           187 B         106 kB
+app:build: ├ ƒ /api/auth/logout                           187 B         106 kB
+app:build: ├ ƒ /api/gemini                                187 B         106 kB
+app:build: ├ ƒ /api/tokens/refresh                        187 B         106 kB
+app:build: ├ ƒ /api/tokens/status                         187 B         106 kB
+app:build: ├ ○ /apple-icon.png                              0 B            0 B
+app:build: ├ ƒ /dashboard                                 187 B         106 kB
+app:build: ├ ƒ /dashboard/academy                       9.38 kB         328 kB
+app:build: ├ ƒ /dashboard/apps/ai-chat                  2.46 kB         239 kB
+app:build: ├ ƒ /dashboard/apps/ai-chat-v2                 168 B         367 kB
+app:build: ├ ƒ /dashboard/apps/ai-chat-v2/[id]            169 B         367 kB
+app:build: ├ ƒ /dashboard/apps/ai-image-generator       5.67 kB         181 kB
+app:build: ├ ƒ /dashboard/apps/api-keys                 13.7 kB         278 kB
+app:build: ├ ƒ /dashboard/apps/calendar                   92 kB         312 kB
+app:build: ├ ƒ /dashboard/apps/chat                     14.2 kB         182 kB
+app:build: ├ ƒ /dashboard/apps/courses                    187 B         106 kB
+app:build: ├ ƒ /dashboard/apps/file-manager               15 kB         166 kB
+app:build: ├ ƒ /dashboard/apps/kanban                   16.3 kB         182 kB
+app:build: ├ ƒ /dashboard/apps/mail                     23.1 kB         229 kB
+app:build: ├ ƒ /dashboard/apps/notes                     203 kB         383 kB
+app:build: ├ ƒ /dashboard/apps/pos-system                 11 kB         180 kB
+app:build: ├ ƒ /dashboard/apps/pos-system/tables        6.11 kB         172 kB
+app:build: ├ ƒ /dashboard/apps/social-media               187 B         106 kB
+app:build: ├ ƒ /dashboard/apps/tasks                    12.1 kB         196 kB
+app:build: ├ ƒ /dashboard/apps/text-to-speech             187 B         106 kB
+app:build: ├ ƒ /dashboard/apps/todo-list-app            17.2 kB         252 kB
+app:build: ├ ƒ /dashboard/crm                           12.4 kB         314 kB
+app:build: ├ ƒ /dashboard/crypto                         8.3 kB         287 kB
+app:build: ├ ƒ /dashboard/default                       15.5 kB         298 kB
+app:build: ├ ƒ /dashboard/ecommerce                     13.3 kB         332 kB
+app:build: ├ ƒ /dashboard/file-manager                  12.7 kB         342 kB
+app:build: ├ ƒ /dashboard/finance                       19.6 kB         313 kB
+app:build: ├ ƒ /dashboard/forgot-password               4.22 kB         154 kB
+app:build: ├ ƒ /dashboard/hospital-management           10.8 kB         366 kB
+app:build: ├ ƒ /dashboard/hotel                           187 B         106 kB
+app:build: ├ ƒ /dashboard/login/v1                         1 kB         119 kB
+app:build: ├ ƒ /dashboard/login/v2                         1 kB         119 kB
+app:build: ├ ƒ /dashboard/logistics                       187 B         106 kB
+app:build: ├ ƒ /dashboard/pages/empty-states/01           187 B         106 kB
+app:build: ├ ƒ /dashboard/pages/empty-states/02           173 B         110 kB
+app:build: ├ ƒ /dashboard/pages/empty-states/03           496 B         112 kB
+app:build: ├ ƒ /dashboard/pages/error/403                 496 B         112 kB
+app:build: ├ ƒ /dashboard/pages/error/404                 173 B         110 kB
+app:build: ├ ƒ /dashboard/pages/error/500                 187 B         106 kB
+app:build: ├ ƒ /dashboard/pages/onboarding-flow         7.43 kB         128 kB
+app:build: ├ ƒ /dashboard/pages/orders                  4.59 kB         185 kB
+app:build: ├ ƒ /dashboard/pages/orders/[id]             2.65 kB         126 kB
+app:build: ├ ƒ /dashboard/pages/pricing/column          3.91 kB         127 kB
+app:build: ├ ƒ /dashboard/pages/pricing/single          3.88 kB         127 kB
+app:build: ├ ƒ /dashboard/pages/pricing/table           6.82 kB         122 kB
+app:build: ├ ƒ /dashboard/pages/products                4.39 kB         192 kB
+app:build: ├ ƒ /dashboard/pages/products/[id]           39.3 kB         171 kB
+app:build: ├ ƒ /dashboard/pages/products/create         10.1 kB         197 kB
+app:build: ├ ƒ /dashboard/pages/profile                 9.19 kB         156 kB
+app:build: ├ ƒ /dashboard/pages/settings                6.86 kB         190 kB
+app:build: ├ ƒ /dashboard/pages/settings/account        6.79 kB         213 kB
+app:build: ├ ƒ /dashboard/pages/settings/appearance      8.3 kB         188 kB
+app:build: ├ ƒ /dashboard/pages/settings/billing        3.82 kB         119 kB
+app:build: ├ ƒ /dashboard/pages/settings/display        4.35 kB         157 kB
+app:build: ├ ƒ /dashboard/pages/settings/notifications  7.95 kB         166 kB
+app:build: ├ ƒ /dashboard/pages/users                   3.88 kB         179 kB
+app:build: ├ ƒ /dashboard/payment                       8.75 kB         265 kB
+app:build: ├ ƒ /dashboard/payment/transactions          6.06 kB         179 kB
+app:build: ├ ƒ /dashboard/project-management            20.9 kB         343 kB
+app:build: ├ ƒ /dashboard/register/v1                      1 kB         119 kB
+app:build: ├ ƒ /dashboard/register/v2                      1 kB         119 kB
+app:build: ├ ƒ /dashboard/sales                         10.5 kB         317 kB
+app:build: ├ ƒ /dashboard/website-analytics             5.96 kB         303 kB
+app:build: ├ ○ /icon.svg                                    0 B            0 B
+app:build: ├ ○ /icon1.png                                   0 B            0 B
+app:build: ├ ○ /icon2.png                                   0 B            0 B
+app:build: ├ ○ /icon3.png                                   0 B            0 B
+app:build: ├ ○ /manifest.json                               0 B            0 B
+app:build: ├ ○ /manifest.webmanifest                      187 B         106 kB
+app:build: └ ○ /robots.txt                                187 B         106 kB
+app:build: + First Load JS shared by all                 106 kB
+app:build:   ├ chunks/9540-f2dd2785d1d0b144.js          45.7 kB
+app:build:   ├ chunks/bc7edd46-40b676bdf481fce5.js      54.2 kB
+app:build:   └ other shared chunks (total)              6.26 kB
+app:build: 
+app:build: 
+app:build: ƒ Middleware                                   72 kB
+app:build: 
+app:build: ○  (Static)   prerendered as static content
+app:build: ƒ  (Dynamic)  server-rendered on demand
+app:build: 
+web:build: 
+web:build: > web@0.1.0 build /home/alexander/proyectos/fascinante-digital-monorepo/apps/web
+web:build: > next build
+web:build: 
+web:build:    ▲ Next.js 15.5.6
+web:build:    - Environments: .env.local
+web:build: 
+web:build:    Creating an optimized production build ...
+web:build:  ✓ Compiled successfully in 3.8s
+web:build:    Skipping validation of types
+web:build:    Skipping linting
+web:build:    Collecting page data ...
+web:build:    Generating static pages (0/40) ...
+web:build:    Generating static pages (10/40) 
+web:build:    Generating static pages (20/40) 
+web:build:    Generating static pages (30/40) 
+web:build:  ✓ Generating static pages (40/40)
+web:build:    Finalizing page optimization ...
+web:build:    Collecting build traces ...
+web:build: 
+web:build: Route (app)                                 Size  First Load JS
+web:build: ┌ ○ /_not-found                            145 B         102 kB
+web:build: ├ ● /[locale]                            6.88 kB         194 kB
+web:build: ├   ├ /en
+web:build: ├   └ /es
+web:build: ├ ● /[locale]/about-us                   7.33 kB         134 kB
+web:build: ├   ├ /en/about-us
+web:build: ├   └ /es/about-us
+web:build: ├ ● /[locale]/audit                      8.78 kB         175 kB
+web:build: ├   ├ /en/audit
+web:build: ├   └ /es/audit
+web:build: ├ ƒ /[locale]/audit/results/[auditId]    4.39 kB         106 kB
+web:build: ├ ● /[locale]/contact-us                 2.51 kB         119 kB
+web:build: ├   ├ /en/contact-us
+web:build: ├   └ /es/contact-us
+web:build: ├ ● /[locale]/documentation              8.79 kB         119 kB
+web:build: ├   ├ /en/documentation
+web:build: ├   └ /es/documentation
+web:build: ├ ● /[locale]/forgot-password            1.63 kB         112 kB
+web:build: ├   ├ /en/forgot-password
+web:build: ├   └ /es/forgot-password
+web:build: ├ ○ /[locale]/opengraph-image.jpg            0 B            0 B
+web:build: ├ ● /[locale]/privacy-policy               483 B         105 kB
+web:build: ├   ├ /en/privacy-policy
+web:build: ├   └ /es/privacy-policy
+web:build: ├ ● /[locale]/profile                    1.33 kB         157 kB
+web:build: ├   ├ /en/profile
+web:build: ├   └ /es/profile
+web:build: ├ ● /[locale]/services                     178 B         110 kB
+web:build: ├   ├ /en/services
+web:build: ├   └ /es/services
+web:build: ├ ƒ /[locale]/services/[slug]            4.36 kB         129 kB
+web:build: ├ ● /[locale]/sign-in                    2.11 kB         161 kB
+web:build: ├   ├ /en/sign-in
+web:build: ├   └ /es/sign-in
+web:build: ├ ● /[locale]/sign-up                    1.87 kB         161 kB
+web:build: ├   ├ /en/sign-up
+web:build: ├   └ /es/sign-up
+web:build: ├ ● /[locale]/terms-and-conditions         145 B         102 kB
+web:build: ├   ├ /en/terms-and-conditions
+web:build: ├   └ /es/terms-and-conditions
+web:build: ├ ƒ /api/audit/generate                    145 B         102 kB
+web:build: ├ ƒ /api/audit/results/[auditId]           145 B         102 kB
+web:build: ├ ƒ /api/places/autocomplete               145 B         102 kB
+web:build: ├ ƒ /api/places/details                    145 B         102 kB
+web:build: ├ ○ /apple-icon.png                          0 B            0 B
+web:build: ├ ○ /icon.svg                                0 B            0 B
+web:build: ├ ○ /icon1.png                               0 B            0 B
+web:build: ├ ○ /icon2.png                               0 B            0 B
+web:build: ├ ○ /icon3.png                               0 B            0 B
+web:build: ├ ○ /manifest.json                           0 B            0 B
+web:build: ├ ○ /manifest.webmanifest                  145 B         102 kB
+web:build: ├ ○ /robots.txt                            145 B         102 kB
+web:build: └ ○ /sitemap.xml                           145 B         102 kB
+web:build: + First Load JS shared by all             102 kB
+web:build:   ├ chunks/540-736a68c46984c5d9.js       45.5 kB
+web:build:   ├ chunks/bc7edd46-a5d8190def40b60b.js  54.2 kB
+web:build:   └ other shared chunks (total)          1.94 kB
+web:build: 
+web:build: 
+web:build: ƒ Middleware                             43.2 kB
+web:build: 
+web:build: ○  (Static)   prerendered as static content
+web:build: ●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+web:build: ƒ  (Dynamic)  server-rendered on demand
+web:build: 
+
+ Tasks:    3 successful, 3 total
+Cached:    2 cached, 3 total
+  Time:    12.717s 
+

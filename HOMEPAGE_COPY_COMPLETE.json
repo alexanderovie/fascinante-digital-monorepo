@@ -1,0 +1,1001 @@
+{
+  "instructions": {
+    "title": "COPY COMPLETO DE HOMEPAGE - Fascinante Digital",
+    "version": "2.0",
+    "date": "2025-01-27",
+    "instructions": "Este archivo contiene TODOS los textos de la homepage con detalles técnicos completos de UI/UX. El copywriter debe revisar y proporcionar copia en español para todos los campos marcados con 'REQUIERE COPY'. Respetar EXACTAMENTE los límites de caracteres (incluir espacios y signos).",
+    "legend": {
+      "element_type": "Tipo de elemento HTML (badge, h1, h2, h4, p, button, link, bullet)",
+      "css_classes": "Clases Tailwind CSS aplicadas",
+      "font_size": "Tamaño de fuente aproximado",
+      "location": "Ubicación exacta en la página",
+      "image_specs": "Especificaciones de imágenes relacionadas (si aplica)"
+    }
+  },
+  "hero": {
+    "badge": {
+      "current_en": "What We Do Best",
+      "current_es": "What We Do Best",
+      "current_length": 16,
+      "min_characters": 12,
+      "max_characters": 18,
+      "status": "REQUIERE COPY",
+      "text_es": "",
+      "ui_specs": {
+        "element_type": "Badge (fondo azul claro con borde)",
+        "css_classes": "badge (font-weight: 500, font-size: 14px, line-height: 20px)",
+        "font_size": "14px (0.875rem)",
+        "location": "Hero Section - Parte superior izquierda",
+        "visual_context": "Badge azul claro con texto azul oscuro, flecha → al final, link clickeable"
+      },
+      "note": "Badge principal del hero. Estilo corto e impactante. Ejemplo: 'Lo Que Mejor Hacemos' (18)"
+    },
+    "title": {
+      "current_en": "Make your business shine where it matters most",
+      "current_es": "Haz que tu negocio brille donde importa",
+      "current_length": 45,
+      "min_characters": 40,
+      "max_characters": 50,
+      "status": "✅ COMPLETO",
+      "text_es": "Haz que tu negocio brille donde importa",
+      "ui_specs": {
+        "element_type": "H1 (título principal)",
+        "css_classes": "text-secondary dark:text-white font-semibold min-w-[12ch]",
+        "font_size": "Grande (responsive: base ~2xl/3xl, lg ~4xl/5xl)",
+        "location": "Hero Section - Debajo del badge",
+        "visual_context": "Título principal grande, color gris oscuro, negrita semibold"
+      },
+      "note": "Título principal del hero. Ya está en español."
+    },
+    "subtitle": {
+      "current_en": "We craft bilingual strategies that position your brand, attract real clients, and turn clicks into customers",
+      "current_es": "Diseñamos estrategias bilingües que posicionan tu marca, atraen clientes reales y convierten clics en ventas",
+      "current_length": 95,
+      "min_characters": 85,
+      "max_characters": 105,
+      "status": "✅ COMPLETO",
+      "text_es": "Diseñamos estrategias bilingües que posicionan tu marca, atraen clientes reales y convierten clics en ventas",
+      "ui_specs": {
+        "element_type": "Párrafo descriptivo",
+        "css_classes": "text-secondary dark:text-white text-lg sm:text-xl",
+        "font_size": "18px (lg) - 20px (xl) en mobile/desktop",
+        "location": "Hero Section - Debajo del título H1",
+        "visual_context": "Texto descriptivo secundario, color gris oscuro"
+      },
+      "note": "Subtítulo del hero. Ya está en español."
+    },
+    "clients": {
+      "current_es": "+500 negocios impulsados",
+      "current_length": 25,
+      "status": "✅ COMPLETO",
+      "text_es": "+500 negocios impulsados",
+      "ui_specs": {
+        "element_type": "Métrica con icono (Trust Metric)",
+        "css_classes": "text-lg md:text-xl font-semibold",
+        "font_size": "18px (lg) - 20px (xl)",
+        "location": "Hero Section - Desktop/Tablet, debajo del subtítulo, lado izquierdo",
+        "image_specs": {
+          "required": true,
+          "icon_type": "Users icon (dos personas)",
+          "icon_size": "28x28px",
+          "icon_color": "Azul claro (text-blue-400)",
+          "description": "Icono SVG de dos personas, azul claro, tamaño 28px"
+        },
+        "visual_context": "Ícono de usuarios azul + texto métrica, horizontal layout"
+      }
+    },
+    "satisfaction": {
+      "current_es": "99% satisfacción",
+      "current_length": 17,
+      "status": "✅ COMPLETO",
+      "text_es": "99% satisfacción",
+      "ui_specs": {
+        "element_type": "Métrica con icono (Trust Metric)",
+        "css_classes": "text-lg md:text-xl font-semibold",
+        "font_size": "18px (lg) - 20px (xl)",
+        "location": "Hero Section - Desktop/Tablet, al lado de 'clients'",
+        "image_specs": {
+          "required": true,
+          "icon_type": "Star icon (estrella)",
+          "icon_size": "28x28px",
+          "icon_color": "Ámbar/Amarillo (text-amber-400)",
+          "description": "Icono SVG de estrella, color ámbar/amarillo, tamaño 28px"
+        }
+      }
+    },
+    "support": {
+      "current_es": "Atención humana 24/7",
+      "current_length": 20,
+      "status": "✅ COMPLETO",
+      "text_es": "Atención humana 24/7",
+      "ui_specs": {
+        "element_type": "Métrica con icono (Trust Metric)",
+        "css_classes": "text-lg md:text-xl font-semibold",
+        "font_size": "18px (lg) - 20px (xl)",
+        "location": "Hero Section - Solo Desktop XL, oculto en móvil/tablet",
+        "image_specs": {
+          "required": true,
+          "icon_type": "Clock icon (reloj)",
+          "icon_size": "28x28px",
+          "icon_color": "Verde esmeralda (text-emerald-400)",
+          "description": "Icono SVG de reloj, color verde esmeralda, tamaño 28px"
+        }
+      }
+    },
+    "formTitle": {
+      "current_es": "Solicita tu Auditoría Gratuita",
+      "current_length": 32,
+      "status": "✅ COMPLETO",
+      "text_es": "Solicita tu Auditoría Gratuita",
+      "ui_specs": {
+        "element_type": "H4 (subtítulo)",
+        "css_classes": "font-semibold dark:text-white mb-6",
+        "font_size": "18px-20px (aprox)",
+        "location": "Hero Section - Formulario lado derecho (Desktop), parte superior del form",
+        "visual_context": "Título del formulario, dentro de caja blanca con sombra"
+      }
+    },
+    "formName": {
+      "current_es": "Nombre del negocio",
+      "status": "✅ COMPLETO",
+      "text_es": "Nombre del negocio",
+      "ui_specs": {
+        "element_type": "Label de input",
+        "location": "Formulario Hero - Primer campo"
+      }
+    },
+    "formPhone": {
+      "current_es": "Número de teléfono",
+      "status": "✅ COMPLETO",
+      "text_es": "Número de teléfono"
+    },
+    "formEmail": {
+      "current_es": "Correo electrónico",
+      "status": "✅ COMPLETO",
+      "text_es": "Correo electrónico"
+    },
+    "formServices": {
+      "current_es": "Opciones de servicio",
+      "status": "✅ COMPLETO",
+      "text_es": "Opciones de servicio"
+    },
+    "formServices1": {
+      "current_es": "Optimización SEO",
+      "status": "✅ COMPLETO",
+      "text_es": "Optimización SEO"
+    },
+    "formServices2": {
+      "current_es": "Google y Meta Ads",
+      "status": "✅ COMPLETO",
+      "text_es": "Google y Meta Ads"
+    },
+    "formSubmit": {
+      "current_es": "Comienza hoy",
+      "status": "✅ COMPLETO",
+      "text_es": "Comienza hoy",
+      "ui_specs": {
+        "element_type": "Botón CTA principal",
+        "css_classes": "bg-secondary hover:bg-primary rounded-sm",
+        "font_size": "16px (text-base) font-bold",
+        "color": "Fondo gris oscuro (secondary), texto blanco",
+        "location": "Formulario Hero - Botón submit principal"
+      }
+    },
+    "formThanks": {
+      "current_es": "¡Gracias por contactarnos!",
+      "status": "✅ COMPLETO",
+      "text_es": "¡Gracias por contactarnos!",
+      "ui_specs": {
+        "image_specs": {
+          "required": true,
+          "icon_type": "Smile emoji SVG",
+          "icon_size": "20x20px",
+          "icon_path": "/images/home/banner/smile-emoji.svg",
+          "description": "Icono pequeño de sonrisa, 20px, aparece junto al mensaje de gracias"
+        }
+      }
+    },
+    "mobileAuditButton": {
+      "current_es": "Solicitar Auditoría Gratuita",
+      "status": "✅ COMPLETO",
+      "text_es": "Solicitar Auditoría Gratuita",
+      "ui_specs": {
+        "element_type": "Botón CTA móvil",
+        "css_classes": "bg-secondary hover:bg-primary rounded-sm",
+        "location": "Hero Section - Solo visible en móvil, reemplaza formulario"
+      }
+    },
+    "mobileAuditCta": {
+      "current_es": "Descubre oportunidades de crecimiento para tu negocio",
+      "status": "✅ COMPLETO",
+      "text_es": "Descubre oportunidades de crecimiento para tu negocio"
+    }
+  },
+  "promobar": {
+    "item1": {
+      "current_en": "Digital Growth for Ambitious Brands",
+      "current_es": "Crecimiento Digital para Marcas Ambiciosas",
+      "current_length": 38,
+      "min_characters": 35,
+      "max_characters": 45,
+      "status": "✅ COMPLETO",
+      "text_es": "Crecimiento Digital para Marcas Ambiciosas",
+      "ui_specs": {
+        "element_type": "Texto en marquee animado",
+        "css_classes": "Marquee scroll horizontal infinito",
+        "font_size": "16px-18px (base)",
+        "location": "Parte superior de la página, banner horizontal que se desplaza"
+      },
+      "note": "Primera línea del marquee promobar."
+    },
+    "item2": {
+      "current_en": "Bilingual marketing systems built to make your brand stand out and sell in both languages.",
+      "current_es": "Estrategias bilingües diseñadas para que tu marca destaque y venda en ambos idiomas.",
+      "current_length": 82,
+      "min_characters": 75,
+      "max_characters": 90,
+      "status": "✅ COMPLETO",
+      "text_es": "Estrategias bilingües diseñadas para que tu marca destaque y venda en ambos idiomas."
+    },
+    "item3": {
+      "current_en": "SEO, Paid Ads, Web, and Content — aligned for growth",
+      "current_es": "SEO, Publicidad Pagada, Web y Contenido — alineados para el crecimiento",
+      "current_length": 65,
+      "min_characters": 60,
+      "max_characters": 75,
+      "status": "✅ COMPLETO",
+      "text_es": "SEO, Publicidad Pagada, Web y Contenido — alineados para el crecimiento"
+    },
+    "item4": {
+      "current_en": "Get Your Free Growth Plan",
+      "current_es": "Obtén Tu Plan de Crecimiento Gratis",
+      "current_length": 34,
+      "min_characters": 30,
+      "max_characters": 40,
+      "status": "✅ COMPLETO",
+      "text_es": "Obtén Tu Plan de Crecimiento Gratis"
+    },
+    "item5": {
+      "current_en": "Watch How We Build Authority →",
+      "current_es": "Ve Cómo Construimos Autoridad →",
+      "current_length": 32,
+      "min_characters": 28,
+      "max_characters": 38,
+      "status": "✅ COMPLETO",
+      "text_es": "Ve Cómo Construimos Autoridad →",
+      "note": "Incluye flecha → al final"
+    }
+  },
+  "serviceOfferings": {
+    "badge": {
+      "current_en": "What We Do Best",
+      "current_es": "What We Do Best",
+      "current_length": 16,
+      "min_characters": 12,
+      "max_characters": 18,
+      "status": "REQUIERE COPY",
+      "text_es": "",
+      "ui_specs": {
+        "element_type": "Badge (fondo azul claro con borde)",
+        "css_classes": "badge (font-weight: 500, font-size: 14px, line-height: 20px)",
+        "font_size": "14px",
+        "location": "Sección Service Offerings - Parte superior, lado izquierdo"
+      },
+      "note": "Badge de la sección Service Offerings."
+    },
+    "title": {
+      "current_en": "We build digital ecosystems that attract, engage, and retain your ideal clients",
+      "current_es": "Creamos ecosistemas digitales que atraen, enamoran y fidelizan a tus clientes",
+      "current_length": 72,
+      "min_characters": 65,
+      "max_characters": 80,
+      "status": "✅ COMPLETO",
+      "text_es": "Creamos ecosistemas digitales que atraen, enamoran y fidelizan a tus clientes",
+      "ui_specs": {
+        "element_type": "H2 (título de sección)",
+        "css_classes": "font-semibold text-secondary",
+        "font_size": "Grande (2xl/3xl)",
+        "location": "Service Offerings - Debajo del badge"
+      }
+    },
+    "description": {
+      "current_en": "From SEO and local positioning to paid advertising, web, and content — everything aligned for measurable growth",
+      "current_es": "Desde SEO y posicionamiento local hasta publicidad pagada, web y contenido — todo alineado para un crecimiento medible",
+      "current_length": 97,
+      "min_characters": 90,
+      "max_characters": 110,
+      "status": "✅ COMPLETO",
+      "text_es": "Desde SEO y posicionamiento local hasta publicidad pagada, web y contenido — todo alineado para un crecimiento medible",
+      "ui_specs": {
+        "element_type": "Párrafo descriptivo",
+        "css_classes": "text-secondary",
+        "font_size": "16px (base)",
+        "location": "Service Offerings - Lado derecho del título (desktop)"
+      }
+    },
+    "viewAllServices": {
+      "current_es": "Ver todos los servicios",
+      "status": "✅ COMPLETO",
+      "text_es": "Ver todos los servicios",
+      "ui_specs": {
+        "element_type": "Link con subrayado",
+        "css_classes": "text-secondary border-b-2 border-primary hover:text-primary",
+        "location": "Service Offerings - Debajo de la descripción, link clickeable"
+      }
+    },
+    "services": {
+      "digitalBranding": {
+        "current_es": "Branding Digital que deja huella.",
+        "current_length": 30,
+        "status": "✅ COMPLETO",
+        "text_es": "Branding Digital que deja huella.",
+        "ui_specs": {
+          "element_type": "H6 (título de tarjeta de servicio)",
+          "css_classes": "font-semibold",
+          "font_size": "16px-18px",
+          "location": "Service Offerings - Carousel de servicios, tarjeta 1",
+          "image_specs": {
+            "required": true,
+            "image_type": "Thumbnail de servicio en carousel",
+            "image_size": "440x390px (width x height)",
+            "image_ratio": "Aprox. 1.13:1 (ligeramente horizontal)",
+            "description": "Imagen grande del servicio, 440px ancho x 390px alto, dentro de carousel horizontal. La imagen debe representar el servicio de 'Branding Digital' (ej: identidad visual, logos, elementos de marca). Formato: JPG/PNG, alta calidad."
+          },
+          "visual_context": "Tarjeta con imagen grande arriba (440x390px), título abajo, número '01.' en badge, botón flecha naranja"
+        },
+        "note": "Título del servicio 1 en carousel."
+      },
+      "seoOptimization": {
+        "current_es": "Posiciónate en Google y deja de ser invisible.",
+        "current_length": 42,
+        "status": "✅ COMPLETO",
+        "text_es": "Posiciónate en Google y deja de ser invisible.",
+        "ui_specs": {
+          "image_specs": {
+            "required": true,
+            "image_type": "Thumbnail de servicio en carousel",
+            "image_size": "440x390px",
+            "description": "Imagen que represente 'SEO Optimization' (ej: gráficos de ranking, búsquedas Google, analytics)"
+          }
+        }
+      },
+      "googleMetaAds": {
+        "current_es": "Publicidad que convierte, no solo impresiona.",
+        "current_length": 42,
+        "status": "✅ COMPLETO",
+        "text_es": "Publicidad que convierte, no solo impresiona.",
+        "ui_specs": {
+          "image_specs": {
+            "required": true,
+            "image_type": "Thumbnail de servicio en carousel",
+            "image_size": "440x390px",
+            "description": "Imagen que represente 'Google y Meta Ads' (ej: dashboard de ads, gráficos de conversión, anuncios)"
+          }
+        }
+      },
+      "webDesign": {
+        "current_es": "Diseño Web",
+        "status": "✅ COMPLETO",
+        "text_es": "Diseño Web",
+        "ui_specs": {
+          "image_specs": {
+            "required": true,
+            "image_type": "Thumbnail de servicio en carousel",
+            "image_size": "440x390px",
+            "description": "Imagen que represente 'Diseño Web' (ej: mockups de sitios web, diseño responsive, interfaces)"
+          }
+        }
+      },
+      "brandIdentity": {
+        "current_es": "Identidad de Marca",
+        "status": "✅ COMPLETO",
+        "text_es": "Identidad de Marca",
+        "ui_specs": {
+          "image_specs": {
+            "required": true,
+            "image_type": "Thumbnail de servicio en carousel",
+            "image_size": "440x390px",
+            "description": "Imagen que represente 'Identidad de Marca' (ej: logos, paleta de colores, elementos de marca)"
+          }
+        }
+      },
+      "emailAutomation": {
+        "current_es": "Automatización de Email",
+        "status": "✅ COMPLETO",
+        "text_es": "Automatización de Email",
+        "ui_specs": {
+          "image_specs": {
+            "required": true,
+            "image_type": "Thumbnail de servicio en carousel",
+            "image_size": "440x390px",
+            "description": "Imagen que represente 'Automatización de Email' (ej: emails, workflows, automatizaciones)"
+          }
+        }
+      }
+    }
+  },
+  "transformation": {
+    "badge": {
+      "current_en": "Over 400 brands trust us",
+      "current_es": "Más de 400 marcas confían en nosotros",
+      "current_length": 36,
+      "min_characters": 32,
+      "max_characters": 42,
+      "status": "✅ COMPLETO",
+      "text_es": "Más de 400 marcas confían en nosotros",
+      "ui_specs": {
+        "element_type": "Badge",
+        "css_classes": "badge",
+        "font_size": "14px",
+        "location": "Sección Transformation (CleaningHighlight) - Parte superior"
+      }
+    },
+    "title": {
+      "current_en": "We turn local businesses into memorable brands",
+      "current_es": "Transformamos negocios locales en marcas memorables",
+      "current_length": 47,
+      "status": "✅ COMPLETO",
+      "text_es": "Transformamos negocios locales en marcas memorables",
+      "ui_specs": {
+        "element_type": "H2",
+        "css_classes": "font-semibold",
+        "font_size": "2xl/3xl",
+        "location": "Transformation - Debajo del badge"
+      }
+    },
+    "subtitle": {
+      "current_en": "We combine data, design, and culture to deliver real growth across the U.S. and Latin America",
+      "current_es": "Unimos datos, diseño y cultura para generar resultados reales en EE.UU. y Latinoamérica",
+      "current_length": 85,
+      "min_characters": 80,
+      "max_characters": 95,
+      "status": "✅ COMPLETO",
+      "text_es": "Unimos datos, diseño y cultura para generar resultados reales en EE.UU. y Latinoamérica",
+      "ui_specs": {
+        "element_type": "Párrafo",
+        "css_classes": "text-xl dark:text-white/70",
+        "font_size": "20px (xl)",
+        "location": "Transformation - Debajo del título"
+      }
+    },
+    "ctaButton": {
+      "current_en": "Get Your Free Strategy Call",
+      "current_es": "Obtén Tu Llamada Estratégica Gratis",
+      "current_length": 35,
+      "status": "✅ COMPLETO",
+      "text_es": "Obtén Tu Llamada Estratégica Gratis",
+      "ui_specs": {
+        "element_type": "Botón CTA",
+        "css_classes": "bg-secondary hover:bg-primary rounded-sm",
+        "font_size": "16px (text-base) font-bold",
+        "location": "Transformation - Debajo de los bullets de servicios"
+      }
+    },
+    "serviceBullets": {
+      "note": "6 servicios listados como bullets con iconos:",
+      "items": [
+        {
+          "title": "SEO & Local Visibility",
+          "ui_specs": {
+            "element_type": "Bullet point con icono",
+            "css_classes": "font-semibold dark:text-white/70",
+            "image_specs": {
+              "required": true,
+              "icon_type": "SVG icon",
+              "icon_size": "48x48px",
+              "icon_path": "/images/home/cleaninghighlight/cleaning-img-1.svg",
+              "description": "Icono SVG 48x48px para 'SEO & Local Visibility'. Debe representar búsqueda/visibilidad local (ej: lupa, mapa, gráfico de ranking). Formato: SVG."
+            }
+          }
+        },
+        {
+          "title": "Google & Meta Ads",
+          "ui_specs": {
+            "image_specs": {
+              "icon_path": "/images/home/cleaninghighlight/cleaning-img-2.svg",
+              "description": "Icono SVG 48x48px para 'Google & Meta Ads' (ej: megáfono, gráfico de ads, target)"
+            }
+          }
+        },
+        {
+          "title": "Web Design Excellence",
+          "ui_specs": {
+            "image_specs": {
+              "icon_path": "/images/home/cleaninghighlight/cleaning-img-3.svg",
+              "description": "Icono SVG 48x48px para 'Web Design Excellence' (ej: pantalla, diseño, layout)"
+            }
+          }
+        },
+        {
+          "title": "Digital Branding Strategy",
+          "ui_specs": {
+            "image_specs": {
+              "icon_path": "/images/home/cleaninghighlight/cleaning-img-4.svg",
+              "description": "Icono SVG 48x48px para 'Digital Branding Strategy' (ej: logo, identidad, marca)"
+            }
+          }
+        },
+        {
+          "title": "Content Strategy",
+          "ui_specs": {
+            "image_specs": {
+              "icon_path": "/images/home/cleaninghighlight/cleaning-img-1.svg",
+              "description": "Icono SVG 48x48px para 'Content Strategy' (ej: documento, texto, contenido)"
+            }
+          }
+        },
+        {
+          "title": "Analytics & Reporting",
+          "ui_specs": {
+            "image_specs": {
+              "icon_path": "/images/home/cleaninghighlight/cleaning-img-2.svg",
+              "description": "Icono SVG 48x48px para 'Analytics & Reporting' (ej: gráfico, dashboard, métricas)"
+            }
+          }
+        }
+      ],
+      "mainImage": {
+        "required": true,
+        "image_type": "Banner principal de sección",
+        "image_size": "680x655px (width x height)",
+        "image_path": "/images/home/cleaninghighlight/highlight-banner-img.png",
+        "image_ratio": "Aprox. 1.04:1 (casi cuadrado, ligeramente vertical)",
+        "description": "Imagen principal grande de la sección Transformation. Debe representar el concepto de transformación/crecimiento de negocios (ej: gráficos de crecimiento, personas trabajando, resultados). Formato: PNG/JPG, alta calidad, 680px ancho x 655px alto."
+      }
+    }
+  },
+  "testimonials": {
+    "badge": {
+      "current_en": "Numbers Don't Lie — Strategy Does",
+      "current_es": "Los Números No Mienten — La Estrategia Sí",
+      "current_length": 42,
+      "min_characters": 38,
+      "max_characters": 48,
+      "status": "✅ COMPLETO",
+      "text_es": "Los Números No Mienten — La Estrategia Sí",
+      "ui_specs": {
+        "element_type": "Badge",
+        "css_classes": "badge",
+        "font_size": "14px",
+        "location": "Sección ExcepServices (métricas) - Parte superior centrado"
+      }
+    },
+    "title": {
+      "current_en": "Real results. Stories that inspire",
+      "current_es": "Resultados reales. Historias que inspiran",
+      "current_length": 37,
+      "status": "✅ COMPLETO",
+      "text_es": "Resultados reales. Historias que inspiran",
+      "ui_specs": {
+        "element_type": "H2",
+        "css_classes": "font-semibold",
+        "font_size": "2xl/3xl",
+        "location": "ExcepServices - Debajo del badge"
+      }
+    },
+    "subtitle": {
+      "current_en": "We used to be invisible on Google. Three months later, we were #1 — and our phones haven't stopped ringing.",
+      "current_es": "Antes nadie nos encontraba en Google. Tres meses después, éramos el #1. Hoy no paramos de recibir clientes.",
+      "current_length": 94,
+      "min_characters": 85,
+      "max_characters": 105,
+      "status": "✅ COMPLETO",
+      "text_es": "Antes nadie nos encontraba en Google. Tres meses después, éramos el #1. Hoy no paramos de recibir clientes.",
+      "ui_specs": {
+        "element_type": "Párrafo destacado (testimonio principal)",
+        "css_classes": "dark:text-secondary",
+        "font_size": "18px-20px",
+        "location": "ExcepServices - Testimonio destacado grande"
+      }
+    },
+    "clientName": {
+      "current_es": "— Ana Rivera, Miami FL",
+      "status": "✅ COMPLETO",
+      "text_es": "— Ana Rivera, Miami FL",
+      "ui_specs": {
+        "element_type": "Párrafo pequeño",
+        "css_classes": "text-secondary/80 font-bold",
+        "location": "ExcepServices - Debajo del testimonio"
+      }
+    },
+    "sectionTitle": {
+      "current_en": "What Our Clients Say",
+      "current_es": "Qué Dicen Nuestros Clientes",
+      "current_length": 27,
+      "status": "✅ COMPLETO",
+      "text_es": "Qué Dicen Nuestros Clientes",
+      "ui_specs": {
+        "element_type": "Badge",
+        "css_classes": "badge",
+        "font_size": "14px",
+        "location": "Sección CustomerFeedback - Parte superior"
+      }
+    },
+    "sectionSubtitle": {
+      "current_en": "Discover how our services have transformed businesses and exceeded expectations.",
+      "current_es": "Descubre cómo nuestros servicios han transformado negocios y superado expectativas.",
+      "current_length": 78,
+      "status": "✅ COMPLETO",
+      "text_es": "Descubre cómo nuestros servicios han transformado negocios y superado expectativas.",
+      "ui_specs": {
+        "element_type": "Párrafo",
+        "css_classes": "text-secondary",
+        "location": "CustomerFeedback - Lado derecho del título (desktop)"
+      }
+    },
+    "videoTestimonials": {
+      "note": "Videos de testimonios con thumbnails:",
+      "image_specs": {
+        "required": true,
+        "thumbnail_type": "Miniatura de video testimonial",
+        "thumbnail_size": "Full width, altura 442px (xl:h-full)",
+        "play_icon": {
+          "required": true,
+          "icon_type": "Icono de play video",
+          "icon_size": "48x48px",
+          "icon_path": "/images/home/testimonial/video-playicon.svg",
+          "description": "Icono SVG de play (triángulo) para videos, 48x48px, se superpone sobre thumbnail"
+        },
+        "description": "Thumbnails de videos testimoniales. Deben representar a los clientes/testimonios. Formato: JPG/PNG, dimensiones flexibles (full width container)"
+      }
+    }
+  },
+  "excepServices": {
+    "metric1": {
+      "current_en": "Average lead growth of +250% in 90 days with aligned SEO, Ads, and funnels",
+      "current_es": "",
+      "current_length": 73,
+      "min_characters": 65,
+      "max_characters": 80,
+      "status": "REQUIERE COPY",
+      "text_es": "",
+      "ui_specs": {
+        "element_type": "Bullet point / Métrica (números de resultados)",
+        "css_classes": "font-normal text-dusty-gray dark:text-white/70",
+        "font_size": "16px (base)",
+        "location": "ExcepServices - Grid de 5 columnas (desktop), slide 1",
+        "visual_context": "Número circular '01' (badge redondo naranja) + texto métrica abajo"
+      },
+      "note": "Primera métrica en la sección ExcepServices (slides de resultados)."
+    },
+    "metric2": {
+      "current_en": "+300% engagement on Meta through creative testing, budgeting, and iteration",
+      "current_es": "",
+      "current_length": 72,
+      "min_characters": 65,
+      "max_characters": 80,
+      "status": "REQUIERE COPY",
+      "text_es": "",
+      "ui_specs": {
+        "visual_context": "Número circular '02' + texto métrica"
+      }
+    },
+    "metric3": {
+      "current_en": "400+ businesses thriving online with culturally aware, bilingual brand systems",
+      "current_es": "",
+      "current_length": 74,
+      "min_characters": 65,
+      "max_characters": 80,
+      "status": "REQUIERE COPY",
+      "text_es": "",
+      "ui_specs": {
+        "visual_context": "Número circular '03' + texto métrica"
+      }
+    },
+    "metric4": {
+      "current_en": "Continuous optimization—scale winners, cut waste, and compound gains weekly",
+      "current_es": "",
+      "current_length": 73,
+      "min_characters": 65,
+      "max_characters": 80,
+      "status": "REQUIERE COPY",
+      "text_es": "",
+      "ui_specs": {
+        "visual_context": "Número circular '04' + texto métrica"
+      }
+    },
+    "metric5": {
+      "current_en": "Measurable, strategy-first execution across SEO, Ads, Web, and Content",
+      "current_es": "",
+      "current_length": 67,
+      "min_characters": 60,
+      "max_characters": 75,
+      "status": "REQUIERE COPY",
+      "text_es": "",
+      "ui_specs": {
+        "visual_context": "Número circular '05' + texto métrica"
+      }
+    }
+  },
+  "pricing": {
+    "badge": {
+      "current_en": "Transparent pricing",
+      "current_es": "Precios transparentes",
+      "current_length": 20,
+      "status": "✅ COMPLETO",
+      "text_es": "Precios transparentes",
+      "ui_specs": {
+        "element_type": "Badge",
+        "css_classes": "badge",
+        "font_size": "14px",
+        "location": "Sección Pricing - Parte superior centrado"
+      }
+    },
+    "title": {
+      "current_en": "Affordable plans for real growth",
+      "current_es": "Planes accesibles para un crecimiento real",
+      "current_length": 41,
+      "status": "✅ COMPLETO",
+      "text_es": "Planes accesibles para un crecimiento real",
+      "ui_specs": {
+        "element_type": "H2",
+        "css_classes": "font-semibold max-w-2xl text-center",
+        "font_size": "2xl/3xl",
+        "location": "Pricing - Debajo del badge, centrado"
+      }
+    },
+    "starterGrowth": {
+      "current_en": "Starter Growth",
+      "current_es": "Starter Growth",
+      "status": "REVISAR",
+      "text_es": "",
+      "ui_specs": {
+        "element_type": "H5 (título de plan)",
+        "css_classes": "font-medium",
+        "location": "Pricing - Tarjeta de plan 1, lado izquierdo junto al icono"
+      },
+      "note": "Nombre del plan. Puede dejarse en inglés si es marca, o traducirse."
+    },
+    "starterGrowthDesc": {
+      "current_en": "Kickstart your online visibility",
+      "current_es": "Impulso inicial de visibilidad",
+      "current_length": 28,
+      "status": "✅ COMPLETO",
+      "text_es": "Impulso inicial de visibilidad",
+      "ui_specs": {
+        "element_type": "Párrafo descriptivo",
+        "css_classes": "text-secondary/80 dark:text-white/80",
+        "location": "Pricing - Tarjeta plan 1, descripción"
+      }
+    },
+    "smartCampaigns": {
+      "current_en": "Smart Campaigns",
+      "current_es": "Smart Campaigns",
+      "status": "REVISAR",
+      "text_es": "",
+      "ui_specs": {
+        "element_type": "H5",
+        "location": "Pricing - Tarjeta de plan 2"
+      }
+    },
+    "smartCampaignsDesc": {
+      "current_en": "Full digital growth strategy",
+      "current_es": "Estrategia completa de crecimiento digital",
+      "current_length": 38,
+      "status": "✅ COMPLETO",
+      "text_es": "Estrategia completa de crecimiento digital"
+    },
+    "bookService": {
+      "current_en": "Book a service",
+      "current_es": "Reservar servicio",
+      "status": "✅ COMPLETO",
+      "text_es": "Reservar servicio",
+      "ui_specs": {
+        "element_type": "Botón",
+        "css_classes": "font-bold bg-natural-gray dark:bg-secondary",
+        "location": "Pricing - Botón en cada tarjeta de plan"
+      }
+    },
+    "pricingIcons": {
+      "note": "Iconos para cada plan de pricing:",
+      "items": [
+        {
+          "plan": "Starter Growth",
+          "icon_path": "/images/home/Pricing/pricing-icon-1.svg",
+          "icon_size": "48x48px",
+          "description": "Icono SVG 48x48px para plan Starter Growth. Debe representar crecimiento inicial/visibilidad (ej: gráfico ascendente, lupa, inicio)"
+        },
+        {
+          "plan": "Smart Campaigns",
+          "icon_path": "/images/home/Pricing/pricing-icon-2.svg",
+          "icon_size": "48x48px",
+          "description": "Icono SVG 48x48px para plan Smart Campaigns. Debe representar campañas/publicidad (ej: megáfono, target, anuncios)"
+        },
+        {
+          "plan": "Growth Suite",
+          "icon_path": "/images/home/Pricing/pricing-icon-3.svg",
+          "icon_size": "48x48px",
+          "description": "Icono SVG 48x48px para plan Growth Suite. Debe representar suite completa/estrategia (ej: dashboard, conjunto de herramientas)"
+        },
+        {
+          "plan": "Brand Authority",
+          "icon_path": "/images/home/Pricing/pricing-icon-4.svg",
+          "icon_size": "48x48px",
+          "description": "Icono SVG 48x48px para plan Brand Authority. Debe representar autoridad/marca (ej: corona, escudo, certificado)"
+        }
+      ]
+    }
+  },
+  "portfolio": {
+    "badge": {
+      "current_en": "Our work in action",
+      "current_es": "",
+      "current_length": 18,
+      "min_characters": 14,
+      "max_characters": 20,
+      "status": "REQUIERE COPY",
+      "text_es": "",
+      "ui_specs": {
+        "element_type": "Badge",
+        "css_classes": "badge",
+        "font_size": "14px",
+        "location": "Sección Portfolio (OurWork) - Parte superior centrado"
+      },
+      "note": "Badge de la sección Portfolio/Our Work (hardcodeado en componente). Ejemplo: 'Nuestro Trabajo' (15) o 'Casos de Éxito' (14)"
+    },
+    "title": {
+      "current_en": "See the difference of working with an agency focused on real results — not empty promises",
+      "current_es": "Descubre la diferencia de trabajar con una agencia que impulsa resultados, no promesas",
+      "current_length": 82,
+      "status": "✅ COMPLETO",
+      "text_es": "Descubre la diferencia de trabajar con una agencia que impulsa resultados, no promesas",
+      "ui_specs": {
+        "element_type": "H2",
+        "css_classes": "font-semibold text-center",
+        "font_size": "2xl/3xl",
+        "location": "Portfolio - Debajo del badge, centrado"
+      }
+    },
+    "viewAllWork": {
+      "current_en": "View all work",
+      "current_es": "Ver todo el trabajo",
+      "status": "✅ COMPLETO",
+      "text_es": "Ver todo el trabajo"
+    },
+    "portfolioImages": {
+      "note": "Galería de imágenes en marquee horizontal infinito:",
+      "image_specs": {
+        "required": true,
+        "image_type": "Imágenes de portfolio/casos de éxito",
+        "image_size": "336x308px (width x height)",
+        "image_ratio": "Aprox. 1.09:1 (ligeramente horizontal)",
+        "image_paths": [
+          "/images/home/ourwork/work-img-1.png",
+          "/images/home/ourwork/work-img-2.png",
+          "/images/home/ourwork/work-img-3.png",
+          "/images/home/ourwork/work-img-4.png",
+          "/images/home/ourwork/work-img-5.png"
+        ],
+        "description": "Mínimo 5 imágenes de portfolio. Cada imagen debe mostrar un caso de éxito/proyecto realizado (ej: capturas de sitios web, resultados de campañas, antes/después). Formato: PNG/JPG, 336px ancho x 308px alto, alta calidad. Las imágenes se muestran en marquee horizontal infinito con efecto de zoom al hacer click."
+      },
+      "arrowIcon": {
+        "required": true,
+        "icon_type": "Icono de flecha vertical",
+        "icon_size": "32x32px",
+        "icon_path": "/images/icon/verticle-arrow.svg",
+        "description": "Icono SVG de flecha vertical, 32x32px, aparece en algún lugar de la galería"
+      }
+    }
+  },
+  "finalCta": {
+    "title": {
+      "current_en": "Ready to shine online?",
+      "current_es": "",
+      "current_length": 23,
+      "min_characters": 20,
+      "max_characters": 28,
+      "status": "REQUIERE COPY",
+      "text_es": "",
+      "ui_specs": {
+        "element_type": "H2 (título gigante)",
+        "css_classes": "text-6xl md:text-7xl font-bold text-secondary",
+        "font_size": "60px (text-6xl) - 72px (text-7xl) en desktop",
+        "location": "Final CTA (UserImpact) - Última sección antes del footer, lado derecho (desktop), centrado (móvil)",
+        "visual_context": "Título EXTRA GRANDE, bold, color gris oscuro. Sección con fondo gris claro (#F5F6F6) o imagen de fondo en desktop XL"
+      },
+      "note": "Título Final CTA. Cierre poderoso que invite a acción. Puede incluir signos de interrogación."
+    },
+    "subtitle": {
+      "current_en": "Grow beyond ads and followers",
+      "current_es": "",
+      "current_length": 30,
+      "min_characters": 26,
+      "max_characters": 34,
+      "status": "REQUIERE COPY",
+      "text_es": "",
+      "ui_specs": {
+        "element_type": "H4 (subtítulo)",
+        "css_classes": "font-semibold text-secondary",
+        "font_size": "18px-20px (aprox)",
+        "location": "Final CTA - Debajo del título gigante"
+      },
+      "note": "Subtítulo Final CTA. Texto secundario conciso."
+    },
+    "description": {
+      "current_en": "Book your free audit and discover how we can take your brand to the next level.",
+      "current_es": "",
+      "current_length": 76,
+      "min_characters": 65,
+      "max_characters": 85,
+      "status": "REQUIERE COPY",
+      "text_es": "",
+      "ui_specs": {
+        "element_type": "Párrafo",
+        "css_classes": "text-secondary",
+        "font_size": "16px (base)",
+        "location": "Final CTA - Debajo del subtítulo"
+      },
+      "note": "Descripción Final CTA. Cierre convincente que invite a auditoría."
+    },
+    "button": {
+      "current_en": "Get Your Free Strategy Call",
+      "current_es": "Obtén Tu Llamada Estratégica Gratis",
+      "status": "✅ COMPLETO",
+      "text_es": "Obtén Tu Llamada Estratégica Gratis",
+      "ui_specs": {
+        "element_type": "Botón CTA principal",
+        "css_classes": "bg-primary hover:bg-darkPrimary rounded-md",
+        "font_size": "16px (font-semibold text-white)",
+        "location": "Final CTA - Debajo de la descripción, botón grande naranja"
+      }
+    },
+    "backgroundImage": {
+      "note": "Imagen de fondo opcional (solo desktop XXL):",
+      "image_specs": {
+        "required": false,
+        "image_type": "Background image de la sección",
+        "image_path": "/images/home/userimpact/userimpact-bg-new.png",
+        "description": "Imagen de fondo para desktop XXL. Solo se muestra en pantallas muy grandes. Formato: PNG/JPG, debe ser imagen que funcione como background."
+      }
+    }
+  },
+  "summary": {
+    "total_fields": 56,
+    "complete_fields": 39,
+    "requires_copy": 13,
+    "review_fields": 2,
+    "fields_needing_attention": [
+      "hero.badge",
+      "serviceOfferings.badge",
+      "portfolio.badge",
+      "finalCta.title",
+      "finalCta.subtitle",
+      "finalCta.description",
+      "excepServices.metric1",
+      "excepServices.metric2",
+      "excepServices.metric3",
+      "excepServices.metric4",
+      "excepServices.metric5",
+      "pricing.starterGrowth (opcional)",
+      "pricing.smartCampaigns (opcional)"
+    ],
+    "images_required": {
+      "hero": {
+        "trust_metrics_icons": "3 iconos SVG 28x28px (Users, Star, Clock)",
+        "form_success_icon": "1 icono SVG 20x20px (smile emoji)"
+      },
+      "serviceOfferings": {
+        "service_thumbnails": "6 imágenes 440x390px (carousel de servicios)",
+        "carousel_arrows": "Iconos de flechas del carousel (incluidos en UI)"
+      },
+      "transformation": {
+        "service_bullet_icons": "6 iconos SVG 48x48px (servicios)",
+        "main_banner": "1 imagen 680x655px (banner principal)"
+      },
+      "testimonials": {
+        "video_thumbnails": "Múltiples thumbnails de videos",
+        "play_icon": "1 icono SVG 48x48px (play button)"
+      },
+      "pricing": {
+        "plan_icons": "4 iconos SVG 48x48px (uno por plan)"
+      },
+      "portfolio": {
+        "portfolio_images": "Mínimo 5 imágenes 336x308px (galería)",
+        "arrow_icon": "1 icono SVG 32x32px (flecha vertical)"
+      },
+      "finalCta": {
+        "background_image": "1 imagen opcional (solo desktop XXL)"
+      }
+    }
+  }
+}
