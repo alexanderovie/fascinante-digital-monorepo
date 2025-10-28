@@ -2,30 +2,30 @@ export const PricingData = [
     {
         id: 1,
         icon:"/images/home/Pricing/pricing-icon-1.svg",
-        title: "Regular Cleaning",
-        descp: "Essential cleaning to keep your home fresh, tidy, and inviting.",
+        title: "Starter Growth",
+        descp: "Essential visibility — local SEO & social setup.",
         price: "120"
     },
     {
         id: 2,
         icon:"/images/home/Pricing/pricing-icon-2.svg",
-        title: "Deep Cleaning",
-        descp: "Thorough cleaning for a spotless, sparkling home.",
+        title: "Smart Campaigns",
+        descp: "Multi-channel Ads for lead generation.",
         price: "150"
     },
     {
         id: 3,
         icon:"/images/home/Pricing/pricing-icon-3.svg",
-        title: "Move-in / Move-out",
-        descp: "Consistent cleaning to maintain a pristine, comfortable home.",
+        title: "Growth Suite",
+        descp: "SEO + Ads + Analytics for sustained results.",
         price: "200",
-        duration: "per month"
+        duration: "mo"
     },
     {
         id: 4,
         icon:"/images/home/Pricing/pricing-icon-4.svg",
-        title: "Removal & Storage",
-        descp: "Comprehensive cleaning for special occasions and seasonal refreshes.",
+        title: "Brand Authority",
+        descp: "Full-funnel systems + automation.",
         price: "230"
     },
 ]
