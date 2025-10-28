@@ -4,12 +4,13 @@
  * articles, prepositions, and conjunctions lowercase.
  */
 
-// Spanish stop words (artículos, preposiciones, conjunciones) - en minúsculas
+// Spanish stop words (artículos, preposiciones, conjunciones, pronombres posesivos) - en minúsculas
 const SPANISH_STOP_WORDS = new Set([
   'el', 'la', 'los', 'las', 'un', 'una', 'unos', 'unas',
   'de', 'del', 'en', 'por', 'para', 'con', 'sin', 'sobre', 'bajo', 'entre', 'hasta', 'desde', 'hacia', 'contra', 'mediante', 'durante', 'tras',
   'y', 'o', 'ni', 'pero', 'aunque', 'si', 'que', 'como', 'cuando', 'donde', 'mientras', 'sin embargo',
-  'al', 'del', 'a', 'lo'
+  'al', 'del', 'a', 'lo',
+  'tu', 'tus', 'su', 'sus', 'mi', 'mis', 'nuestro', 'nuestra', 'nuestros', 'nuestras'
 ]);
 
 // English stop words (articles, prepositions, conjunctions)
@@ -39,13 +40,13 @@ function capitalize(word: string): string {
 
 /**
  * Smart Title Case: Capitalizes important words based on their position and type
- * 
+ *
  * Rules:
  * - First word is always capitalized
  * - Last word is always capitalized
  * - Important words (nouns, verbs, adjectives) are capitalized
  * - Stop words (articles, prepositions, conjunctions) are lowercase (except if first/last)
- * 
+ *
  * @param text - Text to convert to title case
  * @returns Text in title case format
  */
@@ -59,12 +60,12 @@ export function toTitleCase(text: string): string {
   const stopWords = isSpanishText ? SPANISH_STOP_WORDS : ENGLISH_STOP_WORDS;
 
   const words = text.split(/\s+/);
-  
+
   return words
     .map((word, index) => {
       // Clean word (remove punctuation for checking, but preserve it)
       const cleanWord = word.replace(/[.,!?;:¿¡]/g, '').toLowerCase().trim();
-      
+
       // Always capitalize first and last word
       if (index === 0 || index === words.length - 1) {
         return capitalize(word);
@@ -80,4 +81,3 @@ export function toTitleCase(text: string): string {
     })
     .join(' ');
 }
-
