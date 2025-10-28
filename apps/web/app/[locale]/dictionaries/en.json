@@ -6,6 +6,30 @@
     "portfolio": "Portfolio",
     "contact": "Contact us"
   },
+  "header": {
+    "topBanner": "Boost Your Business with Digital Marketing - Custom strategies that deliver real results.",
+    "bookService": "Book a service",
+    "signInUp": "Sign In / Sign Up",
+    "viewProfile": "View Profile",
+    "menu": "Menu",
+    "closeMenu": "Close menu",
+    "openMenu": "Open menu",
+    "closeMenuOverlay": "Close menu overlay"
+  },
+  "footer": {
+    "newsletterTitle": "Stay updated with the latest insights, tips, and growth strategies.",
+    "newsletterPlaceholder": "Enter your email",
+    "newsletterSubscribe": "Subscribe",
+    "newsletterDisclaimer": "By subscribing, you agree to receive our promotional emails. You can unsubscribe at any time.",
+    "ctaTitle": "Your growth is just one click away — start your journey today.",
+    "ctaButton": "Book Now",
+    "usefulLinks": "Useful Links",
+    "getQuote": "Get a quote",
+    "pricingPlans": "Pricing plans",
+    "copyright": "© 2025 Fascinante Digital - All rights reserved.",
+    "termsOfService": "Terms of service",
+    "privacyPolicy": "Privacy policy"
+  },
   "hero": {
     "badge": "Watch How We Build Authority",
     "title": "Ambitious Digital Growth and Branding",

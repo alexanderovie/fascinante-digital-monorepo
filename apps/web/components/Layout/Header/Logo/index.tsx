@@ -9,20 +9,18 @@ const Logo = () => {
         alt="Fascinante Digital"
         width={190}
         height={40}
-        style={{ height: '40px', width: 'auto' }}
         quality={100}
         priority={true}
-        className='dark:hidden'
+        className='dark:hidden h-[30px] sm:h-8 md:h-[34px] lg:h-9 xl:h-[38px] 2xl:h-10 w-auto'
       />
       <Image
         src={"/fascinante-digital-logo-light.png"}
         alt="Fascinante Digital"
         width={190}
         height={40}
-        style={{ height: '40px', width: 'auto' }}
         quality={100}
         priority={true}
-        className='hidden dark:block'
+        className='hidden dark:block h-[30px] sm:h-8 md:h-[34px] lg:h-9 xl:h-[38px] 2xl:h-10 w-auto'
       />
     </Link>
   );

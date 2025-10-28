@@ -6,6 +6,30 @@
     "portfolio": "Portafolio",
     "contact": "Contáctanos"
   },
+  "header": {
+    "topBanner": "Potencia tu Negocio con Marketing Digital - Estrategias personalizadas que generan resultados reales.",
+    "bookService": "Reservar servicio",
+    "signInUp": "Iniciar Sesión / Registrarse",
+    "viewProfile": "Ver Perfil",
+    "menu": "Menú",
+    "closeMenu": "Cerrar menú",
+    "openMenu": "Abrir menú",
+    "closeMenuOverlay": "Cerrar overlay del menú"
+  },
+  "footer": {
+    "newsletterTitle": "Mantente actualizado con las últimas ideas, consejos y estrategias de crecimiento.",
+    "newsletterPlaceholder": "Ingresa tu correo",
+    "newsletterSubscribe": "Suscribirse",
+    "newsletterDisclaimer": "Al suscribirte, aceptas recibir nuestros correos promocionales. Puedes cancelar la suscripción en cualquier momento.",
+    "ctaTitle": "Tu crecimiento está a un clic de distancia — comienza tu viaje hoy.",
+    "ctaButton": "Reservar Ahora",
+    "usefulLinks": "Enlaces Útiles",
+    "getQuote": "Obtener cotización",
+    "pricingPlans": "Planes de precios",
+    "copyright": "© 2025 Fascinante Digital - Todos los derechos reservados.",
+    "termsOfService": "Términos de servicio",
+    "privacyPolicy": "Política de privacidad"
+  },
   "hero": {
     "badge": "Ve Cómo Construimos Autoridad",
     "title": "Crecimiento Digital Ambicioso y Branding",

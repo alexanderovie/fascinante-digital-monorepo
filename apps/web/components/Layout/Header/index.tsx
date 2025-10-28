@@ -13,7 +13,7 @@ const Header = () => {
     let acc = 0;
     let ticking = false;
     const THRESH_HIDE = 96;
-    const HYSTERESIS = 18;
+    const HYSTERESIS = 24;
     const EDGE_REVEAL = 24;
 
     const onScroll = () => {
@@ -26,7 +26,8 @@ const Header = () => {
         const nearTop = y < THRESH_HIDE;
         const nearEdge = y <= EDGE_REVEAL;
 
-        if (!nearTop && dy > 0 && !hidden) setHidden(true);
+        // Ocultar solo si se acumula suficiente desplazamiento hacia abajo (histéresis)
+        if (!nearTop && dy > 0 && !hidden && Math.abs(acc) > HYSTERESIS) setHidden(true);
         if ((dy < 0 && Math.abs(acc) > HYSTERESIS) || nearTop || nearEdge) {
           setHidden(false);
           acc = 0;
@@ -53,7 +54,7 @@ const Header = () => {
   return (
     <header
       ref={headerRef}
-      className={`site-header fixed top-0 z-50 w-full transform-gpu will-change-transform transition-transform duration-200 ${hidden ? "-translate-y-full" : "translate-y-0"} ${scrolled ? "shadow-xl" : ""}`}
+      className={`site-header fixed top-0 z-50 w-full transform-gpu will-change-transform transition-transform motion-reduce:transition-none ${hidden ? "duration-300 ease-in -translate-y-full" : "duration-500 ease-out translate-y-0"} ${scrolled ? "shadow-xl" : ""}`}
     >
       <div>
         <TopHeader />

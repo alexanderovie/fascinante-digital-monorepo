@@ -8,15 +8,21 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import BookServicesModal from "./BookServicesModal";
 import Logo from "./Logo";
-import MenuData from "./Menudata";
+import { useMenuData } from "./Menudata";
+import { useI18n } from "@/app/[locale]/i18n-context";
+import { useLocale } from "@/lib/hooks/use-locale";
 import MobileThemeToggler from "./MobileThemeToggler";
 
 const DesktopHeader = () => {
+  const { dict } = useI18n();
+  const locale = useLocale();
+  const menuData = useMenuData();
+  const header = dict.header as Record<string, string>;
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("");
-  const [user, setUser] = useState<{ user: any } | null>(null);
+  const [user, setUser] = useState<{ user: unknown } | null>(null);
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const tooltipRef = useRef(null);
@@ -27,8 +33,10 @@ const DesktopHeader = () => {
       setUser(session);
     };
     function handleClickOutside(event: MouseEvent) {
-      if (tooltipRef.current && !(tooltipRef.current as any).contains(event.target)) {
-        setShowTooltip(false);
+      if (tooltipRef.current && (event.target instanceof Node) && (tooltipRef.current as unknown as Node).contains) {
+        if (!(tooltipRef.current as unknown as Node).contains(event.target)) {
+          setShowTooltip(false);
+        }
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
@@ -64,7 +72,7 @@ const DesktopHeader = () => {
           {/* ZONA 2: Menú Centrado */}
           <nav className="hidden lg:flex flex-1 justify-center">
             <ul className="flex gap-0 xl:gap-1">
-              {MenuData.map((value, index) => {
+              {menuData.map((value, index) => {
                 return (
                   <li key={index} className="group">
                     <Link href={value.path} className={`block px-1.5 xl:px-3 xxl:px-4 py-2 rounded-md ${activeLink === value.path ? "bg-gray-100" : ""} hover:bg-gray-100 transition duration-300`}>
@@ -84,7 +92,7 @@ const DesktopHeader = () => {
               <p className="hidden xl:block text-[15px] xl:text-base font-semibold dark:text-white">(800) 886-4981</p>
             </Link>
             <div onClick={() => setModalOpen(true)} className="group flex items-center py-2.5 xl:py-3 px-3 xl:px-4 bg-secondary hover:bg-primary dark:bg-white/25 dark:hover:bg-primary rounded-sm cursor-pointer transition-all duration-300">
-              <span className="text-sm text-white group-hover:text-white font-bold">Book a service</span>
+              <span className="text-sm text-white group-hover:text-white font-bold">{header.bookService}</span>
             </div>
             {modalOpen && (
               <BookServicesModal isOpen={modalOpen} closeModal={() => setModalOpen(false)} />
@@ -93,16 +101,16 @@ const DesktopHeader = () => {
               <>
                 <div className="relative group flex items-center justify-center">
                   <Image src={"/images/avatar/avatar_1.jpg"} alt="avatar" width={42} height={42} className="rounded-full cursor-pointer" onClick={toggleTooltip} />
-                  <Link href={"/profile"}>
+                  <Link href={`/${locale}/profile`}>
                     <p onClick={() => { setShowTooltip(false) }} className={`absolute w-fit text-sm font-medium text-center z-10 transition-opacity duration-200 bg-primary dark:bg-middlegreen text-creamwhite hover:text-secondary py-2 px-4 min-w-28 rounded-md shadow-2xl top-full left-1/2 transform -translate-x-1/2 mt-3 ${showTooltip ? "visible opacity-100" : "invisible opacity-0"}`}>
-                      View Profile
+                      {header.viewProfile}
                     </p>
                   </Link>
                 </div>
               </>
             ) : (
               <Link href={"https://app.fascinantedigital.com/"} className="bg-secondary hover:bg-primary dark:bg-white/25 dark:hover:bg-primary flex items-center py-2.5 xl:py-3 px-3 xl:px-4 rounded-sm transition-all duration-300">
-                <span className="text-sm text-white font-bold">Sign In / Sign Up</span>
+                <span className="text-sm text-white font-bold">{header.signInUp}</span>
               </Link>
             )}
 
@@ -114,17 +122,17 @@ const DesktopHeader = () => {
             {user?.user?.email &&
               <div className="relative group flex items-center justify-center">
                 <Image src={"/images/avatar/avatar_1.jpg"} alt="avatar" width={35} height={35} className="rounded-full cursor-pointer" onClick={toggleTooltip} />
-                <Link href={"/profile"}>
-                  <p onClick={() => { setShowTooltip(false) }} className={`absolute w-fit text-sm font-medium text-center z-10 transition-opacity duration-200 bg-primary dark:bg-middlegreen text-creamwhite hover:text-secondary py-2 px-4 min-w-28 rounded-md shadow-2xl top-full left-1/2 transform -translate-x-1/2 mt-3 ${showTooltip ? "visible opacity-100" : "invisible opacity-0"}`}>
-                    View Profile
-                  </p>
-                </Link>
+                  <Link href={`/${locale}/profile`}>
+                    <p onClick={() => { setShowTooltip(false) }} className={`absolute w-fit text-sm font-medium text-center z-10 transition-opacity duration-200 bg-primary dark:bg-middlegreen text-creamwhite hover:text-secondary py-2 px-4 min-w-28 rounded-md shadow-2xl top-full left-1/2 transform -translate-x-1/2 mt-3 ${showTooltip ? "visible opacity-100" : "invisible opacity-0"}`}>
+                      {header.viewProfile}
+                    </p>
+                  </Link>
               </div>
             }
             <button
               onClick={() => setSidebarOpen(!sidebarOpen)}
               className="flex lg:hidden items-center justify-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-200"
-              aria-label={sidebarOpen ? "Close menu" : "Open menu"}
+              aria-label={sidebarOpen ? header.closeMenu : header.openMenu}
             >
               {sidebarOpen ? (
                 <X size={24} className="text-secondary dark:text-white transition-transform duration-200" />
@@ -140,7 +148,7 @@ const DesktopHeader = () => {
               <div
                 className="fixed top-0 left-0 w-full h-full bg-black/50 z-40 cursor-pointer"
                 onClick={() => setSidebarOpen(false)}
-                aria-label="Close menu overlay"
+                aria-label={header.closeMenuOverlay}
               />
               <div
                 className={`fixed top-0 right-0 h-full w-full bg-white dark:bg-secondary shadow-lg transform transition-transform duration-500 max-w-xs ${sidebarOpen ? "translate-x-0" : "translate-x-full"} z-50`}
@@ -148,11 +156,11 @@ const DesktopHeader = () => {
                 aria-modal="true"
               >
                 <div className='flex items-center justify-between p-4'>
-                  <h2 className="text-lg font-bold dark:text-white">Menu</h2>
+                  <h2 className="text-lg font-bold dark:text-white">{header.menu}</h2>
                   <button
                     onClick={() => setSidebarOpen(false)}
                     className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-200"
-                    aria-label="Close mobile menu"
+                    aria-label={header.closeMenu}
                   >
                     <X size={20} className="text-secondary dark:text-white" />
                   </button>
@@ -160,7 +168,7 @@ const DesktopHeader = () => {
 
                 <div className='p-6'>
                   <ul className="flex flex-col">
-                    {MenuData.map((value, index) => {
+                    {menuData.map((value, index) => {
                       return (
                         <Link key={index} href={value.path} onClick={() => setSidebarOpen(false)}>
                           <li className="py-1.5">
@@ -171,7 +179,7 @@ const DesktopHeader = () => {
                     })}
                   </ul>
                   <Link href={"https://app.fascinantedigital.com/"} className="bg-secondary hover:bg-primary dark:bg-white/25 dark:hover:bg-primary mt-4 flex items-center py-2.5 xl:py-3 px-3 xl:px-4 rounded-sm transition-all duration-300">
-                    <span className="text-sm text-white font-bold">Sign In / Sign Up</span>
+                    <span className="text-sm text-white font-bold">{header.signInUp}</span>
                   </Link>
                   <div className="flex flex-col mt-5">
                     <Link href="mailto:info@fascinantedigital.com" className="flex gap-2 items-center py-1.5">

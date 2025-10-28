@@ -3,11 +3,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { FooterData } from './data';
+import { useI18n } from '@/app/[locale]/i18n-context';
 
 const Newsletter = () => {
-  const [submitted, setSubmitted] = useState(false);
+  const { dict } = useI18n();
+  const footer = dict.footer as Record<string, string>;
   const [formData, setFormData] = useState({ email: "" });
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -15,7 +17,7 @@ const Newsletter = () => {
     }));
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     fetch("https://formsubmit.co/ajax/niravjoshi87@gmail.com", {
@@ -26,15 +28,15 @@ const Newsletter = () => {
       }),
     })
       .then((response) => response.json())
-      .then((data) => {
-        setSubmitted(data.success);
+      .then(() => {
         setFormData({ email: "" });
         setTimeout(() => {
-          setSubmitted(false);
+          // noop
         }, 10000);
       })
-      .catch((error) => {
-        console.log(error.message);
+      .catch((error: unknown) => {
+        const err = error as { message?: string };
+        console.log(err?.message);
       });
   };
 
@@ -43,7 +45,7 @@ const Newsletter = () => {
       <div className='pb-8 md:pb-14 border-b border-white/15'>
         <div className='flex flex-col xl:flex-row gap-6 xl:gap-14 items-center'>
 
-          <p className='w-full xl:max-w-xs text-white'>Stay updated with the latest insights, tips, and growth strategies.</p>
+          <p className='w-full xl:max-w-xs text-white'>{footer.newsletterTitle}</p>
           <div className='flex flex-col lg:flex-row justify-between items-start lg:items-center w-full gap-6'>
             <div className='flex flex-col lg:flex-row gap-5 lg:gap-10'>
               <form onSubmit={handleSubmit} className='flex gap-2'>
@@ -55,13 +57,13 @@ const Newsletter = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="Enter your email"
+                  placeholder={footer.newsletterPlaceholder}
                 />
                 <button type='submit' className='bg-primary hover:bg-white hover:text-primary py-3.5 px-6 rounded-md font-semibold cursor-pointer text-white transition-all duration-300'>
-                  Subscribe
+                  {footer.newsletterSubscribe}
                 </button>
               </form>
-              <p className='text-xs max-w-[217px] text-white/70'>By subscribing, you agree to receive our promotional emails. You can unsubscribe at any time.</p>
+              <p className='text-xs max-w-[217px] text-white/70'>{footer.newsletterDisclaimer}</p>
             </div>
 
             <div className='flex gap-9'>
