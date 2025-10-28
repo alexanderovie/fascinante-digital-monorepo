@@ -37,17 +37,19 @@ export default async function Home({
   const { locale } = await params;
   const dict = await getDictionary(locale);
 
+  const homepageDict = dict.homepage as Record<string, any>;
+
   return (
     <>
       <HeroSection dict={dict.hero as Record<string, string>} locale={locale} />
-      <Promobar />
-      <ServiceOfferings />
-      <CleaningHighlight />
-      <ExcepServices />
-      <CustomerFeedback />
-      <Pricing />
-      <Ourwork />
-      <UserImpact />
+      <Promobar dict={homepageDict.promobar} />
+      <ServiceOfferings dict={homepageDict.serviceOfferings} />
+      <CleaningHighlight dict={homepageDict.transformation} />
+      <ExcepServices dict={homepageDict.testimonials} />
+      <CustomerFeedback dict={homepageDict.testimonials} />
+      <Pricing dict={homepageDict.pricing} />
+      <Ourwork dict={homepageDict.portfolio} />
+      <UserImpact dict={homepageDict.finalCta} />
     </>
   );
 }

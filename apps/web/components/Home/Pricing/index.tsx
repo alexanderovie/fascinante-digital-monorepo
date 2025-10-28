@@ -5,7 +5,19 @@ import Image from 'next/image';
 import { useRef, useState } from 'react';
 import { PricingData } from './data';
 
-const Pricing = () => {
+interface PricingProps {
+  dict: {
+    badge: string;
+    title: string;
+    starterGrowth: string;
+    starterGrowthDesc: string;
+    smartCampaigns: string;
+    smartCampaignsDesc: string;
+    bookService: string;
+  };
+}
+
+const Pricing = ({ dict }: PricingProps) => {
   const ref = useRef(null);
   const inView = useInView(ref);
   const [modalOpen, setModalOpen] = useState(false);
@@ -21,12 +33,18 @@ const Pricing = () => {
           <div className='py-20 sm:py-28 flex flex-col gap-9 sm:gap-16'>
             <div className="flex flex-col gap-3 items-center justify-center">
               <div className="badge">
-                <p className="text-current">Transparent pricing</p>
+                <p className="text-current">{dict.badge}</p>
               </div>
-              <h2 className='font-semibold max-w-2xl text-center'>Budget-friendly options for a cleaner home</h2>
+              <h2 className='font-semibold max-w-2xl text-center'>{dict.title}</h2>
             </div>
             <div className='flex flex-col gap-6'>
               {PricingData.map((item, index) => {
+                // Map titles to dict descriptions
+                const getDescription = (title: string) => {
+                  if (title === "Starter Growth") return dict.starterGrowthDesc;
+                  if (title === "Smart Campaigns") return dict.smartCampaignsDesc;
+                  return item.descp; // Fallback to original
+                };
                 return (
                   <motion.div {...bottomAnimation(index)} key={index} className='group dark:bg-dusty-gray/40 border border-natural-gray dark:border-natural-gray/20 shadow-xl py-6 px-4 rounded-md hover:bg-primary dark:hover:bg-dusty-gray hover:border-secondary transition-all duration-500 ease-in-out'>
                     <div className='flex flex-col md:flex-row items-center justify-between gap-3 md:gap-6 text-center md:text-left'>
@@ -35,11 +53,11 @@ const Pricing = () => {
                         <h5 className='font-medium group-hover:text-white'>{item.title}</h5>
                       </div>
                       <div className='lg:max-w-sm'>
-                        <p className='text-secondary/80 dark:text-white/80 group-hover:text-white/90'>{item.descp}</p>
+                        <p className='text-secondary/80 dark:text-white/80 group-hover:text-white/90'>{getDescription(item.title)}</p>
                       </div>
                       <h6 className='font-medium group-hover:text-white'>${item.price}{item.duration && '/mo'}</h6>
                       <div onClick={() => setModalOpen(true)} className="whitespace-nowrap font-bold bg-natural-gray dark:bg-secondary group-hover:bg-white group-hover:text-primary py-3 px-4 rounded-md transition-all duration-500 ease-in-out cursor-pointer">
-                        Book a service
+                        {dict.bookService}
                       </div>
 
                     </div>

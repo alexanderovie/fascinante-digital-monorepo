@@ -3,7 +3,16 @@ import { motion, useInView } from "framer-motion";
 import Link from 'next/link';
 import { useRef } from 'react';
 
-const UserImpact = () => {
+interface UserImpactProps {
+  dict: {
+    title: string;
+    subtitle: string;
+    description: string;
+    button: string;
+  };
+}
+
+const UserImpact = ({ dict }: UserImpactProps) => {
   const ref = useRef(null);
   const inView = useInView(ref);
   const bottomAnimation = {
@@ -19,15 +28,15 @@ const UserImpact = () => {
             <div className='grid grid-cols-1 xxl:grid-cols-2'>
               <div></div>
               <motion.div {...bottomAnimation} className='flex flex-col gap-5 py-20 xxl:py-52 xxl:items-start items-center text-center xxl:text-left'>
-                <h2 className='text-6xl md:text-7xl font-bold text-secondary'>Ready to Grow?</h2>
+                <h2 className='text-6xl md:text-7xl font-bold text-secondary'>{dict.title}</h2>
                 <div className='flex flex-col gap-4'>
                   <h4 className='font-semibold text-secondary'>
-                    Grow beyond ads and followers
+                    {dict.subtitle}
                   </h4>
-                  <p className="text-secondary">Let’s build a brand that clients remember, algorithms reward, and competitors can’t ignore.</p>
+                  <p className="text-secondary">{dict.description}</p>
                 </div>
                 <Link href={"/contact-us"} className='py-3.5 px-6 w-fit bg-primary hover:bg-darkPrimary rounded-md '>
-                  <span className="font-semibold text-white">Get Your Free Strategy Call</span>
+                  <span className="font-semibold text-white">{dict.button}</span>
                 </Link>
               </motion.div>
             </div>

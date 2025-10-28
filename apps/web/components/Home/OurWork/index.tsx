@@ -4,7 +4,14 @@ import { useEffect, useRef, useState } from 'react'
 import Marquee from 'react-fast-marquee'
 import { WorkData } from './data'
 
-const Ourwork = () => {
+interface OurworkProps {
+  dict: {
+    title: string;
+    viewAllWork: string;
+  };
+}
+
+const Ourwork = ({ dict }: OurworkProps) => {
   const [zoomedImage, setZoomedImage] = useState<string | null>(null)
   const [isVisible, setIsVisible] = useState(false)
   const zoomRef = useRef<HTMLDivElement | null>(null)
@@ -37,7 +44,7 @@ const Ourwork = () => {
             <div className="badge">
               <p className="text-current">Our work in action</p>
             </div>
-            <h2 className='font-semibold text-center'>See the difference we make</h2>
+            <h2 className='font-semibold text-center'>{dict.title}</h2>
           </div>
         </div>
 

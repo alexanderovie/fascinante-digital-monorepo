@@ -3,7 +3,18 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { videos } from './data';
 
-const CustomerFeedback = () => {
+interface CustomerFeedbackProps {
+  dict: {
+    badge: string;
+    title: string;
+    subtitle: string;
+    clientName: string;
+    sectionTitle: string;
+    sectionSubtitle: string;
+  };
+}
+
+const CustomerFeedback = ({ dict }: CustomerFeedbackProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [playingIndex, setPlayingIndex] = useState<number | null>(null);
 
@@ -15,12 +26,12 @@ const CustomerFeedback = () => {
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-5">
               <div className="flex flex-col gap-4 max-w-xl">
                 <div className="badge">
-                  <p className="text-current">What Our Clients Say</p>
+                  <p className="text-current">{dict.sectionTitle}</p>
                 </div>
-                <h2 className="font-semibold text-secondary">Real results. Real stories.</h2>
+                <h2 className="font-semibold text-secondary">{dict.title}</h2>
               </div>
               <div className="flex flex-col gap-8 max-w-sm">
-                <p className="text-secondary">Gain insight into how our cleaning services have transformed homes and exceeded expectations.</p>
+                <p className="text-secondary">{dict.sectionSubtitle}</p>
               </div>
             </div>
             <div className='grid grid-cols-1 xl:grid-cols-2 gap-10 '>
@@ -51,8 +62,8 @@ const CustomerFeedback = () => {
                         height={64}
                       />
                       <div className="absolute bottom-0 left-0 w-full py-7 px-9">
-                        <h5 className='dark:text-secondary'>“We used to be invisible on Google. In 3 months, Fascinante Digital made us the #1 result — and the phone hasn’t stopped ringing.”</h5>
-                        <p className='text-secondary/80 font-bold mt-1.5 xl:mt-4'>— Ana Rivera, Miami FL</p>
+                        <h5 className='dark:text-secondary'>"{dict.subtitle}"</h5>
+                        <p className='text-secondary/80 font-bold mt-1.5 xl:mt-4'>{dict.clientName}</p>
                       </div>
                     </div>
                   </>

@@ -4,15 +4,32 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-function ServiceOfferings() {
+interface ServiceOfferingsProps {
+  dict: {
+    badge: string;
+    title: string;
+    description: string;
+    viewAllServices: string;
+    services: {
+      digitalBranding: string;
+      seoOptimization: string;
+      googleMetaAds: string;
+      webDesign: string;
+      brandIdentity: string;
+      emailAutomation: string;
+    };
+  };
+}
+
+function ServiceOfferings({ dict }: ServiceOfferingsProps) {
   // Override only the displayed titles, keep images/links intact
   const marketingTitles = [
-    "Digital Branding",
-    "SEO Optimization",
-    "Google & Meta Ads",
-    "Web Design",
-    "Brand Identity",
-    "Email Automation",
+    dict.services.digitalBranding,
+    dict.services.seoOptimization,
+    dict.services.googleMetaAds,
+    dict.services.webDesign,
+    dict.services.brandIdentity,
+    dict.services.emailAutomation,
   ];
   return (
     <section>
@@ -22,13 +39,13 @@ function ServiceOfferings() {
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-5">
               <div className="flex flex-col gap-4 max-w-xl">
                 <div className="badge">
-                  <p className="text-current">What We Do Best</p>
+                  <p className="text-current">{dict.badge}</p>
                 </div>
-                <h2 className="font-semibold text-secondary">We create digital ecosystems that attract, convert, and retain</h2>
+                <h2 className="font-semibold text-secondary">{dict.title}</h2>
               </div>
               <div className="flex flex-col gap-8 max-w-sm">
-                <p className="text-secondary">From SEO and local positioning to paid ads, web, and content — everything aligned for measurable growth.</p>
-                <Link href="/services" className="w-fit text-secondary border-b-2 border-primary hover:text-primary">View all services</Link>
+                <p className="text-secondary">{dict.description}</p>
+                <Link href="/services" className="w-fit text-secondary border-b-2 border-primary hover:text-primary">{dict.viewAllServices}</Link>
               </div>
             </div>
           </div>
