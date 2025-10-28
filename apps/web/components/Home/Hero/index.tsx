@@ -108,7 +108,7 @@ function HeroSection() {
         <div className="bg-white h-full flex justify-center items-center">
           <div className="container">
             <div ref={ref} className="flex flex-col lg:flex-row gap-10 xl:gap-20 2xl:gap-32 py-20 items-center lg:items-center justify-between">
-              <div className="flex flex-col gap-6 w-full px-5 sm:px-0">
+              <div className="flex flex-col gap-6 w-full">
                 <div className="flex flex-col gap-3">
                   <Link
                     href="/contact-us"
@@ -140,7 +140,7 @@ function HeroSection() {
                 </div>
               </div>
 
-              <div className="relative bg-white dark:bg-dark-gray rounded-none md:rounded-md max-w-530px lg:max-w-md xl:max-w-530px w-full md:w-auto -mx-5 sm:mx-0 py-10 px-5 md:px-10 md:p-10 flex flex-col gap-8 md:shadow-2xl md:shadow-black/10 md:border md:border-gray-100 dark:md:border-gray-700">
+              <div className="relative bg-white dark:bg-dark-gray rounded-none md:rounded-md max-w-530px lg:max-w-md xl:max-w-530px w-full -mx-5 sm:mx-0 py-10 px-5 sm:px-10 sm:p-10 flex flex-col gap-8 sm:shadow-2xl sm:shadow-black/10 sm:border sm:border-gray-100 dark:sm:border-gray-700">
                 <h4 className="font-semibold dark:text-white">Get Your Free Growth Plan</h4>
                 <FormComponent
                   formData={formData}
