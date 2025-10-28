@@ -127,11 +127,26 @@
       "benefits": {
         "badge": "Benefits",
         "title": "What You Get",
+        "description": "Get a complete analysis of your digital presence with actionable insights to drive your growth.",
         "items": {
-          "free": "100% Free",
-          "fast": "Results in Minutes",
-          "actionable": "Actionable Insights",
-          "complete": "Complete Analysis"
+          "item1": {
+            "title": "Ranked Keywords"
+          },
+          "item2": {
+            "title": "Domain Authority"
+          },
+          "item3": {
+            "title": "SEO Opportunities"
+          },
+          "item4": {
+            "title": "Competitor Analysis"
+          },
+          "item5": {
+            "title": "Technical Performance"
+          },
+          "item6": {
+            "title": "Actionable Insights"
+          }
         }
       },
       "mobile": {

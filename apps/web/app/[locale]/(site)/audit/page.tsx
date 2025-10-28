@@ -1,4 +1,6 @@
+import AuditBenefits from "@/components/Audit/AuditBenefits";
 import AuditHero from "@/components/Audit/Hero";
+import AuditProcess from "@/components/Audit/AuditProcess";
 import WhatWeAudit from "@/components/Audit/WhatWeAudit";
 import { getDictionary } from "@/lib/dictionaries";
 import type { Locale } from "@/lib/i18n";
@@ -63,6 +65,8 @@ export default async function AuditPage({
       <main>
         <AuditHero dict={dict} locale={locale} />
         <WhatWeAudit dict={dict.audit || {}} />
+        <AuditProcess dict={dict.audit || {}} />
+        <AuditBenefits dict={dict.audit || {}} locale={locale} />
       </main>
     </>
   );

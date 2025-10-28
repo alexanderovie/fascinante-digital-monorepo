@@ -127,11 +127,26 @@
       "benefits": {
         "badge": "Beneficios",
         "title": "Qué Obtienes",
+        "description": "Obtén un análisis completo de tu presencia digital con insights accionables para impulsar tu crecimiento.",
         "items": {
-          "free": "100% Gratuito",
-          "fast": "Resultados en Minutos",
-          "actionable": "Insights Accionables",
-          "complete": "Análisis Completo"
+          "item1": {
+            "title": "Keywords Posicionadas"
+          },
+          "item2": {
+            "title": "Autoridad del Dominio"
+          },
+          "item3": {
+            "title": "Oportunidades SEO"
+          },
+          "item4": {
+            "title": "Análisis de Competencia"
+          },
+          "item5": {
+            "title": "Performance Técnica"
+          },
+          "item6": {
+            "title": "Insights Accionables"
+          }
         }
       },
       "mobile": {
