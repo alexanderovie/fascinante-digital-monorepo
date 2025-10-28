@@ -4,8 +4,9 @@ import { API_ENDPOINTS } from '@/lib/api-config';
 import { mapGooglePlacesTypeToCategory } from '@/lib/business-categories';
 import type { Locale } from "@/lib/i18n";
 import type { PlaceDetails } from "@/types/places";
-import { Clock, Search, Star, TrendingUp } from "lucide-react";
+import { ChevronRight, Clock, Search, Star, TrendingUp } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from "react";
 import { toast } from 'sonner';
@@ -150,11 +151,11 @@ function AuditHero({ dict, locale }: AuditHeroProps) {
     }
   };
 
-  const auditStats = [
-    { icon: Clock, value: "2-5 Min", label: dict.common.loading || "Análisis Rápido" },
-    { icon: Search, value: "100+", label: dict.audit.sections.whatWeAudit.items.keywords || "Keywords" },
-    { icon: TrendingUp, value: "95%", label: dict.audit.sections.benefits.items.actionable || "Precisión" },
-    { icon: Star, value: "Free", label: dict.audit.sections.benefits.items.free || "Gratuito" },
+  // Desktop/Tablet: Trust metrics con mismo formato que homepage
+  const desktopMetrics = [
+    { icon: Clock, value: dict.audit?.metrics?.speed || "2-5 Min", label: dict.audit?.metrics?.speedLabel || "Análisis Rápido" },
+    { icon: Search, value: dict.audit?.metrics?.keywords || "100+", label: dict.audit?.metrics?.keywordsLabel || "Keywords" },
+    { icon: Star, value: dict.audit?.metrics?.accuracy || "95%", label: dict.audit?.metrics?.accuracyLabel || "Precisión" },
   ];
 
   return (
@@ -162,94 +163,85 @@ function AuditHero({ dict, locale }: AuditHeroProps) {
       <div className="relative pt-24 lg:pt-32">
         <div className="bg-white h-full flex justify-center items-center">
           <div className="container">
-            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10 lg:gap-16 py-20">
-              {/* Mobile: Formulario primero (después del badge) */}
-              <div className="w-full lg:hidden order-2">
-                <div className="relative bg-transparent flex flex-col gap-4">
-                  <h4 className="font-semibold dark:text-white">{dict.audit.formTitle}</h4>
-                  <AuditForm
-                    formData={formData}
-                    onChange={handleChange}
-                    onNameChange={handleNameChange}
-                    onSubmit={handleSubmit}
-                    onPlaceSelect={handlePlaceSelect}
-                    dict={dict.audit}
-                    isProcessing={isProcessing}
-                    locale={locale}
-                    detectedCategory={detectedCategory}
-                  />
-
-                  {submitted && showThanks && (
-                    <div className="flex gap-1.5 items-center">
-                      <p className="text-primaryText font-semibold">{dict.audit.formThanks}</p>
-                      <Image src="/images/home/banner/smile-emoji.svg" alt="image" width={20} height={20} />
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* Contenido principal (badge, título, subtítulo, stats) */}
-              <div className="flex-1 flex flex-col gap-8 max-w-2xl w-full lg:order-1 order-1">
-                <div className="flex flex-col gap-4">
-                  <div className="badge order-1">
-                    <p className="text-current">{dict.audit.badge}</p>
+            <div className="flex flex-col lg:flex-row gap-10 xl:gap-20 2xl:gap-32 py-20 items-center lg:items-center justify-between">
+              {/* Contenido principal - Desktop/Tablet: Formato idéntico a homepage */}
+              <div className="flex flex-col gap-6 w-full">
+                <div className="flex flex-col gap-3">
+                  {/* Badge con flecha (mismo formato que homepage) */}
+                  <div className="badge">
+                    {dict.audit.badge} →
+                    <ChevronRight className="ml-1 size-4 text-current" aria-hidden="true" />
                   </div>
-
-                  {/* Mobile: Título corto después del formulario, Desktop: Título completo */}
-                  <div className="lg:order-2 order-3">
-                    <h1 className="font-semibold text-secondary dark:text-white text-4xl sm:text-5xl lg:text-6xl">
-                      <span className="lg:hidden">{dict.audit.titleMobile || dict.audit.title}</span>
-                      <span className="hidden lg:inline">{dict.audit.title}</span>
-                    </h1>
-                  </div>
-
-                  {/* Subtítulo - solo visible en desktop/tablet */}
-                  <p className="text-dusty-gray dark:text-white/70 text-lg lg:order-3 hidden lg:block">
-                    {dict.audit.subtitle}
-                  </p>
+                  {/* Título (mismo formato que homepage) */}
+                  <h1 className="text-secondary dark:text-white font-semibold min-w-[12ch]">
+                    {dict.audit.title}
+                  </h1>
                 </div>
+                {/* Subtítulo (mismo formato que homepage) */}
+                <p className="text-secondary dark:text-white text-lg sm:text-xl">{dict.audit.subtitle}</p>
 
-                {/* Stats - solo visibles en desktop/tablet */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 lg:order-4 hidden lg:grid">
-                  {auditStats.map((stat, index) => (
-                    <div key={index} className="flex flex-col gap-2">
-                      <div className="flex items-center gap-2">
-                        <stat.icon className="size-5 text-primary dark:text-blue-400" />
-                        <span className="font-semibold text-secondary dark:text-white text-xl">
-                          {stat.value}
-                        </span>
+                {/* Mobile: Formulario después del subtítulo */}
+                <div className="block lg:hidden mt-6">
+                  <div className="relative bg-transparent flex flex-col gap-4">
+                    <h4 className="font-semibold dark:text-white">{dict.audit.formTitle}</h4>
+                    <AuditForm
+                      formData={formData}
+                      onChange={handleChange}
+                      onNameChange={handleNameChange}
+                      onSubmit={handleSubmit}
+                      onPlaceSelect={handlePlaceSelect}
+                      dict={dict.audit}
+                      isProcessing={isProcessing}
+                      locale={locale}
+                      detectedCategory={detectedCategory}
+                    />
+
+                    {submitted && showThanks && (
+                      <div className="flex gap-1.5 items-center">
+                        <p className="text-primaryText font-semibold">{dict.audit.formThanks}</p>
+                        <Image src="/images/home/banner/smile-emoji.svg" alt="image" width={20} height={20} />
                       </div>
-                      <span className="text-sm text-dusty-gray dark:text-white/70">
-                        {stat.label}
-                      </span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Trust Metrics - Desktop/Tablet: Formato idéntico a homepage (horizontal flex) */}
+                <div className="hidden lg:flex flex-wrap items-center gap-6 md:gap-8 lg:gap-12 mt-8">
+                  {desktopMetrics.map((metric, index) => (
+                    <div key={index} className="flex items-center gap-3 text-secondary dark:text-white">
+                      <metric.icon size={28} className={
+                        index === 0 ? "text-blue-400" : 
+                        index === 1 ? "text-amber-400" : 
+                        "text-emerald-400"
+                      } />
+                      <span className="text-lg md:text-xl font-semibold">{metric.value}</span>
+                      <span className="text-lg md:text-xl font-semibold hidden xl:inline">— {metric.label}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Desktop/Tablet: Formulario a la derecha (posición original) */}
-              <div className="hidden lg:block w-full lg:w-auto lg:order-2">
-                <div className="relative bg-white dark:bg-dark-gray rounded-md max-w-530px lg:max-w-md xl:max-w-530px w-full py-7 xl:py-11 px-8 xl:px-14 flex flex-col gap-8 shadow-2xl shadow-black/10 border border-gray-100 dark:border-gray-700">
-                  <h4 className="font-semibold dark:text-white">{dict.audit.formTitle}</h4>
-                  <AuditForm
-                    formData={formData}
-                    onChange={handleChange}
-                    onNameChange={handleNameChange}
-                    onSubmit={handleSubmit}
-                    onPlaceSelect={handlePlaceSelect}
-                    dict={dict.audit}
-                    isProcessing={isProcessing}
-                    locale={locale}
-                    detectedCategory={detectedCategory}
-                  />
+              {/* Desktop/Tablet: Formulario a la derecha (formato idéntico a homepage) */}
+              <div className="hidden lg:block relative bg-white dark:bg-dark-gray rounded-md max-w-530px lg:max-w-md xl:max-w-530px w-full py-10 sm:px-10 sm:p-10 flex flex-col gap-8 sm:shadow-2xl sm:shadow-black/10 sm:border sm:border-gray-100 dark:sm:border-gray-700">
+                <h4 className="font-semibold dark:text-white">{dict.audit.formTitle}</h4>
+                <AuditForm
+                  formData={formData}
+                  onChange={handleChange}
+                  onNameChange={handleNameChange}
+                  onSubmit={handleSubmit}
+                  onPlaceSelect={handlePlaceSelect}
+                  dict={dict.audit}
+                  isProcessing={isProcessing}
+                  locale={locale}
+                  detectedCategory={detectedCategory}
+                />
 
-                  {submitted && showThanks && (
-                    <div className="flex gap-1.5 items-center absolute -bottom-9 left-0">
-                      <p className="text-primaryText font-semibold">{dict.audit.formThanks}</p>
-                      <Image src="/images/home/banner/smile-emoji.svg" alt="image" width={20} height={20} />
-                    </div>
-                  )}
-                </div>
+                {submitted && showThanks && (
+                  <div className="flex gap-1.5 items-center absolute -bottom-9 left-0">
+                    <p className="text-primaryText font-semibold">{dict.audit.formThanks}</p>
+                    <Image src="/images/home/banner/smile-emoji.svg" alt="image" width={20} height={20} />
+                  </div>
+                )}
               </div>
             </div>
           </div>

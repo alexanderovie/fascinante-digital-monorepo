@@ -68,6 +68,14 @@
     "title": "Descubre Oportunidades de Crecimiento",
     "titleMobile": "Auditoría Gratuita",
     "subtitle": "Analiza tu presencia digital en minutos. Obtén insights accionables sobre SEO, keywords y competencia.",
+    "metrics": {
+      "speed": "2-5 Min",
+      "speedLabel": "Análisis Rápido",
+      "keywords": "100+",
+      "keywordsLabel": "Keywords",
+      "accuracy": "95%",
+      "accuracyLabel": "Precisión"
+    },
     "formTitle": "Solicita Tu Auditoría Gratuita",
     "formStep1": "Paso 1 de 2",
     "formStep2": "Paso 2 de 2",

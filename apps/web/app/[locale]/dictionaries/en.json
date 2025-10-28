@@ -68,6 +68,14 @@
     "title": "Discover Growth Opportunities",
     "titleMobile": "Free Audit",
     "subtitle": "Analyze your digital presence in minutes. Get actionable insights about SEO, keywords, and competition.",
+    "metrics": {
+      "speed": "2-5 Min",
+      "speedLabel": "Quick Analysis",
+      "keywords": "100+",
+      "keywordsLabel": "Keywords",
+      "accuracy": "95%",
+      "accuracyLabel": "Accuracy"
+    },
     "formTitle": "Request Your Free Audit",
     "formStep1": "Step 1 of 2",
     "formStep2": "Step 2 of 2",

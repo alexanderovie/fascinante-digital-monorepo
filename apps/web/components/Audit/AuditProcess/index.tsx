@@ -18,7 +18,7 @@ const AuditProcess = ({ dict }: AuditProcessProps) => {
   });
 
   const processDict = dict?.sections?.process || {};
-  
+
   const steps = auditProcessSteps.map((step, index) => ({
     ...step,
     title: processDict.steps?.[`step${index + 1}`] || step.title,
@@ -65,4 +65,3 @@ const AuditProcess = ({ dict }: AuditProcessProps) => {
 }
 
 export default AuditProcess
-
