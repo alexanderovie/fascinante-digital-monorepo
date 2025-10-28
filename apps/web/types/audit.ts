@@ -61,6 +61,7 @@ export interface TechnicalAuditResponse {
  */
 export interface AuditRequest {
   businessName: string;
+  phone?: string;
   email?: string;
   website?: string;
   placeId?: string;

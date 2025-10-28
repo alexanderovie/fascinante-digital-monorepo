@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 interface AuditFormProps {
   formData: {
     name: string;
+    phone?: string;
     email: string;
     website: string;
     category?: string;
@@ -37,6 +38,7 @@ export default function AuditForm({
   const [step, setStep] = useState(1);
   const [errors, setErrors] = useState<{
     name?: string;
+    phone?: string;
     email?: string;
     website?: string;
     category?: string;
@@ -64,7 +66,7 @@ export default function AuditForm({
 
   const validateStep1 = () => {
     const newErrors: typeof errors = {};
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^[\d\s\-\+\(\)]+$/;
     const urlRegex = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
 
     // Business name validation (required)
@@ -77,9 +79,9 @@ export default function AuditForm({
       newErrors.name = "Please enter a valid business name.";
     }
 
-    // Email validation (optional, but must be valid if provided)
-    if (formData.email.trim() && !emailRegex.test(formData.email)) {
-      newErrors.email = "Enter a valid email address.";
+    // Phone validation (optional, but must be valid if provided)
+    if (formData.phone && formData.phone.trim() && !phoneRegex.test(formData.phone.trim())) {
+      newErrors.phone = "Enter a valid phone number.";
     }
 
     // Website validation (optional, but must be valid if provided)
@@ -93,10 +95,16 @@ export default function AuditForm({
 
   const validateStep2 = () => {
     const newErrors: typeof errors = {};
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     // Category is REQUIRED
     if (!formData.category || !formData.category.trim()) {
       newErrors.category = dict.formCategoryRequired || "Category is required.";
+    }
+
+    // Email validation (optional, but must be valid if provided)
+    if (formData.email.trim() && !emailRegex.test(formData.email)) {
+      newErrors.email = "Enter a valid email address.";
     }
 
     setErrors(newErrors);
@@ -190,28 +198,28 @@ export default function AuditForm({
 
           <div>
             <input
+              type="tel"
+              name="phone"
+              placeholder={dict.formPhone || "Teléfono (opcional)"}
+              onChange={onChange}
+              value={formData.phone || ''}
+              className="input-field"
+              autoComplete="tel"
+            />
+            {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+          </div>
+
+          <div>
+            <input
               type="url"
               name="website"
               placeholder={dict.formWebsite || "Website (opcional)"}
               onChange={onChange}
               value={formData.website || ''}
               className="input-field"
-              autoComplete="off"
+              autoComplete="url"
             />
             {errors.website && <p className="text-red-500 text-sm mt-1">{errors.website}</p>}
-          </div>
-
-          <div>
-            <input
-              type="email"
-              name="email"
-              placeholder={dict.formEmail || "Correo electrónico"}
-              onChange={onChange}
-              value={formData.email || ''}
-              className="input-field"
-              autoComplete="off"
-            />
-            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
           </div>
 
           <div className="flex flex-col gap-3">
@@ -228,7 +236,7 @@ export default function AuditForm({
         </div>
       )}
 
-      {/* Step 2: Category */}
+      {/* Step 2: Category and Email */}
       {step === 2 && (
         <div className="flex flex-col gap-5">
           <div>
@@ -258,6 +266,19 @@ export default function AuditForm({
               ))}
             </select>
             {errors.category && <p className="text-red-500 text-sm mt-1">{errors.category}</p>}
+          </div>
+
+          <div>
+            <input
+              type="email"
+              name="email"
+              placeholder={dict.formEmail || "Correo electrónico (opcional)"}
+              onChange={onChange}
+              value={formData.email || ''}
+              className="input-field"
+              autoComplete="email"
+            />
+            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
           </div>
 
           <div className="flex flex-col gap-3">

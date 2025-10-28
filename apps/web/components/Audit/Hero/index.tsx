@@ -24,12 +24,14 @@ function AuditHero({ dict, locale }: AuditHeroProps) {
   const ref = useRef(null);
   const [formData, setFormData] = useState<{
     name: string;
+    phone?: string;
     email: string;
     website: string;
     category?: string;
     placeId?: string;
   }>({
     name: "",
+    phone: "",
     email: "",
     website: "",
     category: "",
@@ -58,6 +60,7 @@ function AuditHero({ dict, locale }: AuditHeroProps) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           businessName: formData.name,
+          phone: formData.phone || undefined,
           email: formData.email || undefined,
           website: formData.website || undefined,
           placeId: formData.placeId || undefined,
@@ -107,11 +110,13 @@ function AuditHero({ dict, locale }: AuditHeroProps) {
     // Map Google Places type to our category
     const mappedCategory = mapGooglePlacesTypeToCategory(place.primary_type, place.types);
 
-    // Always load website and category from Google Places if available
+    // Always load website, phone and category from Google Places if available
     // This ensures automatic population of fields
     setFormData((prevData) => ({
       ...prevData,
       name: place.name,
+      // Auto-load phone if available from Google Places (prefer international format)
+      phone: place.international_phone_number || place.formatted_phone_number || prevData.phone || '',
       // Auto-load website if available from Google Places
       website: place.website || prevData.website || '',
       placeId: place.place_id,
@@ -130,6 +135,9 @@ function AuditHero({ dict, locale }: AuditHeroProps) {
     }
     if (place.website) {
       detectedInfo.push('Website detectado');
+    }
+    if (place.international_phone_number || place.formatted_phone_number) {
+      detectedInfo.push('Teléfono detectado');
     }
     if (mappedCategory) {
       detectedInfo.push('Categoría detectada');
@@ -194,7 +202,7 @@ function AuditHero({ dict, locale }: AuditHeroProps) {
                       <span className="hidden lg:inline">{dict.audit.title}</span>
                     </h1>
                   </div>
-                  
+
                   {/* Subtítulo - solo visible en desktop/tablet */}
                   <p className="text-dusty-gray dark:text-white/70 text-lg lg:order-3 hidden lg:block">
                     {dict.audit.subtitle}
