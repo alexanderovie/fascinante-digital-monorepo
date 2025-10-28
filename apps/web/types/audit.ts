@@ -64,6 +64,7 @@ export interface AuditRequest {
   email?: string;
   website?: string;
   placeId?: string;
+  category?: string; // Business category - required for DataForSEO queries
 }
 
 export interface AuditResult {

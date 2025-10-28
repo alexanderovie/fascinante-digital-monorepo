@@ -34,7 +34,7 @@ export async function GET(request: NextRequest) {
 
     // Build field mask - only request what we need (best practice per docs)
     // Essentials: addressComponents, formattedAddress, location, types
-    // Pro: displayName, businessStatus
+    // Pro: displayName, businessStatus, primaryType, types
     // Enterprise: nationalPhoneNumber, internationalPhoneNumber, rating, userRatingCount, websiteUri, regularOpeningHours
     const fieldMask = [
       'id', // Essentials IDs Only
@@ -42,6 +42,8 @@ export async function GET(request: NextRequest) {
       'formattedAddress', // Essentials
       'addressComponents', // Essentials
       'businessStatus', // Pro
+      'primaryType', // Pro - Primary business category
+      'types', // Essentials - All categories/types
       'nationalPhoneNumber', // Enterprise
       'internationalPhoneNumber', // Enterprise
       'rating', // Enterprise
@@ -122,6 +124,8 @@ export async function GET(request: NextRequest) {
       user_rating_count: data.userRatingCount || undefined,
       website: data.websiteUri || undefined,
       business_status: data.businessStatus || 'OPERATIONAL',
+      primary_type: data.primaryType || undefined, // Primary category (e.g., "restaurant", "store")
+      types: data.types || undefined, // All types/categories
       geometry: data.geometry ? {
         location: {
           lat: data.geometry.location?.latitude || 0,

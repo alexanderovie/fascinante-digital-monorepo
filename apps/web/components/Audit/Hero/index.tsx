@@ -2,6 +2,7 @@
 
 import { API_ENDPOINTS } from '@/lib/api-config';
 import type { Locale } from "@/lib/i18n";
+import { mapGooglePlacesTypeToCategory } from '@/lib/business-categories';
 import type { PlaceDetails } from "@/types/places";
 import { Clock, Search, Star, TrendingUp } from "lucide-react";
 import Image from "next/image";
@@ -25,12 +26,15 @@ function AuditHero({ dict, locale }: AuditHeroProps) {
     name: string;
     email: string;
     website: string;
+    category?: string;
     placeId?: string;
   }>({
     name: "",
     email: "",
     website: "",
+    category: "",
   });
+  const [detectedCategory, setDetectedCategory] = useState<string | null>(null);
 
   useEffect(() => {
     if (submitted) {
@@ -57,6 +61,7 @@ function AuditHero({ dict, locale }: AuditHeroProps) {
           email: formData.email || undefined,
           website: formData.website || undefined,
           placeId: formData.placeId || undefined,
+          category: formData.category || undefined,
         }),
       });
 
@@ -83,7 +88,7 @@ function AuditHero({ dict, locale }: AuditHeroProps) {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -99,11 +104,21 @@ function AuditHero({ dict, locale }: AuditHeroProps) {
   };
 
   const handlePlaceSelect = (place: PlaceDetails) => {
+    // Map Google Places type to our category
+    const mappedCategory = mapGooglePlacesTypeToCategory(place.primary_type, place.types);
+    
     setFormData((prevData) => ({
       ...prevData,
       name: place.name,
       website: place.website || prevData.website,
+      placeId: place.place_id,
+      // Only auto-set category if detected, don't override if user already selected one
+      category: mappedCategory || prevData.category,
     }));
+    
+    // Store detected category for display in form
+    setDetectedCategory(mappedCategory);
+    
     if (place.formatted_address) {
       toast.success('Negocio encontrado', {
         description: place.formatted_address,
@@ -165,6 +180,8 @@ function AuditHero({ dict, locale }: AuditHeroProps) {
                     onPlaceSelect={handlePlaceSelect}
                     dict={dict.audit}
                     isProcessing={isProcessing}
+                    locale={locale}
+                    detectedCategory={detectedCategory}
                   />
 
                   {submitted && showThanks && (

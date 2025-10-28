@@ -65,6 +65,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Category is REQUIRED for DataForSEO queries
+    if (!body.category || !body.category.trim()) {
+      return NextResponse.json<AuditGenerationResponse>(
+        { success: false, error: 'Business category is required' },
+        { status: 400 }
+      );
+    }
+
     // Extract domain if website provided
     const domain = extractDomain(body.website);
 

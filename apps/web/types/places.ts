@@ -29,6 +29,8 @@ export interface PlaceDetails {
   user_rating_count?: number;
   website?: string;
   business_status: string;
+  primary_type?: string; // Primary business category from Google Places (e.g., "restaurant", "store")
+  types?: string[]; // All types/categories for this place
   geometry?: {
     location: {
       lat: number;
