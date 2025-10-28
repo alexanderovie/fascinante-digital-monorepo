@@ -70,7 +70,7 @@ export default function AuditForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-8">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-8">
       <div className="flex flex-col gap-5">
         <div>
           {onNameChange ? (

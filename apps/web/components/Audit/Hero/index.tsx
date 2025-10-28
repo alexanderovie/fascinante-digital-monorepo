@@ -155,7 +155,7 @@ function AuditHero({ dict, locale }: AuditHeroProps) {
               </div>
 
               <div className="w-full lg:w-auto">
-                <div className="relative bg-white dark:bg-dark-gray rounded-none md:rounded-md max-w-530px lg:max-w-md xl:max-w-530px w-full py-10 sm:px-10 sm:p-10 flex flex-col gap-8 sm:shadow-2xl sm:shadow-black/10 sm:border sm:border-gray-100 dark:sm:border-gray-700">
+                <div className="relative bg-white dark:bg-dark-gray rounded-none md:rounded-md max-w-530px lg:max-w-md xl:max-w-530px w-full py-10 px-3 md:py-7 md:px-8 xl:py-11 xl:px-14 flex flex-col gap-4 md:gap-8 sm:shadow-2xl sm:shadow-black/10 sm:border sm:border-gray-100 dark:sm:border-gray-700">
                   <h4 className="font-semibold dark:text-white">{dict.audit.formTitle}</h4>
                   <AuditForm
                     formData={formData}

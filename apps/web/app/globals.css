@@ -62,13 +62,15 @@ input[type="checkbox"]:checked {
   .badge {
     @apply inline-flex items-center justify-start whitespace-nowrap text-sm font-medium leading-5 transition-all disabled:pointer-events-none disabled:opacity-50 outline-none focus-visible:outline-2 focus-visible:outline-blue-400 focus-visible:outline-offset-2 border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/30 hover:bg-blue-100 dark:hover:bg-blue-900/40 hover:border-blue-300 dark:hover:border-blue-700 shadow-xs h-8 gap-1.5 px-3 rounded-full w-fit text-blue-800 dark:text-blue-200;
   }
-  
+
   /* 🎯 Badge text - Fuerza font-weight 500, text-sm (14px), leading-5 (20px) para hijos */
   .badge,
   .badge * {
     font-weight: 500;
-    font-size: 0.875rem; /* 14px */
-    line-height: 1.25rem; /* 20px */
+    font-size: 0.875rem;
+    /* 14px */
+    line-height: 1.25rem;
+    /* 20px */
   }
 
   /* 🎯 REGLA GLOBAL: Contraste automático para bg-primary */
