@@ -7,7 +7,7 @@ const ServicesListing = () => {
     <section>
       <div className="relative pt-24 lg:pt-32 bg-[#F5F6F6]">
         <div className="container">
-          <div className='relative flex flex-col gap-10 lg:gap-16 xl:gap-20 pt-14 lg:pt-28 pb-14 z-10'>
+          <div className='relative flex flex-col gap-10 lg:gap-16 xl:gap-20 pb-14 z-10'>
             <div className='flex lg:flex-row flex-col items-center gap-5 lg:gap-10'>
               <div className='flex flex-col gap-3 lg:max-w-2xl w-full'>
                 <div className="badge">

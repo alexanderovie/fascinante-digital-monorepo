@@ -184,8 +184,8 @@ function HeroSection({ dict, locale }: HeroSectionProps) {
               </div>
 
               {/* Desktop: Formulario completo */}
-              <div className="hidden md:block relative bg-white dark:bg-dark-gray rounded-none md:rounded-md max-w-530px lg:max-w-md xl:max-w-530px w-full py-10 sm:px-10 sm:p-10 flex flex-col gap-6 sm:shadow-2xl sm:shadow-black/10 sm:border sm:border-gray-100 dark:sm:border-gray-700">
-                <h4 className="font-semibold dark:text-white">{toTitleCase(dict.formTitle)}</h4>
+              <div className="hidden md:block relative bg-white dark:bg-dark-gray rounded-none md:rounded-md max-w-530px lg:max-w-md xl:max-w-530px w-full py-10 sm:px-10 sm:p-10 flex flex-col sm:shadow-2xl sm:shadow-black/10 sm:border sm:border-gray-100 dark:sm:border-gray-700">
+                <h4 className="font-semibold dark:text-white mb-6">{toTitleCase(dict.formTitle)}</h4>
                 <FormComponent
                   formData={formData}
                   onChange={handleChange}
