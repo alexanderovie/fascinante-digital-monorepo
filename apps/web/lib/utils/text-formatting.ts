@@ -4,13 +4,14 @@
  * articles, prepositions, and conjunctions lowercase.
  */
 
-// Spanish stop words (artículos, preposiciones, conjunciones, pronombres posesivos) - en minúsculas
+// Spanish stop words (artículos, preposiciones, conjunciones, pronombres posesivos, verbos auxiliares comunes) - en minúsculas
 const SPANISH_STOP_WORDS = new Set([
   'el', 'la', 'los', 'las', 'un', 'una', 'unos', 'unas',
   'de', 'del', 'en', 'por', 'para', 'con', 'sin', 'sobre', 'bajo', 'entre', 'hasta', 'desde', 'hacia', 'contra', 'mediante', 'durante', 'tras',
   'y', 'o', 'ni', 'pero', 'aunque', 'si', 'que', 'como', 'cuando', 'donde', 'mientras', 'sin embargo',
   'al', 'del', 'a', 'lo',
-  'tu', 'tus', 'su', 'sus', 'mi', 'mis', 'nuestro', 'nuestra', 'nuestros', 'nuestras'
+  'tu', 'tus', 'su', 'sus', 'mi', 'mis', 'nuestro', 'nuestra', 'nuestros', 'nuestras',
+  'brille', 'es', 'son', 'está', 'están', 'ha', 'han', 'es', 'fue', 'ser', 'tiene', 'tienen'
 ]);
 
 // English stop words (articles, prepositions, conjunctions)
