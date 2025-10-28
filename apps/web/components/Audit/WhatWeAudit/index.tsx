@@ -1,8 +1,8 @@
 "use client";
 
 import { motion, useInView } from 'framer-motion';
+import { Code, Lightbulb, Search, TrendingUp, Users } from 'lucide-react';
 import { useRef } from 'react';
-import { Search, TrendingUp, Users, Code, Lightbulb } from 'lucide-react';
 import { auditItems } from './data';
 
 interface WhatWeAuditProps {
@@ -67,4 +67,3 @@ const WhatWeAudit = ({ dict }: WhatWeAuditProps) => {
 };
 
 export default WhatWeAudit;
-

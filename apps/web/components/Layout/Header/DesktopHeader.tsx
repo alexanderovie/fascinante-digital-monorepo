@@ -113,7 +113,7 @@ const DesktopHeader = ({ locale: propLocale, dict: propDict }: DesktopHeaderProp
               <span className="text-sm text-white group-hover:text-white font-bold">{header.bookService}</span>
             </div>
             {modalOpen && (
-              <BookServicesModal isOpen={modalOpen} closeModal={() => setModalOpen(false)} />
+              <BookServicesModal isOpen={modalOpen} closeModal={() => setModalOpen(false)} dict={dict} />
             )}
             {user?.user?.email ? (
               <>

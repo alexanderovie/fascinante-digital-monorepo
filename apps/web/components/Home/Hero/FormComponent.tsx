@@ -15,7 +15,7 @@ interface FormComponentProps {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   onNameChange?: (value: string) => void;
   onPlaceSelect?: (place: PlaceDetails) => void;
-  dict: Record<string, string>;
+  dict?: Record<string, any>;
 }
 
 export default function FormComponent({
@@ -25,7 +25,7 @@ export default function FormComponent({
   onSubmit,
   onNameChange,
   onPlaceSelect,
-  dict,
+  dict = {},
 }: FormComponentProps) {
   const [errors, setErrors] = useState<{
     name?: string;
@@ -36,8 +36,8 @@ export default function FormComponent({
 
   // Hero form service options - Solo 2 opciones grandes
   const heroServiceOptions: string[] = [
-    dict.formServices1,      // Optimización SEO
-    dict.formServices2,      // Google y Meta Ads
+    dict.formServices1 || 'Optimización SEO',      // Optimización SEO
+    dict.formServices2 || 'Google y Meta Ads',      // Google y Meta Ads
   ];
 
   const validateForm = () => {
@@ -83,14 +83,14 @@ export default function FormComponent({
               value={formData.name === undefined || formData.name === null ? '' : String(formData.name)}
               onChange={onNameChange}
               onSelect={onPlaceSelect}
-              placeholder={`${dict.formName} *`}
+              placeholder={`${dict?.formName || 'Nombre del negocio'} *`}
               error={errors.name}
             />
           ) : (
             <input
               type="text"
               name="name"
-              placeholder={`${dict.formName} *`}
+              placeholder={`${dict?.formName || 'Nombre del negocio'} *`}
               onChange={onChange}
               value={formData.name || ''}
               className="input-field"
@@ -104,7 +104,7 @@ export default function FormComponent({
           <input
             type="email"
             name="email"
-            placeholder={dict.formEmail}
+            placeholder={dict?.formEmail || 'Correo electrónico'}
             onChange={onChange}
             value={formData.email || ''}
             className="input-field"
@@ -115,7 +115,7 @@ export default function FormComponent({
       </div>
 
       <div className="flex flex-col gap-4">
-        <p className="font-semibold text-dusty-gray dark:text-white/90">{dict.formServices}</p>
+        <p className="font-semibold text-dusty-gray dark:text-white/90">{dict?.formServices || 'Opciones de servicio'}</p>
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-5 gap-y-2.5">
           {heroServiceOptions.map((title) => (
             <div
@@ -141,7 +141,7 @@ export default function FormComponent({
 
       <div>
         <button type="submit" className="group w-fit flex items-center py-3 px-6 bg-secondary hover:bg-primary dark:bg-white/25 dark:hover:bg-primary rounded-sm cursor-pointer transition-all duration-300">
-          <span className="text-base text-white group-hover:text-white font-bold">{dict.formSubmit}</span>
+          <span className="text-base text-white group-hover:text-white font-bold">{dict?.formSubmit || 'Enviar'}</span>
         </button>
       </div>
     </form>

@@ -1,12 +1,14 @@
 import FormComponent from '@/components/Home/Hero/FormComponent';
+import type { Dictionary } from '@/app/[locale]/dictionaries';
 import React, { useEffect, useState } from 'react';
 
 interface BookServicesModalProps {
   isOpen: boolean;
   closeModal: () => void;
+  dict?: Dictionary;
 }
 
-const BookServicesModal = ({ isOpen, closeModal }: BookServicesModalProps) => {
+const BookServicesModal = ({ isOpen, closeModal, dict }: BookServicesModalProps) => {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -96,6 +98,7 @@ const BookServicesModal = ({ isOpen, closeModal }: BookServicesModalProps) => {
           onChange={handleChange}
           onServiceChange={handleServiceChange}
           onSubmit={handleSubmit}
+          dict={dict || {}}
         />
       </div>
     </div>

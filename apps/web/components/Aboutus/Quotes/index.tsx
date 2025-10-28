@@ -9,9 +9,9 @@ const Quotes = () => {
         <div className="container">
           <div className='flex flex-col gap-14 py-28'>
             <div className='flex flex-col gap-3 text-center items-center'>
-                            <div className="badge">
-                                <p className="font-semibold text-current">Quotes</p>
-                            </div>
+              <div className="badge">
+                <p className="font-semibold text-current">Quotes</p>
+              </div>
               <h2 className='font-semibold'>Here&apos;s what our customer say</h2>
               <p>The hidden perks of maintaining a pristine home environment</p>
             </div>
