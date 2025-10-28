@@ -36,7 +36,7 @@ const WhatWeAudit = ({ dict }: WhatWeAuditProps) => {
           <div className='flex flex-col gap-10 sm:gap-16 border-t border-natural-gray dark:border-natural-gray/20 py-20 sm:py-28'>
             <div className="flex flex-col gap-3 items-center justify-center">
               <div className="badge">
-                <p className="font-semibold text-current">{dict.sections?.whatWeAudit?.badge || "Qué Analizamos"}</p>
+                <p className="text-current">{dict.sections?.whatWeAudit?.badge || "Qué Analizamos"}</p>
               </div>
               <h2 className='font-semibold text-secondary dark:text-white text-center'>
                 {dict.sections?.whatWeAudit?.title || "Análisis Completo de Tu Presencia Digital"}

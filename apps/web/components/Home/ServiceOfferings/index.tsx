@@ -22,7 +22,7 @@ function ServiceOfferings() {
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-5">
               <div className="flex flex-col gap-4 max-w-xl">
                 <div className="badge">
-                  <p className="font-semibold text-current">What We Do Best</p>
+                  <p className="text-current">What We Do Best</p>
                 </div>
                 <h2 className="font-semibold text-secondary">We create digital ecosystems that attract, convert, and retain</h2>
               </div>

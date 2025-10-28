@@ -127,7 +127,7 @@ function AuditHero({ dict, locale }: AuditHeroProps) {
               <div className="flex-1 flex flex-col gap-8 max-w-2xl">
                 <div className="flex flex-col gap-4">
                   <div className="badge">
-                    <p className="font-semibold text-current">{dict.audit.badge}</p>
+                    <p className="text-current">{dict.audit.badge}</p>
                   </div>
                   <h1 className="font-semibold text-secondary dark:text-white text-4xl sm:text-5xl lg:text-6xl">
                     {dict.audit.title}

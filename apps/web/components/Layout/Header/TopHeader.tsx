@@ -27,7 +27,7 @@ const TopHeader = ({ locale: propLocale, dict: propDict }: TopHeaderProps = {}) 
   if (!header || !locale) return null;
 
   return (
-    <div className="bg-indigo-600">
+    <div className="bg-gradient-to-r from-purple-600 via-pink-500 to-red-500">
       <div className="container">
         <div className="flex justify-center py-3">
           <Link

@@ -19,7 +19,7 @@ const ExcepServices = () => {
           <div className='flex flex-col gap-10 sm:gap-16 border-t border-natural-gray dark:border-natural-gray/20 py-20 sm:py-28'>
             <div className="flex flex-col gap-3 items-center justify-center">
               <div className="badge">
-                <p className="font-semibold text-current">Numbers Don't Lie — Strategy Does.</p>
+                <p className="text-current">Numbers Don't Lie — Strategy Does.</p>
               </div>
               <h2 className='font-semibold'>Real results. Real stories. Zero fluff.</h2>
             </div>

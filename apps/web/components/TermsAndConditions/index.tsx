@@ -7,7 +7,7 @@ const TermsAndConditions = () => {
           <div className="flex flex-col gap-10 py-32">
             <div className="flex flex-col items-center gap-3">
               <div className="badge">
-                <p className="font-semibold text-current">Terms & Conditions</p>
+                <p className="text-current">Terms & Conditions</p>
               </div>
               <h2 className="font-semibold">Terms & Conditions</h2>
             </div>

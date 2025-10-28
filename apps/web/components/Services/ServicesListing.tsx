@@ -11,7 +11,7 @@ const ServicesListing = () => {
             <div className='flex lg:flex-row flex-col items-center gap-5 lg:gap-10'>
               <div className='flex flex-col gap-3 lg:max-w-2xl w-full'>
                 <div className="badge">
-                  <p className="font-semibold text-current">Fascinante Digital</p>
+                  <p className="text-current">Fascinante Digital</p>
                 </div>
                 <h2 className='text-secondary font-semibold'>Services – Sparkling Clean Every Time</h2>
               </div>

@@ -15,7 +15,7 @@ const CustomerFeedback = () => {
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-5">
               <div className="flex flex-col gap-4 max-w-xl">
                 <div className="badge">
-                  <p className="font-semibold text-current">What Our Clients Say</p>
+                  <p className="text-current">What Our Clients Say</p>
                 </div>
                 <h2 className="font-semibold text-secondary">Real results. Real stories.</h2>
               </div>

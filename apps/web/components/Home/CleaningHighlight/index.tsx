@@ -23,7 +23,7 @@ function CleaningHighlight() {
                 <div className='flex flex-col gap-4'>
                   <div className='flex flex-col gap-3'>
                     <div className="badge">
-                      <p className="font-semibold text-current">Over 400 brands trust us</p>
+                      <p className="text-current">Over 400 brands trust us</p>
                     </div>
                     <h2 className='font-semibold'>We turn small businesses into recognized brands</h2>
                   </div>

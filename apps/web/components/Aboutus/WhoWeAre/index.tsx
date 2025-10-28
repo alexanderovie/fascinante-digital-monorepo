@@ -13,7 +13,7 @@ const WhoWeAre = () => {
             <div className='flex flex-col justify-center rounded-r-md gap-6 bg-offwhite-warm dark:bg-secondary px-10 lg:px-14 py-12 lg:py-20'>
               <div className='flex flex-col gap-3'>
                 <div className="badge">
-                  <p className="font-semibold text-current">Who We Are</p>
+                  <p className="text-current">Who We Are</p>
                 </div>
                 <h2 className='font-semibold'>More time to live, work and have game</h2>
               </div>

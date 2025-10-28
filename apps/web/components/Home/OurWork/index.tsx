@@ -35,7 +35,7 @@ const Ourwork = () => {
         <div className='container'>
           <div className="flex flex-col gap-3 items-center justify-center">
             <div className="badge">
-              <p className="font-semibold text-current">Our work in action</p>
+              <p className="text-current">Our work in action</p>
             </div>
             <h2 className='font-semibold text-center'>See the difference we make</h2>
           </div>

@@ -7,7 +7,7 @@ const PrivacyPolicy = () => {
         <div className="flex flex-col gap-10 py-32">
           <div className="flex flex-col items-center gap-3">
             <div className="badge">
-              <p className="font-semibold text-current">Privacy Policy</p>
+              <p className="text-current">Privacy Policy</p>
             </div>
             <h2 className="font-semibold">Privacy Policy</h2>
           </div>

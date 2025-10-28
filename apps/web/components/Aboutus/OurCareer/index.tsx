@@ -13,7 +13,7 @@ const OurCareer = () => {
             <div className='flex flex-col justify-center gap-6  px-10 lg:px-14 py-12 lg:py-20'>
               <div className='flex flex-col gap-3'>
                 <div className="badge">
-                  <p className="font-semibold text-current">Fascinante Digital</p>
+                  <p className="text-current">Fascinante Digital</p>
                 </div>
                 <h2 className='font-semibold'>Interested in joining us?</h2>
               </div>

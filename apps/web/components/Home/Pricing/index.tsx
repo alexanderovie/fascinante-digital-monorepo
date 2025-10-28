@@ -21,7 +21,7 @@ const Pricing = () => {
           <div className='py-20 sm:py-28 flex flex-col gap-9 sm:gap-16'>
             <div className="flex flex-col gap-3 items-center justify-center">
               <div className="badge">
-                <p className="font-semibold text-current">Transparent pricing</p>
+                <p className="text-current">Transparent pricing</p>
               </div>
               <h2 className='font-semibold max-w-2xl text-center'>Budget-friendly options for a cleaner home</h2>
             </div>

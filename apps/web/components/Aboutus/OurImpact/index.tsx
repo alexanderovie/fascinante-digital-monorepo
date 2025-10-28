@@ -15,7 +15,7 @@ const OurImpact = () => {
           <div className='flex flex-col gap-6 md:gap-14 py-20 md:py-28'>
             <div className='flex flex-col gap-3.5'>
               <div className="badge">
-                <p className="font-semibold text-current">Who We Are</p>
+                <p className="text-current">Who We Are</p>
               </div>
               <h2 className='font-semibold text-white'>Our impact</h2>
               <p className='text-white'>Unlock the power of our versatile pricing plans designed to meet your every need.</p>
