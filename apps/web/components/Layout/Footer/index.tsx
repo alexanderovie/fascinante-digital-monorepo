@@ -1,14 +1,21 @@
-import FooterCopyright from './FooterCopyright'
-import FooterInfo from './FooterInfo'
-import Newsletter from './Newsletter'
+import type { Dictionary } from "@/app/[locale]/dictionaries";
+import type { Locale } from "@/lib/i18n";
+import FooterCopyright from './FooterCopyright';
+import FooterInfo from './FooterInfo';
+import Newsletter from './Newsletter';
 
-const Footer = () => {
+interface FooterProps {
+  locale?: Locale;
+  dict?: Dictionary;
+}
+
+const Footer = ({ locale: propLocale, dict: propDict }: FooterProps = {}) => {
   return (
     <footer>
       <div className='relative z-10 pt-14 md:pt-28 bg-secondary'>
-        <Newsletter />
-        <FooterInfo />
-        <FooterCopyright />
+        <Newsletter locale={propLocale} dict={propDict} />
+        <FooterInfo locale={propLocale} dict={propDict} />
+        <FooterCopyright locale={propLocale} dict={propDict} />
       </div>
     </footer>
   )

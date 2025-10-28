@@ -1,12 +1,29 @@
 "use client";
+import type { Dictionary } from "@/app/[locale]/dictionaries";
+import { useI18n } from '@/app/[locale]/i18n-context';
+import type { Locale } from "@/lib/i18n";
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { FooterData } from './data';
-import { useI18n } from '@/app/[locale]/i18n-context';
 
-const Newsletter = () => {
-  const { dict } = useI18n();
+interface NewsletterProps {
+  locale?: Locale;
+  dict?: Dictionary;
+}
+
+const Newsletter = ({ locale: propLocale, dict: propDict }: NewsletterProps = {}) => {
+  // Try to use context, fallback to props (SSG-safe)
+  let dict;
+  try {
+    const context = useI18n();
+    dict = context.dict;
+  } catch {
+    dict = propDict;
+  }
+
+  if (!dict) return null;
+
   const footer = dict.footer as Record<string, string>;
   const [formData, setFormData] = useState({ email: "" });
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

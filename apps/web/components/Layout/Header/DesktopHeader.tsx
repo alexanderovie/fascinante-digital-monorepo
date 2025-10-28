@@ -1,5 +1,9 @@
 "use client";
+import type { Dictionary } from "@/app/[locale]/dictionaries";
+import { useI18n } from "@/app/[locale]/i18n-context";
 import { supabase } from "@/app/supabase/supabaseClient";
+import { useLocale } from "@/lib/hooks/use-locale";
+import type { Locale } from "@/lib/i18n";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,14 +13,28 @@ import { createPortal } from "react-dom";
 import BookServicesModal from "./BookServicesModal";
 import Logo from "./Logo";
 import { useMenuData } from "./Menudata";
-import { useI18n } from "@/app/[locale]/i18n-context";
-import { useLocale } from "@/lib/hooks/use-locale";
 import MobileThemeToggler from "./MobileThemeToggler";
 
-const DesktopHeader = () => {
-  const { dict } = useI18n();
-  const locale = useLocale();
-  const menuData = useMenuData();
+interface DesktopHeaderProps {
+  locale?: Locale;
+  dict?: Dictionary;
+}
+
+const DesktopHeader = ({ locale: propLocale, dict: propDict }: DesktopHeaderProps = {}) => {
+  // Try to use context, fallback to props (SSG-safe)
+  let dict, locale;
+  try {
+    const context = useI18n();
+    dict = context.dict;
+    locale = context.locale;
+  } catch {
+    dict = propDict;
+    locale = propLocale || useLocale();
+  }
+
+  if (!dict || !locale) return null;
+
+  const menuData = useMenuData(locale, dict);
   const header = dict.header as Record<string, string>;
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
@@ -122,11 +140,11 @@ const DesktopHeader = () => {
             {user?.user?.email &&
               <div className="relative group flex items-center justify-center">
                 <Image src={"/images/avatar/avatar_1.jpg"} alt="avatar" width={35} height={35} className="rounded-full cursor-pointer" onClick={toggleTooltip} />
-                  <Link href={`/${locale}/profile`}>
-                    <p onClick={() => { setShowTooltip(false) }} className={`absolute w-fit text-sm font-medium text-center z-10 transition-opacity duration-200 bg-primary dark:bg-middlegreen text-creamwhite hover:text-secondary py-2 px-4 min-w-28 rounded-md shadow-2xl top-full left-1/2 transform -translate-x-1/2 mt-3 ${showTooltip ? "visible opacity-100" : "invisible opacity-0"}`}>
-                      {header.viewProfile}
-                    </p>
-                  </Link>
+                <Link href={`/${locale}/profile`}>
+                  <p onClick={() => { setShowTooltip(false) }} className={`absolute w-fit text-sm font-medium text-center z-10 transition-opacity duration-200 bg-primary dark:bg-middlegreen text-creamwhite hover:text-secondary py-2 px-4 min-w-28 rounded-md shadow-2xl top-full left-1/2 transform -translate-x-1/2 mt-3 ${showTooltip ? "visible opacity-100" : "invisible opacity-0"}`}>
+                    {header.viewProfile}
+                  </p>
+                </Link>
               </div>
             }
             <button

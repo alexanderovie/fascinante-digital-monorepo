@@ -1,9 +1,16 @@
 "use client";
+import type { Dictionary } from "@/app/[locale]/dictionaries";
+import type { Locale } from "@/lib/i18n";
 import { Suspense, useEffect, useRef, useState } from "react";
 import DesktopHeader from "./DesktopHeader";
 import TopHeader from "./TopHeader";
 
-const Header = () => {
+interface HeaderProps {
+  locale?: Locale;
+  dict?: Dictionary;
+}
+
+const Header = ({ locale: propLocale, dict: propDict }: HeaderProps = {}) => {
   const headerRef = useRef<HTMLDivElement | null>(null);
   const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -57,11 +64,11 @@ const Header = () => {
       className={`site-header fixed top-0 z-50 w-full transform-gpu will-change-transform transition-transform motion-reduce:transition-none ${hidden ? "duration-300 ease-in -translate-y-full" : "duration-500 ease-out translate-y-0"} ${scrolled ? "shadow-xl" : ""}`}
     >
       <div>
-        <TopHeader />
+        <TopHeader locale={propLocale} dict={propDict} />
       </div>
 
       <Suspense fallback={null}>
-        <DesktopHeader />
+        <DesktopHeader locale={propLocale} dict={propDict} />
       </Suspense>
     </header>
   );

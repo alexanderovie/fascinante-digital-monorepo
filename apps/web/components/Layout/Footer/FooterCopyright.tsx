@@ -1,11 +1,29 @@
 "use client";
-import Link from 'next/link'
+import type { Dictionary } from "@/app/[locale]/dictionaries";
 import { useI18n } from '@/app/[locale]/i18n-context';
 import { useLocale } from '@/lib/hooks/use-locale';
+import type { Locale } from "@/lib/i18n";
+import Link from 'next/link';
 
-const FooterCopyright = () => {
-  const { dict } = useI18n();
-  const locale = useLocale();
+interface FooterCopyrightProps {
+  locale?: Locale;
+  dict?: Dictionary;
+}
+
+const FooterCopyright = ({ locale: propLocale, dict: propDict }: FooterCopyrightProps = {}) => {
+  // Try to use context, fallback to props (SSG-safe)
+  let dict, locale;
+  try {
+    const context = useI18n();
+    dict = context.dict;
+    locale = context.locale;
+  } catch {
+    dict = propDict;
+    locale = propLocale || useLocale();
+  }
+
+  if (!dict || !locale) return null;
+
   const footer = dict.footer as Record<string, string>;
 
   const copyrightLinks = [

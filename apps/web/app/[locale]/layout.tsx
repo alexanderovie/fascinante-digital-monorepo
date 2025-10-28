@@ -8,6 +8,7 @@ import { Inter } from "next/font/google";
 import { Toaster } from "sonner";
 import "../globals.css";
 import { getDictionary } from "./dictionaries";
+import { I18nProvider } from "./i18n-context";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -77,14 +78,17 @@ export default async function RootLayout({
   params: Promise<{ locale: Locale }>;
 }>) {
   const { locale } = await params;
+  const dict = await getDictionary(locale);
 
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" enableSystem={false} defaultTheme="light">
-          <Header />
-          {children}
-          <Footer />
+          <I18nProvider locale={locale} dict={dict}>
+            <Header locale={locale} dict={dict} />
+            {children}
+            <Footer locale={locale} dict={dict} />
+          </I18nProvider>
           <ScrollToTop />
           <Toaster
             position="top-center"

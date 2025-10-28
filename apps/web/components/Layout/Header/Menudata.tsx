@@ -1,40 +1,65 @@
-import { Menu } from "@/types/header/header";
+import type { Dictionary } from "@/app/[locale]/dictionaries";
 import { useI18n } from "@/app/[locale]/i18n-context";
 import { useLocale } from "@/lib/hooks/use-locale";
+import type { Locale } from "@/lib/i18n";
+import { Menu } from "@/types/header/header";
 
 /**
  * Hook to get menu data with translations and localized paths
+ * SSG-safe: uses context but handles cases where it's not available
  */
-export function useMenuData(): Menu[] {
-  const { dict } = useI18n();
-  const locale = useLocale();
-  const nav = dict.navigation as Record<string, string>;
+export function useMenuData(locale?: Locale, dict?: Dictionary): Menu[] {
+  let finalLocale: Locale;
+  let finalDict: Dictionary | undefined;
+
+  try {
+    const context = useI18n();
+    finalDict = context.dict;
+    finalLocale = context.locale;
+  } catch {
+    finalDict = dict;
+    finalLocale = locale || useLocale();
+  }
+
+  if (!finalDict || !finalLocale) {
+    // Fallback to default locale
+    finalLocale = 'en';
+    return [
+      { id: 1, title: "Home", path: "/en" },
+      { id: 2, title: "About us", path: "/en/about-us" },
+      { id: 3, title: "Services", path: "/en/services" },
+      { id: 4, title: "Portfolio", path: "/en/portfolio" },
+      { id: 5, title: "Contact us", path: "/en/contact-us" },
+    ];
+  }
+
+  const nav = finalDict.navigation as Record<string, string>;
 
   return [
     {
       id: 1,
       title: nav.home,
-      path: `/${locale}`,
+      path: `/${finalLocale}`,
     },
     {
       id: 2,
       title: nav.about,
-      path: `/${locale}/about-us`,
+      path: `/${finalLocale}/about-us`,
     },
     {
       id: 3,
       title: nav.services,
-      path: `/${locale}/services`,
+      path: `/${finalLocale}/services`,
     },
     {
       id: 4,
       title: nav.portfolio,
-      path: `/${locale}/portfolio`,
+      path: `/${finalLocale}/portfolio`,
     },
     {
       id: 5,
       title: nav.contact,
-      path: `/${locale}/contact-us`,
+      path: `/${finalLocale}/contact-us`,
     },
   ];
 }

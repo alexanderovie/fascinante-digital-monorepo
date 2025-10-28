@@ -1,13 +1,30 @@
 "use client";
-import { ChevronRight } from "lucide-react";
-import Link from "next/link";
+import type { Dictionary } from "@/app/[locale]/dictionaries";
 import { useI18n } from "@/app/[locale]/i18n-context";
 import { useLocale } from "@/lib/hooks/use-locale";
+import type { Locale } from "@/lib/i18n";
+import { ChevronRight } from "lucide-react";
+import Link from "next/link";
 
-const TopHeader = () => {
-  const { dict } = useI18n();
-  const locale = useLocale();
-  const header = dict.header as Record<string, string>;
+interface TopHeaderProps {
+  locale?: Locale;
+  dict?: Dictionary;
+}
+
+const TopHeader = ({ locale: propLocale, dict: propDict }: TopHeaderProps = {}) => {
+  // Try to use context, fallback to props (SSG-safe)
+  let dict, locale;
+  try {
+    const context = useI18n();
+    dict = context.dict;
+    locale = context.locale;
+  } catch {
+    dict = propDict;
+    locale = propLocale || useLocale();
+  }
+
+  const header = dict?.header as Record<string, string> | undefined;
+  if (!header || !locale) return null;
 
   return (
     <div className="bg-indigo-600">
