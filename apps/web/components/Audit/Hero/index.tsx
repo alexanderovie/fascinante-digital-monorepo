@@ -155,20 +155,51 @@ function AuditHero({ dict, locale }: AuditHeroProps) {
         <div className="bg-white h-full flex justify-center items-center">
           <div className="container">
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10 lg:gap-16 py-20">
-              <div className="flex-1 flex flex-col gap-8 max-w-2xl">
+              {/* Mobile: Formulario primero (después del badge) */}
+              <div className="w-full lg:hidden order-2">
+                <div className="relative bg-transparent flex flex-col gap-4">
+                  <h4 className="font-semibold dark:text-white">{dict.audit.formTitle}</h4>
+                  <AuditForm
+                    formData={formData}
+                    onChange={handleChange}
+                    onNameChange={handleNameChange}
+                    onSubmit={handleSubmit}
+                    onPlaceSelect={handlePlaceSelect}
+                    dict={dict.audit}
+                    isProcessing={isProcessing}
+                    locale={locale}
+                    detectedCategory={detectedCategory}
+                  />
+
+                  {submitted && showThanks && (
+                    <div className="flex gap-1.5 items-center">
+                      <p className="text-primaryText font-semibold">{dict.audit.formThanks}</p>
+                      <Image src="/images/home/banner/smile-emoji.svg" alt="image" width={20} height={20} />
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Contenido principal (badge, título, subtítulo, stats) */}
+              <div className="flex-1 flex flex-col gap-8 max-w-2xl w-full lg:order-1 order-1">
                 <div className="flex flex-col gap-4">
-                  <div className="badge">
+                  <div className="badge order-1">
                     <p className="text-current">{dict.audit.badge}</p>
                   </div>
-                  <h1 className="font-semibold text-secondary dark:text-white text-4xl sm:text-5xl lg:text-6xl">
-                    {dict.audit.title}
-                  </h1>
-                  <p className="text-dusty-gray dark:text-white/70 text-lg">
+                  
+                  {/* Mobile: Título principal después del formulario */}
+                  <div className="lg:order-2 order-3">
+                    <h1 className="font-semibold text-secondary dark:text-white text-4xl sm:text-5xl lg:text-6xl">
+                      {dict.audit.title}
+                    </h1>
+                  </div>
+                  
+                  <p className="text-dusty-gray dark:text-white/70 text-lg lg:order-3 order-4">
                     {dict.audit.subtitle}
                   </p>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 lg:order-4 order-5">
                   {auditStats.map((stat, index) => (
                     <div key={index} className="flex flex-col gap-2">
                       <div className="flex items-center gap-2">
@@ -185,8 +216,9 @@ function AuditHero({ dict, locale }: AuditHeroProps) {
                 </div>
               </div>
 
-              <div className="w-full lg:w-auto">
-                <div className="relative bg-transparent md:bg-white dark:md:bg-dark-gray rounded-none md:rounded-md max-w-530px lg:max-w-md xl:max-w-530px w-full py-10 md:py-7 xl:py-11 flex flex-col gap-4 md:gap-8 md:shadow-2xl md:shadow-black/10 md:border md:border-gray-100 dark:md:border-gray-700">
+              {/* Desktop/Tablet: Formulario a la derecha (posición original) */}
+              <div className="hidden lg:block w-full lg:w-auto lg:order-2">
+                <div className="relative bg-white dark:bg-dark-gray rounded-md max-w-530px lg:max-w-md xl:max-w-530px w-full py-7 xl:py-11 px-8 xl:px-14 flex flex-col gap-8 shadow-2xl shadow-black/10 border border-gray-100 dark:border-gray-700">
                   <h4 className="font-semibold dark:text-white">{dict.audit.formTitle}</h4>
                   <AuditForm
                     formData={formData}
