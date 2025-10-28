@@ -186,20 +186,23 @@ function AuditHero({ dict, locale }: AuditHeroProps) {
                   <div className="badge order-1">
                     <p className="text-current">{dict.audit.badge}</p>
                   </div>
-                  
-                  {/* Mobile: Título principal después del formulario */}
+
+                  {/* Mobile: Título corto después del formulario, Desktop: Título completo */}
                   <div className="lg:order-2 order-3">
                     <h1 className="font-semibold text-secondary dark:text-white text-4xl sm:text-5xl lg:text-6xl">
-                      {dict.audit.title}
+                      <span className="lg:hidden">{dict.audit.titleMobile || dict.audit.title}</span>
+                      <span className="hidden lg:inline">{dict.audit.title}</span>
                     </h1>
                   </div>
                   
-                  <p className="text-dusty-gray dark:text-white/70 text-lg lg:order-3 order-4">
+                  {/* Subtítulo - solo visible en desktop/tablet */}
+                  <p className="text-dusty-gray dark:text-white/70 text-lg lg:order-3 hidden lg:block">
                     {dict.audit.subtitle}
                   </p>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 lg:order-4 order-5">
+                {/* Stats - solo visibles en desktop/tablet */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 lg:order-4 hidden lg:grid">
                   {auditStats.map((stat, index) => (
                     <div key={index} className="flex flex-col gap-2">
                       <div className="flex items-center gap-2">
@@ -240,6 +243,76 @@ function AuditHero({ dict, locale }: AuditHeroProps) {
                   )}
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile: Secciones educativas después del formulario (solo móvil) */}
+      <div className="lg:hidden bg-white dark:bg-secondary">
+        <div className="container">
+          {/* Por qué es importante */}
+          <div className="py-12 border-b border-natural-gray dark:border-natural-gray/20">
+            <h2 className="font-semibold text-secondary dark:text-white text-2xl mb-4">
+              {dict.audit?.sections?.mobile?.why?.title || "¿Por Qué es Importante?"}
+            </h2>
+            <p className="text-dusty-gray dark:text-white/70 text-base leading-relaxed">
+              {dict.audit?.sections?.mobile?.why?.description || "Una auditoría completa te permite entender tu posición actual y descubrir oportunidades reales de crecimiento."}
+            </p>
+          </div>
+
+          {/* Qué incluye */}
+          <div className="py-12 border-b border-natural-gray dark:border-natural-gray/20">
+            <h2 className="font-semibold text-secondary dark:text-white text-2xl mb-6">
+              {dict.audit?.sections?.mobile?.benefits?.title || "Qué Incluye Tu Auditoría"}
+            </h2>
+            <div className="flex flex-col gap-6">
+              {[
+                dict.audit?.sections?.mobile?.benefits?.item1,
+                dict.audit?.sections?.mobile?.benefits?.item2,
+                dict.audit?.sections?.mobile?.benefits?.item3,
+              ].map((item, index) => (
+                item && (
+                  <div key={index} className="flex flex-col gap-2">
+                    <h3 className="font-semibold text-secondary dark:text-white text-lg">
+                      {item.title}
+                    </h3>
+                    <p className="text-dusty-gray dark:text-white/70 text-sm leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                )
+              ))}
+            </div>
+          </div>
+
+          {/* Cómo funciona */}
+          <div className="py-12">
+            <h2 className="font-semibold text-secondary dark:text-white text-2xl mb-6">
+              {dict.audit?.sections?.mobile?.process?.title || "Así Funciona"}
+            </h2>
+            <div className="flex flex-col gap-6">
+              {[
+                dict.audit?.sections?.mobile?.process?.step1,
+                dict.audit?.sections?.mobile?.process?.step2,
+                dict.audit?.sections?.mobile?.process?.step3,
+              ].map((step, index) => (
+                step && (
+                  <div key={index} className="flex gap-4">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-semibold text-sm">
+                      {index + 1}
+                    </div>
+                    <div className="flex-1 flex flex-col gap-1">
+                      <h3 className="font-semibold text-secondary dark:text-white text-base">
+                        {step.title}
+                      </h3>
+                      <p className="text-dusty-gray dark:text-white/70 text-sm leading-relaxed">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                )
+              ))}
             </div>
           </div>
         </div>

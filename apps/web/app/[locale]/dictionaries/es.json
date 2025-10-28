@@ -66,6 +66,7 @@
   "audit": {
     "badge": "Auditoría Gratuita",
     "title": "Descubre Oportunidades de Crecimiento",
+    "titleMobile": "Auditoría Gratuita",
     "subtitle": "Analiza tu presencia digital en minutos. Obtén insights accionables sobre SEO, keywords y competencia.",
     "formTitle": "Solicita Tu Auditoría Gratuita",
     "formStep1": "Paso 1 de 2",
@@ -130,6 +131,42 @@
           "fast": "Resultados en Minutos",
           "actionable": "Insights Accionables",
           "complete": "Análisis Completo"
+        }
+      },
+      "mobile": {
+        "benefits": {
+          "title": "Qué Incluye Tu Auditoría",
+          "item1": {
+            "title": "Keywords Posicionadas",
+            "description": "Descubre en qué palabras clave aparece tu negocio en Google"
+          },
+          "item2": {
+            "title": "Autoridad del Dominio",
+            "description": "Conoce la confianza y relevancia de tu sitio web"
+          },
+          "item3": {
+            "title": "Oportunidades SEO",
+            "description": "Identifica keywords con potencial para mejorar tu ranking"
+          }
+        },
+        "process": {
+          "title": "Así Funciona",
+          "step1": {
+            "title": "Completa el Formulario",
+            "description": "Ingresa el nombre de tu negocio y categoría"
+          },
+          "step2": {
+            "title": "Analizamos en Segundos",
+            "description": "Nuestro sistema revisa tu presencia digital automáticamente"
+          },
+          "step3": {
+            "title": "Recibe Tu Reporte",
+            "description": "Obtén insights accionables y recomendaciones personalizadas"
+          }
+        },
+        "why": {
+          "title": "¿Por Qué es Importante?",
+          "description": "Una auditoría completa te permite entender tu posición actual y descubrir oportunidades reales de crecimiento. Conoce qué funciona y qué necesita mejorar."
         }
       }
     }

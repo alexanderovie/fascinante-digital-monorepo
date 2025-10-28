@@ -66,6 +66,7 @@
   "audit": {
     "badge": "Free Audit",
     "title": "Discover Growth Opportunities",
+    "titleMobile": "Free Audit",
     "subtitle": "Analyze your digital presence in minutes. Get actionable insights about SEO, keywords, and competition.",
     "formTitle": "Request Your Free Audit",
     "formStep1": "Step 1 of 2",
@@ -130,6 +131,42 @@
           "fast": "Results in Minutes",
           "actionable": "Actionable Insights",
           "complete": "Complete Analysis"
+        }
+      },
+      "mobile": {
+        "benefits": {
+          "title": "What Your Audit Includes",
+          "item1": {
+            "title": "Ranked Keywords",
+            "description": "Discover which keywords your business appears for on Google"
+          },
+          "item2": {
+            "title": "Domain Authority",
+            "description": "Understand the trust and relevance of your website"
+          },
+          "item3": {
+            "title": "SEO Opportunities",
+            "description": "Identify keywords with potential to improve your ranking"
+          }
+        },
+        "process": {
+          "title": "How It Works",
+          "step1": {
+            "title": "Complete the Form",
+            "description": "Enter your business name and category"
+          },
+          "step2": {
+            "title": "We Analyze in Seconds",
+            "description": "Our system automatically reviews your digital presence"
+          },
+          "step3": {
+            "title": "Receive Your Report",
+            "description": "Get actionable insights and personalized recommendations"
+          }
+        },
+        "why": {
+          "title": "Why Is It Important?",
+          "description": "A complete audit allows you to understand your current position and discover real growth opportunities. Learn what works and what needs improvement."
         }
       }
     }
