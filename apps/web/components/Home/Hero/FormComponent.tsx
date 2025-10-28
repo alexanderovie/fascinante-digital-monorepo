@@ -1,6 +1,4 @@
 "use client";
-
-import { services } from "@/app/api/services";
 import { useState } from "react";
 
 interface FormComponentProps {
@@ -31,6 +29,18 @@ export default function FormComponent({
     email?: string;
     services?: string;
   }>({});
+
+  // Hero form service options (marketing services)
+  const heroServiceOptions: string[] = [
+    "Digital Branding",
+    "SEO Optimization",
+    "Google & Meta Ads",
+    "Web Design",
+    "Brand Identity",
+    "Email Automation",
+    "Content Strategy",
+    "Analytics & Reporting",
+  ];
 
   const validateForm = () => {
     const newErrors: typeof errors = {};
@@ -114,18 +124,18 @@ export default function FormComponent({
       <div className="flex flex-col gap-4">
         <p className="font-semibold text-dusty-gray dark:text-white/90">Service options *</p>
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-5 gap-y-2.5">
-          {services.map(service => (
-            <div key={service?.id} className="flex items-center">
+          {heroServiceOptions.map((title) => (
+            <div key={title} className="flex items-center">
               <input
                 type="checkbox"
-                name={service?.service_title}
+                name={title}
                 onChange={onServiceChange}
-                checked={formData.services.includes(service?.service_title)}
+                checked={formData.services.includes(title)}
                 className="w-5 h-5"
-                id={service?.service_title}
+                id={title}
               />
-              <label htmlFor={service?.service_title} className="text-dusty-gray dark:text-white/70 ml-2 cursor-pointer">
-                {service?.service_title}
+              <label htmlFor={title} className="text-dusty-gray dark:text-white/70 ml-2 cursor-pointer">
+                {title}
               </label>
             </div>
           ))}
