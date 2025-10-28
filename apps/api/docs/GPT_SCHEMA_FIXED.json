@@ -1,0 +1,651 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Auditoría de Competencia Local",
+    "description": "Analiza tu negocio y toda la competencia local en cualquier ciudad del mundo.",
+    "version": "2.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://data.fascinantedigital.com",
+      "description": "Fascinante Digital Data API Proxy"
+    }
+  ],
+  "components": {
+    "parameters": {
+      "X-User-Plan": {
+        "name": "X-User-Plan",
+        "in": "header",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": ["free", "basic", "pro", "enterprise"],
+          "default": "free"
+        },
+        "description": "Plan del usuario para cache TTL optimizado"
+      },
+      "X-Force-Refresh": {
+        "name": "X-Force-Refresh",
+        "in": "header",
+        "required": false,
+        "schema": {
+          "type": "boolean",
+          "default": false
+        },
+        "description": "Forzar refresh de cache"
+      }
+    },
+    "headers": {
+      "X-Cache": {
+        "schema": {
+          "type": "string",
+          "enum": ["HIT", "MISS"]
+        },
+        "description": "Indica si respuesta viene de cache"
+      },
+      "X-Cost-Single": {
+        "schema": {
+          "type": "number",
+          "format": "float"
+        },
+        "description": "Costo en dólares por este request"
+      }
+    }
+  },
+  "paths": {
+    "/v3/business_data/google/my_business_info/live.ai": {
+      "post": {
+        "summary": "Analiza TU negocio específico",
+        "description": "Busca un negocio por su nombre exacto y devuelve su información completa: rating, reseñas, verificación, dirección, horarios.",
+        "operationId": "analyzeMyBusiness",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/X-User-Plan"
+          },
+          {
+            "$ref": "#/components/parameters/X-Force-Refresh"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "keyword": {
+                    "type": "string",
+                    "description": "Nombre exacto del negocio a buscar (incluir ciudad para mayor precisión)",
+                    "examples": [
+                      "Agencia Growth Marketing Maracaibo",
+                      "Duffy's Sports Grill West Palm Beach"
+                    ]
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "description": "Ubicación en formato: Ciudad,Estado,País (ej: Maracaibo,Zulia,Venezuela)",
+                    "examples": [
+                      "Maracaibo,Zulia,Venezuela",
+                      "West Palm Beach,Florida,United States"
+                    ]
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "enum": ["es", "en", "pt"],
+                    "description": "Código de idioma ISO: es (español), en (inglés), pt (portugués)"
+                  }
+                },
+                "required": [
+                  "keyword",
+                  "language_code"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "X-Cache": {
+                "$ref": "#/components/headers/X-Cache"
+              },
+              "X-Cost-Single": {
+                "$ref": "#/components/headers/X-Cost-Single"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "description": "Respuesta con información del negocio"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Negocio no encontrado - variar keyword automático"
+          },
+          "429": {
+            "description": "Rate limit excedido - esperar 60 segundos antes de retry"
+          },
+          "500": {
+            "description": "Error del servidor - retry con backoff exponencial"
+          }
+        }
+      }
+    },
+    "/v3/business_data/business_listings/search/live.ai": {
+      "post": {
+        "summary": "Encuentra TODOS los competidores locales",
+        "description": "Busca todos los negocios en un área por ubicación y categoría. Devuelve nombres, ratings, reseñas, direcciones, teléfonos y horarios.",
+        "operationId": "searchAllCompetitors",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/X-User-Plan"
+          },
+          {
+            "$ref": "#/components/parameters/X-Force-Refresh"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "location_coordinate": {
+                    "type": "string",
+                    "description": "Coordenadas GPS: latitud,longitud,radio_km (ej: 10.6666,-71.6333,50) - OPCIONAL si usas location_name"
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "description": "Ubicación en formato: Ciudad,Estado,País (ej: Maracaibo,Zulia,Venezuela) - OPCIONAL si usas location_coordinate - RECOMENDADO"
+                  },
+                  "categories": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Categorías (ej: clothing_store, restaurant, beauty_salon, marketing_agency)",
+                    "examples": [
+                      ["restaurant"],
+                      ["clothing_store", "fashion"]
+                    ]
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "description": "Máximo de resultados (1-1000)",
+                    "default": 20,
+                    "minimum": 1,
+                    "maximum": 1000
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "X-Cache": {
+                "$ref": "#/components/headers/X-Cache"
+              },
+              "X-Cost-Single": {
+                "$ref": "#/components/headers/X-Cost-Single"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "description": "Respuesta con lista de competidores"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No se encontraron negocios - revisar ubicación o categorías"
+          },
+          "429": {
+            "description": "Rate limit excedido - esperar 60 segundos"
+          },
+          "500": {
+            "description": "Error del servidor - retry con backoff"
+          }
+        }
+      }
+    },
+    "/v3/dataforseo_labs/google/keyword_overview/live.ai": {
+      "post": {
+        "summary": "Descubre cuántas personas buscan tu tipo de negocio",
+        "description": "Muestra el volumen de búsquedas mensuales en Google para palabras clave específicas en cualquier país.",
+        "operationId": "analyzeSearchDemand",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/X-User-Plan"
+          },
+          {
+            "$ref": "#/components/parameters/X-Force-Refresh"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "keywords": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Lista de palabras clave a analizar (máximo 700)",
+                    "minItems": 1,
+                    "maxItems": 700,
+                    "examples": [
+                      ["restaurant miami"],
+                      ["agencia marketing maracaibo", "marketing digital venezuela"]
+                    ]
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "description": "País (ej: United States, Venezuela, Colombia)",
+                    "examples": [
+                      "United States",
+                      "Venezuela",
+                      "Colombia"
+                    ]
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "enum": ["es", "en", "pt"],
+                    "description": "Código de idioma (ej: es, en)"
+                  }
+                },
+                "required": [
+                  "keywords"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "X-Cache": {
+                "$ref": "#/components/headers/X-Cache"
+              },
+              "X-Cost-Single": {
+                "$ref": "#/components/headers/X-Cost-Single"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "description": "Respuesta con volumen de búsquedas"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Request inválido - revisar parámetros"
+          },
+          "429": {
+            "description": "Rate limit excedido - esperar 60 segundos"
+          },
+          "500": {
+            "description": "Error del servidor - retry con backoff"
+          }
+        }
+      }
+    },
+    "/v3/dataforseo_labs/google/keyword_ideas/live.ai": {
+      "post": {
+        "summary": "Encuentra todas las formas en que buscan tu negocio",
+        "description": "Devuelve palabras clave relacionadas con volúmenes de búsqueda para descubrir oportunidades.",
+        "operationId": "findRelatedSearches",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/X-User-Plan"
+          },
+          {
+            "$ref": "#/components/parameters/X-Force-Refresh"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "keywords": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Palabras clave base",
+                    "examples": [
+                      ["sports bar"],
+                      ["marketing agency", "digital marketing"]
+                    ]
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "description": "País (ej: United States, Venezuela)",
+                    "examples": [
+                      "United States",
+                      "Venezuela"
+                    ]
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "enum": ["es", "en", "pt"],
+                    "description": "Código de idioma (ej: es, en)"
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "description": "Máximo de resultados (1-1000)",
+                    "default": 30,
+                    "minimum": 1,
+                    "maximum": 1000
+                  }
+                },
+                "required": [
+                  "keywords"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "X-Cache": {
+                "$ref": "#/components/headers/X-Cache"
+              },
+              "X-Cost-Single": {
+                "$ref": "#/components/headers/X-Cost-Single"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "description": "Respuesta con keywords relacionadas"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Request inválido - revisar parámetros"
+          },
+          "429": {
+            "description": "Rate limit excedido - esperar 60 segundos"
+          },
+          "500": {
+            "description": "Error del servidor - retry con backoff"
+          }
+        }
+      }
+    },
+    "/v3/dataforseo_labs/google/ranked_keywords/live.ai": {
+      "post": {
+        "summary": "Descubre para qué keywords rankea el sitio web",
+        "description": "Muestra todas las palabras clave por las que el sitio aparece en Google, sus posiciones y tráfico estimado.",
+        "operationId": "analyzeWebsiteRankings",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/X-User-Plan"
+          },
+          {
+            "$ref": "#/components/parameters/X-Force-Refresh"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "target": {
+                    "type": "string",
+                    "description": "Dominio o URL del sitio web (sin https:// ni www.)",
+                    "examples": [
+                      "restaurantexample.com",
+                      "example.com"
+                    ]
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "description": "País (ej: United States, Venezuela)",
+                    "examples": [
+                      "United States",
+                      "Venezuela"
+                    ]
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "enum": ["es", "en", "pt"],
+                    "description": "Código de idioma (ej: es, en)"
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "description": "Máximo de keywords (1-1000)",
+                    "default": 100,
+                    "minimum": 1,
+                    "maximum": 1000
+                  }
+                },
+                "required": [
+                  "target"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "X-Cache": {
+                "$ref": "#/components/headers/X-Cache"
+              },
+              "X-Cost-Single": {
+                "$ref": "#/components/headers/X-Cost-Single"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "description": "Respuesta con keywords rankeadas"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Sitio web no encontrado - revisar dominio"
+          },
+          "429": {
+            "description": "Rate limit excedido - esperar 60 segundos"
+          },
+          "500": {
+            "description": "Error del servidor - retry con backoff"
+          }
+        }
+      }
+    },
+    "/v3/dataforseo_labs/google/domain_rank_overview/live.ai": {
+      "post": {
+        "summary": "Analiza Domain Authority y autoridad del sitio",
+        "description": "Muestra Domain Authority, autoridad del dominio y comparación con el mercado. NO analiza tráfico, analiza autoridad del dominio.",
+        "operationId": "analyzeDomainAuthority",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/X-User-Plan"
+          },
+          {
+            "$ref": "#/components/parameters/X-Force-Refresh"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "target": {
+                    "type": "string",
+                    "description": "Dominio del sitio web (sin https:// ni www.)",
+                    "examples": [
+                      "restaurantexample.com",
+                      "example.com"
+                    ]
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "description": "País (ej: United States, Venezuela)",
+                    "examples": [
+                      "United States",
+                      "Venezuela"
+                    ]
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "enum": ["es", "en", "pt"],
+                    "description": "Código de idioma (ej: es, en)"
+                  }
+                },
+                "required": [
+                  "target"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "X-Cache": {
+                "$ref": "#/components/headers/X-Cache"
+              },
+              "X-Cost-Single": {
+                "$ref": "#/components/headers/X-Cost-Single"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "description": "Respuesta con Domain Authority"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Dominio no encontrado - revisar target"
+          },
+          "429": {
+            "description": "Rate limit excedido - esperar 60 segundos"
+          },
+          "500": {
+            "description": "Error del servidor - retry con backoff"
+          }
+        }
+      }
+    },
+    "/v3/on_page/instant_pages.ai": {
+      "post": {
+        "summary": "Evalúa la optimización SEO del sitio web",
+        "description": "Analiza la calidad técnica de la página: SEO score, errores, velocidad, mobile-friendly.",
+        "operationId": "analyzeSEOQuality",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/X-User-Plan"
+          },
+          {
+            "$ref": "#/components/parameters/X-Force-Refresh"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "URL completa del sitio (con https://)",
+                    "examples": [
+                      "https://www.example.com",
+                      "https://restaurantexample.com"
+                    ]
+                  },
+                  "enable_javascript": {
+                    "type": "boolean",
+                    "description": "Habilitar JavaScript",
+                    "default": true
+                  }
+                },
+                "required": [
+                  "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "X-Cache": {
+                "$ref": "#/components/headers/X-Cache"
+              },
+              "X-Cost-Single": {
+                "$ref": "#/components/headers/X-Cost-Single"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "description": "Respuesta con análisis SEO"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "URL inválida - revisar formato"
+          },
+          "429": {
+            "description": "Rate limit excedido - esperar 60 segundos"
+          },
+          "500": {
+            "description": "Error del servidor - retry con backoff"
+          }
+        }
+      }
+    }
+  }
+}
+

@@ -12,7 +12,7 @@ const WhoWeAre = () => {
             </div>
             <div className='flex flex-col justify-center rounded-r-md gap-6 bg-offwhite-warm dark:bg-secondary px-10 lg:px-14 py-12 lg:py-20'>
               <div className='flex flex-col gap-3'>
-                <div className="inline-flex items-center justify-start whitespace-nowrap text-sm font-medium border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/30 hover:bg-blue-100 dark:hover:bg-blue-900/40 hover:border-blue-300 dark:hover:border-blue-700 shadow-xs h-8 gap-1.5 px-3 rounded-full w-fit text-blue-800 dark:text-blue-200">
+                <div className="badge">
                   <p className="font-semibold text-current">Who We Are</p>
                 </div>
                 <h2 className='font-semibold'>More time to live, work and have game</h2>

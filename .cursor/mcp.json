@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "context": {
+      "type": "http",
+      "url": "https://fascinante-api-gateway-prod.black-mountain-5a63.workers.dev/api/context",
+      "description": "Contexto técnico fresco (Next.js, Supabase, Cloudflare) desde KV",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "q": {
+            "type": "string",
+            "description": "Filtro opcional para buscar en el contexto"
+          }
+        }
+      }
+    }
+  }
+}

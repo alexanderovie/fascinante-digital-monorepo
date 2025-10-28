@@ -1,0 +1,371 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Auditoría de Competencia Local",
+    "description": "Analiza tu negocio y toda la competencia local en cualquier ciudad del mundo.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://data.fascinantedigital.com",
+      "description": "Fascinante Digital Data API"
+    }
+  ],
+  "paths": {
+    "/v3/business_data/google/my_business_info/live.ai": {
+      "post": {
+        "summary": "Analiza TU negocio específico",
+        "description": "Busca un negocio por su nombre exacto y devuelve su información completa: rating, reseñas, verificación, dirección, horarios.",
+        "operationId": "analyzeMyBusiness",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "keyword": {
+                    "type": "string",
+                    "description": "Nombre exacto del negocio a buscar (incluir ciudad para mayor precisión)",
+                    "examples": [
+                      "Agencia Growth Marketing Maracaibo",
+                      "Duffy's Sports Grill West Palm Beach"
+                    ]
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "description": "Ubicación en formato: Ciudad,Estado,País (ej: Maracaibo,Zulia,Venezuela)",
+                    "examples": [
+                      "Maracaibo,Zulia,Venezuela",
+                      "West Palm Beach,Florida,United States"
+                    ]
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "enum": [
+                      "es",
+                      "en",
+                      "pt"
+                    ],
+                    "description": "Código de idioma ISO: es (español), en (inglés), pt (portugués)"
+                  }
+                },
+                "required": [
+                  "keyword",
+                  "language_code"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v3/business_data/business_listings/search/live.ai": {
+      "post": {
+        "summary": "Encuentra TODOS los competidores locales",
+        "description": "Busca todos los negocios en un área por ubicación y categoría. Devuelve nombres, ratings, reseñas, direcciones, teléfonos y horarios.",
+        "operationId": "searchAllCompetitors",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "location_coordinate": {
+                    "type": "string",
+                    "description": "Coordenadas GPS: latitud,longitud,radio_km (ej: 10.6666,-71.6333,50) - OPCIONAL si usas location_name"
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "description": "Ubicación en formato: Ciudad,Estado,País (ej: Maracaibo,Zulia,Venezuela) - OPCIONAL si usas location_coordinate - RECOMENDADO"
+                  },
+                  "categories": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Categorías (ej: clothing_store, restaurant, beauty_salon, marketing_agency)",
+                    "examples": [
+                      [
+                        "restaurant"
+                      ],
+                      [
+                        "clothing_store",
+                        "fashion"
+                      ]
+                    ]
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "description": "Máximo de resultados (1-1000)",
+                    "default": 20,
+                    "minimum": 1,
+                    "maximum": 1000
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v3/dataforseo_labs/google/keyword_overview/live.ai": {
+      "post": {
+        "summary": "Descubre cuántas personas buscan tu tipo de negocio",
+        "description": "Muestra el volumen de búsquedas mensuales en Google para palabras clave específicas en cualquier país.",
+        "operationId": "analyzeSearchDemand",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "keywords": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Lista de palabras clave a analizar (máximo 700)",
+                    "minItems": 1,
+                    "maxItems": 700,
+                    "examples": [
+                      [
+                        "restaurant miami"
+                      ],
+                      [
+                        "agencia marketing maracaibo",
+                        "marketing digital venezuela"
+                      ]
+                    ]
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "description": "País (ej: United States, Venezuela, Colombia)",
+                    "examples": [
+                      "United States",
+                      "Venezuela",
+                      "Colombia"
+                    ]
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "enum": [
+                      "es",
+                      "en",
+                      "pt"
+                    ],
+                    "description": "Código de idioma (ej: es, en)"
+                  }
+                },
+                "required": [
+                  "keywords"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v3/dataforseo_labs/google/keyword_ideas/live.ai": {
+      "post": {
+        "summary": "Encuentra todas las formas en que buscan tu negocio",
+        "description": "Devuelve palabras clave relacionadas con volúmenes de búsqueda para descubrir oportunidades.",
+        "operationId": "findRelatedSearches",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "keywords": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Palabras clave base",
+                    "examples": [
+                      [
+                        "sports bar"
+                      ],
+                      [
+                        "marketing agency",
+                        "digital marketing"
+                      ]
+                    ]
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "description": "País (ej: United States, Venezuela)",
+                    "examples": [
+                      "United States",
+                      "Venezuela"
+                    ]
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "enum": [
+                      "es",
+                      "en",
+                      "pt"
+                    ],
+                    "description": "Código de idioma (ej: es, en)"
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "description": "Máximo de resultados (1-1000)",
+                    "default": 30,
+                    "minimum": 1,
+                    "maximum": 1000
+                  }
+                },
+                "required": [
+                  "keywords"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v3/dataforseo_labs/google/ranked_keywords/live.ai": {
+      "post": {
+        "summary": "Descubre para qué keywords rankea el sitio web",
+        "description": "Muestra todas las palabras clave por las que el sitio aparece en Google, sus posiciones y tráfico estimado.",
+        "operationId": "analyzeWebsiteRankings",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "target": {
+                    "type": "string",
+                    "description": "Dominio o URL del sitio web (sin https:// ni www.)",
+                    "examples": [
+                      "restaurantexample.com",
+                      "example.com"
+                    ]
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "description": "País (ej: United States, Venezuela)",
+                    "examples": [
+                      "United States",
+                      "Venezuela"
+                    ]
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "enum": [
+                      "es",
+                      "en",
+                      "pt"
+                    ],
+                    "description": "Código de idioma (ej: es, en)"
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "description": "Máximo de keywords (1-1000)",
+                    "default": 100,
+                    "minimum": 1,
+                    "maximum": 1000
+                  }
+                },
+                "required": [
+                  "target"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v3/dataforseo_labs/google/domain_rank_overview/live.ai": {
+      "post": {
+        "summary": "Analiza Domain Authority y autoridad del sitio",
+        "description": "Muestra Domain Authority, autoridad del dominio y comparación con el mercado. NO analiza tráfico, analiza autoridad del dominio.",
+        "operationId": "analyzeDomainAuthority",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "target": {
+                    "type": "string",
+                    "description": "Dominio del sitio web (sin https:// ni www.)",
+                    "examples": [
+                      "restaurantexample.com",
+                      "example.com"
+                    ]
+                  },
+                  "location_name": {
+                    "type": "string",
+                    "description": "País (ej: United States, Venezuela)",
+                    "examples": [
+                      "United States",
+                      "Venezuela"
+                    ]
+                  },
+                  "language_code": {
+                    "type": "string",
+                    "enum": [
+                      "es",
+                      "en",
+                      "pt"
+                    ],
+                    "description": "Código de idioma (ej: es, en)"
+                  }
+                },
+                "required": [
+                  "target"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v3/on_page/instant_pages.ai": {
+      "post": {
+        "summary": "Evalúa la optimización SEO del sitio web",
+        "description": "Analiza la calidad técnica de la página: SEO score, errores, velocidad, mobile-friendly.",
+        "operationId": "analyzeSEOQuality",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "URL completa del sitio (con https://)",
+                    "examples": [
+                      "https://www.example.com",
+                      "https://restaurantexample.com"
+                    ]
+                  },
+                  "enable_javascript": {
+                    "type": "boolean",
+                    "description": "Habilitar JavaScript",
+                    "default": true
+                  }
+                },
+                "required": [
+                  "url"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

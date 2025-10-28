@@ -142,7 +142,7 @@ function HeroSection({ dict, locale }: HeroSectionProps) {
                 <div className="flex flex-col gap-3">
                   <Link
                     href={`/${locale}/contact-us`}
-                    className="inline-flex items-center justify-start whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/30 hover:bg-blue-100 dark:hover:bg-blue-900/40 hover:border-blue-300 dark:hover:border-blue-700 shadow-xs h-8 gap-1.5 px-3 rounded-full w-fit text-blue-800 dark:text-blue-200"
+                    className="badge"
                   >
                     {dict.badge} →
                     <ChevronRight className="ml-1 size-4 text-current" aria-hidden="true" />

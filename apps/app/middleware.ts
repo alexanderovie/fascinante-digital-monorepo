@@ -1,5 +1,6 @@
 import { createServerClient } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from "next/server";
+import { contextMiddleware } from './lib/context-middleware';
 
 // 1. Especificar rutas protegidas y públicas
 const protectedRoutes = ['/dashboard']
@@ -9,6 +10,12 @@ export async function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname
   const isProtectedRoute = protectedRoutes.some(route => path.startsWith(route))
   const isPublicRoute = publicRoutes.some(route => path.startsWith(route))
+
+  // 1. Aplicar middleware de contexto primero (para rutas específicas)
+  const contextResponse = await contextMiddleware(request);
+  if (contextResponse !== NextResponse.next()) {
+    return contextResponse;
+  }
 
   // 2. Verificar si Supabase está configurado
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -53,10 +60,10 @@ export async function middleware(request: NextRequest) {
     }
   )
 
-  // 3. Verificar sesión
+  // 4. Verificar sesión
   const { data: { session } } = await supabase.auth.getSession()
 
-  // 4. Solo redirigir si es necesario y no causará bucle
+  // 5. Solo redirigir si es necesario y no causará bucle
   if (path === '/dashboard' && !session) {
     return NextResponse.redirect(new URL('/dashboard/login/v1', request.url))
   }
