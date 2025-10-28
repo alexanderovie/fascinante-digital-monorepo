@@ -32,12 +32,12 @@
   },
   "hero": {
     "badge": "What We Do Best",
-    "title": "Make your business shine where it matters most.",
-    "subtitle": "We craft bilingual strategies that position your brand, attract real clients, and turn clicks into customers.",
+    "title": "Make your business shine where it matters most",
+    "subtitle": "We craft bilingual strategies that position your brand, attract real clients, and turn clicks into customers",
     "clients": "500+ businesses empowered",
     "satisfaction": "99% satisfaction",
     "support": "Human support 24/7",
-    "formTitle": "Get Your Free Audit and Start Growing Today.",
+    "formTitle": "Get Your Free Audit",
     "formName": "Business name",
     "formPhone": "Phone number",
     "formEmail": "Email address",
@@ -205,8 +205,8 @@
     },
     "serviceOfferings": {
       "badge": "What We Do Best",
-      "title": "We build digital ecosystems that attract, engage, and retain your ideal clients.",
-      "description": "From SEO and local positioning to paid advertising, web, and content — everything aligned for measurable growth.",
+      "title": "We build digital ecosystems that attract, engage, and retain your ideal clients",
+      "description": "From SEO and local positioning to paid advertising, web, and content — everything aligned for measurable growth",
       "viewAllServices": "View all services",
       "services": {
         "digitalBranding": "Digital Branding that leaves a mark.",
@@ -219,13 +219,13 @@
     },
     "transformation": {
       "badge": "Over 400 brands trust us",
-      "title": "We turn local businesses into memorable brands.",
-      "subtitle": "We combine data, design, and culture to deliver real growth across the U.S. and Latin America.",
+      "title": "We turn local businesses into memorable brands",
+      "subtitle": "We combine data, design, and culture to deliver real growth across the U.S. and Latin America",
       "ctaButton": "Get Your Free Strategy Call"
     },
     "testimonials": {
-      "badge": "Numbers Don't Lie — Strategy Does.",
-      "title": "Real results. Stories that inspire.",
+      "badge": "Numbers Don't Lie — Strategy Does",
+      "title": "Real results. Stories that inspire",
       "subtitle": "We used to be invisible on Google. Three months later, we were #1 — and our phones haven't stopped ringing.",
       "clientName": "— Ana Rivera, Miami FL",
       "sectionTitle": "What Our Clients Say",
@@ -233,7 +233,7 @@
     },
     "pricing": {
       "badge": "Transparent pricing",
-      "title": "Affordable plans for real growth.",
+      "title": "Affordable plans for real growth",
       "starterGrowth": "Starter Growth",
       "starterGrowthDesc": "Kickstart your online visibility",
       "smartCampaigns": "Smart Campaigns",
@@ -241,7 +241,7 @@
       "bookService": "Book a service"
     },
     "portfolio": {
-      "title": "See the difference of working with an agency focused on real results — not empty promises.",
+      "title": "See the difference of working with an agency focused on real results — not empty promises",
       "viewAllWork": "View all work"
     },
     "finalCta": {

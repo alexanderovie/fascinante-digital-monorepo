@@ -1,5 +1,6 @@
 "use client";
 import { motion, useInView } from 'framer-motion';
+import { toTitleCase } from '@/lib/utils/text-formatting';
 import { useRef } from 'react';
 import { ExcepServicesData } from './data';
 
@@ -29,7 +30,7 @@ const ExcepServices = ({ dict }: ExcepServicesProps) => {
               <div className="badge">
                 <p className="text-current">{dict.badge}</p>
               </div>
-              <h2 className='font-semibold'>{dict.title}</h2>
+              <h2 className='font-semibold'>{toTitleCase(dict.title)}</h2>
             </div>
             <div className='grid grid-cols-1 xsm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 xl:gap-10'>
               {ExcepServicesData.map((item, index) => {

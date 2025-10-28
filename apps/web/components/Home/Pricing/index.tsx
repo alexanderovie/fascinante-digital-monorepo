@@ -1,5 +1,6 @@
 "use client";
 import BookServicesModal from '@/components/Layout/Header/BookServicesModal';
+import { toTitleCase } from '@/lib/utils/text-formatting';
 import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
 import { useRef, useState } from 'react';
@@ -35,7 +36,7 @@ const Pricing = ({ dict }: PricingProps) => {
               <div className="badge">
                 <p className="text-current">{dict.badge}</p>
               </div>
-              <h2 className='font-semibold max-w-2xl text-center'>{dict.title}</h2>
+              <h2 className='font-semibold max-w-2xl text-center'>{toTitleCase(dict.title)}</h2>
             </div>
             <div className='flex flex-col gap-6'>
               {PricingData.map((item, index) => {

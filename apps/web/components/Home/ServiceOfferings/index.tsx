@@ -1,5 +1,6 @@
 import { services } from "@/app/api/services";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { toTitleCase } from '@/lib/utils/text-formatting';
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -41,7 +42,7 @@ function ServiceOfferings({ dict }: ServiceOfferingsProps) {
                 <div className="badge">
                   <p className="text-current">{dict.badge}</p>
                 </div>
-                <h2 className="font-semibold text-secondary">{dict.title}</h2>
+                <h2 className="font-semibold text-secondary">{toTitleCase(dict.title)}</h2>
               </div>
               <div className="flex flex-col gap-8 max-w-sm">
                 <p className="text-secondary">{dict.description}</p>

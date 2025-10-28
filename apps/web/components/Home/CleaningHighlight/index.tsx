@@ -1,5 +1,6 @@
 "use client";
 import { motion, useInView } from "framer-motion";
+import { toTitleCase } from '@/lib/utils/text-formatting';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRef } from 'react';
@@ -34,9 +35,9 @@ function CleaningHighlight({ dict }: CleaningHighlightProps) {
                     <div className="badge">
                       <p className="text-current">{dict.badge}</p>
                     </div>
-                    <h2 className='font-semibold'>{dict.title}</h2>
+                    <h2 className='font-semibold'>{toTitleCase(dict.title)}</h2>
                   </div>
-                  <p className='text-xl dark:text-white/70'>{dict.subtitle}</p>
+                  <p className='text-xl dark:text-white/70'>{toTitleCase(dict.subtitle)}</p>
                 </div>
                 <div className='grid grid-cols-1 xsm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-x-6 xxl:gap-x-10 gap-y-2 lg:gap-y-6'>
                   {cleaninghighlight.map((item, index) => {

@@ -1,4 +1,5 @@
 'use client'
+import { toTitleCase } from '@/lib/utils/text-formatting'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import Marquee from 'react-fast-marquee'
@@ -44,7 +45,7 @@ const Ourwork = ({ dict }: OurworkProps) => {
             <div className="badge">
               <p className="text-current">Our work in action</p>
             </div>
-            <h2 className='font-semibold text-center'>{dict.title}</h2>
+            <h2 className='font-semibold text-center'>{toTitleCase(dict.title)}</h2>
           </div>
         </div>
 

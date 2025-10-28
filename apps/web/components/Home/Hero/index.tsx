@@ -148,10 +148,10 @@ function HeroSection({ dict, locale }: HeroSectionProps) {
                     <ChevronRight className="ml-1 size-4 text-current" aria-hidden="true" />
                   </Link>
                   <h1 className="text-secondary dark:text-white font-semibold min-w-[12ch]">
-                    {dict.title}
+                    {toTitleCase(dict.title)}
                   </h1>
                 </div>
-                <p className="text-secondary dark:text-white text-lg sm:text-xl">{dict.subtitle}</p>
+                <p className="text-secondary dark:text-white text-lg sm:text-xl">{toTitleCase(dict.subtitle)}</p>
 
                 {/* Mobile: Botón de auditoría debajo de la descripción */}
                 <div className="block md:hidden mt-6">

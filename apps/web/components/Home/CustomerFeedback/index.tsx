@@ -1,4 +1,5 @@
 "use client"
+import { toTitleCase } from '@/lib/utils/text-formatting';
 import Image from 'next/image';
 import { useState } from 'react';
 import { videos } from './data';
@@ -28,7 +29,7 @@ const CustomerFeedback = ({ dict }: CustomerFeedbackProps) => {
                 <div className="badge">
                   <p className="text-current">{dict.sectionTitle}</p>
                 </div>
-                <h2 className="font-semibold text-secondary">{dict.title}</h2>
+                <h2 className="font-semibold text-secondary">{toTitleCase(dict.title)}</h2>
               </div>
               <div className="flex flex-col gap-8 max-w-sm">
                 <p className="text-secondary">{dict.sectionSubtitle}</p>
