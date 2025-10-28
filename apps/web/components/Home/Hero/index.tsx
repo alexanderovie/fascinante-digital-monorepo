@@ -1,6 +1,7 @@
 "use client";
 import { API_ENDPOINTS } from '@/lib/api-config';
 import type { Locale } from "@/lib/i18n";
+import { toTitleCase } from '@/lib/utils/text-formatting';
 import type { PlaceDetails } from "@/types/places";
 import { ChevronRight, Clock, Star, Users } from "lucide-react";
 import Image from "next/image";
