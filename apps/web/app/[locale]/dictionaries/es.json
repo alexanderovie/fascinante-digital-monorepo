@@ -1,0 +1,40 @@
+{
+  "navigation": {
+    "home": "Inicio",
+    "about": "Nosotros",
+    "services": "Servicios",
+    "portfolio": "Portafolio",
+    "contact": "Contáctanos"
+  },
+  "hero": {
+    "badge": "Ve Cómo Construimos Autoridad",
+    "title": "Crecimiento Digital Ambicioso y Branding",
+    "subtitle": "Construimos sistemas de marketing bilingües que hacen visible, creíble e imparable tu negocio — donde sea que tus clientes busquen.",
+    "clients": "500+ Clientes",
+    "satisfaction": "99% Satisfacción",
+    "support": "Soporte 24/7",
+    "formTitle": "Obtén Tu Plan de Crecimiento Gratis",
+    "formName": "Nombre del negocio",
+    "formPhone": "Número de teléfono",
+    "formEmail": "Correo electrónico",
+    "formServices": "Opciones de servicio",
+    "formServices1": "Optimización SEO",
+    "formServices2": "Google y Meta Ads",
+    "formServices3": "Branding Digital",
+    "formServices4": "Diseño Web",
+    "formServices5": "Identidad de Marca",
+    "formServices6": "Automatización de Email",
+    "formSubmit": "Comienza hoy",
+    "formThanks": "¡Gracias por contactarnos!"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Algo salió mal",
+    "required": "requerido"
+  },
+  "metadata": {
+    "title": "Fascinante Digital | Crecimiento Digital para Marcas Ambiciosas",
+    "description": "Sistemas de marketing bilingües para visibilidad, credibilidad y crecimiento sostenible en Estados Unidos y América Latina.",
+    "keywords": "marketing digital, SEO, SEM, Google Ads, Meta, Next.js, Fascinante Digital, Tampa, Florida"
+  }
+}

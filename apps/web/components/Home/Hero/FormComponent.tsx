@@ -11,6 +11,7 @@ interface FormComponentProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onServiceChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  dict: Record<string, string>;
 }
 
 export default function FormComponent({
@@ -18,6 +19,7 @@ export default function FormComponent({
   onChange,
   onServiceChange,
   onSubmit,
+  dict,
 }: FormComponentProps) {
   const [errors, setErrors] = useState<{
     name?: string;
@@ -30,12 +32,12 @@ export default function FormComponent({
   // Reordenadas: las primeras 2 se muestran en todas las pantallas (xl y menores)
   // Las últimas 4 solo en pantallas grandes (2xl y mayores)
   const heroServiceOptions: string[] = [
-    "SEO Optimization",      // Mostrar siempre (≤1280px)
-    "Google & Meta Ads",     // Mostrar siempre (≤1280px)
-    "Digital Branding",      // Solo en >1280px
-    "Web Design",            // Solo en >1280px
-    "Brand Identity",        // Solo en >1280px
-    "Email Automation",      // Solo en >1280px
+    dict.formServices1,      // Mostrar siempre (≤1280px)
+    dict.formServices2,      // Mostrar siempre (≤1280px)
+    dict.formServices3,      // Solo en >1280px
+    dict.formServices4,      // Solo en >1280px
+    dict.formServices5,      // Solo en >1280px
+    dict.formServices6,      // Solo en >1280px
   ];
 
   const validateForm = () => {
@@ -97,7 +99,7 @@ export default function FormComponent({
           <input
             type="text"
             name="name"
-            placeholder="Business name *"
+            placeholder={`${dict.formName} *`}
             onChange={onChange}
             value={formData.name}
             className="input-field"
@@ -109,7 +111,7 @@ export default function FormComponent({
           <input
             type="tel"
             name="number"
-            placeholder="Phone number *"
+            placeholder={`${dict.formPhone} *`}
             onChange={onChange}
             value={formData.number}
             className="input-field"
@@ -121,7 +123,7 @@ export default function FormComponent({
           <input
             type="email"
             name="email"
-            placeholder="Email address *"
+            placeholder={`${dict.formEmail} *`}
             onChange={onChange}
             value={formData.email}
             className="input-field"
@@ -131,7 +133,7 @@ export default function FormComponent({
       </div>
 
       <div className="hidden md:flex flex-col gap-4">
-        <p className="font-semibold text-dusty-gray dark:text-white/90">Service options *</p>
+        <p className="font-semibold text-dusty-gray dark:text-white/90">{dict.formServices} *</p>
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-5 gap-y-2.5">
           {heroServiceOptions.map((title, index) => (
             <div
@@ -157,7 +159,7 @@ export default function FormComponent({
 
       <div>
         <button type="submit" className="group w-fit flex items-center py-3 px-6 bg-secondary hover:bg-primary dark:bg-white/25 dark:hover:bg-primary rounded-sm cursor-pointer transition-all duration-300">
-          <span className="text-base text-white group-hover:text-white font-bold">Get started today</span>
+          <span className="text-base text-white group-hover:text-white font-bold">{dict.formSubmit}</span>
         </button>
       </div>
     </form>
