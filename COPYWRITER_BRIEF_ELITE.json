@@ -1,0 +1,540 @@
+{
+  "brief_metadata": {
+    "title": "Brief Elite Copywriter - Homepage Fascinante Digital",
+    "version": "1.0",
+    "date": "2025-01-27",
+    "target_revision": "Homepage Principal",
+    "language_primary": "Español (ES)",
+    "language_secondary": "English (EN)",
+    "framework": "Next.js 15.5.6 + React 19",
+    "copywriting_standards": "Best Practices 2024-2025 (Context7 verified)"
+  },
+  "business_context": {
+    "company_name": "Fascinante Digital",
+    "industry": "Digital Marketing Agency / Marketing Digital Bilingüe",
+    "location_primary": "West Palm Beach, FL 33411, USA",
+    "location_service": "United States & Latin America (Mercado bilingüe)",
+    "phone": "+1 800 886 4981",
+    "website": "https://fascinantedigital.com",
+    "google_business_rating": {
+      "rating": 5.0,
+      "reviews_count": 12,
+      "status": "Active"
+    },
+    "value_proposition_core": "Sistemas de marketing bilingües que posicionan tu marca, atraen clientes reales y convierten clics en ventas en ambos mercados (US + LatAm)",
+    "unique_selling_points": [
+      "Bilingüe real (ES + EN) - no solo traducciones",
+      "Cultura + Datos + Diseño - enfoque holístico",
+      "Resultados medibles (SEO, Ads, Analytics integrados)",
+      "Local + Nacional (US & LatAm en una estrategia)",
+      "400+ negocios transformados",
+      "99% satisfacción del cliente"
+    ],
+    "services_offered": [
+      "SEO & Local Visibility (Google Rankings)",
+      "Google & Meta Ads (Paid Advertising)",
+      "Web Design & Development",
+      "Digital Branding & Identity",
+      "Content Strategy Bilingüe",
+      "Email Automation",
+      "Analytics & Reporting"
+    ],
+    "target_clients": [
+      "Negocios locales en US que quieren llegar a mercado latino",
+      "Negocios latinos que quieren expandirse a US",
+      "Marcas ambiciosas que buscan crecimiento medible",
+      "Negocios que necesitan visibilidad en Google",
+      "Empresas que quieren estrategias integradas (no solo ads)"
+    ],
+    "brand_personality": {
+      "voice": "Confiable, estratégico, directo, culturalmente consciente",
+      "tone": "Profesional pero cercano, data-driven pero humano, ambicioso pero realista",
+      "style_guide": "Evitar: Jerga técnica excesiva, promesas vacías, lenguaje genérico. Preferir: Beneficios claros, casos reales, métricas específicas"
+    }
+  },
+  "conversion_goals": {
+    "primary_goal": "Generar leads cualificados vía formulario de auditoría gratuita",
+    "secondary_goals": [
+      "Aumentar tiempo en sitio (engagement)",
+      "Mejorar tasa de conversión de visitantes → leads",
+      "Posicionar marca como líder en marketing bilingüe",
+      "Generar confianza mediante social proof y métricas"
+    ],
+    "target_action": "Solicitar Auditoría Gratuita (formulario hero + CTAs)",
+    "conversion_funnel": {
+      "awareness": "Visita homepage desde Google/búsqueda",
+      "interest": "Lee propuesta de valor y beneficios",
+      "consideration": "Ve casos de éxito y testimonios",
+      "action": "Completa formulario auditoría gratis"
+    },
+    "key_performance_indicators": [
+      "Formulario hero completos",
+      "Clics en CTAs",
+      "Tiempo en página (target: >2 min)",
+      "Scroll depth (target: >75%)",
+      "Tasa de rebote (target: <60%)"
+    ]
+  },
+  "copywriting_principles_2025": {
+    "source": "Modern copywriting best practices (2024-2025 verified)",
+    "principles": [
+      {
+        "principle": "Beneficios sobre características",
+        "application": "No decir 'Hacemos SEO', decir 'Aparece en la primera página de Google cuando tus clientes te buscan'"
+      },
+      {
+        "principle": "Especificidad vence generalidad",
+        "application": "Usar números concretos: '400+ negocios' en lugar de 'muchos clientes'"
+      },
+      {
+        "principle": "Conversación natural sobre marketing speak",
+        "application": "Hablar como humanos, evitar jerga corporativa vacía"
+      },
+      {
+        "principle": "Escaneabilidad primero",
+        "application": "Títulos claros, párrafos cortos (2-3 líneas), bullets cuando sea posible"
+      },
+      {
+        "principle": "Objeción-first approach",
+        "application": "Anticipar y resolver objeciones comunes en el copy"
+      },
+      {
+        "principle": "Urgencia + Escasez (ética)",
+        "application": "Usar razones genuinas de urgencia: 'Obtén tu auditoría gratis hoy' no 'Últimos lugares disponibles'"
+      },
+      {
+        "principle": "Social proof estratégico",
+        "application": "Métricas, testimonios, casos de éxito integrados naturalmente"
+      },
+      {
+        "principle": "Mobile-first mindset",
+        "application": "Copy que funcione en pantallas pequeñas (títulos cortos, CTAs claros)"
+      }
+    ]
+  },
+  "homepage_structure_detailed": {
+    "hero_section": {
+      "purpose": "Captar atención, comunicar valor único, generar acción inmediata",
+      "above_fold": true,
+      "user_attention_span": "3-5 segundos (crítico)",
+      "elements": {
+        "badge": {
+          "purpose": "Crear curiosidad, establecer categoría",
+          "current_es": "What We Do Best",
+          "character_limit": "12-18 caracteres",
+          "copywriting_note": "Debe ser corto, impactante, establece expectativa. Ejemplos: 'Lo Que Mejor Hacemos', 'Nuestra Especialidad', 'Expertos En'",
+          "ui_specs": {
+            "element_type": "Badge azul claro con borde",
+            "font_size": "14px, font-weight 500",
+            "location": "Parte superior izquierda hero",
+            "visual": "Badge clickeable que puede llevar a sección servicios"
+          },
+          "status": "REQUIERE COPY ESPAÑOL"
+        },
+        "h1_title": {
+          "purpose": "Propuesta de valor principal - lo primero que se lee",
+          "current_es": "Haz que tu negocio brille donde importa",
+          "character_limit": "40-50 caracteres (ideal 45)",
+          "copywriting_note": "Debe responder: ¿Qué hace Fascinante Digital? + ¿Qué obtiene el cliente? Usar lenguaje emocional + racional. Ejemplo actual funciona pero puede optimizarse.",
+          "principles_to_apply": [
+            "Beneficio claro al cliente",
+            "Emocional pero específico",
+            "Evitar palabras genéricas (crecimiento, éxito, soluciones)",
+            "Incluir resultado deseado"
+          ],
+          "status": "✅ COMPLETO (puede optimizarse)"
+        },
+        "subtitle": {
+          "purpose": "Expandir propuesta de valor, explicar cómo lo hacemos",
+          "current_es": "Diseñamos estrategias bilingües que posicionan tu marca, atraen clientes reales y convierten clics en ventas",
+          "character_limit": "85-105 caracteres (ideal 95)",
+          "copywriting_note": "Especificar servicios principales, diferenciador bilingüe, resultado final. Actual está bien pero puede ser más específico.",
+          "status": "✅ COMPLETO (puede optimizarse)"
+        },
+        "trust_metrics": {
+          "purpose": "Construir credibilidad inmediata antes de CTA",
+          "metrics": [
+            {
+              "current_es": "+500 negocios impulsados",
+              "icon": "Users icon (dos personas)",
+              "copywriting_note": "Número específico es bueno. Considerar: 'Negocios' puede ser más específico (clientes, marcas, empresas)"
+            },
+            {
+              "current_es": "99% satisfacción",
+              "icon": "Star icon",
+              "copywriting_note": "Excelente métrica. Es específica y creíble."
+            },
+            {
+              "current_es": "Atención humana 24/7",
+              "icon": "Clock icon",
+              "copywriting_note": "Diferenciador fuerte. Resalta servicio personal vs automatizado."
+            }
+          ],
+          "status": "✅ COMPLETO"
+        },
+        "form_title": {
+          "purpose": "Título del formulario de conversión",
+          "current_es": "Solicita tu Auditoría Gratuita",
+          "character_limit": "25-35 caracteres",
+          "copywriting_note": "Claro, accionable, beneficio obvio (gratis). Perfecto como está.",
+          "status": "✅ COMPLETO"
+        },
+        "cta_button": {
+          "purpose": "Acción principal - lo más importante",
+          "current_es": "Comienza hoy",
+          "character_limit": "10-15 caracteres",
+          "copywriting_note": "Corto y directo. Alternativas: 'Solicitar Auditoría', 'Obtener Plan Gratis', 'Iniciar Ahora'. Actual funciona pero puede ser más específico al beneficio.",
+          "status": "✅ COMPLETO (considerar optimización)"
+        }
+      },
+      "psychology_applied": [
+        "Principio de autoridad (badge, métricas)",
+        "Prueba social (500 negocios, 99% satisfacción)",
+        "Reciprocidad (auditoría gratis)",
+        "Urgencia sutil (comienza hoy)"
+      ]
+    },
+    "service_offerings": {
+      "purpose": "Mostrar servicios de forma clara, generar interés",
+      "badge": {
+        "current_es": "What We Do Best",
+        "status": "REQUIERE COPY ESPAÑOL",
+        "alternatives": [
+          "Nuestros Servicios",
+          "Lo Que Hacemos",
+          "Especialidades",
+          "Nuestra Experiencia"
+        ]
+      },
+      "title": {
+        "current_es": "Creamos ecosistemas digitales que atraen, enamoran y fidelizan a tus clientes",
+        "character_limit": "65-80 caracteres",
+        "copywriting_note": "Buen uso de storytelling (atraen → enamoran → fidelizan). Funciona bien.",
+        "status": "✅ COMPLETO"
+      },
+      "service_cards": {
+        "copywriting_approach": "Cada servicio debe: 1) Nombre claro, 2) Beneficio específico, 3) Resultado tangible",
+        "examples": [
+          {
+            "service": "Posiciónate en Google y deja de ser invisible.",
+            "analysis": "Excelente: Beneficio claro (visibilidad) + problema resuelto (invisibilidad) + acción (posicionarse)",
+            "status": "✅ COMPLETO"
+          },
+          {
+            "service": "Publicidad que convierte, no solo impresiona.",
+            "analysis": "Excelente: Diferenciador claro (conversión vs impresiones) + específico",
+            "status": "✅ COMPLETO"
+          }
+        ]
+      }
+    },
+    "transformation_section": {
+      "purpose": "Demostrar resultados, construir confianza",
+      "badge": {
+        "current_es": "Más de 400 marcas confían en nosotros",
+        "copywriting_note": "Prueba social fuerte. Específico (400) y creíble.",
+        "status": "✅ COMPLETO"
+      },
+      "title": {
+        "current_es": "Transformamos negocios locales en marcas memorables",
+        "copywriting_note": "Story arc claro: negocio local → marca memorable. Emocional + específico.",
+        "status": "✅ COMPLETO"
+      }
+    },
+    "testimonials": {
+      "purpose": "Prueba social, resolver objeciones, crear empatía",
+      "badge": {
+        "current_es": "Los Números No Mienten — La Estrategia Sí",
+        "copywriting_note": "Provocativo y memorable. Establece diferenciador (data-driven vs estrategia genérica).",
+        "status": "✅ COMPLETO"
+      },
+      "main_testimonial": {
+        "current_es": "Antes nadie nos encontraba en Google. Tres meses después, éramos el #1. Hoy no paramos de recibir clientes.",
+        "copywriting_note": "Excelente testimonio: Antes/Después específico, timeline (3 meses), resultado medible (#1), resultado final (clientes).",
+        "status": "✅ COMPLETO"
+      }
+    },
+    "metrics_section": {
+      "purpose": "Demostrar resultados con datos específicos",
+      "metrics": [
+        {
+          "current_en": "Average lead growth of +250% in 90 days with aligned SEO, Ads, and funnels",
+          "character_limit": "65-80 caracteres",
+          "copywriting_note": "Métrica específica con timeline. Traducir manteniendo: número (+250%), tiempo (90 días), método (SEO+Ads+funnels alineados)",
+          "status": "REQUIERE COPY ESPAÑOL",
+          "translation_guidance": "Crecimiento promedio de leads de +250% en 90 días con SEO, Ads y embudos alineados"
+        },
+        {
+          "current_en": "+300% engagement on Meta through creative testing, budgeting, and iteration",
+          "status": "REQUIERE COPY ESPAÑOL",
+          "translation_guidance": "+300% de engagement en Meta mediante pruebas creativas, optimización de presupuesto e iteración"
+        }
+      ]
+    },
+    "pricing": {
+      "purpose": "Mostrar transparencia, generar consideración",
+      "badge": {
+        "current_es": "Precios transparentes",
+        "copywriting_note": "Construye confianza. Diferencia de agencias que ocultan precios.",
+        "status": "✅ COMPLETO"
+      },
+      "title": {
+        "current_es": "Planes accesibles para un crecimiento real",
+        "copywriting_note": "Bueno: 'accesibles' resuelve objeción de precio, 'crecimiento real' diferencia de promesas vacías.",
+        "status": "✅ COMPLETO"
+      }
+    },
+    "portfolio": {
+      "purpose": "Demostrar trabajo, generar confianza visual",
+      "badge": {
+        "current_es": "",
+        "character_limit": "14-20 caracteres",
+        "alternatives": [
+          "Nuestro Trabajo",
+          "Casos de Éxito",
+          "Portfolio",
+          "Resultados Reales"
+        ],
+        "status": "REQUIERE COPY"
+      },
+      "title": {
+        "current_es": "Descubre la diferencia de trabajar con una agencia que impulsa resultados, no promesas",
+        "copywriting_note": "Excelente diferenciador (resultados vs promesas). Claro y directo.",
+        "status": "✅ COMPLETO"
+      }
+    },
+    "final_cta": {
+      "purpose": "Último intento de conversión antes del footer",
+      "title": {
+        "current_es": "",
+        "character_limit": "20-28 caracteres",
+        "copywriting_note": "Debe ser poderoso, emocional, crear urgencia. Título EXTRA GRANDE (60-72px). Ejemplos: '¿Listo para Brillar?', 'Tu Turno de Crecer', 'Cambia el Juego Hoy'",
+        "status": "REQUIERE COPY",
+        "alternatives": [
+          "¿Listo para Brillar?",
+          "Tu Turno de Crecer",
+          "Cambia el Juego Hoy",
+          "El Momento es Ahora",
+          "Transforma tu Negocio"
+        ]
+      },
+      "subtitle": {
+        "current_es": "",
+        "character_limit": "26-34 caracteres",
+        "copywriting_note": "Complementa título, más específico. Ejemplos: 'Ve Más Allá de Seguidores', 'Crecimiento Real, No Promesas', 'Resultados que Importan'",
+        "status": "REQUIERE COPY"
+      },
+      "description": {
+        "current_es": "",
+        "character_limit": "65-85 caracteres",
+        "copywriting_note": "Cierre convincente, llamada clara a auditoría. Resumir valor y siguiente paso.",
+        "status": "REQUIERE COPY"
+      },
+      "button": {
+        "current_es": "Obtén Tu Llamada Estratégica Gratis",
+        "copywriting_note": "Específico y claro. Funciona bien.",
+        "status": "✅ COMPLETO"
+      }
+    }
+  },
+  "ux_writing_guidelines": {
+    "tone_consistency": "Mantener tono confiable pero ambicioso en toda la página",
+    "terminology": {
+      "use": [
+        "Estrategias bilingües (no 'marketing bilingüe' genérico)",
+        "Resultados medibles (no 'mejores resultados')",
+        "Clientes reales (no 'muchos clientes')",
+        "Crecimiento sostenible (no 'crecimiento rápido')"
+      ],
+      "avoid": [
+        "Soluciones integrales (muy genérico)",
+        "Somos líderes (sin respaldo)",
+        "Mejor agencia (subjetivo)",
+        "Resultados garantizados (no ético)"
+      ]
+    },
+    "cta_guidelines": {
+      "best_practices": [
+        "Verbo de acción claro (Obtén, Solicita, Descubre, Comienza)",
+        "Beneficio específico mencionado (Auditoría Gratuita, Plan de Crecimiento)",
+        "Urgencia sutil (Hoy, Ahora, Ya) cuando sea apropiado",
+        "Máximo 4-5 palabras en CTAs principales"
+      ],
+      "examples_good": [
+        "Solicita tu Auditoría Gratuita",
+        "Obtén Tu Plan de Crecimiento",
+        "Comienza Hoy",
+        "Descubre Tu Potencial"
+      ],
+      "examples_avoid": [
+        "Click aquí (no dice nada)",
+        "Más información (genérico)",
+        "Contáctanos (no específico al beneficio)",
+        "Solicitar ahora mismo sin costo alguno (muy largo)"
+      ]
+    },
+    "headline_formulas_2025": {
+      "benefit_headline": "[Resultado] en [Tiempo] con [Método]",
+      "example": "Posiciónate en Google en 90 días con SEO local",
+      "before_after": "[Antes] → [Después] con [Método]",
+      "example": "Invisible en Google → #1 en búsquedas con nuestra estrategia",
+      "question_headline": "¿[Problema]? [Solución Específica]",
+      "example": "¿Nadie te encuentra en Google? Aparece en la primera página en 90 días",
+      "specificity_headline": "[Número] [Métrica] en [Tiempo]",
+      "example": "+250% más leads en 90 días"
+    }
+  },
+  "seo_copywriting_integration": {
+    "primary_keywords": [
+      "marketing digital",
+      "SEO Tampa",
+      "Google Ads",
+      "agencia marketing bilingüe",
+      "marketing US Latinoamérica",
+      "posicionamiento Google",
+      "publicidad digital"
+    ],
+    "secondary_keywords": [
+      "SEO local",
+      "Meta Ads",
+      "diseño web",
+      "branding digital",
+      "automatización email",
+      "análisis SEO"
+    ],
+    "keyword_integration": {
+      "rule": "Integrar keywords naturalmente, nunca forzar. Priorizar legibilidad sobre densidad.",
+      "headlines": "Incluir 1-2 keywords principales en H1, H2 principales",
+      "body": "Variar keywords, usar sinónimos, mantener naturalidad"
+    }
+  },
+  "user_journey_copy_strategy": {
+    "first_visit": {
+      "goal": "Educar + Generar interés",
+      "copy_focus": "Propuesta de valor clara, diferenciadores, prueba social",
+      "primary_cta": "Solicita Auditoría Gratuita (bajo compromiso)"
+    },
+    "returning_visitor": {
+      "goal": "Profundizar confianza",
+      "copy_focus": "Casos de éxito específicos, métricas detalladas, testimonios",
+      "primary_cta": "Habla con un Experto (mayor compromiso)"
+    },
+    "mobile_user": {
+      "considerations": [
+        "Títulos más cortos (máx 40 caracteres)",
+        "CTAs más grandes y claros",
+        "Métricas visibles rápidamente",
+        "Formulario simplificado"
+      ]
+    }
+  },
+  "competitive_analysis": {
+    "differentiators_to_emphasize": [
+      "Verdaderamente bilingüe (cultural awareness, no solo traducción)",
+      "Enfoque integrado (SEO + Ads + Web + Content alineados)",
+      "Resultados medibles (métricas específicas, no promesas vagas)",
+      "Atención humana 24/7 (diferencia de herramientas automatizadas)",
+      "Mercado dual (US + LatAm en una estrategia)"
+    ],
+    "common_weaknesses_competitors": [
+      "Copy genérico sin diferenciación",
+      "Promesas vagas sin respaldo",
+      "Enfoque solo en una herramienta (solo SEO o solo Ads)",
+      "No entienden mercado bilingüe"
+    ],
+    "opportunities": [
+      "Enfocarse en 'resultados reales vs promesas'",
+      "Resaltar comprensión cultural (no solo idioma)",
+      "Mostrar casos específicos de éxito bilingüe",
+      "Usar métricas concretas vs lenguaje vago"
+    ]
+  },
+  "deliverables_requested": {
+    "priority_1_urgent": [
+      {
+        "element": "hero.badge",
+        "current": "What We Do Best",
+        "requirement": "Traducción al español, 12-18 caracteres, impactante",
+        "deadline": "Alta prioridad"
+      },
+      {
+        "element": "finalCta.title",
+        "current": "",
+        "requirement": "Título poderoso 20-28 caracteres, emocional, accionable",
+        "deadline": "Alta prioridad"
+      },
+      {
+        "element": "finalCta.subtitle",
+        "current": "",
+        "requirement": "Subtítulo 26-34 caracteres, complementa título",
+        "deadline": "Alta prioridad"
+      },
+      {
+        "element": "finalCta.description",
+        "current": "",
+        "requirement": "Descripción 65-85 caracteres, cierre convincente",
+        "deadline": "Alta prioridad"
+      },
+      {
+        "element": "excepServices.metric1-5",
+        "current": "English only",
+        "requirement": "5 métricas traducidas, mantener especificidad, 65-80 caracteres cada una",
+        "deadline": "Alta prioridad"
+      }
+    ],
+    "priority_2_optimization": [
+      {
+        "element": "serviceOfferings.badge",
+        "current": "What We Do Best",
+        "requirement": "Traducción optimizada",
+        "deadline": "Media prioridad"
+      },
+      {
+        "element": "portfolio.badge",
+        "current": "",
+        "requirement": "Badge 14-20 caracteres",
+        "deadline": "Media prioridad"
+      },
+      {
+        "element": "Hero CTA button",
+        "current": "Comienza hoy",
+        "requirement": "Considerar optimización más específica",
+        "deadline": "Baja prioridad (opcional)"
+      }
+    ],
+    "format_requested": {
+      "file_format": "JSON estructurado igual a este brief",
+      "language": "Español (ES) para todos los campos marcados como REQUIERE COPY",
+      "character_counts": "Incluir conteo exacto de caracteres (con espacios) para cada campo",
+      "notes": "Para cada propuesta, incluir 1-2 alternativas y breve justificación de elección"
+    }
+  },
+  "success_metrics": {
+    "copy_effectiveness_indicators": [
+      "Aumento en tasa de conversión del formulario hero (target: +15-20%)",
+      "Reducción en tasa de rebote (target: <55%)",
+      "Aumento en tiempo en página (target: >2.5 min)",
+      "Mejora en scroll depth (target: >80%)",
+      "Más clics en CTAs secundarios"
+    ],
+    "testing_recommendations": [
+      "A/B testing en H1 principal",
+      "A/B testing en CTA buttons",
+      "Múltiples variantes de finalCta.title para encontrar la más efectiva"
+    ]
+  },
+  "additional_resources": {
+    "current_copy_file": "HOMEPAGE_COPY_COMPLETE.json (detalles técnicos UI/UX)",
+    "dictionary_file": "apps/web/app/[locale]/dictionaries/es.json",
+    "website_live": "https://fascinantedigital.com/es",
+    "competitor_references": [
+      "Análisis de competencia disponible bajo solicitud",
+      "Referencias de agencias top en mercado bilingüe"
+    ]
+  },
+  "contact_information": {
+    "questions_about_brief": "Consultas sobre este brief a través del equipo de desarrollo",
+    "technical_specifications": "Todas las especificaciones técnicas UI/UX en HOMEPAGE_COPY_COMPLETE.json",
+    "brand_guidelines": "Consultar brand guidelines internas para tono y voz"
+  }
+}

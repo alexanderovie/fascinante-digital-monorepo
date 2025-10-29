@@ -1,3 +1,5 @@
+import { fetchWithTimeout } from '@/lib/fetch-with-timeout';
+import { checkRateLimit, getClientIP } from '@/lib/rate-limit';
 import { NextRequest, NextResponse } from 'next/server';
 
 /**
@@ -9,6 +11,29 @@ import { NextRequest, NextResponse } from 'next/server';
  */
 export async function GET(request: NextRequest) {
   try {
+    // Rate limiting: 20 requests per minute per IP (less expensive than autocomplete)
+    const clientIP = getClientIP(request);
+    const rateLimit = checkRateLimit(clientIP, 20, 60000); // 20 req/min
+
+    if (rateLimit.rateLimited) {
+      return NextResponse.json(
+        {
+          error: 'Rate limit exceeded',
+          message: 'Too many requests. Please try again later.',
+          resetTime: rateLimit.resetTime,
+        },
+        {
+          status: 429,
+          headers: {
+            'Retry-After': Math.ceil((rateLimit.resetTime - Date.now()) / 1000).toString(),
+            'X-RateLimit-Limit': '20',
+            'X-RateLimit-Remaining': '0',
+            'X-RateLimit-Reset': rateLimit.resetTime.toString(),
+          },
+        }
+      );
+    }
+
     const searchParams = request.nextUrl.searchParams;
     const placeId = searchParams.get('place_id');
     const sessionToken = searchParams.get('sessionToken'); // Optional for billing optimization
@@ -77,14 +102,19 @@ export async function GET(request: NextRequest) {
 
     // Call Google Places API (New) - GET /v1/places/{place_id}
     // According to discovery doc: path "v1/{+name}" where name = places/{place_id}
-    const response = await fetch(url.toString(), {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Goog-Api-Key': apiKey,
-        'X-Goog-FieldMask': fieldMask,
+    // With 10 second timeout to prevent hanging requests
+    const response = await fetchWithTimeout(
+      url.toString(),
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Goog-Api-Key': apiKey,
+          'X-Goog-FieldMask': fieldMask,
+        },
       },
-    });
+      10000 // 10 seconds timeout
+    );
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
@@ -157,9 +187,28 @@ export async function GET(request: NextRequest) {
       } : undefined,
     };
 
-    return NextResponse.json(placeDetails);
+    return NextResponse.json(
+      placeDetails,
+      {
+        headers: {
+          'X-RateLimit-Limit': '20',
+          'X-RateLimit-Remaining': rateLimit.remaining.toString(),
+          'X-RateLimit-Reset': rateLimit.resetTime.toString(),
+        },
+      }
+    );
   } catch (error) {
     console.error('Error in places details:', error);
+
+    // Handle timeout errors specifically
+    if (error instanceof Error && error.message.includes('timeout')) {
+      return NextResponse.json(
+        { error: 'Request timeout - Google Places API took too long to respond' },
+        { status: 504 }
+      );
+    }
+
+    // Generic error for client
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

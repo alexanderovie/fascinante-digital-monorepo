@@ -4,10 +4,10 @@ import ScrollToTop from "@/components/ScrollToTop";
 import { QueryProvider } from "@/components/providers/QueryProvider";
 import { getDictionary } from "@/lib/dictionaries";
 import { locales, type Locale } from "@/lib/i18n";
+import { GoogleTagManager } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
-import { GoogleTagManager } from "@next/third-parties/google";
 import { Toaster } from "sonner";
 import "../globals.css";
 import { I18nProvider } from "./i18n-context";
@@ -80,6 +80,8 @@ export async function generateMetadata({
       title: metadata.title,
       description: metadata.description,
       images: ['/opengraph-image.jpg'],
+      site: '@fascinantedig',
+      creator: '@fascinantedig',
     },
     alternates: {
       canonical: `${baseUrl}/${locale}`,
@@ -115,7 +117,9 @@ export default async function RootLayout({
     sameAs: [
       'https://www.facebook.com/fascinantedigital',
       'https://twitter.com/fascinantedig',
+      'https://www.instagram.com/fascinantedigital',
       'https://www.linkedin.com/company/fascinante-digital',
+      'https://www.youtube.com/@fascinantedigital',
     ],
     contactPoint: {
       '@type': 'ContactPoint',

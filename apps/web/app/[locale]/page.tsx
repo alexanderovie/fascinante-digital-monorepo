@@ -49,6 +49,8 @@ export async function generateMetadata({
       title: metadata.title,
       description: metadata.description,
       images: ['/opengraph-image.jpg'],
+      site: '@fascinantedig',
+      creator: '@fascinantedig',
     },
   };
 }

@@ -86,8 +86,15 @@ const Newsletter = ({ locale: propLocale, dict: propDict }: NewsletterProps = {}
             <div className='flex gap-9'>
               {FooterData.socialIcon.map((item, index) => {
                 return (
-                  <Link href={item.link} key={index} className='opacity-70 hover:opacity-100'>
-                    <Image src={item.icon} alt='social-icon' width={20} height={20} />
+                  <Link
+                    href={item.link}
+                    key={index}
+                    className='opacity-70 hover:opacity-100 transition-opacity'
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={item.ariaLabel || `Síguenos en ${item.name}`}
+                  >
+                    <Image src={item.icon} alt={`${item.name} icon`} width={20} height={20} />
                   </Link>
                 )
               })}

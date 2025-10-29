@@ -1,5 +1,7 @@
 import type { AuditGenerationResponse, AuditRequest, AuditResult } from '@/types/audit';
 import { NextRequest, NextResponse } from 'next/server';
+import { checkRateLimit, getClientIP } from '@/lib/rate-limit';
+import { fetchWithTimeout } from '@/lib/fetch-with-timeout';
 
 const DATAFORSEO_BASE_URL = 'https://data.fascinantedigital.com/v3';
 
@@ -22,16 +24,21 @@ function extractDomain(website?: string): string | null {
 /**
  * Call DataForSEO API through proxy
  * Note: El proxy maneja la autenticación, no necesitamos pasar credenciales
+ * Includes timeout protection (15 seconds - these queries can take longer)
  */
 async function callDataForSEO(endpoint: string, payload: unknown) {
-  const response = await fetch(`${DATAFORSEO_BASE_URL}${endpoint}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      // No Authorization header - el proxy maneja las credenciales
+  const response = await fetchWithTimeout(
+    `${DATAFORSEO_BASE_URL}${endpoint}`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        // No Authorization header - el proxy maneja las credenciales
+      },
+      body: JSON.stringify([payload]),
     },
-    body: JSON.stringify([payload]),
-  });
+    15000 // 15 seconds timeout (DataForSEO can be slower)
+  );
 
   if (!response.ok) {
     const errorText = await response.text();
@@ -55,15 +62,68 @@ function generateAuditId(): string {
  */
 export async function POST(request: NextRequest) {
   try {
+    // Rate limiting: 3 requests per hour per IP (expensive operation)
+    const clientIP = getClientIP(request);
+    const rateLimit = checkRateLimit(clientIP, 3, 3600000); // 3 req/hour
+
+    if (rateLimit.rateLimited) {
+      return NextResponse.json<AuditGenerationResponse>(
+        {
+          success: false,
+          error: 'Rate limit exceeded',
+          message: 'Too many audit requests. Please try again later.',
+          resetTime: rateLimit.resetTime,
+        },
+        {
+          status: 429,
+          headers: {
+            'Retry-After': Math.ceil((rateLimit.resetTime - Date.now()) / 1000).toString(),
+            'X-RateLimit-Limit': '3',
+            'X-RateLimit-Remaining': '0',
+            'X-RateLimit-Reset': rateLimit.resetTime.toString(),
+          },
+        }
+      );
+    }
+
+    // Validate content-type and size
+    const contentType = request.headers.get('content-type');
+    if (!contentType?.includes('application/json')) {
+      return NextResponse.json<AuditGenerationResponse>(
+        { success: false, error: 'Content-Type must be application/json' },
+        { status: 400 }
+      );
+    }
+
     const body: AuditRequest = await request.json();
+
+    // Validate payload size (max 10KB)
+    const bodyString = JSON.stringify(body);
+    if (bodyString.length > 10 * 1024) {
+      return NextResponse.json<AuditGenerationResponse>(
+        { success: false, error: 'Request body too large (max 10KB)' },
+        { status: 413 }
+      );
+    }
+
+    // Sanitize and validate inputs
+    const sanitizeInput = (input: string, maxLength: number = 200): string => {
+      return input
+        .trim()
+        .replace(/[<>]/g, '') // Remove dangerous characters
+        .substring(0, maxLength);
+    };
 
     // Validation
     if (!body.businessName || body.businessName.trim().length < 2) {
       return NextResponse.json<AuditGenerationResponse>(
-        { success: false, error: 'Business name is required' },
+        { success: false, error: 'Business name is required (min 2 characters)' },
         { status: 400 }
       );
     }
+
+    // Sanitize business name
+    const sanitizedBusinessName = sanitizeInput(body.businessName, 200);
 
     // Category is REQUIRED for DataForSEO queries
     if (!body.category || !body.category.trim()) {
@@ -72,6 +132,9 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+
+    // Sanitize category
+    const sanitizedCategory = sanitizeInput(body.category, 100);
 
     // Extract domain if website provided
     const domain = extractDomain(body.website);
@@ -82,7 +145,7 @@ export async function POST(request: NextRequest) {
     // Prepare audit result object
     const auditResult: Partial<AuditResult> = {
       auditId,
-      businessName: body.businessName,
+      businessName: sanitizedBusinessName,
       website: body.website || domain || undefined,
       generatedAt: new Date().toISOString(),
       status: 'processing',
@@ -98,7 +161,7 @@ export async function POST(request: NextRequest) {
     const promises: Promise<unknown>[] = [
       // Google Business Info - siempre intentamos si tenemos nombre
       callDataForSEO('/business_data/google/my_business_info/live.ai', {
-        keyword: body.businessName,
+        keyword: sanitizedBusinessName,
         location_name: 'United States',
         language_name: 'English',
       }).catch(() => null),
@@ -122,7 +185,7 @@ export async function POST(request: NextRequest) {
 
         // Keyword Ideas - Oportunidades SEO basadas en el negocio
         callDataForSEO('/dataforseo_labs/google/keyword_ideas/live.ai', {
-          keyword: body.businessName,
+          keyword: sanitizedBusinessName,
           location_code: 2840,
           language_code: 'en',
           include_serp_info: true,
@@ -131,7 +194,7 @@ export async function POST(request: NextRequest) {
 
         // Keyword Overview - Volumen de búsqueda de keywords relevantes
         callDataForSEO('/dataforseo_labs/google/keyword_overview/live.ai', {
-          keyword: body.businessName,
+          keyword: sanitizedBusinessName,
           location_code: 2840,
           language_code: 'en',
         }).catch(() => null)
@@ -202,7 +265,7 @@ export async function POST(request: NextRequest) {
         if (!auditResult.keywordOpportunities || auditResult.keywordOpportunities.opportunities.length === 0) {
           auditResult.keywordOpportunities = {
             opportunities: [{
-              keyword: body.businessName,
+              keyword: sanitizedBusinessName,
               search_volume: data.search_volume || 0,
               difficulty: data.keyword_difficulty || 0,
               cpc: data.bid || undefined,
@@ -219,18 +282,42 @@ export async function POST(request: NextRequest) {
     // Store audit result (in production, use database/Redis)
     // For now, we'll return it directly - client should store in localStorage or call results endpoint
 
-    return NextResponse.json<AuditGenerationResponse>({
-      success: true,
-      auditId,
-      message: 'Audit completed successfully',
-    });
+    return NextResponse.json<AuditGenerationResponse>(
+      {
+        success: true,
+        auditId,
+        message: 'Audit completed successfully',
+      },
+      {
+        headers: {
+          'X-RateLimit-Limit': '3',
+          'X-RateLimit-Remaining': rateLimit.remaining.toString(),
+          'X-RateLimit-Reset': rateLimit.resetTime.toString(),
+        },
+      }
+    );
 
   } catch (error) {
     console.error('Error generating audit:', error);
+
+    // Handle timeout errors specifically
+    if (error instanceof Error && error.message.includes('timeout')) {
+      return NextResponse.json<AuditGenerationResponse>(
+        {
+          success: false,
+          error: 'Request timeout - DataForSEO API took too long to respond',
+        },
+        { status: 504 }
+      );
+    }
+
+    // Generic error for client
     return NextResponse.json<AuditGenerationResponse>(
       {
         success: false,
-        error: error instanceof Error ? error.message : 'Failed to generate audit'
+        error: error instanceof Error && error.message.includes('validation')
+          ? error.message
+          : 'Failed to generate audit',
       },
       { status: 500 }
     );
