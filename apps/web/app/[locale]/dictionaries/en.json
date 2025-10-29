@@ -209,12 +209,12 @@
       "description": "From SEO and local positioning to paid advertising, web, and content — everything aligned for measurable growth",
       "viewAllServices": "View all services",
       "services": {
-        "digitalBranding": "Digital Branding that leaves a mark.",
-        "seoOptimization": "Get found on Google and stop being invisible.",
-        "googleMetaAds": "Ads that convert — not just impress.",
+        "digitalBranding": "Digital Branding",
+        "seoOptimization": "SEO & Local",
+        "googleMetaAds": "Meta Ads",
         "webDesign": "Web Design",
         "brandIdentity": "Brand Identity",
-        "emailAutomation": "Email Automation"
+        "emailAutomation": "Email Marketing"
       }
     },
     "transformation": {

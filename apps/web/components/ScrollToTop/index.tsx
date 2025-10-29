@@ -29,16 +29,16 @@ export default function ScrollToTop() {
   return (
     <div className="fixed bottom-8 right-8 z-999">
       <div className="flex items-center gap-2.5">
-        <Link href={"https://getnextjstemplates.com/products/gleamer-nextjs-template"} className="hidden lg:block bg-secondary hover:bg-primary dark:bg-white/25 dark:hover:bg-primary text-sm text-white font-medium px-4 py-3.5 leading-none rounded-lg text-nowrap transition-all duration-300">
+        <Link href={"https://getnextjstemplates.com/products/gleamer-nextjs-template"} className="hidden lg:block bg-primary hover:bg-white hover:text-primary text-sm text-white font-medium px-4 py-3.5 leading-none rounded-lg text-nowrap transition-all duration-300 shadow-lg">
           Book Now
         </Link>
         {isVisible && (
           <div
             onClick={scrollToTop}
             aria-label="scroll to top"
-            className="back-to-top flex h-10 w-10 cursor-pointer items-center justify-center rounded-md bg-secondary hover:bg-primary dark:bg-white/25 dark:hover:bg-primary text-white shadow-md transition-all duration-300"
+            className="back-to-top flex h-10 w-10 cursor-pointer items-center justify-center rounded-md bg-primary hover:bg-white text-white shadow-lg transition-all duration-300 group"
           >
-            <span className="mt-[6px] h-3 w-3 rotate-45 border-l border-t border-white"></span>
+            <span className="mt-[6px] h-3 w-3 rotate-45 border-l border-t border-white group-hover:border-primary"></span>
           </div>
         )}
       </div>

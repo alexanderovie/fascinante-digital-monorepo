@@ -65,7 +65,7 @@ const Newsletter = ({ locale: propLocale, dict: propDict }: NewsletterProps = {}
           <p className='w-full xl:max-w-xs text-white'>{footer.newsletterTitle}</p>
           <div className='flex flex-col lg:flex-row justify-between items-start lg:items-center w-full gap-6'>
             <div className='flex flex-col lg:flex-row gap-5 lg:gap-10'>
-              <form onSubmit={handleSubmit} className='flex gap-2'>
+              <form onSubmit={handleSubmit} className='flex gap-2 items-center'>
                 <input
                   required
                   className="input-field bg-white dark:bg-white/10"
@@ -76,8 +76,11 @@ const Newsletter = ({ locale: propLocale, dict: propDict }: NewsletterProps = {}
                   onChange={handleChange}
                   placeholder={footer.newsletterPlaceholder}
                 />
-                <button type='submit' className='bg-primary hover:bg-white hover:text-primary py-3 px-6 rounded-sm font-bold cursor-pointer text-white transition-all duration-300'>
-                  {footer.newsletterSubscribe}
+                <button
+                  type='submit'
+                  className='group w-fit flex items-center py-3 px-6 bg-primary hover:bg-white hover:text-primary rounded-sm cursor-pointer transition-all duration-300'
+                >
+                  <span className='text-base text-white group-hover:text-primary font-bold'>{footer.newsletterSubscribe}</span>
                 </button>
               </form>
               <p className='text-xs max-w-[217px] text-white/70'>{footer.newsletterDisclaimer}</p>
