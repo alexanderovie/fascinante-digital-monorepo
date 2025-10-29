@@ -56,6 +56,7 @@ function ServiceOfferings({ dict }: ServiceOfferingsProps) {
               {services.map((value, index) => (
                 <CarouselItem key={index} className="basis-auto">
                   <div className="relative w-[440px] h-96">
+                    {/* Imagen primero */}
                     <Link href={`/services/${value.slug}`}>
                       <Image
                         src={value.thumbnail_img}
@@ -65,13 +66,14 @@ function ServiceOfferings({ dict }: ServiceOfferingsProps) {
                         className="w-full h-full object-cover hover:scale-95 transition-transform duration-300 rounded-lg"
                       />
                     </Link>
-                    <div className="absolute -bottom-8 right-0 flex items-center">
+                    {/* Texto con icono después (abajo de la imagen) */}
+                    <div className="absolute -bottom-8 right-0 flex items-center z-10">
                       <div className="bg-white dark:bg-secondary pl-6 flex items-center rounded-sm">
                         <span className="text-secondary/40 mr-2">0{value.id}.</span>
                         <Link href={`/services/${value.slug}`}><h6 className="pr-10 font-semibold">{marketingTitles[index] ?? value.service_title}</h6></Link>
                         <Link
                           href={`/services/${value.slug}`}
-                          className="w-fit bg-primary p-5 rounded-r-sm"
+                          className="w-fit bg-primary py-3 px-6 rounded-r-sm flex items-center justify-center"
                         >
                           <ArrowRight className="w-6 h-6 text-white" />
                         </Link>

@@ -1,6 +1,6 @@
 "use client";
-import { motion, useInView } from 'framer-motion';
 import { toTitleCase } from '@/lib/utils/text-formatting';
+import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { ExcepServicesData } from './data';
 
@@ -40,8 +40,8 @@ const ExcepServices = ({ dict }: ExcepServicesProps) => {
                     className='flex flex-col gap-4 lg:gap-8'
                     {...bottomAnimation(index)}
                   >
-                    <div className='py-2 px-2.5  bg-primary rounded-full w-fit'>
-                      <span className='font-bold text-white'>0{item.id}</span>
+                    <div className='py-2 px-2.5 bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-full w-fit'>
+                      <span className='font-bold text-blue-800 dark:text-blue-200'>0{item.id}</span>
                     </div>
                     <p className='font-normal text-dusty-gray dark:text-white/70'>{item.title}</p>
                   </motion.div>

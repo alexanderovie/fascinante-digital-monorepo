@@ -2,7 +2,7 @@
 import type { Dictionary } from "@/app/[locale]/dictionaries";
 import { useI18n } from "@/app/[locale]/i18n-context";
 import type { PlaceDetails } from "@/types/places";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { BusinessAutocomplete } from "./BusinessAutocomplete";
 
 interface FormComponentProps {
@@ -47,6 +47,8 @@ export default function FormComponent({
     email?: string;
     services?: string;
   }>({});
+  const nameInputRef = useRef<HTMLInputElement>(null);
+  const emailInputRef = useRef<HTMLInputElement>(null);
 
   // Hero form service options - Solo 2 opciones grandes
   const heroServiceOptions: string[] = [
@@ -78,7 +80,23 @@ export default function FormComponent({
 
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    const isValid = Object.keys(newErrors).length === 0;
+
+    // Si hay errores, hacer scroll y focus al primer campo con error (sin toast)
+    if (!isValid) {
+      // Small delay to ensure DOM is updated with error messages
+      setTimeout(() => {
+        if (newErrors.name && nameInputRef.current) {
+          nameInputRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          nameInputRef.current.focus();
+        } else if (newErrors.email && emailInputRef.current) {
+          emailInputRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          emailInputRef.current.focus();
+        }
+      }, 100);
+    }
+
+    return isValid;
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -86,6 +104,7 @@ export default function FormComponent({
     if (validateForm()) {
       onSubmit(e);
     }
+    // ✅ NO mostrar toast aquí - errores ya se muestran en campos
   };
 
   return (
@@ -102,6 +121,7 @@ export default function FormComponent({
             />
           ) : (
             <input
+              ref={nameInputRef}
               type="text"
               name="name"
               placeholder={`${heroDict.formName || 'Nombre del negocio'} *`}
@@ -116,6 +136,7 @@ export default function FormComponent({
 
         <div>
           <input
+            ref={emailInputRef}
             type="email"
             name="email"
             placeholder={heroDict.formEmail || 'Correo electrónico'}

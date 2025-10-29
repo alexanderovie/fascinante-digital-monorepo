@@ -44,7 +44,7 @@ const FooterInfo = ({ locale: propLocale, dict: propDict }: FooterInfoProps = {}
       <div className='relative flex sm:flex-row flex-col justify-between gap-10 pt-9 md:pt-16 pb-20 md:pb-28 border-b border-white/15'>
         <div className='flex flex-col gap-6'>
           <h4 className='font-semibold max-w-[610px] text-white'>{footer.ctaTitle}</h4>
-          <Link href={`/${locale}/contact-us`} className='w-fit bg-primary hover:bg-white hover:text-primary py-3.5 px-7 rounded-md font-semibold text-white transition-all duration-300'>
+          <Link href={`/${locale}/contact-us`} className='w-fit bg-primary hover:bg-white hover:text-primary py-3 px-6 rounded-md font-semibold text-white transition-all duration-300'>
             {footer.ctaButton}
           </Link>
         </div>

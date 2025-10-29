@@ -76,7 +76,7 @@ const Newsletter = ({ locale: propLocale, dict: propDict }: NewsletterProps = {}
                   onChange={handleChange}
                   placeholder={footer.newsletterPlaceholder}
                 />
-                <button type='submit' className='bg-primary hover:bg-white hover:text-primary py-3.5 px-6 rounded-md font-semibold cursor-pointer text-white transition-all duration-300'>
+                <button type='submit' className='bg-primary hover:bg-white hover:text-primary py-3 px-6 rounded-sm font-bold cursor-pointer text-white transition-all duration-300'>
                   {footer.newsletterSubscribe}
                 </button>
               </form>
