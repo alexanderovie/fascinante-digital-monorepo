@@ -11,7 +11,12 @@ import type { NextConfig } from "next";
  */
 const nextConfig: NextConfig = {
   images: {
-    unoptimized: true,
+    // Activamos la optimización de imágenes de Next.js
+    unoptimized: false,
+    // Preferimos WebP (rápido y con buen ratio). AVIF es más pequeño pero más lento de codificar.
+    formats: ['image/webp'],
+    // TTL mínimo de imágenes optimizadas en CDN (31 días)
+    minimumCacheTTL: 2678400,
   },
   // Temporarily allow build errors for legacy code compatibility
   // Will be enabled once codebase is fully modernized
@@ -20,6 +25,46 @@ const nextConfig: NextConfig = {
   },
   eslint: {
     ignoreDuringBuilds: true,
+  },
+  // Headers configuration (Next.js 15.5.6 Official)
+  // Reference: https://nextjs.org/docs/app/api-reference/config/next-config-js/headers
+  async headers() {
+    return [
+      {
+        // Apply to all routes
+        source: "/:path*",
+        headers: [
+          // Enable DNS prefetching for third-party domains
+          // Reference: https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#x-dns-prefetch-control
+          {
+            key: "X-DNS-Prefetch-Control",
+            value: "on",
+          },
+        ],
+      },
+      {
+        // Apply to static files (images, fonts, etc.)
+        // Note: Next.js automatically sets Cache-Control for immutable assets with SHA-hash in filename
+        // Reference: https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#cache-control
+        source: "/:path*.(png|jpg|jpeg|gif|webp|svg|ico|woff|woff2|ttf|eot)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        // Apply to _next/static directory (Next.js static assets with hashed filenames)
+        source: "/_next/static/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+    ];
   },
 };
 

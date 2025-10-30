@@ -194,6 +194,9 @@ export async function GET(request: NextRequest) {
           'X-RateLimit-Limit': '20',
           'X-RateLimit-Remaining': rateLimit.remaining.toString(),
           'X-RateLimit-Reset': rateLimit.resetTime.toString(),
+          // CDN cache (Vercel) con SWR; navegador sin caché persistente
+          'Cache-Control': 'max-age=0',
+          'CDN-Cache-Control': 's-maxage=3600, stale-while-revalidate=3600',
         },
       }
     );

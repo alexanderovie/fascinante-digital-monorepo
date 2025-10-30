@@ -293,6 +293,7 @@ export async function POST(request: NextRequest) {
           'X-RateLimit-Limit': '3',
           'X-RateLimit-Remaining': rateLimit.remaining.toString(),
           'X-RateLimit-Reset': rateLimit.resetTime.toString(),
+          'Cache-Control': 'no-store',
         },
       }
     );

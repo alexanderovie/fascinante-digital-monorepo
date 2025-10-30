@@ -180,6 +180,7 @@ export async function GET(request: NextRequest) {
           'X-RateLimit-Limit': '10',
           'X-RateLimit-Remaining': rateLimit.remaining.toString(),
           'X-RateLimit-Reset': rateLimit.resetTime.toString(),
+          'Cache-Control': 'no-store',
         },
       }
     );

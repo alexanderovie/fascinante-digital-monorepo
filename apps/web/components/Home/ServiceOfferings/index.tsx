@@ -63,6 +63,8 @@ function ServiceOfferings({ dict }: ServiceOfferingsProps) {
                         alt="Image"
                         width={440}
                         height={390}
+                        quality={70}
+                        sizes="(max-width: 768px) 90vw, 440px"
                         className="w-full h-full object-cover hover:scale-95 transition-transform duration-300 rounded-lg"
                       />
                     </Link>

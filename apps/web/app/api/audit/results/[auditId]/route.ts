@@ -31,6 +31,11 @@ export async function GET(
       generatedAt: new Date().toISOString(),
       status: 'completed',
       error: 'Audit results should be stored after generation. Implementation pending database integration.',
+    }, {
+      headers: {
+        'Cache-Control': 'max-age=0',
+        'CDN-Cache-Control': 's-maxage=600, stale-while-revalidate=300',
+      }
     });
 
   } catch (error) {

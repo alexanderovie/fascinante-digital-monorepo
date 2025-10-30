@@ -15,7 +15,14 @@ export function CleaningHighlightAnimated() {
 
   return (
     <motion.div ref={ref} {...bottomAnimation} className='relative'>
-      <Image src={"/images/home/cleaninghighlight/highlight-banner-img.png"} alt="image" width={680} height={655} />
+      <Image
+        src={"/images/home/cleaninghighlight/highlight-banner-img.png"}
+        alt="image"
+        width={680}
+        height={655}
+        quality={70}
+        sizes="(max-width: 768px) 90vw, 680px"
+      />
     </motion.div>
   );
 }
