@@ -1,0 +1,57 @@
+/* Minimal lite-youtube-embed CSS (local copy) */
+/* Concept: https://github.com/paulirish/lite-youtube-embed */
+
+lite-youtube,
+.lite-youtube {
+  position: relative;
+  display: block;
+  background-color: #000;
+  cursor: pointer;
+  contain: content;
+}
+
+lite-youtube::before,
+.lite-youtube::before {
+  content: "";
+  display: block;
+  padding-bottom: 56.25%; /* 16:9 */
+}
+
+lite-youtube > iframe,
+.lite-youtube > iframe,
+lite-youtube > .lt-yt-iframe,
+.lite-youtube > .lt-yt-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+lite-youtube > .lt-yt-preview,
+.lite-youtube > .lt-yt-preview {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+}
+
+lite-youtube > .lt-yt-playbtn,
+.lite-youtube > .lt-yt-playbtn {
+  width: 68px;
+  height: 48px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.33 34 .33 34 .33s-21.79 0-27.1 1.22C3.97 2.33 2.26 4.81 1.48 7.74.26 13.05.26 24 .26 24s0 10.95 1.22 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.67 34 47.67 34 47.67s21.79 0 27.1-1.22c2.93-.78 4.64-3.26 5.42-6.19C67.74 34.95 67.74 24 67.74 24s0-10.95-1.22-16.26z" fill="#212121" fill-opacity="0.8"/><path d="M45 24 27 14v20" fill="#fff"/></svg>') no-repeat center;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  border: none;
+  filter: drop-shadow(0 0 8px rgba(0,0,0,.6));
+}
+
+lite-youtube.activated > .lt-yt-preview,
+.lite-youtube.activated > .lt-yt-preview,
+lite-youtube.activated > .lt-yt-playbtn,
+.lite-youtube.activated > .lt-yt-playbtn {
+  display: none;
+}

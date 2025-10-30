@@ -136,6 +136,8 @@ export default async function RootLayout({
     <html lang={locale} suppressHydrationWarning>
       <GoogleTagManager gtmId={gtmId} dataLayer={{ page_type: 'marketing_site' }} />
       <body className={inter.className}>
+        {/* Local lite-youtube-embed CSS */}
+        <link rel="stylesheet" href="/vendor/lite-yt-embed.css" />
         {/* JSON-LD Organization Schema según recomendación oficial Next.js 15 */}
         <script
           type="application/ld+json"
