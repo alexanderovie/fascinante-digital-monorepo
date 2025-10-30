@@ -41,9 +41,13 @@ export async function generateMetadata({
     title: string;
     description: string;
     keywords: string;
+    ogTitle?: string;
+    ogDescription?: string;
   };
 
   const baseUrl = 'https://fascinantedigital.com';
+  const ogTitle = metadata.ogTitle || metadata.title;
+  const ogDescription = metadata.ogDescription || metadata.description;
 
   return {
     metadataBase: new URL(baseUrl),
@@ -60,15 +64,15 @@ export async function generateMetadata({
     },
     manifest: '/site.webmanifest',
     openGraph: {
-      title: metadata.title,
-      description: metadata.description,
+      title: ogTitle,
+      description: ogDescription,
       url: `${baseUrl}/${locale}`,
       siteName: 'Fascinante Digital',
       locale: locale === 'es' ? 'es_ES' : 'en_US',
       type: 'website',
       images: [
         {
-          url: '/opengraph-image.jpg',
+          url: locale === 'en' ? '/opengraph-image-en.jpg' : '/opengraph-image.jpg',
           width: 1200,
           height: 630,
           alt: 'Fascinante Digital - Marketing Digital',
@@ -77,9 +81,9 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: metadata.title,
-      description: metadata.description,
-      images: ['/opengraph-image.jpg'],
+      title: ogTitle,
+      description: ogDescription,
+      images: [locale === 'en' ? '/opengraph-image-en.jpg' : '/opengraph-image.jpg'],
       site: '@fascinantedig',
       creator: '@fascinantedig',
     },

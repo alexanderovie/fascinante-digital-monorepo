@@ -9,12 +9,30 @@ interface ExcepServicesProps {
     badge: string;
     title: string;
     subtitle: string;
+    results?: {
+      item1: string;
+      item2: string;
+      item3: string;
+      item4: string;
+      item5: string;
+    };
   };
 }
 
 const ExcepServices = ({ dict }: ExcepServicesProps) => {
   const ref = useRef(null);
   const inView = useInView(ref);
+
+  // Use dictionary data if available, otherwise fallback to static data
+  const resultsData = dict.results 
+    ? [
+        { id: 1, title: dict.results.item1 },
+        { id: 2, title: dict.results.item2 },
+        { id: 3, title: dict.results.item3 },
+        { id: 4, title: dict.results.item4 },
+        { id: 5, title: dict.results.item5 },
+      ]
+    : ExcepServicesData;
 
   const bottomAnimation = (index: number) => ({
     initial: { y: "5%", opacity: 0 },
@@ -33,7 +51,7 @@ const ExcepServices = ({ dict }: ExcepServicesProps) => {
               <h2 className='font-semibold'>{toTitleCase(dict.title)}</h2>
             </div>
             <div className='grid grid-cols-1 xsm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 xl:gap-10'>
-              {ExcepServicesData.map((item, index) => {
+              {resultsData.map((item, index) => {
                 return (
                   <motion.div
                     key={index}

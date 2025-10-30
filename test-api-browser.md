@@ -54,10 +54,10 @@ const testRateLimit = async () => {
   for (let i = 1; i <= 11; i++) {
     const res = await fetch('/api/places/autocomplete?input=restaurant');
     const data = await res.json();
-    
+
     const remaining = res.headers.get('X-RateLimit-Remaining');
     const limit = res.headers.get('X-RateLimit-Limit');
-    
+
     if (res.status === 429) {
       console.log(`❌ Request ${i}: RATE LIMITED`);
       console.log('Error:', data.error);
@@ -67,7 +67,7 @@ const testRateLimit = async () => {
     } else {
       console.log(`✅ Request ${i}: OK - Remaining: ${remaining}/${limit}`);
     }
-    
+
     // Esperar 200ms entre requests
     await new Promise(r => setTimeout(r, 200));
   }
@@ -139,7 +139,7 @@ Copia y pega esto en la consola del navegador:
 ```javascript
 (async () => {
   console.log('🧪 Iniciando pruebas de API...\n');
-  
+
   // Test 1: Respuesta básica
   console.log('1️⃣ Test: Respuesta básica');
   const res1 = await fetch('/api/places/autocomplete?input=restaurant');
@@ -151,7 +151,7 @@ Copia y pega esto en la consola del navegador:
     remaining: res1.headers.get('X-RateLimit-Remaining'),
   });
   console.log('');
-  
+
   // Test 2: Validación
   console.log('2️⃣ Test: Validación (input corto)');
   const res2 = await fetch('/api/places/autocomplete?input=ab');
@@ -159,7 +159,7 @@ Copia y pega esto en la consola del navegador:
   console.log('Status:', res2.status);
   console.log('Error:', data2.error || 'OK');
   console.log('');
-  
+
   // Test 3: Rate limiting
   console.log('3️⃣ Test: Rate limiting (5 requests)');
   for (let i = 1; i <= 5; i++) {
@@ -168,7 +168,7 @@ Copia y pega esto en la consola del navegador:
     console.log(`Request ${i}: ${r.status} - Remaining: ${remaining}`);
     await new Promise(resolve => setTimeout(resolve, 300));
   }
-  
+
   console.log('\n✅ Pruebas completadas');
 })();
 ```
@@ -177,8 +177,7 @@ Copia y pega esto en la consola del navegador:
 
 ## 🔍 **Verificar que todo funciona**
 
-✅ **API responde:** Deberías ver predicciones de lugares  
-✅ **Rate limiting activo:** Headers `X-RateLimit-*` presentes  
-✅ **Validación funciona:** Input corto retorna error 400  
+✅ **API responde:** Deberías ver predicciones de lugares
+✅ **Rate limiting activo:** Headers `X-RateLimit-*` presentes
+✅ **Validación funciona:** Input corto retorna error 400
 ✅ **Rate limit bloquea:** Después de 10 requests, el 11º retorna 429
-

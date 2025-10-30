@@ -32,8 +32,8 @@
   },
   "hero": {
     "badge": "What We Do Best",
-    "title": "Make your business shine where it matters most",
-    "subtitle": "We craft bilingual strategies that position your brand, attract real clients, and turn clicks into customers",
+    "title": "Bilingual Digital Marketing & Automation Agency in West Palm Beach",
+    "subtitle": "Grow your brand with data-driven bilingual strategies that connect cultures and deliver measurable growth",
     "clients": "500+ businesses empowered",
     "satisfaction": "99% satisfaction",
     "support": "Human support 24/7",
@@ -47,7 +47,7 @@
     "formServices3": "Digital Branding",
     "formServices4": "Web Design",
     "formServices5": "Brand Identity",
-    "formServices6": "Email Automation",
+    "formServices6": "Marketing Automation",
     "formSubmit": "Get started today",
     "formThanks": "Thank you for reaching out!",
     "mobileAuditButton": "Request Free Audit",
@@ -59,9 +59,11 @@
     "required": "required"
   },
   "metadata": {
-    "title": "Fascinante Digital | Digital Growth for Ambitious Brands",
-    "description": "Bilingual marketing systems for visibility, credibility, and sustainable growth across the U.S. and Latin America. SEO, Google Ads, and conversion-focused strategies.",
-    "keywords": "digital marketing, SEO, SEM, Google Ads, Meta, Next.js, Fascinante Digital, Tampa, Florida"
+    "title": "Bilingual Digital Marketing Agency | Fascinante Digital",
+    "description": "Grow your brand with local SEO, digital branding, ads, and smart automation built for measurable business growth.",
+    "ogTitle": "Fascinante Digital | Bilingual Marketing & Automation",
+    "ogDescription": "Bilingual marketing and automation that connect brands with real customers in Florida and beyond.",
+    "keywords": "digital marketing, SEO, SEM, Google Ads, Meta, Next.js, Fascinante Digital, Tampa, Florida, West Palm Beach, bilingual marketing, marketing automation"
   },
   "audit": {
     "badge": "Free Audit",
@@ -197,10 +199,10 @@
   },
   "homepage": {
     "promobar": {
-      "item1": "Digital Growth for Ambitious Brands",
-      "item2": "Bilingual marketing systems built to make your brand stand out and sell in both languages.",
-      "item3": "SEO, Paid Ads, Web, and Content — aligned for growth",
-      "item4": "Get Your Free Growth Plan",
+      "item1": "Bilingual Digital Marketing & Automation Agency in West Palm Beach",
+      "item2": "Data-driven strategies for real growth. Bilingual marketing that connects cultures.",
+      "item3": "Full-funnel automation for local brands. SEO, Ads, and digital branding aligned.",
+      "item4": "Book Your Free Growth Call",
       "item5": "Watch How We Build Authority →"
     },
     "serviceOfferings": {
@@ -214,14 +216,14 @@
         "googleMetaAds": "Meta Ads",
         "webDesign": "Web Design",
         "brandIdentity": "Brand Identity",
-        "emailAutomation": "Email Marketing"
+        "emailAutomation": "Marketing Automation"
       }
     },
     "transformation": {
       "badge": "Over 400 brands trust us",
       "title": "Local Businesses into Memorable Brands",
-      "subtitle": "We combine data, design, and culture to deliver real growth across the U.S. and Latin America",
-      "ctaButton": "Get Your Free Strategy Call"
+      "subtitle": "We turn local businesses into memorable brands through automation, data, creativity, and bilingual digital branding across the U.S. and Latin America",
+      "ctaButton": "Book Your Free Growth Call"
     },
     "testimonials": {
       "badge": "Numbers Don't Lie — Strategy Does",
@@ -229,15 +231,32 @@
       "subtitle": "We used to be invisible on Google. Three months later, we were #1 — and our phones haven't stopped ringing.",
       "clientName": "— Ana Rivera, Miami FL",
       "sectionTitle": "What Our Clients Say",
-      "sectionSubtitle": "Discover how our services have transformed businesses and exceeded expectations."
+      "sectionSubtitle": "Discover how our services have transformed businesses and exceeded expectations.",
+      "secondaryTestimonials": {
+        "testimonial1": {
+          "quote": "They understand our culture and business. Fascinante Digital helped us connect with real clients through local SEO and digital branding.",
+          "name": "— Carlos Méndez, Orlando FL"
+        },
+        "testimonial2": {
+          "quote": "Our visibility and lead flow improved steadily. Fascinante Digital brought structure, clarity, and effective automation.",
+          "name": "— Operations Director, Tampa FL"
+        }
+      },
+      "results": {
+        "item1": "+250% lead growth with integrated local SEO and Ads strategies",
+        "item2": "Automation workflows that save 10+ hours weekly of manual management",
+        "item3": "400+ businesses thriving with bilingual digital branding and local SEO in Florida",
+        "item4": "Continuous optimization: scale winners, cut waste, and compound results weekly",
+        "item5": "Measurable strategic execution across SEO, Ads, marketing automation, and digital branding"
+      }
     },
     "pricing": {
       "badge": "Transparent pricing",
       "title": "Affordable plans for real growth",
       "starterGrowth": "Starter Growth",
-      "starterGrowthDesc": "Kickstart your online visibility",
+      "starterGrowthDesc": "Local SEO and initial digital branding",
       "smartCampaigns": "Smart Campaigns",
-      "smartCampaignsDesc": "Full digital growth strategy",
+      "smartCampaignsDesc": "SEO, Ads, and automation for sustainable results",
       "bookService": "Book a service"
     },
     "portfolio": {
@@ -245,10 +264,10 @@
       "viewAllWork": "View all work"
     },
     "finalCta": {
-      "title": "Ready to shine online?",
+      "title": "Ready to Grow?",
       "subtitle": "Grow beyond ads and followers",
-      "description": "Book your free audit and discover how we can take your brand to the next level.",
-      "button": "Get Your Free Strategy Call"
+      "description": "Let's build a brand that clients remember, algorithms reward, and competitors can't ignore. Full-funnel automation for real results.",
+      "button": "Book Your Free Growth Call"
     }
   }
 }

@@ -4,7 +4,7 @@
 
 ### 🔴 **RIESGO ALTO** (puede romper el sitio):
 - Cambiar estructura de componentes existentes
-- Modificar lógica de formularios en producción  
+- Modificar lógica de formularios en producción
 - Cambiar manejo de errores
 - Multi-step form con Server Actions
 
@@ -90,7 +90,7 @@ export async function submitContactForm(
   const headersList = await headers()
   const clientIP = headersList.get('x-forwarded-for') || 'unknown'
   const rateLimit = checkRateLimit(clientIP, 10, 3600000) // 10 req/hour
-  
+
   if (rateLimit.rateLimited) {
     return {
       errors: {
@@ -107,7 +107,7 @@ export async function submitContactForm(
   }
 
   const validated = contactSchema.safeParse(rawData)
-  
+
   if (!validated.success) {
     return {
       errors: validated.error.flatten().fieldErrors
@@ -129,7 +129,7 @@ export async function submitContactForm(
     })
 
     const data = await response.json()
-    
+
     if (data.success) {
       return { success: true }
     } else {
@@ -185,7 +185,7 @@ export async function generateAudit(
   const headersList = await headers()
   const clientIP = headersList.get('x-forwarded-for') || 'unknown'
   const rateLimit = checkRateLimit(clientIP, 3, 3600000) // 3 req/hour
-  
+
   if (rateLimit.rateLimited) {
     return {
       errors: {
@@ -205,7 +205,7 @@ export async function generateAudit(
   }
 
   const validated = auditSchema.safeParse(rawData)
-  
+
   if (!validated.success) {
     return {
       errors: validated.error.flatten().fieldErrors
@@ -216,7 +216,7 @@ export async function generateAudit(
   try {
     const auditId = generateAuditId()
     // ... lógica existente de DataForSEO ...
-    
+
     return {
       success: true,
       auditId,
@@ -252,10 +252,10 @@ import { submitContactForm } from '@/app/actions/contact'
 // Componente para botón de submit
 function SubmitButton({ dict }: { dict: any }) {
   const { pending } = useFormStatus()
-  
+
   return (
-    <button 
-      type="submit" 
+    <button
+      type="submit"
       disabled={pending}
       className="group w-fit flex items-center py-3 px-6 bg-secondary hover:bg-primary dark:bg-white/25 dark:hover:bg-primary rounded-sm cursor-pointer transition-all duration-300 disabled:opacity-50"
     >
@@ -274,7 +274,7 @@ export default function FormComponent({ dict }: { dict: any }) {
 
   // Mantener validación client-side para UX
   const [clientErrors, setClientErrors] = useState({})
-  
+
   const validateForm = () => {
     // ... validación existente ...
   }
@@ -311,7 +311,7 @@ export default function FormComponent({ dict }: { dict: any }) {
             </p>
           )}
         </div>
-        
+
         <div>
           <input
             type="email"
@@ -420,7 +420,7 @@ export default function AuditForm({ dict }: { dict: any }) {
   return (
     <form action={formAction} className="flex flex-col gap-4 md:gap-8">
       {/* Progress Indicator existente */}
-      
+
       {/* Step 1 */}
       {step === 1 && (
         <div className="flex flex-col gap-5">
@@ -438,9 +438,9 @@ export default function AuditForm({ dict }: { dict: any }) {
               </p>
             )}
           </div>
-          
+
           {/* Otros campos... */}
-          
+
           <button type="button" onClick={handleNext}>
             {dict.formNext || 'Continue'}
           </button>
@@ -451,12 +451,12 @@ export default function AuditForm({ dict }: { dict: any }) {
       {step === 2 && (
         <div className="flex flex-col gap-5">
           {/* Campos existentes */}
-          
+
           <div className="flex flex-col gap-3">
             <button type="button" onClick={handleBack}>
               {dict.formBack || 'Back'}
             </button>
-            
+
             <SubmitButton dict={dict} />
           </div>
         </div>
@@ -490,7 +490,7 @@ export default function Hero({ dict }: { dict: any }) {
         <div className="bg-white h-full flex justify-center items-center">
           <div className="container">
             <div className="flex flex-col lg:flex-row gap-10 xl:gap-20 2xl:gap-32 py-20 items-center lg:items-center justify-between">
-              
+
               {/* Contenido estático - Server Component */}
               <div className="flex flex-col gap-6 w-full">
                 <div className="flex flex-col gap-3">
@@ -690,4 +690,3 @@ if (USE_SERVER_ACTIONS) {
 **Recomendación: Migración gradual con testing exhaustivo**
 
 El plan está diseñado para minimizar riesgos mientras maximiza beneficios. Cada fase es independiente y puede revertirse si hay problemas.
-

@@ -61,8 +61,8 @@ input[type="checkbox"]:checked {
 }
 
 .animate-scroll {
-  animation: scroll 10s linear infinite;
-  /* Ajustado para igualar velocidad original (~50px/s) */
+  animation: scroll 20s linear infinite;
+  /* Velocidad más lenta para mejor legibilidad (~62-75px/s) */
 }
 
 @layer utilities {

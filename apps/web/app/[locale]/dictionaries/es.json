@@ -32,8 +32,8 @@
   },
   "hero": {
     "badge": "What We Do Best",
-    "title": "Haz que tu negocio brille donde importa",
-    "subtitle": "Diseñamos estrategias bilingües que posicionan tu marca, atraen clientes reales y convierten clics en ventas",
+    "title": "Agencia de Marketing Digital y Automatización en Florida",
+    "subtitle": "Estrategias digitales bilingües que conectan con el público latino y generan resultados medibles",
     "clients": "+500 negocios impulsados",
     "satisfaction": "99% satisfacción",
     "support": "Atención humana 24/7",
@@ -47,7 +47,7 @@
     "formServices3": "Branding Digital",
     "formServices4": "Diseño Web",
     "formServices5": "Identidad de Marca",
-    "formServices6": "Automatización de Email",
+    "formServices6": "Automatización de Marketing",
     "formSubmit": "Comienza hoy",
     "formThanks": "¡Gracias por contactarnos!",
     "mobileAuditButton": "Solicitar Auditoría Gratuita",
@@ -59,9 +59,11 @@
     "required": "requerido"
   },
   "metadata": {
-    "title": "Fascinante Digital | Crecimiento Digital para Marcas Ambiciosas",
-    "description": "Sistemas de marketing bilingües para visibilidad, credibilidad y crecimiento sostenible en Estados Unidos y América Latina. SEO, Google Ads y estrategias que convierten.",
-    "keywords": "marketing digital, SEO, SEM, Google Ads, Meta, Next.js, Fascinante Digital, Tampa, Florida"
+    "title": "Agencia de Marketing Bilingüe en West Palm Beach | Fascinante",
+    "description": "Estrategias digitales bilingües que impulsan tu negocio con SEO local, branding, publicidad y automatización eficaz.",
+    "ogTitle": "Fascinante Digital | Marketing Bilingüe y Automatización",
+    "ogDescription": "Estrategias digitales que combinan marketing y automatización para marcas latinas en Florida.",
+    "keywords": "marketing digital, SEO, SEM, Google Ads, Meta, Next.js, Fascinante Digital, Tampa, Florida, West Palm Beach, marketing bilingüe, automatización"
   },
   "audit": {
     "badge": "Auditoría Gratuita",
@@ -197,9 +199,9 @@
   },
   "homepage": {
     "promobar": {
-      "item1": "Crecimiento Digital para Marcas Ambiciosas",
-      "item2": "Estrategias bilingües diseñadas para que tu marca destaque y venda en ambos idiomas.",
-      "item3": "SEO, Publicidad Pagada, Web y Contenido — alineados para el crecimiento",
+      "item1": "Agencia Bilingüe de Marketing Digital en West Palm Beach",
+      "item2": "Branding digital y automatización que transforman negocios locales en marcas exitosas.",
+      "item3": "SEO local, Google Ads y automatización de marketing para crecimiento medible",
       "item4": "Obtén Tu Plan de Crecimiento Gratis",
       "item5": "Ve Cómo Construimos Autoridad →"
     },
@@ -214,30 +216,47 @@
         "googleMetaAds": "Meta Ads",
         "webDesign": "Diseño Web",
         "brandIdentity": "Identidad de Marca",
-        "emailAutomation": "Email Marketing"
+        "emailAutomation": "Automatización de Marketing"
       }
     },
     "transformation": {
       "badge": "Más de 400 marcas confían en nosotros",
       "title": "Negocios Locales en Marcas Memorables",
-      "subtitle": "Unimos datos, diseño y cultura para generar resultados reales en EE.UU. y Latinoamérica",
-      "ctaButton": "Obtén Tu Llamada Estratégica Gratis"
+      "subtitle": "Combinamos estrategias bilingües, automatización inteligente y branding digital para posicionar tu negocio en EE.UU. y Latinoamérica",
+      "ctaButton": "Agenda tu Llamada Estratégica Gratis"
     },
     "testimonials": {
       "badge": "Los Números No Mienten — La Estrategia Sí",
       "title": "Resultados Reales que Inspiran",
-      "subtitle": "Antes nadie nos encontraba en Google. Tres meses después, éramos el #1. Hoy no paramos de recibir clientes.",
+      "subtitle": "Entienden nuestra cultura y negocio. Fascinante Digital nos ayudó a conectar con clientes reales y crecer exponencialmente.",
       "clientName": "— Ana Rivera, Miami FL",
       "sectionTitle": "Qué Dicen Nuestros Clientes",
-      "sectionSubtitle": "Descubre cómo nuestros servicios han transformado negocios y superado expectativas."
+      "sectionSubtitle": "Descubre cómo nuestros servicios han transformado negocios y superado expectativas.",
+      "secondaryTestimonials": {
+        "testimonial1": {
+          "quote": "Entienden nuestra cultura y negocio. Fascinante Digital nos ayudó a conectar con clientes reales mediante SEO local y branding digital.",
+          "name": "— Carlos Méndez, Orlando FL"
+        },
+        "testimonial2": {
+          "quote": "Nuestra visibilidad y flujo de leads mejoraron constantemente. Fascinante Digital trajo estructura, claridad y automatización efectiva.",
+          "name": "— Operations Director, Tampa FL"
+        }
+      },
+      "results": {
+        "item1": "Hasta +250% de crecimiento en leads con estrategias integradas de SEO local y Ads",
+        "item2": "Automatizaciones que ahorran más de 10 horas semanales de gestión manual",
+        "item3": "400+ negocios prosperando con branding digital bilingüe y SEO local en Florida",
+        "item4": "Optimización continua: escalamos ganadores, eliminamos desperdicios y multiplicamos resultados semanalmente",
+        "item5": "Ejecución estratégica medible en SEO, Ads, automatización de marketing y branding digital"
+      }
     },
     "pricing": {
       "badge": "Precios transparentes",
       "title": "Planes accesibles para un crecimiento real",
       "starterGrowth": "Starter Growth",
-      "starterGrowthDesc": "Impulso inicial de visibilidad",
+      "starterGrowthDesc": "SEO local y branding digital inicial",
       "smartCampaigns": "Smart Campaigns",
-      "smartCampaignsDesc": "Estrategia completa de crecimiento digital",
+      "smartCampaignsDesc": "SEO, Ads y automatización para resultados sostenibles",
       "bookService": "Reservar servicio"
     },
     "portfolio": {
@@ -245,10 +264,10 @@
       "viewAllWork": "Ver todo el trabajo"
     },
     "finalCta": {
-      "title": "Ready to Grow?",
-      "subtitle": "Grow beyond ads and followers",
-      "description": "Let's build a brand that clients remember, algorithms reward, and competitors can't ignore.",
-      "button": "Obtén Tu Llamada Estratégica Gratis"
+      "title": "¿Listo para Crecimiento Real?",
+      "subtitle": "Crecimiento que va más allá de ads y seguidores",
+      "description": "Construyamos una marca que los clientes recuerdan, los algoritmos premian y la competencia no puede ignorar.",
+      "button": "Agenda tu Llamada Estratégica Gratis"
     }
   }
 }

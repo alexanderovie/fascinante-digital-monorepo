@@ -1,15 +1,32 @@
 'use client';
 import Image from 'next/image';
-import { videos } from './data';
 
 interface VideoPlayerProps {
   dict: {
     subtitle: string;
     clientName: string;
+    secondaryTestimonials?: {
+      testimonial1: {
+        quote: string;
+        name: string;
+      };
+      testimonial2: {
+        quote: string;
+        name: string;
+      };
+    };
   };
 }
 
 export function VideoPlayer({ dict }: VideoPlayerProps) {
+  // Use dictionary testimonials if available, otherwise fallback to empty array
+  const secondaryTestimonials = dict.secondaryTestimonials 
+    ? [
+        { id: 0, quote: dict.secondaryTestimonials.testimonial1.quote, name: dict.secondaryTestimonials.testimonial1.name },
+        { id: 1, quote: dict.secondaryTestimonials.testimonial2.quote, name: dict.secondaryTestimonials.testimonial2.name },
+      ]
+    : [];
+
   return (
     <div className='grid grid-cols-1 xl:grid-cols-2 gap-10'>
       {/* Tarjeta principal con imagen (placeholder) y testimonio */}
@@ -30,7 +47,7 @@ export function VideoPlayer({ dict }: VideoPlayerProps) {
 
       {/* Tarjetas secundarias con imagen (placeholder) y quotes */}
       <div className='grid grid-rows-2 gap-8'>
-        {videos.map((item) => (
+        {secondaryTestimonials.map((item) => (
           <div key={item.id} className='flex flex-col sm:flex-row items-center gap-6 h-full relative'>
             <div className='relative w-full sm:w-[328px] h-[205px] shrink-0'>
               <Image
