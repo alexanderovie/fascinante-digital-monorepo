@@ -26,4 +26,3 @@ export function CleaningHighlightAnimated() {
     </motion.div>
   );
 }
-

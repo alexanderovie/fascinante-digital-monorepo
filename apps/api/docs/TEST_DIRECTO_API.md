@@ -93,3 +93,4 @@ curl -s -X GET \
 ---
 
 **Listo para probar directo** ✅
+

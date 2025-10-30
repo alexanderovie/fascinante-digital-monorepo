@@ -30,9 +30,9 @@ const UserImpact = ({ dict }: UserImpactProps) => {
               <motion.div {...bottomAnimation} className='flex flex-col gap-5 py-20 xxl:py-52 xxl:items-start items-center text-center xxl:text-left'>
                 <h2 className='text-6xl md:text-7xl font-bold text-secondary'>{dict.title}</h2>
                 <div className='flex flex-col gap-4'>
-                  <h4 className='font-semibold text-secondary'>
+                  <h3 className='font-semibold text-secondary'>
                     {dict.subtitle}
-                  </h4>
+                  </h3>
                   <p className="text-secondary">{dict.description}</p>
                 </div>
                 <Link href={"/contact-us"} className='py-3.5 px-6 w-fit bg-primary hover:bg-darkPrimary rounded-md '>

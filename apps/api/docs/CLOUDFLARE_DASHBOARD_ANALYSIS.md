@@ -275,3 +275,4 @@ curl -I https://api.fascinantedigital.com/health
 **Última actualización:** Octubre 2025
 **Método:** Análisis de deployments + configuración local
 **Dashboard:** https://dash.cloudflare.com/805bb4fea4f198df0f788aaaad22a1be/workers-and-pages
+

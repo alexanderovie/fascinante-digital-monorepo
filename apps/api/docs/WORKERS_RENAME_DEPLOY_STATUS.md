@@ -129,3 +129,4 @@ wrangler delete dataforseo-proxy
 ---
 
 **Estado:** 🟡 **En Progreso** - Deploy completado, pendiente reasignar custom domains
+

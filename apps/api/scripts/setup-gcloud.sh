@@ -74,3 +74,4 @@ echo "  gcloud auth application-default print-access-token"
 echo ""
 echo "Para verificar proyecto:"
 echo "  gcloud config get-value project"
+

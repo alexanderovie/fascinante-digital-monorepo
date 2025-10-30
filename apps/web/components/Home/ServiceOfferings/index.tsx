@@ -60,7 +60,7 @@ function ServiceOfferings({ dict }: ServiceOfferingsProps) {
                     <Link href={`/services/${value.slug}`}>
                       <Image
                         src={value.thumbnail_img}
-                        alt="Image"
+                        alt={`${marketingTitles[index] ?? value.service_title} - Fascinante Digital`}
                         width={440}
                         height={390}
                         quality={70}
@@ -71,11 +71,12 @@ function ServiceOfferings({ dict }: ServiceOfferingsProps) {
                     {/* Texto con icono después (abajo de la imagen) */}
                     <div className="absolute -bottom-8 right-0 flex items-center z-10">
                       <div className="bg-white dark:bg-secondary pl-6 flex items-center rounded-sm">
-                        <span className="text-secondary/40 mr-2">0{value.id}.</span>
-                        <Link href={`/services/${value.slug}`}><h6 className="pr-10 font-semibold">{marketingTitles[index] ?? value.service_title}</h6></Link>
+                        <span className="text-secondary/60 mr-2">0{value.id}.</span>
+                        <Link href={`/services/${value.slug}`}><h3 className="pr-10 font-semibold">{marketingTitles[index] ?? value.service_title}</h3></Link>
                         <Link
                           href={`/services/${value.slug}`}
                           className="w-fit bg-primary py-3 px-6 rounded-r-sm flex items-center justify-center"
+                          aria-label={`Ver servicio ${marketingTitles[index] ?? value.service_title}`}
                         >
                           <ArrowRight className="w-6 h-6 text-white" />
                         </Link>

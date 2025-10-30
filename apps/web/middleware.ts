@@ -28,7 +28,7 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
   // Skip middleware for:
-  // - API routes
+  // - API routes (must return NextResponse.next() to allow route handlers to process)
   // - Static files (_next, images, fonts, etc.)
   // - Favicon and other assets
   if (
@@ -42,7 +42,7 @@ export function middleware(request: NextRequest) {
     pathname.startsWith('/sitemap') ||
     pathname.match(/\.(ico|png|jpg|jpeg|svg|gif|webp|woff|woff2|ttf|eot)$/i)
   ) {
-    return
+    return NextResponse.next()
   }
 
   // Check if pathname already has a locale

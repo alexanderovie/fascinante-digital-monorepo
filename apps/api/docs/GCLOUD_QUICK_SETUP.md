@@ -42,3 +42,4 @@ gcloud config set ai/region us-central1
 Después de ejecutar estos comandos, gcloud CLI estará configurado según mejores prácticas de octubre 2025.
 
 **Para más detalles:** Ver `GCLOUD_SETUP_2025.md`
+

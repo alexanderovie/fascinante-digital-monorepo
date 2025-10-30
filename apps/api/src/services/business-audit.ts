@@ -441,3 +441,4 @@ Responde SOLO con JSON válido, sin markdown, sin explicaciones adicionales.
     };
   }
 }
+

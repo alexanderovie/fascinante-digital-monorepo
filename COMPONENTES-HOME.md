@@ -111,3 +111,4 @@ Para completar la localización de la página de inicio, necesitarías traducir:
 
 **Creado**: Octubre 2025
 **Archivo**: `apps/web/app/[locale]/page.tsx`
+

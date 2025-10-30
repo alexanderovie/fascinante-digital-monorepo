@@ -189,3 +189,4 @@ Copia y completa esto con todos los workers que encuentres:
 ---
 
 **Necesitas:** Compartir la lista completa de workers del dashboard para hacer el análisis final. 📊
+

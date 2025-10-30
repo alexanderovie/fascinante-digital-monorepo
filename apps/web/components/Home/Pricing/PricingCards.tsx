@@ -38,13 +38,13 @@ export function PricingCards({ dict }: PricingCardsProps) {
           <motion.div {...bottomAnimation(index)} key={index} className='group dark:bg-dusty-gray/40 border border-natural-gray dark:border-natural-gray/20 shadow-xl py-6 px-4 rounded-md hover:bg-primary dark:hover:bg-dusty-gray hover:border-secondary transition-all duration-500 ease-in-out'>
             <div className='flex flex-col md:flex-row items-center justify-between gap-3 md:gap-6 text-center md:text-left'>
               <div className='flex items-center gap-2.5 lg:gap-6 w-fit'>
-                <Image src={item.icon} alt="icon" width={48} height={48} />
-                <h5 className='font-medium group-hover:text-white'>{item.title}</h5>
+                <Image src={item.icon} alt={`${item.title} icon`} width={48} height={48} />
+                <h3 className='font-medium group-hover:text-white'>{item.title}</h3>
               </div>
               <div className='lg:max-w-sm'>
                 <p className='text-secondary/80 dark:text-white/80 group-hover:text-white/90'>{getDescription(item.title)}</p>
               </div>
-              <h6 className='font-medium group-hover:text-white'>${item.price}{item.duration && '/mo'}</h6>
+              <h4 className='font-medium group-hover:text-white'>${item.price}{item.duration && '/mo'}</h4>
               <div onClick={() => setModalOpen(true)} className="whitespace-nowrap font-bold bg-natural-gray dark:bg-secondary group-hover:bg-white group-hover:text-primary py-3 px-4 rounded-md transition-all duration-500 ease-in-out cursor-pointer">
                 {dict.bookService}
               </div>
@@ -58,4 +58,3 @@ export function PricingCards({ dict }: PricingCardsProps) {
     </div>
   );
 }
-

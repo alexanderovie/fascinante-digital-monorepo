@@ -361,3 +361,4 @@ Pero ahorras:
 **Enfoque:** Objetivo, realista, presupuesto limitado  
 **Recomendación:** Implementar solo lo crítico gratis ahora, escalar después
 
+

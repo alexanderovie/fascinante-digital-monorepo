@@ -192,3 +192,4 @@ wrangler deploy --config wrangler-elite.jsonc
 
 **Última actualización:** Octubre 2025
 **Estado:** ✅ Bindings ahora sincronizados en código
+

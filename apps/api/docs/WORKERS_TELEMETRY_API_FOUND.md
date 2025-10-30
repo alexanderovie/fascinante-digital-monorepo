@@ -148,3 +148,4 @@ POST https://api.cloudflare.com/client/v4/accounts/{account_id}/workers/observab
 
 **Última actualización:** Octubre 2025
 **Estado:** ✅ Endpoint encontrado, probando obtener métricas reales
+

@@ -165,3 +165,4 @@ wrangler delete dataforseo-proxy
 ---
 
 **Estado:** 🟡 **80% Completado** - Pendiente secrets y custom domain
+

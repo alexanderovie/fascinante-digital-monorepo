@@ -331,3 +331,4 @@ curl -X POST https://data.fascinantedigital.com/v3/business_data/google/my_busin
 **Última actualización:** Octubre 2025  
 **Estado:** ✅ Worker activo y disponible para integración
 
+

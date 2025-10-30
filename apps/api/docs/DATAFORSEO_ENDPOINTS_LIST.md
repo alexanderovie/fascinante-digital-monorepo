@@ -376,3 +376,4 @@ const keywords = await fetch(
 **Última actualización:** Octubre 2025
 **Proxy URL:** `https://data.fascinantedigital.com/v3`
 **Status:** ✅ Proxy universal - acepta cualquier endpoint DataForSEO API v3
+

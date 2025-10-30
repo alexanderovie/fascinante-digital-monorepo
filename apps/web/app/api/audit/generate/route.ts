@@ -1,7 +1,7 @@
+import { fetchWithTimeout } from '@/lib/fetch-with-timeout';
+import { checkRateLimit, getClientIP } from '@/lib/rate-limit';
 import type { AuditGenerationResponse, AuditRequest, AuditResult } from '@/types/audit';
 import { NextRequest, NextResponse } from 'next/server';
-import { checkRateLimit, getClientIP } from '@/lib/rate-limit';
-import { fetchWithTimeout } from '@/lib/fetch-with-timeout';
 
 const DATAFORSEO_BASE_URL = 'https://data.fascinantedigital.com/v3';
 

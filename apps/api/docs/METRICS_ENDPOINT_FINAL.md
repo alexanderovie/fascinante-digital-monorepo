@@ -143,3 +143,4 @@ curl -X POST \
 
 **Última actualización:** Octubre 2025
 **Estado:** ✅ Endpoint funcionando, ajustando para obtener datos reales
+

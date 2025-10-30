@@ -93,3 +93,4 @@ echo "$RESPONSE" | jq '.result[] | {
 
 echo -e "\n${GREEN}✅ Análisis completado${NC}"
 
+

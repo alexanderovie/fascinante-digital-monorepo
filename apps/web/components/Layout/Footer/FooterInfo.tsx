@@ -52,18 +52,18 @@ const FooterInfo = ({ locale: propLocale, dict: propDict }: FooterInfoProps = {}
           <ul className='flex flex-col gap-4'>
             {usefulLinks.map((item, index) => {
               return (
-                <Link href={item.href} key={index}>
-                  <li className='text-white/70 whitespace-nowrap hover:text-white'>{item.name}</li>
-                </Link>
+                <li key={index} className='text-white/70 whitespace-nowrap hover:text-white'>
+                  <Link href={item.href}>{item.name}</Link>
+                </li>
               )
             })}
           </ul>
           <ul className='flex flex-col gap-4'>
             {privacyLinks.map((item, index) => {
               return (
-                <Link href={item.href} key={index}>
-                  <li className='text-white/70 whitespace-nowrap hover:text-white'>{item.name}</li>
-                </Link>
+                <li key={index} className='text-white/70 whitespace-nowrap hover:text-white'>
+                  <Link href={item.href}>{item.name}</Link>
+                </li>
               )
             })}
           </ul>

@@ -22,3 +22,4 @@ const dictionaries: Record<Locale, () => Promise<Dictionary>> = {
 export async function getDictionary(locale: Locale): Promise<Dictionary> {
   return dictionaries[locale]()
 }
+

@@ -288,3 +288,4 @@ analytics_engine_datasets = [
 
 **Última actualización:** Octubre 2025
 **Veredicto:** ✅ Podemos usar el proxy inmediatamente, sin configuración adicional
+

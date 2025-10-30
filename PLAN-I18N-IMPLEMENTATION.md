@@ -405,3 +405,4 @@ Asegurar que paths estén configurados:
 **Versión**: 1.0
 **Next.js**: 15.5.6
 **Status**: Plan aprobado para implementación
+

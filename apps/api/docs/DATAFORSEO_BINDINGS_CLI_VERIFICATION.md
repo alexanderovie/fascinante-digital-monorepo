@@ -129,3 +129,4 @@ Según lo que viste en Dashboard:
 
 **Última actualización:** Octubre 2025
 **Estado:** ⚠️ Verificación limitada mediante CLI - Dashboard más confiable
+

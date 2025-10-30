@@ -234,3 +234,4 @@ done
 
 **Última actualización:** Octubre 2025
 **Recomendación:** ⚠️ Verificar Vercel antes de eliminar las `NEXT_PUBLIC_*`
+

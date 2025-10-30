@@ -142,3 +142,4 @@ fd-api-gateway        (15 chars) ✅ Compacto y claro
 ---
 
 **Listo para deploy cuando tú lo decidas** ✅
+

@@ -121,3 +121,4 @@ Necesito confirmar:
 
 **Última actualización:** Octubre 2025
 **Estado:** Listo para verificación mediante API
+

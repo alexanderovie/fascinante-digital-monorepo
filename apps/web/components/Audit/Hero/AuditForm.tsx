@@ -4,7 +4,7 @@ import { BusinessAutocomplete } from "@/components/Home/Hero/BusinessAutocomplet
 import { BUSINESS_CATEGORIES, getCategoryLabel } from "@/lib/business-categories";
 import type { PlaceDetails } from "@/types/places";
 import { ChevronLeft } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface AuditFormProps {
   formData: {
@@ -43,6 +43,11 @@ export default function AuditForm({
     website?: string;
     category?: string;
   }>({});
+  const nameInputRef = useRef<HTMLInputElement>(null);
+  const phoneInputRef = useRef<HTMLInputElement>(null);
+  const websiteInputRef = useRef<HTMLInputElement>(null);
+  const categorySelectRef = useRef<HTMLSelectElement>(null);
+  const emailInputRef = useRef<HTMLInputElement>(null);
 
   // Auto-select category if detected from Google Places
   // Also ensure it's selected if formData.category already has it
@@ -90,7 +95,25 @@ export default function AuditForm({
     }
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    const isValid = Object.keys(newErrors).length === 0;
+
+    // Si hay errores, hacer scroll y focus al primer campo con error (sin toast)
+    if (!isValid) {
+      setTimeout(() => {
+        if (newErrors.name && nameInputRef.current) {
+          nameInputRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          nameInputRef.current.focus();
+        } else if (newErrors.phone && phoneInputRef.current) {
+          phoneInputRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          phoneInputRef.current.focus();
+        } else if (newErrors.website && websiteInputRef.current) {
+          websiteInputRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          websiteInputRef.current.focus();
+        }
+      }, 100);
+    }
+
+    return isValid;
   };
 
   const validateStep2 = () => {
@@ -108,7 +131,22 @@ export default function AuditForm({
     }
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    const isValid = Object.keys(newErrors).length === 0;
+
+    // Si hay errores, hacer scroll y focus al primer campo con error (sin toast)
+    if (!isValid) {
+      setTimeout(() => {
+        if (newErrors.category && categorySelectRef.current) {
+          categorySelectRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          categorySelectRef.current.focus();
+        } else if (newErrors.email && emailInputRef.current) {
+          emailInputRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          emailInputRef.current.focus();
+        }
+      }, 100);
+    }
+
+    return isValid;
   };
 
   const handleNext = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -184,6 +222,7 @@ export default function AuditForm({
               />
             ) : (
               <input
+                ref={nameInputRef}
                 type="text"
                 name="name"
                 placeholder={`${dict.formName} *`}
@@ -198,6 +237,7 @@ export default function AuditForm({
 
           <div>
             <input
+              ref={phoneInputRef}
               type="tel"
               name="phone"
               placeholder={dict.formPhone || "Teléfono (opcional)"}
@@ -211,6 +251,7 @@ export default function AuditForm({
 
           <div>
             <input
+              ref={websiteInputRef}
               type="url"
               name="website"
               placeholder={dict.formWebsite || "Website (opcional)"}
@@ -250,6 +291,7 @@ export default function AuditForm({
               </p>
             )}
             <select
+              ref={categorySelectRef}
               id="category"
               name="category"
               value={formData.category || ''}
@@ -270,6 +312,7 @@ export default function AuditForm({
 
           <div>
             <input
+              ref={emailInputRef}
               type="email"
               name="email"
               placeholder={dict.formEmail || "Correo electrónico (opcional)"}

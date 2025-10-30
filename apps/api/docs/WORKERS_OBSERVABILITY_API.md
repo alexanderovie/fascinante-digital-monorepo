@@ -175,3 +175,4 @@ echo "   wrangler tail ${WORKER_NAME}"
 **Última actualización:** Octubre 2025  
 **Estado:** Verificando endpoint de API para logs históricos
 
+

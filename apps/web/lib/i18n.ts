@@ -28,3 +28,4 @@ export function getLocale(locale: string | undefined | null): Locale {
   }
   return locale
 }
+

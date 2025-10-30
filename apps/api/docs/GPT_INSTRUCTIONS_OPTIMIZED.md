@@ -276,3 +276,4 @@ Reglas: Suma costos DIRECTAMENTE. Headers X-User-Plan: free. Costo al final.
 ---
 
 **Listo para copiar y pegar - Versión optimizada en el documento**
+

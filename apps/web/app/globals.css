@@ -49,6 +49,22 @@ input[type="checkbox"]:checked {
   --shadow-soft-white: 16px -16px 0px 0px #FFFFFF;
 }
 
+/* Animación CSS para Promobar (Server Component) */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 10s linear infinite;
+  /* Ajustado para igualar velocidad original (~50px/s) */
+}
+
 @layer utilities {
   .container {
     @apply w-full max-w-[90.9rem] mx-auto mt-0 mb-0 py-0 px-5 md:px-16 lg:px-16;

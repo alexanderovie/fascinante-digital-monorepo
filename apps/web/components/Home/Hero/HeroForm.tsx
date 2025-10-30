@@ -147,7 +147,7 @@ export function HeroForm({ dict, locale }: HeroFormProps) {
         </div>
       ) : (
         <>
-          <h4 className="font-semibold dark:text-white mb-6">{toTitleCase(dict.formTitle)}</h4>
+          <h2 className="font-semibold dark:text-white mb-6">{toTitleCase(dict.formTitle)}</h2>
           <FormComponent
             formData={formData}
             onChange={onChange}

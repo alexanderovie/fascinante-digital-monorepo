@@ -296,3 +296,4 @@ Si decides proceder:
 ---
 
 **¿Quieres proceder con la Opción A o prefieres otra variante?**
+

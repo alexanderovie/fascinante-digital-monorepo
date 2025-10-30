@@ -236,3 +236,4 @@ wrangler delete <nombre-worker>
 **Última actualización:** Octubre 2025
 **Estado:** 🔍 Esperando lista completa del dashboard
 **Dashboard:** https://dash.cloudflare.com/805bb4fea4f198df0f788aaaad22a1be/workers-and-pages
+

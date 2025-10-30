@@ -169,3 +169,4 @@ Cuando veas las métricas, revisa:
 **Última actualización:** Octubre 2025  
 **Estado:** Listo para análisis basado en métricas reales del Dashboard
 
+

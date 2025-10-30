@@ -347,3 +347,4 @@ Marca las que aplican:
 
 **Última actualización**: Octubre 2025
 **Context**: Proyecto Fascinante Digital - Free Business Audit
+

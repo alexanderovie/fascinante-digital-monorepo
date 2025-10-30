@@ -23,7 +23,7 @@ export function VideoPlayer({ dict }: VideoPlayerProps) {
         />
         <div className="absolute inset-0 bg-black/20 rounded-md" />
         <div className="absolute bottom-0 left-0 w-full py-7 px-9">
-          <h5 className='dark:text-secondary text-white font-medium'>"{dict.subtitle}"</h5>
+          <h3 className='dark:text-secondary text-white font-medium'>"{dict.subtitle}"</h3>
           <p className='text-white/80 font-bold mt-1.5 xl:mt-4'>{dict.clientName}</p>
         </div>
       </div>

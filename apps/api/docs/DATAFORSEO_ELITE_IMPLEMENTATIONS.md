@@ -759,3 +759,4 @@ async function transformResponse(response: Response, format: 'json' | 'csv' | 'x
 **Última actualización:** Octubre 2025
 **Enfoque:** Mejores prácticas Cloudflare Workers 2025
 **ROI Estimado:** 200-400% anual
+

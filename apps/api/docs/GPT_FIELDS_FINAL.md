@@ -257,3 +257,4 @@ Reglas finales:
 ---
 
 **Listo para copiar y pegar directamente en tu GPT personalizado.**
+

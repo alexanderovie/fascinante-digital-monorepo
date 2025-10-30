@@ -377,3 +377,4 @@ VERTEX_AI_MODEL=gemini-2.0-flash-exp
 
 **Última actualización**: Octubre 2025
 **Versión**: 1.0.0
+

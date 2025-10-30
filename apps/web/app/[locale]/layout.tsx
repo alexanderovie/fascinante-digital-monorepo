@@ -149,7 +149,7 @@ export default async function RootLayout({
           <ThemeProvider attribute="class" enableSystem={false} defaultTheme="light">
             <I18nProvider locale={locale} dict={dict}>
               <Header locale={locale} dict={dict} />
-              {children}
+              <main>{children}</main>
               <Footer locale={locale} dict={dict} />
             </I18nProvider>
             <ScrollToTop />

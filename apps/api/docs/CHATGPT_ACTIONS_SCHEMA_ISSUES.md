@@ -160,3 +160,4 @@ Configurar el proxy para agregar headers automáticamente basado en el origen de
 **Última actualización:** Octubre 2025  
 **Enfoque:** Limitarse a funcionalidades soportadas por ChatGPT Actions
 
+
