@@ -12,7 +12,7 @@ interface FooterProps {
 const Footer = ({ locale: propLocale, dict: propDict }: FooterProps = {}) => {
   return (
     <footer>
-      <div className='relative z-10 pt-14 md:pt-28 bg-secondary'>
+      <div className='relative z-10 pt-14 md:pt-28 bg-secondary dark:bg-[#121212]'>
         <Newsletter locale={propLocale} dict={propDict} />
         <FooterInfo locale={propLocale} dict={propDict} />
         <FooterCopyright locale={propLocale} dict={propDict} />

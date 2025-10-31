@@ -77,7 +77,7 @@ const DesktopHeader = ({ locale: propLocale, dict: propDict }: DesktopHeaderProp
   };
 
   return (
-    <div className="py-[15px] md:py-[17.5px] lg:py-5 bg-white dark:bg-secondary shadow-xl">
+    <div className="py-[15px] md:py-[17.5px] lg:py-5 bg-white dark:bg-[#121212] shadow-xl">
       <div className="container">
         <div className="flex justify-between items-center">
           {/* ZONA 1: Logo */}
