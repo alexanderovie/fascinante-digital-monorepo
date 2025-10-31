@@ -20,11 +20,11 @@ interface VideoPlayerProps {
 
 export function VideoPlayer({ dict }: VideoPlayerProps) {
   // Use dictionary testimonials if available, otherwise fallback to empty array
-  const secondaryTestimonials = dict.secondaryTestimonials 
+  const secondaryTestimonials = dict.secondaryTestimonials
     ? [
-        { id: 0, quote: dict.secondaryTestimonials.testimonial1.quote, name: dict.secondaryTestimonials.testimonial1.name },
-        { id: 1, quote: dict.secondaryTestimonials.testimonial2.quote, name: dict.secondaryTestimonials.testimonial2.name },
-      ]
+      { id: 0, quote: dict.secondaryTestimonials.testimonial1.quote, name: dict.secondaryTestimonials.testimonial1.name },
+      { id: 1, quote: dict.secondaryTestimonials.testimonial2.quote, name: dict.secondaryTestimonials.testimonial2.name },
+    ]
     : [];
 
   return (

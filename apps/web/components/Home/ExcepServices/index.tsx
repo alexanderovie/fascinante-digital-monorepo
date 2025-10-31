@@ -24,14 +24,14 @@ const ExcepServices = ({ dict }: ExcepServicesProps) => {
   const inView = useInView(ref);
 
   // Use dictionary data if available, otherwise fallback to static data
-  const resultsData = dict.results 
+  const resultsData = dict.results
     ? [
-        { id: 1, title: dict.results.item1 },
-        { id: 2, title: dict.results.item2 },
-        { id: 3, title: dict.results.item3 },
-        { id: 4, title: dict.results.item4 },
-        { id: 5, title: dict.results.item5 },
-      ]
+      { id: 1, title: dict.results.item1 },
+      { id: 2, title: dict.results.item2 },
+      { id: 3, title: dict.results.item3 },
+      { id: 4, title: dict.results.item4 },
+      { id: 5, title: dict.results.item5 },
+    ]
     : ExcepServicesData;
 
   const bottomAnimation = (index: number) => ({
