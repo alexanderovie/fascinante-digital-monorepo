@@ -3,9 +3,11 @@
 import { API_ENDPOINTS } from '@/lib/api-config';
 import { mapGooglePlacesTypeToCategory } from '@/lib/business-categories';
 import type { Locale } from "@/lib/i18n";
+import { toTitleCase } from '@/lib/utils/text-formatting';
 import type { PlaceDetails } from "@/types/places";
 import { ChevronRight, Clock, Search, Star } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from "react";
 import { toast } from 'sonner';
@@ -140,21 +142,24 @@ function AuditHero({ dict, locale }: AuditHeroProps) {
 
   return (
     <section>
-      <div className="relative pt-24 lg:pt-32">
-        <div className="bg-white h-full flex justify-center items-center">
+      <div className="relative pt-24 lg:pt-40 pb-8">
+        <div className="bg-white dark:bg-[#303c40] h-full flex justify-center items-center">
           <div className="container">
-            <div className="flex flex-col lg:flex-row gap-10 xl:gap-20 2xl:gap-32 py-20 items-center lg:items-center justify-between">
+            <div className="flex flex-col lg:flex-row gap-10 xl:gap-20 2xl:gap-32 py-20 items-center justify-between">
               {/* Contenido principal - Desktop/Tablet: Formato idéntico a homepage */}
               <div className="flex flex-col gap-6 w-full">
                 <div className="flex flex-col gap-3">
                   {/* Badge con flecha (mismo formato que homepage) */}
-                  <div className="badge">
+                  <Link
+                    href={`/${locale}/contact-us`}
+                    className="badge"
+                  >
                     {dict.audit.badge} →
                     <ChevronRight className="ml-1 size-4 text-current" aria-hidden="true" />
-                  </div>
+                  </Link>
                   {/* Título (mismo formato que homepage) */}
                   <h1 className="text-secondary dark:text-white font-semibold min-w-[12ch]">
-                    {dict.audit.title}
+                    {toTitleCase(dict.audit.title)}
                   </h1>
                 </div>
                 {/* Subtítulo (mismo formato que homepage) */}
@@ -163,7 +168,7 @@ function AuditHero({ dict, locale }: AuditHeroProps) {
                 {/* Mobile: Formulario después del subtítulo */}
                 <div className="block lg:hidden mt-6">
                   <div className="relative bg-transparent flex flex-col gap-4">
-                    <h4 className="font-semibold dark:text-white">{dict.audit.formTitle}</h4>
+                    <h3 className="font-semibold dark:text-white">{toTitleCase(dict.audit.formTitle)}</h3>
                     <AuditForm
                       formData={formData}
                       onChange={handleChange}
@@ -201,8 +206,8 @@ function AuditHero({ dict, locale }: AuditHeroProps) {
               </div>
 
               {/* Desktop/Tablet: Formulario a la derecha (formato idéntico a homepage) */}
-              <div className="hidden lg:block relative bg-white dark:bg-dark-gray rounded-md max-w-530px lg:max-w-md xl:max-w-530px w-full py-10 sm:px-10 sm:p-10 flex flex-col gap-8 sm:shadow-2xl sm:shadow-black/10 sm:border sm:border-gray-100 dark:sm:border-gray-700">
-                <h4 className="font-semibold dark:text-white">{dict.audit.formTitle}</h4>
+              <div className="hidden lg:block relative bg-white dark:bg-[#303c40] rounded-none md:rounded-md max-w-530px lg:max-w-md xl:max-w-530px w-full py-10 sm:px-10 sm:p-10 flex flex-col sm:shadow-2xl sm:shadow-black/10 sm:border sm:border-gray-100 dark:sm:border-gray-700">
+                <h3 className="font-semibold dark:text-white mb-6">{toTitleCase(dict.audit.formTitle)}</h3>
                 <AuditForm
                   formData={formData}
                   onChange={handleChange}

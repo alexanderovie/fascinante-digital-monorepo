@@ -4,7 +4,7 @@ import Link from 'next/link'
 const AboutusBanner = () => {
   return (
     <section>
-      <div className="relative pt-24 lg:pt-32 bg-[#F5F6F6]">
+      <div className="relative pt-24 lg:pt-40 pb-8 bg-[#F5F6F6] dark:bg-dark-gray">
         <div className="container">
           <div className='relative flex flex-col gap-10 lg:gap-16 xl:gap-20 pb-14 z-10'>
             <div className='flex lg:flex-row flex-col items-center gap-5 lg:gap-10'>
@@ -12,10 +12,10 @@ const AboutusBanner = () => {
                 <div className="badge">
                   <p className="text-current">Fascinante Digital</p>
                 </div>
-                <h2 className='text-secondary font-semibold'>Making automation accessible to everyone</h2>
+                <h2 className='text-secondary dark:text-white font-semibold'>Making automation accessible to everyone</h2>
               </div>
               <div>
-                <p className='text-secondary text-lg lg:pl-9 xl:pl-20'>We&apos;ll create high-quality linkable content and build at least 40 high-authority links to each asset, paving the way for you to grow your ranking, improve brand.</p>
+                <p className='text-secondary dark:text-white/80 text-lg lg:pl-9 xl:pl-20'>We&apos;ll create high-quality linkable content and build at least 40 high-authority links to each asset, paving the way for you to grow your ranking, improve brand.</p>
               </div>
             </div>
             <Link href="#whoweare" className='py-9 px-3 bg-primary hover:bg-darkPrimary border border-primary w-fit rounded-4xl cursor-pointer transition-all duration-300'>

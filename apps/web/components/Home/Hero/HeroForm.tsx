@@ -116,7 +116,7 @@ export function HeroForm({ dict, locale }: HeroFormProps) {
   };
 
   return (
-    <div ref={ref} className="hidden md:block relative bg-white dark:bg-dark-gray rounded-none md:rounded-md max-w-530px lg:max-w-md xl:max-w-530px w-full py-10 sm:px-10 sm:p-10 flex flex-col sm:shadow-2xl sm:shadow-black/10 sm:border sm:border-gray-100 dark:sm:border-gray-700">
+    <div ref={ref} className="hidden md:block relative bg-white dark:bg-[#303c40] rounded-none md:rounded-md max-w-530px lg:max-w-md xl:max-w-530px w-full py-10 sm:px-10 sm:p-10 flex flex-col sm:shadow-2xl sm:shadow-black/10 sm:border sm:border-gray-100 dark:sm:border-gray-700">
       {showThanks ? (
         <div className="flex flex-col gap-6 items-center justify-center py-8">
           <div className="flex flex-col gap-4 items-center">
