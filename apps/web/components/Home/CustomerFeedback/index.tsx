@@ -15,7 +15,7 @@ interface CustomerFeedbackProps {
 const CustomerFeedback = ({ dict }: CustomerFeedbackProps) => {
   return (
     <section>
-      <div className='bg-white dark:bg-dark-gray py-20 sm:py-28'>
+      <div className='bg-white dark:bg-[#121212] py-20 sm:py-28'>
         <div className="container">
           <div className='flex flex-col gap-16'>
             {/* Header estático - Server Component */}

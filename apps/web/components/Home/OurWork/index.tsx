@@ -39,7 +39,7 @@ const Ourwork = ({ dict }: OurworkProps) => {
 
   return (
     <section>
-      <div className='py-20 sm:py-28 flex flex-col gap-9 sm:gap-16 bg-white dark:bg-dark-gray'>
+      <div className='py-20 sm:py-28 flex flex-col gap-9 sm:gap-16 bg-white dark:bg-[#121212]'>
         <div className='container'>
           <div className="flex flex-col gap-3 items-center justify-center">
             <div className="badge">

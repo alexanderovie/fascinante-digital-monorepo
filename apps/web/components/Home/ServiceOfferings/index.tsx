@@ -34,7 +34,7 @@ function ServiceOfferings({ dict }: ServiceOfferingsProps) {
   ];
   return (
     <section>
-      <div className="py-24 bg-[#F5F6F6] dark:bg-dark-gray">
+      <div className="py-24 bg-[#F5F6F6] dark:bg-[#121212]">
         <div className="flex flex-col gap-16">
           <div className="container">
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-5">
