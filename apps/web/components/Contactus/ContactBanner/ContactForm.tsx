@@ -126,7 +126,7 @@ const ContactForm = () => {
             <div className='flex items-center gap-3 sm:gap-6'>
               <Image src={"/images/contactus/contact-email-icon.svg"} alt='email-icon' width={40} height={40} />
               <div>
-                <p>support@gleamer.com</p>
+                <p>info@fascinantedigital.com</p>
               </div>
             </div>
             <div className='flex items-center gap-3 sm:gap-6'>

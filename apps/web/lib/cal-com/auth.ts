@@ -23,6 +23,7 @@ export interface CalComAuthConfig {
 export function getAuthHeaders(config: CalComAuthConfig): HeadersInit {
   const headers: HeadersInit = {
     'Content-Type': 'application/json',
+    'cal-api-version': '2024-06-14', // Required for PATCH/POST/DELETE operations
   };
 
   switch (config.method) {

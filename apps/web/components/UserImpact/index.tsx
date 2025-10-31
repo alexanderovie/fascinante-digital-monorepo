@@ -23,7 +23,7 @@ const UserImpact = ({ dict }: UserImpactProps) => {
   return (
     <section>
       <div ref={ref} className='relative'>
-        <div className="bg-[#F5F6F6] dark:bg-dark-gray xxl:bg-[url('/images/home/userimpact/userimpact-bg-new.png')] bg-cover bg-no-repeat bg-center h-full flex justify-center items-center">
+        <div className="bg-[#F5F6F6] dark:bg-dark-gray xxl:bg-[url('/images/home/userimpact/userimpact-bg.png')] bg-cover bg-no-repeat bg-center h-full flex justify-center items-center">
           <div className="container">
             <div className='grid grid-cols-1 xxl:grid-cols-2'>
               <div></div>

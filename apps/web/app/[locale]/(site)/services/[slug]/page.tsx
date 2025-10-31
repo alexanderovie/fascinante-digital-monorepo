@@ -4,7 +4,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title:
-    "Services detail | Gleamer",
+    "Services detail | Fascinante Digital",
 };
 
 export default function Details() {

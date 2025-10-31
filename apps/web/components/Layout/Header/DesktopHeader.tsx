@@ -106,6 +106,9 @@ const DesktopHeader = ({ locale: propLocale, dict: propDict }: DesktopHeaderProp
               <Image src={"/images/header/phone-icon.svg"} alt="phone-icon" width={24} height={24} className="dark:hidden" />
               <Image src={"/images/header/phone-white-icon.svg"} alt="phone-icon" width={24} height={24} className="hidden dark:block" />
             </Link>
+            <div className="flex items-center justify-center px-2 xl:px-4 py-2 hover:bg-gray-100 dark:hover:bg-white/25 rounded-md transition duration-300">
+              <MobileThemeToggler />
+            </div>
             {user?.user?.email ? (
               <>
                 <div className="relative group flex items-center justify-center">

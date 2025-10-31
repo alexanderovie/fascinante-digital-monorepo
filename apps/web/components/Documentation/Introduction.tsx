@@ -83,16 +83,15 @@ export const Introduction = () => {
         </div>
         <div className="mt-5">
           <p className="text-base font-medium text-secondary dark:text-white">
-            Gleamer Tailwind NextJs Template is built with Tailwindcss and
-            Nextjs.
+            Fascinante Digital's web platform is powered by Next.js and Tailwind CSS.
           </p>
           <p className="text-base font-medium text-secondary dark:text-white">
-            These theme is ready to use and you can totally customize as per
-            your requirement.
+            This platform is ready to use and can be fully customized to meet
+            your specific business requirements.
           </p>
           <p className="text-base font-medium text-secondary dark:text-white">
-            For Customize, You should have knowledge of NextJs, ReactJs,
-            Tailwind and JSX to be able to modify these template.
+            To customize, you should have knowledge of Next.js, React, Tailwind CSS,
+            and TypeScript to effectively modify and extend the platform.
           </p>
         </div>
       </div>

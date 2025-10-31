@@ -29,7 +29,13 @@ export default function ScrollToTop() {
   return (
     <div className="fixed bottom-8 right-8 z-999">
       <div className="flex items-center gap-2.5">
-        <Link href={"https://getnextjstemplates.com/products/gleamer-nextjs-template"} className="hidden lg:block bg-primary hover:bg-white hover:text-primary text-sm text-white font-medium px-4 py-3.5 leading-none rounded-lg text-nowrap transition-all duration-300 shadow-lg">
+        <Link
+          href="https://cal.com/fascinante-digital/consultoria-digital"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hidden lg:block bg-primary hover:bg-white hover:text-primary text-sm text-white font-medium px-4 py-3.5 leading-none rounded-lg text-nowrap transition-all duration-300 shadow-lg"
+          aria-label="Reservar consultoría digital en Cal.com"
+        >
           Book Now
         </Link>
         {isVisible && (
