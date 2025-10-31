@@ -127,7 +127,7 @@ input[type="checkbox"]:checked {
   }
 
   h2 {
-    @apply text-[28px] md:text-[32px] lg:text-[40px] xl:text-[44px] font-semibold leading-tight text-secondary dark:text-white;
+    @apply text-[26px] md:text-[30px] lg:text-[33px] xl:text-[36px] font-semibold leading-tight text-secondary dark:text-white;
   }
 
   h3 {
