@@ -169,12 +169,12 @@ const DesktopHeader = ({ locale: propLocale, dict: propDict }: DesktopHeaderProp
           {typeof document !== "undefined" && sidebarOpen && createPortal(
             <>
               <div
-                className="fixed top-0 left-0 w-full h-full bg-black/75 dark:bg-black/75 z-40 cursor-pointer"
+                className={`fixed top-0 left-0 w-full h-full bg-black/75 dark:bg-black/75 z-40 cursor-pointer transition-opacity duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${sidebarOpen ? "opacity-100" : "opacity-0"}`}
                 onClick={() => setSidebarOpen(false)}
                 aria-label={header.closeMenuOverlay}
               />
               <div
-                className={`fixed top-0 right-0 h-full w-full bg-white dark:bg-secondary shadow-lg transform transition-transform duration-500 max-w-xs ${sidebarOpen ? "translate-x-0" : "translate-x-full"} z-50`}
+                className={`fixed top-[60px] right-0 h-[calc(100vh-60px)] w-full bg-white dark:bg-secondary shadow-lg transform transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${sidebarOpen ? "translate-x-0" : "translate-x-full"} z-50`}
                 role="dialog"
                 aria-modal="true"
               >
