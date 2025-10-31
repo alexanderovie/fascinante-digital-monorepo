@@ -123,7 +123,7 @@ input[type="checkbox"]:checked {
 
   /* Elite Typography System - Modular Scale 1.25 (Major Third) */
   h1 {
-    @apply text-[32px] md:text-[40px] lg:text-[48px] xl:text-[56px] font-semibold leading-tight text-secondary dark:text-white;
+    @apply text-[28px] md:text-[34px] lg:text-[40px] xl:text-[46px] font-semibold leading-tight text-secondary dark:text-white;
   }
 
   h2 {
