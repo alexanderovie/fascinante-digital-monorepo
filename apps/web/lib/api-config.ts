@@ -57,4 +57,12 @@ export const API_ENDPOINTS = {
     generate: '/api/audit/generate',
     results: (auditId: string) => `/api/audit/results/${auditId}`,
   },
+  calCom: {
+    baseUrl: process.env.CAL_COM_API_URL || 'https://api.cal.com/v2',
+    eventTypes: '/event-types',
+    bookings: '/bookings',
+    schedules: '/schedules',
+    slots: (eventTypeId: number, startDate: string, endDate: string) =>
+      `/slots/event-types/${eventTypeId}?startDate=${startDate}&endDate=${endDate}`,
+  },
 } as const;
