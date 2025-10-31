@@ -11,7 +11,7 @@ function HeroSection({ dict, locale }: HeroSectionProps) {
   return (
     <section>
       <div className="relative pt-24 lg:pt-40 pb-8">
-        <div className="bg-white h-full flex justify-center items-center">
+        <div className="bg-white dark:bg-dark-gray h-full flex justify-center items-center">
           <div className="container">
             <div className="flex flex-col lg:flex-row gap-10 xl:gap-20 2xl:gap-32 py-20 items-center justify-between">
 

@@ -15,12 +15,11 @@ export function CustomerFeedbackHeader({ dict }: CustomerFeedbackHeaderProps) {
         <div className="badge">
           <p className="text-current">{dict.sectionTitle}</p>
         </div>
-        <h2 className="font-semibold text-secondary">{toTitleCase(dict.title)}</h2>
+        <h2 className="font-semibold text-secondary dark:text-white">{toTitleCase(dict.title)}</h2>
       </div>
       <div className="flex flex-col gap-8 max-w-sm">
-        <p className="text-secondary">{dict.sectionSubtitle}</p>
+        <p className="text-secondary dark:text-white/80">{dict.sectionSubtitle}</p>
       </div>
     </div>
   );
 }
-

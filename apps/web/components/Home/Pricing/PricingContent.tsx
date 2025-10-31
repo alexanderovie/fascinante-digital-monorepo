@@ -18,8 +18,7 @@ export function PricingContent({ dict }: PricingContentProps) {
       <div className="badge">
         <p className="text-current">{dict.badge}</p>
       </div>
-      <h2 className='font-semibold max-w-2xl text-center'>{toTitleCase(dict.title)}</h2>
+      <h2 className='font-semibold max-w-2xl text-center text-secondary dark:text-white'>{toTitleCase(dict.title)}</h2>
     </div>
   );
 }
-

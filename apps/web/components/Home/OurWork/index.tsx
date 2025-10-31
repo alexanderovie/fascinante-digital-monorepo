@@ -39,13 +39,13 @@ const Ourwork = ({ dict }: OurworkProps) => {
 
   return (
     <section>
-      <div className='py-20 sm:py-28 flex flex-col gap-9 sm:gap-16 bg-white'>
+      <div className='py-20 sm:py-28 flex flex-col gap-9 sm:gap-16 bg-white dark:bg-dark-gray'>
         <div className='container'>
           <div className="flex flex-col gap-3 items-center justify-center">
             <div className="badge">
               <p className="text-current">Our work in action</p>
             </div>
-            <h2 className='font-semibold text-center'>{toTitleCase(dict.title)}</h2>
+            <h2 className='font-semibold text-center text-secondary dark:text-white'>{toTitleCase(dict.title)}</h2>
           </div>
         </div>
 

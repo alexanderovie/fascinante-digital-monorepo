@@ -91,7 +91,7 @@ const DesktopHeader = ({ locale: propLocale, dict: propDict }: DesktopHeaderProp
               {menuData.map((value, index) => {
                 return (
                   <li key={index} className="group">
-                    <Link href={value.path} className={`block px-1.5 xl:px-3 xxl:px-4 py-2 rounded-md ${activeLink === value.path ? "bg-gray-100" : ""} hover:bg-gray-100 transition duration-300`}>
+                    <Link href={value.path} className={`block px-1.5 xl:px-3 xxl:px-4 py-2 rounded-md ${activeLink === value.path ? "bg-gray-100 dark:bg-white/20" : ""} hover:bg-gray-100 dark:hover:bg-white/20 transition duration-300`}>
                       <p className={`text-[15px] xl:text-base font-semibold ${activeLink === value.path ? "text-secondary dark:text-white" : "text-secondary dark:text-white"} group-hover:text-secondary dark:group-hover:text-white`}>{value.title}</p>
                     </Link>
                   </li>

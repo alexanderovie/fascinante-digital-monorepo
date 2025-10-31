@@ -34,7 +34,7 @@ function ServiceOfferings({ dict }: ServiceOfferingsProps) {
   ];
   return (
     <section>
-      <div className="py-24 bg-[#F5F6F6]">
+      <div className="py-24 bg-[#F5F6F6] dark:bg-dark-gray">
         <div className="flex flex-col gap-16">
           <div className="container">
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-5">
@@ -42,11 +42,11 @@ function ServiceOfferings({ dict }: ServiceOfferingsProps) {
                 <div className="badge">
                   <p className="text-current">{dict.badge}</p>
                 </div>
-                <h2 className="font-semibold text-secondary">{toTitleCase(dict.title)}</h2>
+                <h2 className="font-semibold text-secondary dark:text-white">{toTitleCase(dict.title)}</h2>
               </div>
               <div className="flex flex-col gap-8 max-w-sm">
-                <p className="text-secondary">{dict.description}</p>
-                <Link href="/services" className="w-fit text-secondary border-b-2 border-primary hover:text-primary">{dict.viewAllServices}</Link>
+                <p className="text-secondary dark:text-white/80">{dict.description}</p>
+                <Link href="/services" className="w-fit text-secondary dark:text-white border-b-2 border-primary hover:text-primary">{dict.viewAllServices}</Link>
               </div>
             </div>
           </div>
@@ -71,8 +71,8 @@ function ServiceOfferings({ dict }: ServiceOfferingsProps) {
                     {/* Texto con icono después (abajo de la imagen) */}
                     <div className="absolute -bottom-8 right-0 flex items-center z-10">
                       <div className="bg-white dark:bg-secondary pl-6 flex items-center rounded-sm">
-                        <span className="text-secondary/60 mr-2">0{value.id}.</span>
-                        <Link href={`/services/${value.slug}`}><h3 className="pr-10 font-semibold">{marketingTitles[index] ?? value.service_title}</h3></Link>
+                        <span className="text-secondary/60 dark:text-white/60 mr-2">0{value.id}.</span>
+                        <Link href={`/services/${value.slug}`}><h3 className="pr-10 font-semibold text-secondary dark:text-white">{marketingTitles[index] ?? value.service_title}</h3></Link>
                         <Link
                           href={`/services/${value.slug}`}
                           className="w-fit bg-primary py-3 px-6 rounded-r-sm flex items-center justify-center"

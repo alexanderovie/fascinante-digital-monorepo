@@ -59,8 +59,8 @@ export function VideoPlayer({ dict }: VideoPlayerProps) {
               <div className='absolute inset-0 rounded bg-black/10' />
             </div>
             <div className='flex flex-col gap-4'>
-              <p className='text-secondary'>{item.quote}</p>
-              <p className='text-secondary font-semibold'>{item.name}</p>
+              <p className='text-secondary dark:text-white/80'>{item.quote}</p>
+              <p className='text-secondary dark:text-white font-semibold'>{item.name}</p>
             </div>
           </div>
         ))}

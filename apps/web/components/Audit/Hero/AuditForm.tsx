@@ -221,18 +221,20 @@ export default function AuditForm({
                 error={errors.name}
               />
             ) : (
-              <input
-                ref={nameInputRef}
-                type="text"
-                name="name"
-                placeholder={`${dict.formName} *`}
-                onChange={onChange}
-                value={formData.name || ''}
-                className="input-field"
-                autoComplete="off"
-              />
+              <>
+                <input
+                  ref={nameInputRef}
+                  type="text"
+                  name="name"
+                  placeholder={`${dict.formName} *`}
+                  onChange={onChange}
+                  value={formData.name || ''}
+                  className="input-field"
+                  autoComplete="off"
+                />
+                {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+              </>
             )}
-            {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
           </div>
 
           <div>

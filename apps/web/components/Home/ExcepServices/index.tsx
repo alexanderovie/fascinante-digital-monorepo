@@ -41,7 +41,7 @@ const ExcepServices = ({ dict }: ExcepServicesProps) => {
   });
   return (
     <section>
-      <div ref={ref} className='bg-[#F5F6F6]'>
+      <div ref={ref} className='bg-[#F5F6F6] dark:bg-dark-gray'>
         <div className="container">
           <div className='flex flex-col gap-10 sm:gap-16 border-t border-natural-gray dark:border-natural-gray/20 py-20 sm:py-28'>
             <div className="flex flex-col gap-3 items-center justify-center">
