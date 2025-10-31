@@ -169,7 +169,7 @@ const DesktopHeader = ({ locale: propLocale, dict: propDict }: DesktopHeaderProp
           {typeof document !== "undefined" && sidebarOpen && createPortal(
             <>
               <div
-                className="fixed top-0 left-0 w-full h-full bg-black/50 z-40 cursor-pointer"
+                className="fixed top-0 left-0 w-full h-full bg-black/75 dark:bg-black/75 z-40 cursor-pointer"
                 onClick={() => setSidebarOpen(false)}
                 aria-label={header.closeMenuOverlay}
               />
