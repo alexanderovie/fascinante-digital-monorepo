@@ -1,12 +1,14 @@
-import CleaningHighlight from "@/components/Home/CleaningHighlight";
 import CustomerFeedback from "@/components/Home/CustomerFeedback";
-import ExcepServices from "@/components/Home/ExcepServices";
 import HeroSection from "@/components/Home/Hero";
 import Ourwork from "@/components/Home/OurWork";
-import Pricing from "@/components/Home/Pricing";
 import Promobar from "@/components/Home/Promobar";
-import ServiceOfferings from "@/components/Home/ServiceOfferings";
-import UserImpact from "@/components/UserImpact";
+import {
+  CleaningHighlightLazy,
+  ExcepServicesLazy,
+  PricingLazy,
+  ServiceOfferingsLazy,
+  UserImpactLazy,
+} from "@/components/Home/lazy-components";
 import { getDictionary } from "@/lib/dictionaries";
 import type { Locale } from "@/lib/i18n";
 import type { Metadata } from "next";
@@ -101,15 +103,18 @@ export default async function Home({
           __html: JSON.stringify(localBusinessJsonLd).replace(/</g, '\\u003c'),
         }}
       />
+      {/* Above-fold: Critical for initial render - NO lazy load */}
       <HeroSection dict={dict.hero as Record<string, string>} locale={locale} />
       <Promobar dict={homepageDict.promobar} />
-      <ServiceOfferings dict={homepageDict.serviceOfferings} />
-      <CleaningHighlight dict={homepageDict.transformation} />
-      <ExcepServices dict={homepageDict.testimonials} />
+
+      {/* Below-fold: Lazy-loaded to reduce initial JS bundle */}
+      <ServiceOfferingsLazy dict={homepageDict.serviceOfferings} />
+      <CleaningHighlightLazy dict={homepageDict.transformation} />
+      <ExcepServicesLazy dict={homepageDict.testimonials} />
       <CustomerFeedback dict={homepageDict.testimonials} />
-      <Pricing dict={homepageDict.pricing} />
+      <PricingLazy dict={homepageDict.pricing} />
       <Ourwork dict={homepageDict.portfolio} />
-      <UserImpact dict={homepageDict.finalCta} />
+      <UserImpactLazy dict={homepageDict.finalCta} />
     </>
   );
 }
