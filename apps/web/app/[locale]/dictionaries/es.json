@@ -260,8 +260,17 @@
       "bookService": "Reservar servicio"
     },
     "portfolio": {
-      "title": "Descubre la diferencia de trabajar con una agencia que impulsa resultados, no promesas",
-      "viewAllWork": "Ver todo el trabajo"
+      "title": "Portfolio – Casos de Éxito Reales",
+      "subtitle": "Descubre cómo transformamos negocios locales en marcas líderes con estrategias de marketing digital comprobadas y resultados medibles.",
+      "viewAllWork": "Ver todo el trabajo",
+      "caseStudies": {
+        "restaurante-tampa": "Restaurante en Tampa logra +250% crecimiento en leads",
+        "clinica-dental-miami": "Clínica Dental en Miami: +180% aumento en pacientes nuevos",
+        "abogado-inmigracion-orlando": "Bufete de Inmigración en Orlando: +220% en consultas",
+        "spa-bienestar-fortlauderdale": "Spa de Bienestar en Fort Lauderdale: +190% en reservas",
+        "agencia-bienes-raices-jacksonville": "Agencia de Bienes Raíces en Jacksonville: +270% en leads calificados",
+        "servicios-limpieza-tampa": "Servicios de Limpieza en Tampa: +320% en clientes recurrentes"
+      }
     },
     "finalCta": {
       "title": "¿Listo para Crecimiento Real?",

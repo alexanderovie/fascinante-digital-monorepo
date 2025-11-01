@@ -27,7 +27,7 @@ export default async function PortfolioPage({
 
   return (
     <main>
-      <PortfolioListing locale={locale} />
+      <PortfolioListing locale={locale} dict={dict} />
     </main>
   );
 }

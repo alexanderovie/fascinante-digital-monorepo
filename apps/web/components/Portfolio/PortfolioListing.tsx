@@ -1,9 +1,11 @@
+import type { Dictionary } from '@/lib/dictionaries';
 import type { Locale } from '@/lib/i18n';
 import Image from 'next/image';
 import Link from 'next/link';
 
 interface PortfolioListingProps {
   locale: Locale;
+  dict: Dictionary;
 }
 
 /**
@@ -64,7 +66,7 @@ const getCaseStudies = () => {
   ];
 };
 
-const PortfolioListing = ({ locale }: PortfolioListingProps) => {
+const PortfolioListing = ({ locale, dict }: PortfolioListingProps) => {
   const caseStudies = getCaseStudies();
 
   return (
@@ -77,10 +79,10 @@ const PortfolioListing = ({ locale }: PortfolioListingProps) => {
                 <div className="badge">
                   <p className="text-current">Fascinante Digital</p>
                 </div>
-                <h2 className='text-secondary font-semibold'>Portfolio – Casos de Éxito Reales</h2>
+                <h2 className='text-secondary dark:text-white font-semibold'>{dict.portfolio?.title}</h2>
               </div>
               <div>
-                <p className='text-secondary text-lg lg:pl-9 xl:pl-20'>Descubre cómo transformamos negocios locales en marcas líderes con estrategias de marketing digital comprobadas y resultados medibles.</p>
+                <p className='text-secondary dark:text-white/80 text-lg lg:pl-9 xl:pl-20'>{dict.portfolio?.subtitle}</p>
               </div>
             </div>
             <Link href="#portfolio-list" className='py-9 px-3 bg-primary hover:bg-darkPrimary border border-primary w-fit rounded-4xl cursor-pointer transition-all duration-300'>
@@ -94,6 +96,7 @@ const PortfolioListing = ({ locale }: PortfolioListingProps) => {
         <div id="portfolio-list" className='container'>
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 py-28'>
             {caseStudies.map((caseStudy, index) => {
+              const translatedTitle = dict.portfolio?.caseStudies?.[caseStudy.slug as keyof typeof dict.portfolio.caseStudies] || caseStudy.title;
               return (
                 <div key={index} className='group border border-foggy-clay dark:border-natural-gray/20 rounded-md'>
                   <div className='w-full h-[300px] overflow-hidden rounded-t-md'>
@@ -103,7 +106,7 @@ const PortfolioListing = ({ locale }: PortfolioListingProps) => {
                   </div>
                   <div className='p-3 flex justify-between items-center'>
                     <Link href={`/${locale}/portfolio/${caseStudy.slug}`}>
-                      <h6 className='font-semibold dark:text-white cursor-pointer'>{caseStudy.title}</h6>
+                      <h6 className='font-semibold dark:text-white cursor-pointer'>{translatedTitle}</h6>
                     </Link>
                   </div>
                 </div>

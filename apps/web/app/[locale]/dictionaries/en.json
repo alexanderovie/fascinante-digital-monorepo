@@ -260,8 +260,17 @@
       "bookService": "Book a service"
     },
     "portfolio": {
-      "title": "See the difference of working with an agency focused on real results — not empty promises",
-      "viewAllWork": "View all work"
+      "title": "Portfolio – Real Success Stories",
+      "subtitle": "Discover how we transform local businesses into leading brands with proven digital marketing strategies and measurable results.",
+      "viewAllWork": "View all work",
+      "caseStudies": {
+        "restaurante-tampa": "Restaurant in Tampa achieves +250% growth in leads",
+        "clinica-dental-miami": "Dental Clinic in Miami: +180% increase in new patients",
+        "abogado-inmigracion-orlando": "Immigration Law Firm in Orlando: +220% in consultations",
+        "spa-bienestar-fortlauderdale": "Wellness Spa in Fort Lauderdale: +190% in bookings",
+        "agencia-bienes-raices-jacksonville": "Real Estate Agency in Jacksonville: +270% in qualified leads",
+        "servicios-limpieza-tampa": "Cleaning Services in Tampa: +320% in recurring clients"
+      }
     },
     "finalCta": {
       "title": "Ready to Grow?",
