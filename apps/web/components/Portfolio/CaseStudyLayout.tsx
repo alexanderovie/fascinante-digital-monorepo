@@ -1,4 +1,3 @@
-"use client";
 import type { Locale } from '@/lib/i18n';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -23,10 +22,10 @@ interface CaseStudyMetadata {
 interface CaseStudyLayoutProps {
   locale: Locale;
   metadata: CaseStudyMetadata;
-  content: React.ReactNode;
+  Content: React.ComponentType;
 }
 
-const CaseStudyLayout = ({ locale, metadata, content }: CaseStudyLayoutProps) => {
+const CaseStudyLayout = ({ locale, metadata, Content }: CaseStudyLayoutProps) => {
   // Extract first metric for sidebar highlight
   const firstMetric = metadata.metrics
     ? Object.entries(metadata.metrics)[0]
@@ -69,7 +68,7 @@ const CaseStudyLayout = ({ locale, metadata, content }: CaseStudyLayoutProps) =>
                   </div>
                 }
 
-                <MDXContent>{content}</MDXContent>
+                <MDXContent><Content /></MDXContent>
               </div>
               <div className='flex flex-col gap-4 sm:gap-8'>
                 {firstMetric && (

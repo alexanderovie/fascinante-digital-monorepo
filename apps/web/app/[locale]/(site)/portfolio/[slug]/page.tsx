@@ -94,7 +94,7 @@ export default async function CaseStudyPage({
 
     return (
       <main>
-        <CaseStudyLayout locale={locale} metadata={metadata} content={<Content />} />
+        <CaseStudyLayout locale={locale} metadata={metadata} Content={Content} />
       </main>
     );
   } catch (error) {
