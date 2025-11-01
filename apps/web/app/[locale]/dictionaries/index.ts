@@ -11,8 +11,8 @@ export type Dictionary = {
 }
 
 const dictionaries: Record<Locale, () => Promise<Dictionary>> = {
-  en: () => import('./en.json').then((module) => module.default as Dictionary),
-  es: () => import('./es.json').then((module) => module.default as Dictionary),
+  en: () => import('./en.json').then((module) => (module.default || module) as Dictionary),
+  es: () => import('./es.json').then((module) => (module.default || module) as Dictionary),
 }
 
 /**

@@ -68,6 +68,13 @@ const getCaseStudies = () => {
 
 const PortfolioListing = ({ locale, dict }: PortfolioListingProps) => {
   const caseStudies = getCaseStudies();
+  
+  // Safe access to portfolio dictionary
+  const portfolioDict = dict.portfolio as {
+    title?: string;
+    subtitle?: string;
+    caseStudies?: Record<string, string>;
+  } | undefined;
 
   return (
     <section>
@@ -79,10 +86,10 @@ const PortfolioListing = ({ locale, dict }: PortfolioListingProps) => {
                 <div className="badge">
                   <p className="text-current">Fascinante Digital</p>
                 </div>
-                <h2 className='text-secondary dark:text-white font-semibold'>{dict.portfolio?.title}</h2>
+                <h2 className='text-secondary dark:text-white font-semibold'>{portfolioDict?.title || 'Portfolio'}</h2>
               </div>
               <div>
-                <p className='text-secondary dark:text-white/80 text-lg lg:pl-9 xl:pl-20'>{dict.portfolio?.subtitle}</p>
+                <p className='text-secondary dark:text-white/80 text-lg lg:pl-9 xl:pl-20'>{portfolioDict?.subtitle || ''}</p>
               </div>
             </div>
             <Link href="#portfolio-list" className='py-9 px-3 bg-primary hover:bg-darkPrimary border border-primary w-fit rounded-4xl cursor-pointer transition-all duration-300'>
@@ -96,7 +103,7 @@ const PortfolioListing = ({ locale, dict }: PortfolioListingProps) => {
         <div id="portfolio-list" className='container'>
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 py-28'>
             {caseStudies.map((caseStudy, index) => {
-              const translatedTitle = dict.portfolio?.caseStudies?.[caseStudy.slug as keyof typeof dict.portfolio.caseStudies] || caseStudy.title;
+              const translatedTitle = portfolioDict?.caseStudies?.[caseStudy.slug] || caseStudy.title;
               return (
                 <div key={index} className='group border border-foggy-clay dark:border-natural-gray/20 rounded-md'>
                   <div className='w-full h-[300px] overflow-hidden rounded-t-md'>
