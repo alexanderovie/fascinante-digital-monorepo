@@ -28,7 +28,7 @@ const ServicesListing = () => {
       </div>
       <div className='dark:bg-dark-gray'>
         <div id="services-list" className='container'>
-          <div className='grid grid-cols-3 gap-10 py-28'>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 py-28'>
             {services.map((value, index) => {
               return (
                 <div key={index} className='group border border-foggy-clay dark:border-natural-gray/20 rounded-md'>

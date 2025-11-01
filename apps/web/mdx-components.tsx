@@ -16,37 +16,44 @@ const components: MDXComponents = {
     </h1>
   ),
   h2: ({ children }) => (
-    <h2 className="text-secondary dark:text-white font-semibold text-3xl md:text-4xl lg:text-5xl mt-8 mb-4">
+    <h2 className="font-semibold text-secondary dark:text-white mt-8 mb-4">
       {children}
     </h2>
   ),
   h3: ({ children }) => (
-    <h3 className="text-secondary dark:text-white font-semibold text-2xl md:text-3xl lg:text-4xl mt-6 mb-3">
+    <h3 className="font-semibold text-secondary dark:text-white mt-6 mb-3">
       {children}
     </h3>
   ),
   h4: ({ children }) => (
-    <h4 className="text-secondary dark:text-white font-semibold text-xl md:text-2xl lg:text-3xl mt-4 mb-2">
+    <h4 className="font-semibold text-secondary dark:text-white mt-4 mb-2">
       {children}
     </h4>
   ),
+  h6: ({ children }) => (
+    <h6 className="font-semibold mb-4">
+      {children}
+    </h6>
+  ),
   p: ({ children }) => (
-    <p className="text-secondary dark:text-white/80 text-base md:text-lg leading-relaxed mb-4">
+    <p className="text-base md:text-lg text-secondary/80 dark:text-white/80 mb-4">
       {children}
     </p>
   ),
   ul: ({ children }) => (
-    <ul className="list-disc list-inside space-y-2 mb-4 text-secondary dark:text-white/80">
+    <ul className="flex flex-col gap-3 mb-4">
       {children}
     </ul>
   ),
   ol: ({ children }) => (
-    <ol className="list-decimal list-inside space-y-2 mb-4 text-secondary dark:text-white/80">
+    <ol className="flex flex-col gap-2 md:gap-3 mb-4">
       {children}
     </ol>
   ),
   li: ({ children }) => (
-    <li className="text-base md:text-lg">{children}</li>
+    <li className="flex items-center gap-2 text-base md:text-lg text-secondary/80 dark:text-white/80">
+      {children}
+    </li>
   ),
   a: ({ href, children }) => (
     <a

@@ -1,5 +1,4 @@
-import ServicesHero from "@/components/Services/ServicesHero";
-import OurWork from "@/components/Home/OurWork";
+import PortfolioListing from "@/components/Portfolio/PortfolioListing";
 import { getDictionary } from "@/lib/dictionaries";
 import type { Locale } from "@/lib/i18n";
 import { Metadata } from "next";
@@ -28,11 +27,7 @@ export default async function PortfolioPage({
 
   return (
     <main>
-      <ServicesHero anchorLink="#portfolio-work" />
-      <div id="portfolio-work">
-        <OurWork dict={dict.portfolio || { title: '', viewAllWork: '' }} />
-      </div>
+      <PortfolioListing locale={locale} />
     </main>
   );
 }
-
