@@ -1,33 +1,16 @@
 import NotFound from "@/components/NotFound";
-import { getDictionary } from "@/lib/dictionaries";
-import type { Locale } from "@/lib/i18n";
 import type { Metadata } from "next";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: Locale }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  const dict = await getDictionary(locale);
-
-  return {
-    title: locale === 'es' ? '404 Página no encontrada' : '404 Page Not Found',
-  };
-}
-
-const NotFoundPage = async ({
-  params,
-}: {
-  params: Promise<{ locale: Locale }>;
-}) => {
-  await params; // Consume params for async
-
-  return (
-    <>
-      <NotFound />
-    </>
-  );
+// Next.js 15: not-found.tsx doesn't receive params in the same way
+// This handles both direct navigation and RSC prefetch
+export const metadata: Metadata = {
+  title: "404 Página no encontrada | Fascinante Digital",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
-export default NotFoundPage;
+export default function NotFoundPage() {
+  return <NotFound />;
+}
