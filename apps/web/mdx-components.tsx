@@ -10,10 +10,12 @@ import Image, { ImageProps } from 'next/image';
  */
 const components: MDXComponents = {
   // Customize built-in components
+  // SEO: Convert h1 to h2 in MDX to avoid duplicate h1 tags
+  // (metadata.title is already h1 in CaseStudyLayout, prevents keyword stuffing)
   h1: ({ children }) => (
-    <h1 className="text-secondary dark:text-white font-semibold text-4xl md:text-5xl lg:text-6xl mb-6">
+    <h2 className="font-semibold text-secondary dark:text-white mt-8 mb-4">
       {children}
-    </h1>
+    </h2>
   ),
   h2: ({ children }) => (
     <h2 className="font-semibold text-secondary dark:text-white mt-8 mb-4">
