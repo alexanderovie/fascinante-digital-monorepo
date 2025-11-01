@@ -68,7 +68,7 @@ const getCaseStudies = () => {
 
 const PortfolioListing = ({ locale, dict }: PortfolioListingProps) => {
   const caseStudies = getCaseStudies();
-  
+
   // Safe access to portfolio dictionary
   const portfolioDict = dict.portfolio as {
     title?: string;

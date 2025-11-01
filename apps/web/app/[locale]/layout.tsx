@@ -57,7 +57,7 @@ export async function generateMetadata({
     icons: {
       icon: [
         { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
-        { url: '/favicon.svg', type: 'image/svg+xml' }
+        { url: '/favicon.svg', type: 'image/svg+xml' },
       ],
       shortcut: '/favicon.ico',
       apple: '/apple-touch-icon.png',
@@ -140,8 +140,6 @@ export default async function RootLayout({
     <html lang={locale} suppressHydrationWarning>
       <GoogleTagManager gtmId={gtmId} dataLayer={{ page_type: 'marketing_site' }} />
       <body className={inter.className}>
-        {/* Local lite-youtube-embed CSS */}
-        <link rel="stylesheet" href="/vendor/lite-yt-embed.css" />
         {/* JSON-LD Organization Schema según recomendación oficial Next.js 15 */}
         <script
           type="application/ld+json"
