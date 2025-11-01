@@ -4,7 +4,7 @@ import { useI18n } from "@/app/[locale]/i18n-context";
 import { supabase } from "@/app/supabase/supabaseClient";
 import { useLocale } from "@/lib/hooks/use-locale";
 import type { Locale } from "@/lib/i18n";
-import { Menu, User, X } from "lucide-react";
+import { ChevronRight, Menu, User, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
@@ -133,7 +133,9 @@ const DesktopHeader = ({ locale: propLocale, dict: propDict }: DesktopHeaderProp
 
           {/* ------------------------- Mobile sidebar button starts ------------------------- */}
           <div className="flex lg:hidden gap-3 items-center">
-            <MobileThemeToggler />
+            <div className="flex items-center justify-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-200">
+              <MobileThemeToggler />
+            </div>
             <Link href={"tel:(800) 886-4981"} className="flex items-center justify-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-200" title="(800) 886-4981">
               <Image src={"/images/header/phone-icon.svg"} alt="phone-icon" width={24} height={24} className="dark:hidden" />
               <Image src={"/images/header/phone-white-icon.svg"} alt="phone-icon" width={24} height={24} className="hidden dark:block" />
@@ -169,24 +171,55 @@ const DesktopHeader = ({ locale: propLocale, dict: propDict }: DesktopHeaderProp
           {typeof document !== "undefined" && sidebarOpen && createPortal(
             <>
               <div
-                className={`fixed top-0 left-0 w-full h-full bg-black/75 dark:bg-black/75 z-40 cursor-pointer transition-opacity duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${sidebarOpen ? "opacity-100" : "opacity-0"}`}
+                className={`fixed top-0 left-0 w-full h-full bg-black/75 dark:bg-black/75 z-40 cursor-pointer transition-opacity duration-700 ease-out ${sidebarOpen ? "opacity-100" : "opacity-0"}`}
                 onClick={() => setSidebarOpen(false)}
                 aria-label={header.closeMenuOverlay}
               />
               <div
-                className={`fixed top-[60px] right-0 h-[calc(100vh-60px)] w-full bg-white dark:bg-secondary shadow-lg transform transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${sidebarOpen ? "translate-x-0" : "translate-x-full"} z-50`}
+                className={`fixed top-0 right-0 h-full w-full bg-white dark:bg-[#121212] shadow-lg transform transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${sidebarOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"} z-50 overflow-y-auto`}
                 role="dialog"
                 aria-modal="true"
               >
-                <div className='flex items-center justify-between p-4'>
-                  <h2 className="text-lg font-bold dark:text-white">{header.menu}</h2>
-                  <button
-                    onClick={() => setSidebarOpen(false)}
-                    className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-200"
-                    aria-label={header.closeMenu}
-                  >
-                    <X size={20} className="text-secondary dark:text-white" />
-                  </button>
+                {/* TopHeader dentro del menú móvil */}
+                <div className="bg-gradient-to-r from-purple-600 via-pink-500 to-red-500">
+                  <div className="container">
+                    <div className="flex justify-center py-3">
+                      <Link
+                        href={`/${locale}/contact-us`}
+                        onClick={() => setSidebarOpen(false)}
+                        className="group inline-flex items-center text-xs leading-normal md:text-sm text-white hover:text-white/90 transition-all duration-300"
+                      >
+                        ✨
+                        <span className="ml-1 font-[580] dark:font-[550]">
+                          {header.topBanner}
+                        </span>
+                        <ChevronRight
+                          size={16}
+                          className="mt-[3px] ml-1 hidden size-4 transition-all duration-300 ease-out group-hover:translate-x-1 lg:inline-block"
+                          aria-hidden="true"
+                        />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Navbar dentro del menú móvil */}
+                <div className="py-[15px] md:py-[17.5px] lg:py-5 bg-white dark:bg-[#121212] shadow-xl">
+                  <div className="container">
+                    <div className="flex justify-between items-center">
+                      {/* ZONA 1: Logo - mismo wrapper que el original */}
+                      <div className="flex items-center">
+                        <Logo />
+                      </div>
+                      <button
+                        onClick={() => setSidebarOpen(false)}
+                        className="flex lg:hidden items-center justify-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-200"
+                        aria-label={header.closeMenu}
+                      >
+                        <X size={24} className="text-secondary dark:text-white transition-transform duration-200" />
+                      </button>
+                    </div>
+                  </div>
                 </div>
 
                 <div className='p-6'>

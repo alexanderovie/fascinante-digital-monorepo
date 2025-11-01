@@ -10,7 +10,7 @@ const MobileThemeToggler = () => {
     <button
       aria-label="theme toggler"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="flex items-center justify-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-200"
+      className="flex items-center justify-center"
     >
       <span>
         <Image src={"/images/icon/white-sun-icon.svg"} alt="sun-icon" width={24} height={24} className={`hidden dark:block `} />
