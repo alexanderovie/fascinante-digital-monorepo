@@ -43,7 +43,7 @@ const CaseStudyLayout = ({ locale, metadata, Content }: CaseStudyLayoutProps) =>
                   <Image src={"/images/icon/home-icon.svg"} alt='home-icon' width={28} height={28} />
                   <p className='font-semibold text-secondary/50 dark:text-white/50'><Link href={`/${locale}`} className='text-primaryText'>Home / </Link><Link href={`/${locale}/portfolio`} className='text-primaryText'>Portfolio / </Link>{metadata.client || 'Case Study'}</p>
                 </div>
-                <h1 className='font-semibold text-secondary dark:text-white'>{metadata.title || 'Case Study'}</h1>
+                <h1>{metadata.title || 'Case Study'}</h1>
               </div>
               <div className='flex items-center'>
                 {metadata.location && (

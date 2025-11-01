@@ -43,7 +43,7 @@ export function MetricsGrid({ metrics }: MetricsGridProps) {
               <span className="text-sm text-secondary/60 dark:text-white/60 line-through">
                 {metric.before.toLocaleString()}
               </span>
-              <h3 className="text-3xl md:text-4xl font-black text-primaryText">
+              <h3 className="font-black text-primaryText">
                 {inView ? (
                   <CountUp start={metric.before} end={metric.after} duration={2.5} />
                 ) : (

@@ -45,7 +45,7 @@ export function ImageContentSection({
                 <p className="text-current">{badge}</p>
               </div>
             )}
-            <h2 className="font-semibold text-secondary dark:text-white">{title}</h2>
+            <h2>{title}</h2>
             <p className="text-secondary dark:text-white/70 leading-relaxed">{content}</p>
           </div>
         </div>

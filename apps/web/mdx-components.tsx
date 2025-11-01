@@ -12,23 +12,24 @@ const components: MDXComponents = {
   // Customize built-in components
   // SEO: Convert h1 to h2 in MDX to avoid duplicate h1 tags
   // (metadata.title is already h1 in CaseStudyLayout, prevents keyword stuffing)
+  // IMPORTANTE: NO especificar tamaños aquí - usar estilos globales de globals.css
   h1: ({ children }) => (
-    <h2 className="font-semibold text-secondary dark:text-white mt-8 mb-4">
+    <h2>
       {children}
     </h2>
   ),
   h2: ({ children }) => (
-    <h2 className="font-semibold text-secondary dark:text-white mt-8 mb-4">
+    <h2>
       {children}
     </h2>
   ),
   h3: ({ children }) => (
-    <h3 className="font-semibold text-secondary dark:text-white mt-6 mb-3">
+    <h3>
       {children}
     </h3>
   ),
   h4: ({ children }) => (
-    <h4 className="font-semibold text-secondary dark:text-white mt-4 mb-2">
+    <h4>
       {children}
     </h4>
   ),

@@ -10,7 +10,7 @@ export function CtaSection({ locale }: CtaSectionProps) {
     <section className="py-12">
       <div className="relative bg-gradient-to-r from-primary to-darkPrimary rounded-md p-8 md:p-12 text-center">
         <div className="relative z-10 flex flex-col gap-4 items-center">
-          <h2 className="text-white font-semibold text-2xl md:text-3xl">
+          <h2 className="text-white">
             ¿Listo para Crecimiento Real?
           </h2>
           <p className="text-white/90 text-lg max-w-2xl">

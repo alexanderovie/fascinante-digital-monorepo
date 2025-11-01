@@ -27,7 +27,7 @@ const ServicesListing = ({ dict, locale }: ServicesListingProps) => {
   const badge = dict.badge || 'What We Do Best'
   const title = dict.title || 'Ecosistemas Digitales que Fidelizan'
   const description = dict.description || 'Desde SEO y posicionamiento local hasta publicidad pagada, web y contenido — todo alineado para un crecimiento medible'
-  
+
   // Mapeo de títulos de servicios del diccionario
   const marketingTitles = dict.services ? [
     dict.services.digitalBranding,
@@ -48,7 +48,7 @@ const ServicesListing = ({ dict, locale }: ServicesListingProps) => {
                 <div className="badge">
                   <p className="text-current">{badge}</p>
                 </div>
-                <h2 className='text-secondary dark:text-white font-semibold'>{toTitleCase(title)}</h2>
+                <h2>{toTitleCase(title)}</h2>
               </div>
               <div>
                 <p className='text-secondary dark:text-white/80 text-lg lg:pl-9 xl:pl-20'>{description}</p>
@@ -69,12 +69,12 @@ const ServicesListing = ({ dict, locale }: ServicesListingProps) => {
                 <div key={index} className='group border border-foggy-clay dark:border-natural-gray/20 rounded-md'>
                   <div className='w-full h-[300px] overflow-hidden rounded-t-md'>
                     <Link href={`/${locale}/services/${value.slug}`}>
-                      <Image 
-                        src={value.thumbnail_img} 
+                      <Image
+                        src={value.thumbnail_img}
                         alt={`${marketingTitles[index] || value.service_title} - Fascinante Digital`}
-                        width={320} 
-                        height={300} 
-                        className='group-hover:scale-110 transition-all ease-in duration-300 w-full h-full object-cover rounded-t-md cursor-pointer' 
+                        width={320}
+                        height={300}
+                        className='group-hover:scale-110 transition-all ease-in duration-300 w-full h-full object-cover rounded-t-md cursor-pointer'
                       />
                     </Link>
                   </div>

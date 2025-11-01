@@ -86,7 +86,7 @@ const PortfolioListing = ({ locale, dict }: PortfolioListingProps) => {
                 <div className="badge">
                   <p className="text-current">Fascinante Digital</p>
                 </div>
-                <h2 className='text-secondary dark:text-white font-semibold'>{portfolioDict?.title || 'Portfolio'}</h2>
+                <h2>{portfolioDict?.title || 'Portfolio'}</h2>
               </div>
               <div>
                 <p className='text-secondary dark:text-white/80 text-lg lg:pl-9 xl:pl-20'>{portfolioDict?.subtitle || ''}</p>
