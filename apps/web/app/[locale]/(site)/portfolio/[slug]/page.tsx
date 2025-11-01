@@ -12,7 +12,11 @@ export async function generateStaticParams() {
   // TODO: Dynamically read from content/cases directory
   const cases = [
     { slug: 'restaurante-tampa' },
-    // Add more case studies here as they're created
+    { slug: 'clinica-dental-miami' },
+    { slug: 'abogado-inmigracion-orlando' },
+    { slug: 'spa-bienestar-fortlauderdale' },
+    { slug: 'agencia-bienes-raices-jacksonville' },
+    { slug: 'servicios-limpieza-tampa' },
   ];
 
   // Generate params for all locales

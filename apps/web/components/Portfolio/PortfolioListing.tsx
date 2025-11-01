@@ -15,13 +15,52 @@ const getCaseStudies = () => {
   return [
     {
       slug: 'restaurante-tampa',
-      thumbnail_img: '/images/home/ourwork/work-img-1.png',
+      thumbnail_img: '/images/portfolio/thumbnails/restaurante-tampa.jpg',
       title: 'Restaurante en Tampa logra +250% crecimiento en leads',
-      client: 'Restaurante XYZ',
+      client: 'Restaurante Sabor Latino',
       industry: 'Restaurantes',
       location: 'Tampa, FL',
     },
-    // Add more case studies as they're created
+    {
+      slug: 'clinica-dental-miami',
+      thumbnail_img: '/images/portfolio/thumbnails/clinica-dental-miami.jpg',
+      title: 'Clínica Dental en Miami: +180% aumento en pacientes nuevos',
+      client: 'Dental Care Miami',
+      industry: 'Salud Dental',
+      location: 'Miami, FL',
+    },
+    {
+      slug: 'abogado-inmigracion-orlando',
+      thumbnail_img: '/images/portfolio/thumbnails/abogado-inmigracion-orlando.jpg',
+      title: 'Bufete de Inmigración en Orlando: +220% en consultas',
+      client: 'Law Firm Immigration Pro',
+      industry: 'Servicios Legales',
+      location: 'Orlando, FL',
+    },
+    {
+      slug: 'spa-bienestar-fortlauderdale',
+      thumbnail_img: '/images/portfolio/thumbnails/spa-bienestar-fortlauderdale.jpg',
+      title: 'Spa de Bienestar en Fort Lauderdale: +190% en reservas',
+      client: 'Serenity Wellness Spa',
+      industry: 'Belleza y Bienestar',
+      location: 'Fort Lauderdale, FL',
+    },
+    {
+      slug: 'agencia-bienes-raices-jacksonville',
+      thumbnail_img: '/images/portfolio/thumbnails/agencia-bienes-raices-jacksonville.jpg',
+      title: 'Agencia de Bienes Raíces en Jacksonville: +270% en leads calificados',
+      client: 'Premier Realty Jacksonville',
+      industry: 'Bienes Raíces',
+      location: 'Jacksonville, FL',
+    },
+    {
+      slug: 'servicios-limpieza-tampa',
+      thumbnail_img: '/images/portfolio/thumbnails/servicios-limpieza-tampa.jpg',
+      title: 'Servicios de Limpieza en Tampa: +320% en clientes recurrentes',
+      client: 'SparkleClean Services',
+      industry: 'Servicios de Limpieza',
+      location: 'Tampa, FL',
+    },
   ];
 };
 
