@@ -34,10 +34,11 @@ const CaseStudyLayout = ({ locale, metadata, Content }: CaseStudyLayoutProps) =>
   return (
     <section className='dark:bg-dark-gray'>
       <div className="container">
-        <div className='pt-24 lg:pt-32'>
-          <div className='py-12 xl:py-28 flex flex-col gap-6 sm:gap-10'>
+        {/* Mismo espaciado top que homepage hero (badge/breadcrumb comienzan en misma posición) */}
+        <div className='pt-[105.6px] lg:pt-[176px]'>
+          <div className='pt-[88px] pb-12 xl:pb-28 flex flex-col gap-6 sm:gap-10'>
             <div className='flex flex-col md:flex-row items-start md:items-end justify-between gap-5'>
-              <div className='flex flex-col gap-2'>
+              <div className='flex flex-col gap-3'>
                 <div className='flex items-center gap-3'>
                   <Image src={"/images/icon/home-icon.svg"} alt='home-icon' width={28} height={28} />
                   <p className='font-semibold text-secondary/50 dark:text-white/50'><Link href={`/${locale}`} className='text-primaryText'>Home / </Link><Link href={`/${locale}/portfolio`} className='text-primaryText'>Portfolio / </Link>{metadata.client || 'Case Study'}</p>
