@@ -1,3 +1,4 @@
+import createMDX from '@next/mdx';
 import type { NextConfig } from "next";
 
 /**
@@ -10,6 +11,8 @@ import type { NextConfig } from "next";
  * - Fix ESLint rule violations
  */
 const nextConfig: NextConfig = {
+  // Configure `pageExtensions` to include markdown and MDX files
+  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   images: {
     // Activamos la optimización de imágenes de Next.js
     unoptimized: false,
@@ -68,4 +71,14 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+const withMDX = createMDX({
+  // Add markdown plugins here, as desired
+  // Example: remark-gfm for GitHub Flavored Markdown
+  // options: {
+  //   remarkPlugins: [],
+  //   rehypePlugins: [],
+  // },
+});
+
+// Merge MDX config with Next.js config
+export default withMDX(nextConfig);

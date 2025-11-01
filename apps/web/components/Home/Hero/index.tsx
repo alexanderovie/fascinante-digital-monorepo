@@ -10,10 +10,10 @@ interface HeroSectionProps {
 function HeroSection({ dict, locale }: HeroSectionProps) {
   return (
     <section>
-      <div className="relative pt-24 lg:pt-40 pb-8">
-        <div className="bg-white dark:bg-[#121212] h-full flex justify-center items-center">
+      <div className="relative pt-[105.6px] lg:pt-[176px] pb-8">
+        <div className="bg-white dark:bg-[#121212] h-full flex justify-center items-start">
           <div className="container">
-            <div className="flex flex-col lg:flex-row gap-10 xl:gap-20 2xl:gap-32 py-20 items-center justify-between">
+            <div className="flex flex-col lg:flex-row gap-10 xl:gap-20 2xl:gap-32 pt-[88px] pb-20 items-start justify-between">
 
               {/* Contenido estático - Server Component */}
               <HeroContent dict={dict} locale={locale} />

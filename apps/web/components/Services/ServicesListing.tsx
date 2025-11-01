@@ -5,9 +5,9 @@ import Link from 'next/link'
 const ServicesListing = () => {
   return (
     <section>
-      <div className="relative pt-24 lg:pt-32 bg-[#F5F6F6]">
+      <div className="relative pt-[105.6px] lg:pt-[176px] bg-[#F5F6F6] dark:bg-[#121212] overflow-hidden">
         <div className="container">
-          <div className='relative flex flex-col gap-10 lg:gap-16 xl:gap-20 pb-14 z-10'>
+          <div className='relative flex flex-col gap-10 lg:gap-16 xl:gap-20 pt-[88px] pb-20 z-10'>
             <div className='flex lg:flex-row flex-col items-center gap-5 lg:gap-10'>
               <div className='flex flex-col gap-3 lg:max-w-2xl w-full'>
                 <div className="badge">
@@ -24,7 +24,7 @@ const ServicesListing = () => {
             </Link>
           </div>
         </div>
-        <Image src={"/images/aboutus/about-ellipse-img.svg"} alt='ellipse-img' width={316} height={316} className='absolute right-0 bottom-0' />
+        <div className='absolute right-0 bottom-0 translate-x-[30%] translate-y-[30%] w-[325px] h-[325px] rounded-[163px] bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800' aria-hidden="true" />
       </div>
       <div className='dark:bg-dark-gray'>
         <div id="services-list" className='container'>
