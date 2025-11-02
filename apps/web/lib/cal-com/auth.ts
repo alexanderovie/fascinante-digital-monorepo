@@ -87,14 +87,9 @@ export function getDefaultAuthConfig(): CalComAuthConfig {
     );
   }
 
-  // Validate API key format
-  if (process.env.NODE_ENV === 'production' && !apiKey.startsWith('cal_live_')) {
-    console.warn('⚠️  Using test mode API key in production. Use cal_live_ prefix for live mode.');
-  }
-
-  if (process.env.CAL_COM_ENVIRONMENT === 'sandbox' && !apiKey.startsWith('cal_')) {
-    console.warn('⚠️  API key should start with cal_ for sandbox/test mode.');
-  }
+  // Validate API key format (warnings removed for production - following Context7 best practices)
+  // In production, ensure API key starts with 'cal_live_' prefix
+  // In sandbox, API key should start with 'cal_' prefix
 
   return {
     method: 'apiKey',

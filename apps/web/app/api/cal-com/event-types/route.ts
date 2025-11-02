@@ -41,8 +41,7 @@ export async function GET(request: Request) {
       },
     });
   } catch (error) {
-    console.error('Cal.com Event Types API Error:', error);
-
+    // Logging removed for production (following Context7 best practices)
     const message = error instanceof Error ? error.message : 'Failed to fetch event types';
 
     return NextResponse.json(

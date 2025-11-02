@@ -1,11 +1,10 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import type { AuditResult } from '@/types/audit';
 import { API_ENDPOINTS } from '@/lib/api-config';
-import { toast } from 'sonner';
-import { Loader2, Download, Share2, RefreshCw } from 'lucide-react';
+import { Loader2, Download, Share2 } from 'lucide-react';
 import KeywordsRanking from '@/components/Audit/Results/KeywordsRanking';
 import DomainAuthority from '@/components/Audit/Results/DomainAuthority';
 import SEOOpportunities from '@/components/Audit/Results/SEOOpportunities';
@@ -53,8 +52,7 @@ export default function AuditResultsPage({ params: paramsPromise }: AuditResults
           localStorage.setItem(`audit_${params.auditId}`, JSON.stringify(data));
         }
       })
-      .catch(err => {
-        console.error('Error loading audit:', err);
+      .catch(() => {
         setError('Failed to load audit results');
       })
       .finally(() => setIsLoading(false));
@@ -138,4 +136,3 @@ export default function AuditResultsPage({ params: paramsPromise }: AuditResults
     </main>
   );
 }
-

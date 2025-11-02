@@ -5,7 +5,7 @@ import { QueryProvider } from "@/components/providers/QueryProvider";
 import { getDictionary } from "@/lib/dictionaries";
 import { locales, type Locale } from "@/lib/i18n";
 import { GoogleTagManager } from "@next/third-parties/google";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 import { Toaster } from "sonner";
@@ -26,6 +26,17 @@ const inter = Inter({
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
+
+/**
+ * Generate viewport configuration (Next.js 14+ method)
+ * Replaces deprecated viewport in metadata
+ */
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+};
 
 /**
  * Generate metadata for each locale
@@ -112,12 +123,22 @@ export default async function RootLayout({
   const dict = await getDictionary(locale);
 
   // JSON-LD Organization Schema (Next.js 15 Official Method)
+  // Includes address for Local SEO compliance
   const organizationJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Fascinante Digital',
     url: 'https://fascinantedigital.com',
     logo: 'https://fascinantedigital.com/logo.png',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '2054 Vista Pkwy # 400',
+      addressLocality: 'West Palm Beach',
+      addressRegion: 'FL',
+      postalCode: '33411',
+      addressCountry: 'US',
+    },
+    telephone: '+1-800-886-4981',
     sameAs: [
       'https://www.facebook.com/fascinantedigital',
       'https://twitter.com/fascinantedig',

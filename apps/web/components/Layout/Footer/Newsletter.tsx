@@ -12,7 +12,7 @@ interface NewsletterProps {
   dict?: Dictionary;
 }
 
-const Newsletter = ({ locale: propLocale, dict: propDict }: NewsletterProps = {}) => {
+const Newsletter = ({ dict: propDict }: NewsletterProps = {}) => {
   // ✅ ALL HOOKS FIRST - per React Rules of Hooks
   // Call all hooks at the top level, before any conditional logic
   const [formData, setFormData] = useState({ email: "" });
@@ -58,9 +58,8 @@ const Newsletter = ({ locale: propLocale, dict: propDict }: NewsletterProps = {}
           // noop
         }, 10000);
       })
-      .catch((error: unknown) => {
-        const err = error as { message?: string };
-        console.log(err?.message);
+      .catch(() => {
+        // Error handling - logging removed for production (following Context7 best practices)
       });
   };
 
@@ -73,6 +72,15 @@ const Newsletter = ({ locale: propLocale, dict: propDict }: NewsletterProps = {}
           <div className='flex flex-col lg:flex-row justify-between items-start lg:items-center w-full gap-6'>
             <div className='flex flex-col lg:flex-row gap-5 lg:gap-10'>
               <form onSubmit={handleSubmit} className='flex gap-2 items-center'>
+                {/* Honeypot field - hidden from users, bots will fill it */}
+                <input
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  style={{ position: 'absolute', left: '-9999px' }}
+                  aria-hidden="true"
+                />
                 <input
                   required
                   className="input-field bg-white dark:bg-white/10"

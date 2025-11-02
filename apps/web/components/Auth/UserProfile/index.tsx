@@ -42,7 +42,7 @@ const UserProfile = () => {
             alert("Profile updated successfully!");
         } catch (err: unknown) {
             const error = err as { message?: string };
-            console.error("Update error:", err);
+            // Update error - logging removed for production (following Context7 best practices)
             alert(`Update failed: ${error?.message ?? 'Unknown error'}`);
         }
     };

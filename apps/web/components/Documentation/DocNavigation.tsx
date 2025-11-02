@@ -11,8 +11,8 @@ export const DocNavigation = () => {
     }
 
     useEffect(() => {
-     console.log(navItem);
-    },[navItem])
+      // Navigation item changed - logging removed for production (following Context7 best practices)
+    }, [navItem]);
 
     const DocsNav = [
         {

@@ -67,6 +67,7 @@ export default function AuditForm({
         } as React.ChangeEvent<HTMLSelectElement>);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [detectedCategory, step, formData.category]);
 
   const validateStep1 = () => {

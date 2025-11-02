@@ -9,12 +9,12 @@ import { ChevronRight, Clock, Search, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from 'sonner';
 import AuditForm from "./AuditForm";
 
 interface AuditHeroProps {
-  dict: Record<string, any>;
+  dict: Record<string, unknown>;
   locale: Locale;
 }
 
@@ -23,7 +23,6 @@ function AuditHero({ dict, locale }: AuditHeroProps) {
   const [showThanks, setShowThanks] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const router = useRouter();
-  const ref = useRef(null);
   const [formData, setFormData] = useState<{
     name: string;
     phone?: string;

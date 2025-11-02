@@ -263,7 +263,7 @@ const DesktopHeader = ({ locale: propLocale, dict: propDict }: DesktopHeaderProp
                     <Link href="https://maps.app.goo.gl/C5PX3Cvfy1nvT8zq9" className="flex gap-2 items-center py-1.5">
                       <Image src={"/images/topheader/map-icon.svg"} alt="map-icon" width={24} height={24} className="dark:hidden" />
                       <Image src={"/images/topheader/white-map-icon.svg"} alt="map-icon" width={24} height={24} className="hidden dark:block" />
-                      <span className="text-secondary dark:text-white text-base font-semibold">Blane Street, Manchester</span>
+                      <span className="text-secondary dark:text-white text-base font-semibold">Address: 2054 Vista Pkwy # 400, West Palm Beach, FL 33411</span>
                     </Link>
                   </div>
                   <div className="flex items-center gap-10 mt-5">

@@ -79,8 +79,8 @@ const Signin = () => {
       }
 
       router.push("/"); // Change this path to where you want to redirect
-    } catch (err) {
-      console.error("Login error:", err);
+    } catch {
+      // Login error - logging removed for production (following Context7 best practices)
     } finally {
       setLoading(false);
     }

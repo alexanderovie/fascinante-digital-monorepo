@@ -1,7 +1,7 @@
 "use client";
 
 import type { DomainRankResponse } from '@/types/audit';
-import { Shield, TrendingUp, Link2 } from 'lucide-react';
+import { Shield } from 'lucide-react';
 
 interface DomainAuthorityProps {
   data: DomainRankResponse;
@@ -80,4 +80,3 @@ export default function DomainAuthority({ data }: DomainAuthorityProps) {
     </div>
   );
 }
-

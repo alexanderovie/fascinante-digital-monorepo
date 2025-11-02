@@ -58,7 +58,7 @@ export async function GET(request: NextRequest) {
     // Check API key
     const apiKey = process.env.GOOGLE_PLACES_API_KEY;
     if (!apiKey) {
-      console.error('GOOGLE_PLACES_API_KEY is not configured');
+      // API key not configured - logging removed for production
       return NextResponse.json(
         { error: 'Places API is not configured' },
         { status: 500 }
@@ -121,10 +121,7 @@ export async function GET(request: NextRequest) {
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
-      console.error('Google Places API error:', {
-        status: response.status,
-        error: errorData,
-      });
+      // Google Places API error - logging removed for production
 
       // Handle specific Google API errors
       if (response.status === 400 && errorData.error?.message) {
@@ -185,7 +182,7 @@ export async function GET(request: NextRequest) {
       }
     );
   } catch (error) {
-    console.error('Error in places autocomplete:', error);
+    // Error handling - logging removed for production
 
     // Handle timeout errors specifically
     if (error instanceof Error && error.message.includes('timeout')) {

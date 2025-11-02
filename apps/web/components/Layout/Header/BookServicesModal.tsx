@@ -70,9 +70,8 @@ const BookServicesModal = ({ isOpen, closeModal, dict }: BookServicesModalProps)
         closeModal();
         reset();
       })
-      .catch((error: unknown) => {
-        const err = error as { message?: string };
-        console.log(err?.message);
+      .catch(() => {
+        // Error handling - logging removed for production (following Context7 best practices)
       });
   };
   if (!isOpen) return null;

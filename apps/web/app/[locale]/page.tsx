@@ -65,7 +65,7 @@ export default async function Home({
   const { locale } = await params;
   const dict = await getDictionary(locale);
 
-  const homepageDict = dict.homepage as Record<string, any>;
+  const homepageDict = dict.homepage as Record<string, unknown>;
 
   // JSON-LD LocalBusiness Schema (Next.js 15 Official Method)
   const localBusinessJsonLd = {

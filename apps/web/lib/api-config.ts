@@ -33,7 +33,8 @@ export const apiUrl = (endpoint: string): string => {
  * Pre-defined API endpoints
  */
 export const API_ENDPOINTS = {
-  contact: apiUrl('/api/contact'),
+  // Use local route handler for bot protection, which forwards to Cloudflare Worker
+  contact: '/api/contact',
   audit: {
     free: apiUrl('/api/audit/free'),
   },

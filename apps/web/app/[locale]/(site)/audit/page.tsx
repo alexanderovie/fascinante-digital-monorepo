@@ -18,12 +18,17 @@ export async function generateMetadata({
   const { locale } = await params;
   const dict = await getDictionary(locale);
 
+  const auditMetadata = dict.audit?.metadata as {
+    title?: string;
+    description?: string;
+  } | undefined;
+
   return {
-    title: `${dict.audit?.badge || 'Auditoría Gratuita'} | Fascinante Digital`,
-    description: dict.audit?.subtitle || 'Analiza tu presencia digital en minutos',
+    title: auditMetadata?.title || `${dict.audit?.badge || 'Auditoría Gratuita'} | Fascinante Digital`,
+    description: auditMetadata?.description || dict.audit?.subtitle || 'Analiza tu presencia digital en minutos',
     openGraph: {
-      title: `${dict.audit?.badge || 'Auditoría Gratuita'} | Fascinante Digital`,
-      description: dict.audit?.subtitle || 'Analiza tu presencia digital en minutos',
+      title: auditMetadata?.title || `${dict.audit?.badge || 'Auditoría Gratuita'} | Fascinante Digital`,
+      description: auditMetadata?.description || dict.audit?.subtitle || 'Analiza tu presencia digital en minutos',
       type: 'website',
     },
   };

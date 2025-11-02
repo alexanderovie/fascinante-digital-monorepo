@@ -40,7 +40,7 @@ export async function generateMetadata({
 }: {
   params: Promise<{ locale: Locale; slug: string }>;
 }): Promise<Metadata> {
-  const { locale, slug } = await params;
+  const { slug } = await params;
 
   try {
     // Dynamically import the MDX file
@@ -51,14 +51,18 @@ export async function generateMetadata({
       industry?: string;
     };
 
+    const caseTitle = metadata.title || 'Case Study';
+    const client = metadata.client || 'Client';
+    const industry = metadata.industry || 'Digital Marketing';
+
     return {
-      title: `${metadata.title || 'Case Study'} | Fascinante Digital`,
-      description: `Case study: ${metadata.client || 'Client'} - ${metadata.industry || 'Digital Marketing Results'}`,
+      title: `${caseTitle} - Case Study | Fascinante Digital`,
+      description: `Discover how ${client} achieved remarkable growth with our marketing strategies. Case study showing ${industry} results, proven tactics, and measurable outcomes.`,
     };
-  } catch (error) {
+  } catch {
     return {
-      title: 'Case Study | Fascinante Digital',
-      description: 'Case study details',
+      title: 'Case Study - Digital Marketing Success Stories | Fascinante',
+      description: 'Discover detailed case studies showcasing how businesses achieved remarkable growth with our marketing strategies. Real results and proven tactics.',
     };
   }
 }
@@ -101,8 +105,7 @@ export default async function CaseStudyPage({
         <CaseStudyLayout locale={locale} metadata={metadata} Content={Content} />
       </main>
     );
-  } catch (error) {
-    console.error(`Error loading case study ${slug}:`, error);
+  } catch {
     notFound();
   }
 }

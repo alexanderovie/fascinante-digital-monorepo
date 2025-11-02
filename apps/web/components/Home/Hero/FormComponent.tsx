@@ -58,9 +58,7 @@ export default function FormComponent({
 
   const validateForm = () => {
     const newErrors: typeof errors = {};
-    const nameRegex = /^[a-zA-Z\s]+$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^\d{10,15}$/; // basic digit-only validation
 
     // Validación del nombre del negocio (siempre requerido)
     // Permitir caracteres especiales comunes en nombres de negocios
@@ -109,6 +107,15 @@ export default function FormComponent({
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-8">
+      {/* Honeypot field - hidden from users, bots will fill it */}
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        style={{ position: 'absolute', left: '-9999px' }}
+        aria-hidden="true"
+      />
       <div className="flex flex-col gap-5">
         <div>
           {onNameChange ? (

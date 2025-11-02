@@ -1,5 +1,4 @@
 'use client';
-import { API_ENDPOINTS } from '@/lib/api-config';
 import type { Locale } from "@/lib/i18n";
 import { toTitleCase } from '@/lib/utils/text-formatting';
 import type { PlaceDetails } from "@/types/places";
@@ -55,7 +54,7 @@ export function HeroForm({ dict, locale }: HeroFormProps) {
 
     const loadingToast = toast.loading('Sending request...');
 
-    fetch(API_ENDPOINTS.contact, {
+    fetch('/api/contact', {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({
@@ -74,8 +73,8 @@ export function HeroForm({ dict, locale }: HeroFormProps) {
           throw new Error('Failed to send request');
         }
       })
-      .catch((error) => {
-        console.error('Error:', error);
+      .catch(() => {
+        // Error handling - logging removed for production (following Context7 best practices)
         toast.error('Failed to send request. Please try again.');
       })
       .finally(() => {

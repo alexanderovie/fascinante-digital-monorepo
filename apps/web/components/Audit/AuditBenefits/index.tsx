@@ -6,7 +6,7 @@ import { useRef } from 'react';
 import { auditBenefitsData } from './data';
 
 interface AuditBenefitsProps {
-  dict: Record<string, any>;
+  dict: Record<string, unknown>;
   locale: string;
 }
 
@@ -69,4 +69,3 @@ function AuditBenefits({ dict, locale }: AuditBenefitsProps) {
 }
 
 export default AuditBenefits
-

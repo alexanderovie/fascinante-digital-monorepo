@@ -11,9 +11,14 @@ export async function generateMetadata({
   const { locale } = await params;
   const dict = await getDictionary(locale);
 
+  const portfolioMetadata = dict.portfolio?.metadata as {
+    title?: string;
+    description?: string;
+  } | undefined;
+
   return {
-    title: `${dict.header?.portfolio || 'Portfolio'} | Fascinante Digital`,
-    description: dict.portfolio?.title || 'See the difference of working with an agency focused on real results',
+    title: portfolioMetadata?.title || `${dict.header?.portfolio || 'Portfolio'} | Fascinante Digital`,
+    description: portfolioMetadata?.description || dict.portfolio?.subtitle || 'See the difference of working with an agency focused on real results',
   };
 }
 

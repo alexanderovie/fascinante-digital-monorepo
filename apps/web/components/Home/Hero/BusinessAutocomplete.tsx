@@ -147,8 +147,9 @@ export function BusinessAutocomplete({
         inputRef.current?.blur();
       } catch (err) {
         // If details fetch fails, use prediction text as fallback
+        // Error handling - logging removed for production (following Context7 best practices)
         if (err instanceof Error && err.name !== 'AbortError') {
-          console.error('Error fetching place details:', err);
+          // Place details fetch failed - silently use fallback
         }
         onChange(prediction.structured_formatting.main_text);
         setShowSuggestions(false);

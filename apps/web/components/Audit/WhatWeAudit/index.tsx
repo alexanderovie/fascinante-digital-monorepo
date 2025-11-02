@@ -6,7 +6,7 @@ import { useRef } from 'react';
 import { auditItems } from './data';
 
 interface WhatWeAuditProps {
-  dict: Record<string, any>;
+  dict: Record<string, unknown>;
 }
 
 const icons = [Search, TrendingUp, Users, Code, Lightbulb];

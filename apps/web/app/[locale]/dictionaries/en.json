@@ -60,7 +60,7 @@
   },
   "metadata": {
     "title": "Bilingual Digital Marketing Agency | Fascinante Digital",
-    "description": "Grow your brand with local SEO, digital branding, ads, and smart automation built for measurable business growth.",
+    "description": "Grow your brand with data-driven bilingual strategies. Local SEO, digital branding, Google & Meta ads, and automation for measurable growth.",
     "ogTitle": "Fascinante Digital | Bilingual Marketing & Automation",
     "ogDescription": "Bilingual marketing and automation that connect brands with real customers in Florida and beyond.",
     "keywords": "digital marketing, SEO, SEM, Google Ads, Meta, Next.js, Fascinante Digital, Tampa, Florida, West Palm Beach, bilingual marketing, marketing automation"
@@ -70,6 +70,10 @@
     "title": "Discover Growth Opportunities",
     "titleMobile": "Free Audit",
     "subtitle": "Analyze your digital presence in minutes. Get actionable insights about SEO, keywords, and competition.",
+    "metadata": {
+      "title": "Free Digital Marketing Audit & SEO Analysis | Fascinante",
+      "description": "Get a complete analysis of your digital presence in minutes. Discover ranked keywords, SEO opportunities, competitor insights, and recommendations."
+    },
     "metrics": {
       "speed": "2-5 Min",
       "speedLabel": "Quick Analysis",
@@ -263,6 +267,10 @@
       "title": "Portfolio – Real Success Stories",
       "subtitle": "Discover how we transform local businesses into leading brands with proven digital marketing strategies and measurable results.",
       "viewAllWork": "View all work",
+      "metadata": {
+        "title": "Digital Marketing Portfolio & Case Studies | Fascinante",
+        "description": "See how we transform local businesses into leading brands with proven strategies. Success stories with results in SEO and automation."
+      },
       "caseStudies": {
         "restaurante-tampa": "Restaurant in Tampa achieves +250% growth in leads",
         "clinica-dental-miami": "Dental Clinic in Miami: +180% increase in new patients",

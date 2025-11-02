@@ -38,8 +38,7 @@ export async function GET(
       }
     });
 
-  } catch (error) {
-    console.error('Error fetching audit results:', error);
+  } catch {
     return NextResponse.json<{ error: string }>(
       { error: 'Failed to fetch audit results' },
       { status: 500 }

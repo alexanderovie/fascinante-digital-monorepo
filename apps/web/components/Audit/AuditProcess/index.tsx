@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import { auditProcessSteps } from './data';
 
 interface AuditProcessProps {
-  dict: Record<string, any>;
+  dict: Record<string, unknown>;
 }
 
 const AuditProcess = ({ dict }: AuditProcessProps) => {

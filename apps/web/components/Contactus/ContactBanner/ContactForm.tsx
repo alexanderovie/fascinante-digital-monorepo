@@ -2,7 +2,6 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { toast } from 'sonner';
-import { API_ENDPOINTS } from '@/lib/api-config';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -73,7 +72,7 @@ const ContactForm = () => {
     const loadingToast = toast.loading('Enviando mensaje...');
 
     try {
-      const response = await fetch(API_ENDPOINTS.contact, {
+      const response = await fetch('/api/contact', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -96,13 +95,12 @@ const ContactForm = () => {
       } else {
         throw new Error(data.error || 'Error al enviar mensaje');
       }
-    } catch (error: unknown) {
-      const err = error as { message?: string };
+    } catch {
+      // Error handling - logging removed for production (following Context7 best practices)
       toast.dismiss(loadingToast);
       toast.error('Error al enviar el mensaje', {
         description: 'Por favor intenta de nuevo.'
       });
-      console.error("Submission error:", err?.message);
     }
   };
 
@@ -132,7 +130,7 @@ const ContactForm = () => {
             <div className='flex items-center gap-3 sm:gap-6'>
               <Image src={"/images/contactus/contact-map-icon.svg"} alt='map-icon' width={40} height={40} />
               <div>
-                <p>Blane Street, Manchester</p>
+                <p>Address: 2054 Vista Pkwy # 400, West Palm Beach, FL 33411</p>
               </div>
             </div>
           </div>
@@ -142,6 +140,15 @@ const ContactForm = () => {
         {/* Contact Form */}
         <div className='w-full p-7 px-3 md:py-7 xl:py-11 md:px-8 xl:px-14'>
           <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-8">
+            {/* Honeypot field - hidden from users, bots will fill it */}
+            <input
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              style={{ position: 'absolute', left: '-9999px' }}
+              aria-hidden="true"
+            />
             <div>
               <input type="text" name="name" placeholder="Full name *" value={formData.name} onChange={handleChange} className="input-field" />
               {errors.name && <p className="text-red-600 text-sm mt-1">{errors.name}</p>}

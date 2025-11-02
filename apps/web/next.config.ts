@@ -1,5 +1,6 @@
 import createMDX from '@next/mdx';
 import type { NextConfig } from "next";
+import { withBotId } from 'botid/next/config';
 
 /**
  * Next.js 15 Configuration (October 2025)
@@ -84,4 +85,9 @@ const withMDX = createMDX({
 });
 
 // Merge MDX config with Next.js config
-export default withMDX(nextConfig);
+// BotID configuration for bot protection (official Vercel solution)
+// Reference: https://vercel.com/docs/botid/get-started
+const configWithMDX = withMDX(nextConfig);
+
+// Apply BotID wrapper last
+export default withBotId(configWithMDX);

@@ -133,8 +133,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Sanitize category
-    const sanitizedCategory = sanitizeInput(body.category, 100);
+    // Sanitize category (stored for future use)
+    sanitizeInput(body.category, 100);
 
     // Extract domain if website provided
     const domain = extractDomain(body.website);
@@ -206,7 +206,13 @@ export async function POST(request: NextRequest) {
     // Process Google Business Info
     const [googleBusinessRes, ...otherResults] = results;
     if (googleBusinessRes.status === 'fulfilled' && googleBusinessRes.value) {
-      const data = googleBusinessRes.value as any;
+      const data = googleBusinessRes.value as {
+        rating?: number;
+        reviews_count?: number;
+        address?: string;
+        phone?: string;
+        website?: string;
+      };
       auditResult.googlePlaces = {
         rating: data.rating || undefined,
         reviewsCount: data.reviews_count || undefined,
@@ -222,9 +228,18 @@ export async function POST(request: NextRequest) {
 
       // Process Ranked Keywords
       if (rankedKeywordsRes.status === 'fulfilled' && rankedKeywordsRes.value) {
-        const data = rankedKeywordsRes.value as any;
+        const data = rankedKeywordsRes.value as {
+          items?: Array<{
+            keyword?: string;
+            rank_group?: number;
+            rank_absolute?: number;
+            search_volume?: number;
+            keyword_difficulty?: number;
+            url?: string;
+          }>;
+        };
         auditResult.rankedKeywords = {
-          keywords: (data.items || []).map((item: any) => ({
+          keywords: (data.items || []).map((item) => ({
             keyword: item.keyword || '',
             position: item.rank_group || item.rank_absolute || 0,
             search_volume: item.search_volume || undefined,
@@ -237,7 +252,9 @@ export async function POST(request: NextRequest) {
 
       // Process Domain Rank (SIN backlinks - no tenemos suscripción link building)
       if (domainRankRes.status === 'fulfilled' && domainRankRes.value) {
-        const data = domainRankRes.value as any;
+        const data = domainRankRes.value as {
+          domain_rank?: number;
+        };
         auditResult.domainRank = {
           domain_rank: data.domain_rank || 0,
           // NO incluir backlinks ni referring_domains - no tenemos suscripción
@@ -246,9 +263,16 @@ export async function POST(request: NextRequest) {
 
       // Process Keyword Ideas
       if (keywordIdeasRes.status === 'fulfilled' && keywordIdeasRes.value) {
-        const data = keywordIdeasRes.value as any;
+        const data = keywordIdeasRes.value as {
+          items?: Array<{
+            keyword?: string;
+            search_volume?: number;
+            keyword_difficulty?: number;
+            bid?: number;
+          }>;
+        };
         auditResult.keywordOpportunities = {
-          opportunities: (data.items || []).map((item: any) => ({
+          opportunities: (data.items || []).map((item) => ({
             keyword: item.keyword || '',
             search_volume: item.search_volume || 0,
             difficulty: item.keyword_difficulty || 0,
@@ -260,7 +284,11 @@ export async function POST(request: NextRequest) {
 
       // Process Keyword Overview (volumen de búsqueda de keyword principal)
       if (keywordOverviewRes?.status === 'fulfilled' && keywordOverviewRes.value) {
-        const data = keywordOverviewRes.value as any;
+        const data = keywordOverviewRes.value as {
+          search_volume?: number;
+          keyword_difficulty?: number;
+          bid?: number;
+        };
         // Si no tenemos oportunidades aún, crear una con la keyword principal
         if (!auditResult.keywordOpportunities || auditResult.keywordOpportunities.opportunities.length === 0) {
           auditResult.keywordOpportunities = {
@@ -299,8 +327,6 @@ export async function POST(request: NextRequest) {
     );
 
   } catch (error) {
-    console.error('Error generating audit:', error);
-
     // Handle timeout errors specifically
     if (error instanceof Error && error.message.includes('timeout')) {
       return NextResponse.json<AuditGenerationResponse>(

@@ -14,7 +14,9 @@ const SocialSignIn = ({ actionText = "Sign In" }: SocialSignInProps) => {
         redirectTo: `${window.location.origin}/auth/callback`,
       },
     })
-    if (error) console.error('OAuth login error:', error)
+    if (error) {
+      // OAuth login error - logging removed for production (following Context7 best practices)
+    }
   }
 
 

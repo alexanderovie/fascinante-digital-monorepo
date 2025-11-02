@@ -83,7 +83,7 @@ export const Introduction = () => {
         </div>
         <div className="mt-5">
           <p className="text-base font-medium text-secondary dark:text-white">
-            Fascinante Digital's web platform is powered by Next.js and Tailwind CSS.
+            Fascinante Digital&apos;s web platform is powered by Next.js and Tailwind CSS.
           </p>
           <p className="text-base font-medium text-secondary dark:text-white">
             This platform is ready to use and can be fully customized to meet

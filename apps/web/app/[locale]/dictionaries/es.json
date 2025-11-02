@@ -59,8 +59,8 @@
     "required": "requerido"
   },
   "metadata": {
-    "title": "Agencia de Marketing Bilingüe en West Palm Beach | Fascinante",
-    "description": "Estrategias digitales bilingües que impulsan tu negocio con SEO local, branding, publicidad y automatización eficaz.",
+    "title": "Agencia Marketing Digital Bilingüe | Fascinante Digital",
+    "description": "Impulsa tu negocio con estrategias digitales bilingües basadas en datos. SEO local, branding, anuncios Google y Meta, y automatización para crecimiento medible.",
     "ogTitle": "Fascinante Digital | Marketing Bilingüe y Automatización",
     "ogDescription": "Estrategias digitales que combinan marketing y automatización para marcas latinas en Florida.",
     "keywords": "marketing digital, SEO, SEM, Google Ads, Meta, Next.js, Fascinante Digital, Tampa, Florida, West Palm Beach, marketing bilingüe, automatización"
@@ -70,6 +70,10 @@
     "title": "Descubre Oportunidades de Crecimiento",
     "titleMobile": "Auditoría Gratuita",
     "subtitle": "Analiza tu presencia digital en minutos. Obtén insights accionables sobre SEO, keywords y competencia.",
+    "metadata": {
+      "title": "Auditoría Digital Gratuita y Análisis SEO | Fascinante",
+      "description": "Obtén un análisis completo de tu presencia digital en minutos. Descubre keywords posicionadas, oportunidades SEO, insights de competencia y recomendaciones."
+    },
     "metrics": {
       "speed": "2-5 Min",
       "speedLabel": "Análisis Rápido",
@@ -263,6 +267,10 @@
       "title": "Portfolio – Casos de Éxito Reales",
       "subtitle": "Descubre cómo transformamos negocios locales en marcas líderes con estrategias de marketing digital comprobadas y resultados medibles.",
       "viewAllWork": "Ver todo el trabajo",
+      "metadata": {
+        "title": "Portafolio Marketing Digital y Casos de Éxito | Fascinante",
+        "description": "Descubre cómo transformamos negocios locales en marcas líderes con estrategias comprobadas. Casos de éxito con resultados en SEO y automatización."
+      },
       "caseStudies": {
         "restaurante-tampa": "Restaurante en Tampa logra +250% crecimiento en leads",
         "clinica-dental-miami": "Clínica Dental en Miami: +180% aumento en pacientes nuevos",
