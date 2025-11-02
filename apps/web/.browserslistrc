@@ -1,0 +1,19 @@
+# Browserslist configuration for modern browsers only
+# This reduces unnecessary polyfills and improves performance
+# Reference: https://github.com/browserslist/browserslist
+
+# Modern browsers (last 2 versions of major browsers)
+last 2 Chrome versions
+last 2 Firefox versions
+last 2 Safari versions
+last 2 Edge versions
+
+# Exclude dead browsers
+not dead
+not IE 11
+not op_mini all
+
+# Target modern ES6+ features
+# This allows using Array.at(), Object.hasOwn(), etc. without polyfills
+supports es6-module
+supports es6-class

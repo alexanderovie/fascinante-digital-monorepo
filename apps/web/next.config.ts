@@ -31,6 +31,14 @@ const nextConfig: NextConfig = {
     // TTL mínimo de imágenes optimizadas en CDN (31 días)
     minimumCacheTTL: 2678400,
   },
+  // Compiler configuration for modern JavaScript
+  // Reduces unnecessary polyfills for modern browsers
+  // SWC compiler (Next.js 15 default) respects browserslist config (.browserslistrc)
+  // Reference: https://nextjs.org/docs/app/api-reference/config/next-config-js/compiler
+  compiler: {
+    // SWC minification is enabled by default in Next.js 15
+    // Modern target reduces polyfills based on browserslist config
+  },
   // ESLint configuration per Next.js 15 official documentation
   // Next.js fails production builds when ESLint errors are present by default
   // Reference: https://nextjs.org/docs/15/app/api-reference/config/next-config-js/eslint
