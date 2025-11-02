@@ -77,17 +77,12 @@ export async function GTMWithGeoLocation({
     return null;
   }
 
-  // Initialize dataLayer before component renders
-  if (typeof window !== 'undefined' && dataLayer) {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push(dataLayer);
-  }
-
   // Use @next/third-parties GoogleTagManager component (Next.js 15.5.6 best practices)
   // This component automatically handles:
   // - Script loading after hydration (non-blocking)
   // - Noscript fallback
   // - Tag Assistant detection
+  // - DataLayer initialization (if needed, initialize via GTM container configuration)
   return <GoogleTagManager gtmId={gtmId} />;
 }
 
