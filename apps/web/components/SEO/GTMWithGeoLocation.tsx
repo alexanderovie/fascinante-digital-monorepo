@@ -1,5 +1,5 @@
 import { headers } from 'next/headers';
-import Script from 'next/script';
+import { GoogleTagManager } from '@next/third-parties/google';
 
 /**
  * Google Tag Manager with Geo-Location Support
@@ -77,36 +77,17 @@ export async function GTMWithGeoLocation({
     return null;
   }
 
-  // Initialize dataLayer
-  const initialDataLayer = dataLayer ? JSON.stringify(dataLayer) : '[]';
+  // Initialize dataLayer before component renders
+  if (typeof window !== 'undefined' && dataLayer) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(dataLayer);
+  }
 
-  return (
-    <>
-      {/* GTM Head Script - Standard GTM inline script */}
-      <Script
-        id="gtm-head"
-        strategy="beforeInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || ${initialDataLayer};
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','${gtmId}');
-          `,
-        }}
-      />
-      {/* GTM Body noscript fallback - Required by GTM */}
-      <noscript>
-        <iframe
-          src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
-          height="0"
-          width="0"
-          style={{ display: 'none', visibility: 'hidden' }}
-        />
-      </noscript>
-    </>
-  );
+  // Use @next/third-parties GoogleTagManager component (Next.js 15.5.6 best practices)
+  // This component automatically handles:
+  // - Script loading after hydration (non-blocking)
+  // - Noscript fallback
+  // - Tag Assistant detection
+  return <GoogleTagManager gtmId={gtmId} />;
 }
 

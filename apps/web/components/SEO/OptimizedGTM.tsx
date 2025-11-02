@@ -3,16 +3,16 @@
 /**
  * Optimized Google Tag Manager Component
  *
- * Optimizations for better mobile PageSpeed:
- * - Lazy loading: Only loads after page is interactive
- * - Conditional: Can be disabled via environment variable
- * - Deferred: Loads after initial render to not block LCP
+ * DEPRECATED: This component is no longer used.
+ * GTM is now loaded via @next/third-parties GoogleTagManager component
+ * in apps/web/app/[locale]/layout.tsx
+ *
+ * This file is kept for reference but is not imported anywhere.
  *
  * Reference: Next.js 15 best practices for third-party scripts
  * Last updated: November 2025
  */
 
-import Script from 'next/script';
 import { useEffect, useState } from 'react';
 
 interface OptimizedGTMProps {
