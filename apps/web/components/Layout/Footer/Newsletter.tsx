@@ -44,19 +44,22 @@ const Newsletter = ({ dict: propDict }: NewsletterProps = {}) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    fetch("https://formsubmit.co/ajax/niravjoshi87@gmail.com", {
-      method: "POST",
-      headers: { "Content-type": "application/json" },
+    // Use local API route with bot protection instead of external service
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
+        name: 'Newsletter Subscriber',
         email: formData.email,
+        message: 'Newsletter subscription request',
+        service: 'Newsletter',
       }),
     })
       .then((response) => response.json())
-      .then(() => {
-        setFormData({ email: "" });
-        setTimeout(() => {
-          // noop
-        }, 10000);
+      .then((data) => {
+        if (data.success) {
+          setFormData({ email: '' });
+        }
       })
       .catch(() => {
         // Error handling - logging removed for production (following Context7 best practices)

@@ -22,8 +22,8 @@ export async function GET(
       );
     }
 
-    // TODO: In production, fetch from database/Redis/cache
-    // For now, return a structured response indicating data should be stored client-side
+    // Note: In production, fetch from database/Redis/cache
+    // Currently returns structured response - data should be stored client-side (localStorage)
 
     return NextResponse.json<AuditResult>({
       auditId,

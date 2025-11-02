@@ -1,6 +1,7 @@
 import createMDX from '@next/mdx';
 import type { NextConfig } from "next";
 import { withBotId } from 'botid/next/config';
+import { withSentryConfig } from '@sentry/nextjs';
 
 /**
  * Next.js 15 Configuration (October 2025)
@@ -14,6 +15,14 @@ import { withBotId } from 'botid/next/config';
 const nextConfig: NextConfig = {
   // Configure `pageExtensions` to include markdown and MDX files
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+
+  // Server External Packages - Dependencies that use Node.js native features
+  // Sentry uses Node.js specific features, so we opt-out from bundling
+  // Reference: https://nextjs.org/docs/app/api-reference/config/next-config-js/serverExternalPackages
+  serverExternalPackages: [
+    '@sentry/nextjs',
+    '@sentry/node',
+  ],
   images: {
     // Activamos la optimización de imágenes de Next.js
     unoptimized: false,
@@ -85,9 +94,49 @@ const withMDX = createMDX({
 });
 
 // Merge MDX config with Next.js config
-// BotID configuration for bot protection (official Vercel solution)
-// Reference: https://vercel.com/docs/botid/get-started
 const configWithMDX = withMDX(nextConfig);
 
-// Apply BotID wrapper last
-export default withBotId(configWithMDX);
+// Apply BotID wrapper for bot protection (official Vercel solution)
+// Reference: https://vercel.com/docs/botid/get-started
+const configWithBotId = withBotId(configWithMDX);
+
+// Apply Sentry wrapper for error monitoring
+// Reference: https://docs.sentry.io/platforms/javascript/guides/nextjs/
+export default withSentryConfig(
+  configWithBotId,
+  {
+    // For all available options, see:
+    // https://github.com/getsentry/sentry-webpack-plugin#options
+
+    // Suppresses source map uploading logs during build
+    silent: true,
+
+    org: "fascinante-digital",
+    project: "javascript-nextjs",
+  },
+  {
+    // For all available options, see:
+    // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
+
+    // Upload a larger set of source maps for prettier stack traces (increases build time)
+    widenClientFileUpload: true,
+
+    // Route browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers.
+    // This can increase your server load as well as your hosting bill.
+    // Note: Check that the configured route will not match with your Next.js middleware, otherwise reporting of client-
+    // side errors will fail.
+    tunnelRoute: "/monitoring",
+
+    // Hides source maps from generated client bundles
+    hideSourceMaps: true,
+
+    // Automatically tree-shake Sentry logger statements to reduce bundle size
+    disableLogger: true,
+
+    // Enables automatic instrumentation of Vercel Cron Monitors.
+    // See the following for more information:
+    // https://docs.sentry.io/product/crons/
+    // https://vercel.com/docs/cron-jobs
+    automaticVercelMonitors: true,
+  }
+);

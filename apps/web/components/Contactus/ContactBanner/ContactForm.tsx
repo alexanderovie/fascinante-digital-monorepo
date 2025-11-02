@@ -111,13 +111,12 @@ const ContactForm = () => {
         <div className='relative z-10 py-9 px-8 xl:py-16 xl:px-14 flex flex-col gap-6 md:gap-16 bg-primary md:max-w-lg rounded-md'>
           <div className='flex flex-col gap-3.5'>
             <h4 className='font-semibold dark:text-secondary'>Contact Information</h4>
-            <p>We&apos;ll create high-quality linkable content and build at least 40 high-authority.</p>
+            <p>Get in touch with our team. We&apos;re here to help your business grow with data-driven marketing strategies and bilingual solutions tailored to Florida&apos;s market.</p>
           </div>
           <div className='relative z-10 flex flex-col md:pb-10 gap-3 sm:gap-5 md:gap-8 xl:gap-10'>
             <div className='flex items-center gap-3 sm:gap-6'>
               <Image src={"/images/contactus/contact-call-icon.svg"} alt='contact-icon' width={40} height={40} />
               <div>
-                <p>(800) 886-4981</p>
                 <p>(800) 886-4981</p>
               </div>
             </div>

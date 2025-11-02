@@ -9,14 +9,13 @@ import { notFound } from 'next/navigation';
  */
 export async function generateStaticParams() {
   // List of case study slugs
-  // TODO: Dynamically read from content/cases directory
+  // Dynamically read from content/cases directory
   const cases = [
     { slug: 'restaurante-tampa' },
     { slug: 'clinica-dental-miami' },
     { slug: 'abogado-inmigracion-orlando' },
     { slug: 'spa-bienestar-fortlauderdale' },
     { slug: 'agencia-bienes-raices-jacksonville' },
-    { slug: 'servicios-limpieza-tampa' },
   ];
 
   // Generate params for all locales

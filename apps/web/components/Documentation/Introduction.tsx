@@ -83,15 +83,10 @@ export const Introduction = () => {
         </div>
         <div className="mt-5">
           <p className="text-base font-medium text-secondary dark:text-white">
-            Fascinante Digital&apos;s web platform is powered by Next.js and Tailwind CSS.
+            Fascinante Digital leverages modern web technologies to deliver high-performance digital marketing solutions for businesses across Florida.
           </p>
           <p className="text-base font-medium text-secondary dark:text-white">
-            This platform is ready to use and can be fully customized to meet
-            your specific business requirements.
-          </p>
-          <p className="text-base font-medium text-secondary dark:text-white">
-            To customize, you should have knowledge of Next.js, React, Tailwind CSS,
-            and TypeScript to effectively modify and extend the platform.
+            Our platform combines cutting-edge technology with data-driven marketing strategies to help businesses grow their online presence and connect with their target audience.
           </p>
         </div>
       </div>

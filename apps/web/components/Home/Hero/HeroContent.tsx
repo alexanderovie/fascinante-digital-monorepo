@@ -11,8 +11,8 @@ interface HeroContentProps {
 export function HeroContent({ dict, locale }: HeroContentProps) {
   // Hero Image - LCP Optimization (Next.js 15.5.6 Official)
   // Reference: https://nextjs.org/docs/app/api-reference/components/image#priority
-  // TODO: Agregar imagen hero real en /public/images/home/hero-image.jpg para mejorar LCP significativamente
-  // Dimensiones recomendadas: 1920x1080px (16:9), optimizada WebP, <200KB
+  // Note: Consider adding optimized hero image at /public/images/home/hero-image.jpg for improved LCP
+  // Recommended dimensions: 1920x1080px (16:9), WebP optimized, <200KB
 
   return (
     <div className="flex flex-col gap-6 w-full">

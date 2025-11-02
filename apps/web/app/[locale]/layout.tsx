@@ -156,10 +156,13 @@ export default async function RootLayout({
   };
 
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID || 'GTM-T7SZM386';
+  // Desactivar GTM temporalmente para pruebas de PageSpeed
+  // Cambiar a 'true' para reactivar: NEXT_PUBLIC_ENABLE_GTM=true
+  const enableGTM = process.env.NEXT_PUBLIC_ENABLE_GTM === 'true';
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <GoogleTagManager gtmId={gtmId} dataLayer={{ page_type: 'marketing_site' }} />
+      {enableGTM && <GoogleTagManager gtmId={gtmId} dataLayer={{ page_type: 'marketing_site' }} />}
       <body className={inter.className}>
         {/* JSON-LD Organization Schema según recomendación oficial Next.js 15 */}
         <script

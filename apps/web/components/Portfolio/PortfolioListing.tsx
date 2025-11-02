@@ -55,14 +55,6 @@ const getCaseStudies = () => {
       industry: 'Bienes Raíces',
       location: 'Jacksonville, FL',
     },
-    {
-      slug: 'servicios-limpieza-tampa',
-      thumbnail_img: '/images/portfolio/thumbnails/servicios-limpieza-tampa.jpg',
-      title: 'Servicios de Limpieza en Tampa: +320% en clientes recurrentes',
-      client: 'SparkleClean Services',
-      industry: 'Servicios de Limpieza',
-      location: 'Tampa, FL',
-    },
   ];
 };
 

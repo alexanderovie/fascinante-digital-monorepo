@@ -54,21 +54,25 @@ const BookServicesModal = ({ isOpen, closeModal, dict }: BookServicesModalProps)
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    fetch("https://formsubmit.co/ajax/niravjoshi87@gmail.com", {
-      method: "POST",
-      headers: { "Content-type": "application/json" },
+    // Use local API route with bot protection instead of external service
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         name: formData.name,
-        number: formData.number,
         email: formData.email,
-        services: formData.services.join(", "),
+        phone: formData.number,
+        message: `Service booking request: ${formData.services.join(', ')}`,
+        service: 'Service Booking',
       }),
     })
       .then((response) => response.json())
       .then((data) => {
-        setSubmitted(data.success);
-        closeModal();
-        reset();
+        if (data.success) {
+          setSubmitted(true);
+          closeModal();
+          reset();
+        }
       })
       .catch(() => {
         // Error handling - logging removed for production (following Context7 best practices)
@@ -90,7 +94,7 @@ const BookServicesModal = ({ isOpen, closeModal, dict }: BookServicesModalProps)
             />
           </svg>
         </button>
-        <h4 className="font-semibold dark:text-white mb-8">Plan Your Cleaning</h4>
+        <h4 className="font-semibold dark:text-white mb-8">Book Your Service</h4>
         <FormComponent
           formData={formData}
           submitted={submitted}
