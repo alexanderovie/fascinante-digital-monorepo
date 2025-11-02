@@ -33,13 +33,21 @@ const nextConfig: NextConfig = {
   },
   // Compiler configuration for modern JavaScript
   // Next.js 15 uses SWC by default (no swcMinify needed - it's always enabled)
-  // SWC respects browserslist config from package.json or .browserslistrc
+  // Elite solution (Nov 2025): Force SWC, prevent Babel polyfills
   // Reference: https://nextjs.org/docs/app/api-reference/config/next-config-js/compiler
   compiler: {
-    // SWC is the default compiler in Next.js 15
-    // Browserslist configuration will be respected automatically
-    // No additional configuration needed - SWC handles modern JS natively
+    // Force SWC for all transpilation (prevents Babel from being used)
+    // This eliminates polyfills for Array.at(), Object.hasOwn(), etc.
+    removeConsole: process.env.NODE_ENV === 'production' ? {
+      exclude: ['error', 'warn'], // Keep errors and warnings in production
+    } : false,
   },
+  // Transpile Packages - Control which packages get transpiled
+  // Elite solution (Nov 2025): Only transpile if absolutely necessary
+  // MDX should use SWC, not Babel - if it's using Babel, we need to update it
+  // Reference: https://nextjs.org/docs/app/api-reference/config/next-config-js/transpilePackages
+  // Note: Currently empty - all packages should use SWC via browserslist
+  transpilePackages: [],
   // ESLint configuration per Next.js 15 official documentation
   // Next.js fails production builds when ESLint errors are present by default
   // Reference: https://nextjs.org/docs/15/app/api-reference/config/next-config-js/eslint

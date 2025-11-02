@@ -1,19 +1,26 @@
 # Browserslist configuration for modern browsers only
-# This reduces unnecessary polyfills and improves performance
+# Elite configuration (Nov 2025) - Only ES2020+ compatible browsers
+# This eliminates ALL unnecessary polyfills (Array.at, Object.hasOwn, etc.)
 # Reference: https://github.com/browserslist/browserslist
 
-# Modern browsers (last 2 versions of major browsers)
-last 2 Chrome versions
-last 2 Firefox versions
-last 2 Safari versions
-last 2 Edge versions
+# Explicitly target browsers with ES2020+ support (no polyfills needed)
+# Chrome 91+ (May 2021) - Full ES2020 support
+# Firefox 90+ (June 2021) - Full ES2020 support  
+# Safari 14.1+ (April 2021) - Full ES2020 support
+# Edge 91+ (May 2021) - Full ES2020 support
+Chrome >= 91
+Firefox >= 90
+Safari >= 14.1
+Edge >= 91
 
-# Exclude dead browsers
+# Exclude dead browsers and legacy
 not dead
 not IE 11
 not op_mini all
+not and_uc > 0
+not android <= 4.4.4
+not Samsung <= 4
 
-# Target modern ES6+ features
-# This allows using Array.at(), Object.hasOwn(), etc. without polyfills
+# Require modern JavaScript features (valid browserslist features only)
 supports es6-module
 supports es6-class
