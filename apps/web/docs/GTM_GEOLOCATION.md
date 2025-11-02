@@ -16,7 +16,7 @@ Cargar GTM solo para usuarios fuera de la Unión Europea:
 ```tsx
 import { GTMWithGeoLocation, EU_COUNTRY_CODES } from '@/components/SEO/GTMWithGeoLocation';
 
-<GTMWithGeoLocation 
+<GTMWithGeoLocation
   gtmId="GTM-T7SZM386"
   excludeCountries={EU_COUNTRY_CODES}
   dataLayer={{ page_type: 'marketing_site' }}
@@ -27,7 +27,7 @@ import { GTMWithGeoLocation, EU_COUNTRY_CODES } from '@/components/SEO/GTMWithGe
 Cargar GTM solo en Estados Unidos y México:
 
 ```tsx
-<GTMWithGeoLocation 
+<GTMWithGeoLocation
   gtmId="GTM-T7SZM386"
   includeCountries={['US', 'MX']}
   dataLayer={{ page_type: 'marketing_site' }}
@@ -38,7 +38,7 @@ Cargar GTM solo en Estados Unidos y México:
 Cargar GTM para todos los usuarios (comportamiento actual):
 
 ```tsx
-<GTMWithGeoLocation 
+<GTMWithGeoLocation
   gtmId="GTM-T7SZM386"
   dataLayer={{ page_type: 'marketing_site' }}
 />
@@ -153,6 +153,5 @@ En desarrollo, el componente siempre cargará GTM (fallback a 'US'). Para testin
 
 ---
 
-**Última actualización**: Noviembre 2025  
+**Última actualización**: Noviembre 2025
 **Status**: ✅ Componente creado - Pendiente de implementación opcional
-

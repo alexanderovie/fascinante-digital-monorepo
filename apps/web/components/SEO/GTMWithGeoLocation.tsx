@@ -3,19 +3,19 @@ import { GoogleTagManager } from '@next/third-parties/google';
 
 /**
  * Google Tag Manager with Geo-Location Support
- * 
+ *
  * Loads GTM conditionally based on user's location.
  * Useful for GDPR compliance (e.g., exclude EU countries).
- * 
+ *
  * Uses Vercel's x-vercel-ip-country header to detect user location.
- * 
+ *
  * @example
  * // Only load GTM for non-EU countries
- * <GTMWithGeoLocation 
+ * <GTMWithGeoLocation
  *   gtmId="GTM-T7SZM386"
  *   excludeCountries={EU_COUNTRY_CODES}
  * />
- * 
+ *
  * Reference: https://vercel.com/docs/edge-network/headers#x-vercel-ip-country
  * Last updated: November 2025
  */
@@ -24,7 +24,9 @@ interface GTMWithGeoLocationProps {
   gtmId: string;
   excludeCountries?: string[]; // ISO 3166-1 country codes (e.g., ['DE', 'FR', 'ES'])
   includeCountries?: string[]; // If specified, only load in these countries
-  dataLayer?: Record<string, unknown>;
+  // Note: dataLayer initialization should be done via GTM container configuration
+  // or via client-side script after GTM loads
+  // dataLayer?: Record<string, unknown>; // Removed - not supported by @next/third-parties GoogleTagManager
 }
 
 // EU Country Codes (ISO 3166-1)
@@ -62,7 +64,6 @@ export async function GTMWithGeoLocation({
   gtmId,
   excludeCountries = [],
   includeCountries = [],
-  dataLayer,
 }: GTMWithGeoLocationProps) {
   // Get user's country from Vercel header
   const countryCode = (await headers()).get('x-vercel-ip-country') || 'US';
@@ -82,7 +83,8 @@ export async function GTMWithGeoLocation({
   // - Script loading after hydration (non-blocking)
   // - Noscript fallback
   // - Tag Assistant detection
-  // - DataLayer initialization (if needed, initialize via GTM container configuration)
+  // 
+  // Note: For dataLayer initialization, configure it in GTM container settings
+  // or add client-side script after GTM loads
   return <GoogleTagManager gtmId={gtmId} />;
 }
-
