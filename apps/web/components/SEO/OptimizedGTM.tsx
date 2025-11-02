@@ -59,19 +59,12 @@ export function OptimizedGTM({ gtmId, dataLayer }: OptimizedGTMProps) {
     }
   }, [dataLayer]);
 
+  // Note: GTM script is already loaded in <head> via beforeInteractive strategy
+  // This component now only handles deferred loading for performance optimization
+  // but GTM is always present in initial HTML for Tag Assistant detection
   if (!shouldLoad) {
-    return null;
-  }
-
-  return (
-    <>
-      {/* GTM Script - Loads with afterInteractive strategy (after page is interactive) */}
-      <Script
-        id="gtm-script"
-        strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtm.js?id=${gtmId}`}
-      />
-      {/* GTM noscript fallback */}
+    // Still render noscript fallback for browsers without JS
+    return (
       <noscript>
         <iframe
           src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
@@ -80,6 +73,18 @@ export function OptimizedGTM({ gtmId, dataLayer }: OptimizedGTMProps) {
           style={{ display: 'none', visibility: 'hidden' }}
         />
       </noscript>
-    </>
+    );
+  }
+
+  // Additional noscript fallback (though GTM is already loaded)
+  return (
+    <noscript>
+      <iframe
+        src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+        height="0"
+        width="0"
+        style={{ display: 'none', visibility: 'hidden' }}
+      />
+    </noscript>
   );
 }

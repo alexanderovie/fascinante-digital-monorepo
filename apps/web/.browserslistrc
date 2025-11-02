@@ -5,7 +5,7 @@
 
 # Explicitly target browsers with ES2020+ support (no polyfills needed)
 # Chrome 91+ (May 2021) - Full ES2020 support
-# Firefox 90+ (June 2021) - Full ES2020 support  
+# Firefox 90+ (June 2021) - Full ES2020 support
 # Safari 14.1+ (April 2021) - Full ES2020 support
 # Edge 91+ (May 2021) - Full ES2020 support
 Chrome >= 91

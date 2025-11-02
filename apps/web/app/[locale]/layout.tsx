@@ -4,7 +4,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import { QueryProvider } from "@/components/providers/QueryProvider";
 import { getDictionary } from "@/lib/dictionaries";
 import { locales, type Locale } from "@/lib/i18n";
-import { OptimizedGTM } from "@/components/SEO/OptimizedGTM";
+import { GoogleTagManager } from "@next/third-parties/google";
 import type { Metadata, Viewport } from "next";
 import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
@@ -156,19 +156,16 @@ export default async function RootLayout({
   };
 
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID || 'GTM-T7SZM386';
-  // Control de GTM optimizado para mejor rendimiento móvil
-  // Estrategia: lazy loading + defer + afterInteractive para no bloquear LCP
+  // Control de GTM - Usando @next/third-parties (mejores prácticas Next.js 15.5.6)
+  // GoogleTagManager component handles optimization automatically:
+  // - Loads after hydration (non-blocking)
+  // - Properly detected by Tag Assistant
+  // - Includes noscript fallback automatically
   // Cambiar a 'true' para reactivar: NEXT_PUBLIC_ENABLE_GTM=true
   const enableGTM = process.env.NEXT_PUBLIC_ENABLE_GTM === 'true';
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      {enableGTM && (
-        <OptimizedGTM
-          gtmId={gtmId}
-          dataLayer={{ page_type: 'marketing_site' }}
-        />
-      )}
       <body className={inter.className}>
         {/* JSON-LD Organization Schema según recomendación oficial Next.js 15 */}
         <script
@@ -194,6 +191,10 @@ export default async function RootLayout({
           </ThemeProvider>
         </QueryProvider>
       </body>
+      {/* Google Tag Manager - @next/third-parties (Next.js 15.5.6 Best Practices)
+          Component must be outside <body> tag for proper detection by Tag Assistant
+          Automatically handles optimization, noscript fallback, and dataLayer initialization */}
+      {enableGTM && <GoogleTagManager gtmId={gtmId} />}
     </html>
   );
 }
