@@ -20,29 +20,38 @@ interface DesktopHeaderProps {
 }
 
 const DesktopHeader = ({ locale: propLocale, dict: propDict }: DesktopHeaderProps = {}) => {
-  // Try to use context, fallback to props (SSG-safe)
-  let dict, locale;
-  try {
-    const context = useI18n();
-    dict = context.dict;
-    locale = context.locale;
-  } catch {
-    dict = propDict;
-    locale = propLocale || useLocale();
-  }
-
-  if (!dict || !locale) return null;
-
-  const menuData = useMenuData(locale, dict);
-  const header = dict.header as Record<string, string>;
+  // ✅ ALL HOOKS FIRST - per React Rules of Hooks
+  // Call all hooks at the top level, before any conditional logic
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
   const [activeLink, setActiveLink] = useState("");
   const [user, setUser] = useState<{ user: unknown } | null>(null);
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
   const tooltipRef = useRef(null);
 
+  // Try to get context, but call hooks unconditionally
+  let contextDict, contextLocale;
+  try {
+    const context = useI18n();
+    contextDict = context.dict;
+    contextLocale = context.locale;
+  } catch {
+    contextDict = undefined;
+    contextLocale = undefined;
+  }
+
+  // Fallback locale hook - must be called unconditionally
+  const fallbackLocale = useLocale();
+
+  // Now derive final values from hooks (pure logic, not hook calls)
+  const dict = contextDict ?? propDict;
+  const locale = contextLocale ?? propLocale ?? fallbackLocale;
+
+  // Call menuData hook unconditionally (it's a custom hook, so must be called)
+  const menuData = useMenuData(locale, dict);
+
+  // All useEffect hooks must also be called before any early returns
   useEffect(() => {
     const getSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
@@ -70,7 +79,12 @@ const DesktopHeader = ({ locale: propLocale, dict: propDict }: DesktopHeaderProp
       setActiveLink(fullPath);
     };
     updateActiveLink();
-  }, [pathname, searchParams, setActiveLink]);
+  }, [pathname, searchParams]);
+
+  // ✅ CONDITIONAL RETURN AFTER ALL HOOKS (including useEffect)
+  if (!dict || !locale) return null;
+
+  const header = dict.header as Record<string, string>;
 
   const toggleTooltip = () => {
     setShowTooltip((prev) => !prev);

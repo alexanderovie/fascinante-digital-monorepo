@@ -13,19 +13,26 @@ interface NewsletterProps {
 }
 
 const Newsletter = ({ locale: propLocale, dict: propDict }: NewsletterProps = {}) => {
-  // Try to use context, fallback to props (SSG-safe)
-  let dict;
+  // ✅ ALL HOOKS FIRST - per React Rules of Hooks
+  // Call all hooks at the top level, before any conditional logic
+  const [formData, setFormData] = useState({ email: "" });
+
+  // Try to get context, but call hooks unconditionally
+  let contextDict;
   try {
     const context = useI18n();
-    dict = context.dict;
+    contextDict = context.dict;
   } catch {
-    dict = propDict;
+    contextDict = undefined;
   }
 
+  // Now derive final values from hooks (pure logic, not hook calls)
+  const dict = contextDict ?? propDict;
+
+  // ✅ CONDITIONAL RETURN AFTER ALL HOOKS
   if (!dict) return null;
 
   const footer = dict.footer as Record<string, string>;
-  const [formData, setFormData] = useState({ email: "" });
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({

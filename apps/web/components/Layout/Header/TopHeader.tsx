@@ -12,18 +12,28 @@ interface TopHeaderProps {
 }
 
 const TopHeader = ({ locale: propLocale, dict: propDict }: TopHeaderProps = {}) => {
-  // Try to use context, fallback to props (SSG-safe)
-  let dict, locale;
+  // ✅ ALL HOOKS FIRST - per React Rules of Hooks
+  // Call all hooks at the top level, before any conditional logic
+  let contextDict, contextLocale;
   try {
     const context = useI18n();
-    dict = context.dict;
-    locale = context.locale;
+    contextDict = context.dict;
+    contextLocale = context.locale;
   } catch {
-    dict = propDict;
-    locale = propLocale || useLocale();
+    contextDict = undefined;
+    contextLocale = undefined;
   }
 
+  // Fallback locale hook - must be called unconditionally
+  const fallbackLocale = useLocale();
+
+  // Now derive final values from hooks (pure logic, not hook calls)
+  const dict = contextDict ?? propDict;
+  const locale = contextLocale ?? propLocale ?? fallbackLocale;
+
   const header = dict?.header as Record<string, string> | undefined;
+
+  // ✅ CONDITIONAL RETURN AFTER ALL HOOKS
   if (!header || !locale) return null;
 
   return (

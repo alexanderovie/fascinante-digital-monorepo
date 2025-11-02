@@ -9,18 +9,28 @@ import { Menu } from "@/types/header/header";
  * SSG-safe: uses context but handles cases where it's not available
  */
 export function useMenuData(locale?: Locale, dict?: Dictionary): Menu[] {
-  let finalLocale: Locale;
-  let finalDict: Dictionary | undefined;
+  // ✅ ALL HOOKS FIRST - per React Rules of Hooks
+  // Call all hooks at the top level, before any conditional logic
+  let contextDict: Dictionary | undefined;
+  let contextLocale: Locale | undefined;
 
   try {
     const context = useI18n();
-    finalDict = context.dict;
-    finalLocale = context.locale;
+    contextDict = context.dict;
+    contextLocale = context.locale;
   } catch {
-    finalDict = dict;
-    finalLocale = locale || useLocale();
+    contextDict = undefined;
+    contextLocale = undefined;
   }
 
+  // Fallback locale hook - must be called unconditionally
+  const fallbackLocale = useLocale();
+
+  // Now derive final values from hooks (pure logic, not hook calls)
+  const finalDict = contextDict ?? dict;
+  const finalLocale = contextLocale ?? locale ?? fallbackLocale;
+
+  // ✅ CONDITIONAL RETURN AFTER ALL HOOKS
   if (!finalDict || !finalLocale) {
     // Fallback to default locale
     finalLocale = 'en';
