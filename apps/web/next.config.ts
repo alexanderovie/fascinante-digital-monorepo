@@ -32,12 +32,13 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 2678400,
   },
   // Compiler configuration for modern JavaScript
-  // Reduces unnecessary polyfills for modern browsers
-  // SWC compiler (Next.js 15 default) respects browserslist config (.browserslistrc)
+  // Next.js 15 uses SWC by default (no swcMinify needed - it's always enabled)
+  // SWC respects browserslist config from package.json or .browserslistrc
   // Reference: https://nextjs.org/docs/app/api-reference/config/next-config-js/compiler
   compiler: {
-    // SWC minification is enabled by default in Next.js 15
-    // Modern target reduces polyfills based on browserslist config
+    // SWC is the default compiler in Next.js 15
+    // Browserslist configuration will be respected automatically
+    // No additional configuration needed - SWC handles modern JS natively
   },
   // ESLint configuration per Next.js 15 official documentation
   // Next.js fails production builds when ESLint errors are present by default
