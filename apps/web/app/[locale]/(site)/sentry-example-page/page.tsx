@@ -17,7 +17,7 @@ interface SentryTestPageProps {
   params: Promise<{ locale: Locale }>;
 }
 
-export default function SentryTestPage({ params }: SentryTestPageProps) {
+export default function SentryTestPage({ params: _params }: SentryTestPageProps) {
   const [testResults, setTestResults] = useState<{
     type: 'success' | 'error';
     message: string;
